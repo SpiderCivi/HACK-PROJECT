@@ -7,7 +7,6 @@
 /build/
 /tmp/
 /audio/
-/video/
 node_modules/
 
 # OS
