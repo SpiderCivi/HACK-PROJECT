@@ -801,19 +801,60 @@ body::after {
 .prose { font-size: 1.06rem; line-height: 1.78; }
 .prose h2 { margin-top: 2.4em; }
 
-/* — video del dossier — */
-.hero-figure--video {
-  border: 1px solid var(--rule);
-  border-left: 3px solid var(--oxide);
+/* ============================================================
+   VIDEO DEL DOSSIER — verticale 9:16, presentato come tale
+   ============================================================ */
+.dossier-video {
+  margin: 0 0 clamp(2rem, 5vw, 3.5rem);
   display: flex;
   justify-content: center;
-  padding: 1.4rem;
-  background: var(--paper-2);
+  padding: clamp(1.5rem, 4vw, 2.75rem) 1rem;
+  background:
+    radial-gradient(ellipse 70% 90% at 50% 50%, rgba(194,65,12,.10), transparent 70%),
+    var(--paper-2);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  position: relative;
 }
-.hero-figure--video video {
+/* riga tecnica decorativa */
+.dossier-video::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--oxide), transparent 70%);
+}
+
+.dossier-video__frame {
+  position: relative;
   width: 100%;
-  max-width: 340px;
-  height: auto;
+  max-width: 306px;              /* ~9:16 -> 544px di altezza */
   border: 1px solid var(--rule);
   background: #000;
+  box-shadow:
+    0 0 0 6px var(--paper),
+    0 0 0 7px var(--rule-soft),
+    0 28px 70px -12px rgba(0,0,0,.9);
+  transition: box-shadow .4s, border-color .4s;
+}
+.dossier-video__frame:hover {
+  border-color: var(--oxide);
+  box-shadow:
+    0 0 0 6px var(--paper),
+    0 0 0 7px var(--oxide),
+    0 28px 80px -10px rgba(194,65,12,.28);
+}
+
+.dossier-video video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;          /* impone il verticale, poster o meno */
+  height: auto;
+  object-fit: cover;
+  background: #000;
+}
+
+@media (max-width: 520px) {
+  .dossier-video { padding-inline: 0; }
+  .dossier-video__frame { max-width: 268px; }
 }
