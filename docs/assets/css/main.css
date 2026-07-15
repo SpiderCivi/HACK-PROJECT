@@ -800,3 +800,27 @@ body::after {
 /* leggibilita' prosa */
 .prose { font-size: 1.06rem; line-height: 1.78; }
 .prose h2 { margin-top: 2.4em; }
+
+/* — video del dossier — */
+.hero-figure--video {
+  border-left: 3px solid var(--sev-critical);
+  display: grid;
+  grid-template-columns: minmax(0, 320px) 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.4rem;
+  background: var(--paper-2);
+}
+@media (max-width: 700px) { .hero-figure--video { grid-template-columns: 1fr; } }
+.hero-figure--video video {
+  width: 100%; height: auto;
+  border: 1px solid var(--rule);
+  background: #000;
+}
+.hero-figure--video figcaption {
+  font-family: var(--mono);
+  font-size: .78rem;
+  color: var(--ink-dim);
+  line-height: 1.6;
+}
+.hero-figure--video figcaption strong { color: var(--oxide-lit); font-weight: 400; }
