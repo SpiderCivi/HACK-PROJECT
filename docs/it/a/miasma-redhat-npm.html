@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/main.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Miasma: il malware aveva un certificato di provenienza valido", "description": "Il 1° giugno 2026 oltre 90 versioni malevole dei pacchetti @redhat-cloud-services finiscono su npm con attestazioni di provenienza SLSA perfettamente valide. Perché SLSA certifica dove un pacchetto è stato costruito, non se l'input era legittimo.", "datePublished": "2026-07-15", "dateModified": "2026-07-15", "inLanguage": "it", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/it/a/miasma-redhat-npm.html", "author": {"@type": "Person", "name": "Spid", "url": "https://github.com/SpiderCivi"}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/"}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/it/miasma-redhat-npm.svg"], "keywords": "Attore non attribuito (codice derivato da TeamPCP), T1078, T1195.001, T1550.001, T1027, T1552.001, T1526", "citation": [{"@type": "CreativeWork", "name": "Red Hat — RHSB-2026-006", "url": "https://access.redhat.com/security/vulnerabilities/RHSB-2026-006"}, {"@type": "CreativeWork", "name": "Wiz Research — Miasma supply chain attack targeting Red Hat npm packages", "url": "https://www.wiz.io/blog/miasma-supply-chain-attack-targeting-redhat-npm-packages"}, {"@type": "CreativeWork", "name": "StepSecurity — Multiple @redhat-cloud-services npm packages compromised", "url": "https://www.stepsecurity.io/blog/multiple-redhat-cloud-services-npm-packages-compromised"}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Salta al contenuto</a>
@@ -24,6 +25,7 @@
     <span class="masthead__tagline">Threat Intelligence Quotidiana</span>
     <nav class="masthead__nav" aria-label="Principale">
       <a href="../index.html">Archivio</a>
+      <a href="../../about.html">Chi sono</a>
       <a href="https://github.com/SpiderCivi/HACK-PROJECT">Sorgente</a>
       <a class="lang" href="../../en/a/miasma-redhat-npm-en.html" rel="alternate">English</a>
     </nav>
@@ -32,39 +34,48 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed attivo</span>
-    <span>Aggiornato &mdash; 15.07.2026 17:23 CET</span>
+    <span>Aggiornato &mdash; 15.07.2026 17:27 CET</span>
     <span>11 dossier</span>
     <span>Mappatura MITRE ATT&CK</span>
   </div>
 </div>
+<div class="progress" aria-hidden="true"><i></i></div>
 <main id="main">
 
 <article class="article shell">
+  <nav class="crumb" aria-label="breadcrumb"><a href="../index.html">HACK/PROJECT</a><span>/</span><a href="../index.html">Archivio</a><span>/</span><em>Miasma: il malware aveva un certificato di prove</em></nav>
   <header class="article__head">
-    <p class="kicker" data-reveal style="--i:0">15.07.2026 &nbsp;/&nbsp; Dossier &nbsp;/&nbsp; <span class="sev sev--high">high</span> &nbsp;/&nbsp; 5 min di lettura</p>
+    <p class="kicker" data-reveal style="--i:0">15.07.2026 &nbsp;/&nbsp; <span class="sev sev--high">high</span> &nbsp;/&nbsp; 5 min di lettura</p>
     <h1 class="article__title" data-reveal style="--i:1">Miasma: il malware aveva un certificato di provenienza valido</h1>
     <p class="article__standfirst" data-reveal style="--i:2">Il 1° giugno 2026 oltre 90 versioni malevole dei pacchetti @redhat-cloud-services finiscono su npm con attestazioni di provenienza SLSA perfettamente valide. Perché SLSA certifica dove un pacchetto è stato costruito, non se l&#x27;input era legittimo.</p>
+    <div class="byline" data-reveal style="--i:2">
+      <img class="byline__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="40" height="40" loading="lazy">
+      <div class="byline__meta">
+        <span class="byline__name">di <a href="../about.html">Spid</a></span>
+        <span class="byline__handle">@SpiderCivi &nbsp;·&nbsp; 15.07.2026</span>
+      </div>
+    </div>
   </header>
   <figure class="dossier-video" data-reveal style="--i:3"><div class="dossier-video__frame"><video controls preload="none" playsinline poster="../../video/poster/miasma-redhat-npm-it.jpg" width="1080" height="1920"><source src="../../video/miasma-redhat-npm-it.mp4" type="video/mp4"></video></div></figure>
   <div class="article__layout">
-    <div class="prose" data-reveal style="--i:4"><p>Il malware pubblicato su npm il 1° giugno 2026 portava una <strong>attestazione di provenienza SLSA valida</strong>. Non falsificata, non aggirata: valida. Firmata correttamente, verificabile, riconducibile a una build reale eseguita su un'infrastruttura reale. Chiunque avesse controllato la provenienza — cioè la cosa giusta da fare, quella che l'industria ha passato cinque anni a costruire — avrebbe visto un pacchetto in regola.</p>
+    <div class="prose" data-reveal style="--i:4"><p class="lede">Il malware pubblicato su npm il 1° giugno 2026 portava una <strong>attestazione di provenienza SLSA valida</strong>. Non falsificata, non aggirata: valida. Firmata correttamente, verificabile, riconducibile a una build reale eseguita su un'infrastruttura reale. Chiunque avesse controllato la provenienza — cioè la cosa giusta da fare, quella che l'industria ha passato cinque anni a costruire — avrebbe visto un pacchetto in regola.</p>
 <p>Questo è il punto del caso Miasma, ed è la distinzione meno capita di tutta la supply chain security: <strong>SLSA attesta DOVE un artefatto è stato costruito, non SE l'input della build era legittimo.</strong></p>
-<h2 data-n="01." id="lorigine">L'origine</h2>
+<h2 id="lorigine">L'origine</h2>
 <p>Il bersaglio è il namespace <strong>@redhat-cloud-services</strong>: librerie frontend usate per la Hybrid Cloud Console. Secondo Wiz, almeno <strong>32 pacchetti</strong> e oltre <strong>90 versioni malevole</strong>, con un volume aggregato di circa <strong>80.000 download a settimana</strong>. Nessuna CVE: anche qui è la distribuzione ad essere compromessa, non un prodotto. Il riferimento è il bollettino <strong>RHSB-2026-006</strong>, ancora in stato <em>Ongoing</em>.</p>
 <p>La cronologia è compressa. <strong>1° giugno 2026, tra le ~10:53 e le ~13:46 UTC</strong>: i commit malevoli compaiono sull'organizzazione GitHub <strong>RedHatInsights</strong>. Verso le <strong>13:00 UTC</strong> npm revoca la maggior parte delle versioni. Alle <strong>18:50 UTC</strong> Red Hat pubblica il bollettino, in parallelo alla disclosure di Wiz Research. Il <strong>4 giugno</strong> Wiz documenta una <strong>seconda ondata</strong>, con una tecnica diversa basata su <code>binding.gyp</code>.</p>
 <p>Red Hat è netta sul perimetro, e va riportato con precisione: <strong>i servizi cloud gestiti non sono coinvolti</strong> (ARO, OSD, ROSA), <strong>nessuna build di prodotto ha incluso le versioni compromesse</strong>, e <strong>nessuna azione è richiesta ai clienti</strong>. Non è un incidente sui prodotti Red Hat. È un incidente su pacchetti npm pubblicati da Red Hat — differenza sostanziale, spesso persa nei titoli.</p>
 <p>Il punto di ingresso è l'<strong>account GitHub di un dipendente</strong> (<strong>T1078</strong>). Come sia stato compromesso <strong>non è stato confermato pubblicamente</strong>, ed è un vuoto che va dichiarato, non riempito con ipotesi.</p>
-<h2 data-n="02." id="la-catena-dattacco">La catena d'attacco</h2>
+<h2 id="la-catena-dattacco">La catena d'attacco</h2>
 <p>Il meccanismo è elegante nel modo peggiore.</p>
 <p>L'attore non prova a superare la code review: la <strong>gira intorno</strong>. Spinge <strong>commit "orfani"</strong> su branch temporanei — codice che vive nel repository senza passare da una pull request, senza un approvatore, senza un reviewer che possa dire di no.</p>
 <p>Quei commit introducono un <strong>workflow GitHub Actions minimale</strong> che richiede un <strong>token OIDC</strong> (<code>id-token: write</code>) e pubblica su npm. Ed è qui che accade la cosa importante: la build è <strong>autentica</strong>. Gira davvero sull'infrastruttura GitHub Actions dell'organizzazione RedHatInsights. Il token OIDC è emesso legittimamente a quel workflow (<strong>T1550.001</strong>). npm riceve un pacchetto costruito esattamente dove ci si aspetta che venga costruito, da una CI che ha diritto di pubblicare, e gli assegna <strong>attestazioni di provenienza SLSA valide</strong> (<strong>T1195.001</strong>).</p>
 <p>La catena di fiducia ha funzionato come progettato. Ha semplicemente certificato con precisione notarile un input avvelenato.</p>
 <p>Il payload sta in un <code>preinstall</code> che carica <code>index.js</code>, pesantemente offuscato con <code>eval()</code> e codifica di tipo ROT (<strong>T1027</strong>). Una volta eseguito, va a caccia di <strong>credenziali cloud</strong> — con enfasi sulle identità <strong>GCP e Azure</strong> (<strong>T1526</strong>) — e di <strong>secret CI/CD</strong> dai file dell'ambiente (<strong>T1552.001</strong>).</p>
 <p><strong>Una divergenza da dichiarare:</strong> i report di <strong>Wiz</strong> e <strong>StepSecurity</strong> non concordano su livello di offuscamento e capacità effettive del payload. Le specifiche fini sono in evoluzione. La meccanica di pubblicazione è solida; il dettaglio del malware, meno.</p>
-<h2 data-n="03." id="il-malware-riciclato">Il malware riciclato</h2>
+<h2 id="il-malware-riciclato">Il malware riciclato</h2>
 <p>Il codice non è nuovo. Deriva dalla famiglia <strong>(Mini) Shai-Hulud</strong>, resa <strong>open source dal gruppo TeamPCP</strong>. Un secondo attore l'ha ripreso e riconfezionato cambiando solo il vestito: via i riferimenti a <em>Dune</em>, dentro la mitologia greca, repository intitolato <strong>"Miasma: The Spreading Blight"</strong>.</p>
 <p>È un cambiamento di regime, non un dettaglio di colore. Un toolkit di supply chain che diventa pubblico smette di essere firma di un gruppo e diventa <strong>commodity</strong>. Chiunque può forkarlo, ritematizzarlo, rilanciarlo. E l'attribuzione basata sulla somiglianza del codice — per anni il pane degli analisti — smette di funzionare: due campioni identici possono appartenere ad attori che non si sono mai parlati.</p>
-<h2 data-n="04." id="detection">Detection</h2>
+<h2 id="detection">Detection</h2>
 <ul>
 <li><strong>Descrizione del repository:</strong> <code>Miasma: The Spreading Blight</code></li>
 <li><strong>User-agent nelle query GCP:</strong> <code>google-api-nodejs-client/7.0.0 gl-node/20.11.0 gccl/7.0.0</code></li>
@@ -73,7 +84,7 @@
 <li><strong>Elenco completo delle 32+ versioni malevole:</strong> pubblicato da Wiz e Red Hat — usate quello, non una regex sul nome</li>
 </ul>
 <p>Non cercate un pacchetto "non firmato": non lo troverete. Cercate <strong>chi ha autorizzato l'input della build</strong>.</p>
-<h2 data-n="05." id="rimedi">Rimedi</h2>
+<h2 id="rimedi">Rimedi</h2>
 <p>Le versioni malevole sono <strong>già state revocate da npm</strong>. Restano le conseguenze:</p>
 <ul>
 <li><strong>Audit</strong> delle workstation degli sviluppatori, delle pipeline CI/CD e dei repository per la finestra del 1° giugno</li>
@@ -82,16 +93,21 @@
 <li><strong>Monitoraggio delle pipeline</strong>: un workflow nuovo che chiede <code>id-token: write</code> è un evento di sicurezza, non un dettaglio DevOps</li>
 <li>Bloccare la possibilità di <strong>eseguire workflow da commit non revisionati</strong></li>
 </ul>
-<h2 data-n="06." id="cosa-insegna">Cosa insegna</h2>
+<h2 id="cosa-insegna">Cosa insegna</h2>
 <p>Abbiamo costruito la provenienza crittografica per rispondere alla domanda "questo pacchetto viene da dove dice?". Miasma dimostra che è la domanda sbagliata — o meglio, che è solo metà della domanda. La risposta era <strong>sì</strong>, ed era <strong>vera</strong>, e il pacchetto era comunque malevolo.</p>
 <p>La provenienza è una <strong>catena di custodia</strong>, non un giudizio di merito. Certifica il percorso, non il contenuto. Se un attaccante riesce a inserire codice <strong>prima</strong> del punto in cui la catena inizia — un commit orfano, un workflow non revisionato — allora tutta la macchina di attestazione lavora per lui, e gli firma il malware con la vostra reputazione.</p>
 <p>La lezione operativa è meno romantica di SLSA: <strong>la sicurezza della build si decide nel controllo di accesso al repository</strong>, non nella firma finale.</p></div>
-    <div class="sidebar"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--high">high</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Attore non attribuito (codice derivato da TeamPCP)</dd></div><div class="field"><dt>Alias</dt><dd>Miasma, Mini Shai-Hulud</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>Giugno 2026</dd></div><div class="field"><dt>Bersagli</dt><dd>Globale</dd></div><div class="field"><dt>Settori</dt><dd>Software development, Cloud</dd></div></dl></aside>
+    <div class="sidebar">
+      <aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--high">high</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Attore non attribuito (codice derivato da TeamPCP)</dd></div><div class="field"><dt>Alias</dt><dd>Miasma, Mini Shai-Hulud</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>Giugno 2026</dd></div><div class="field"><dt>Bersagli</dt><dd>Globale</dd></div><div class="field"><dt>Settori</dt><dd>Software development, Cloud</dd></div></dl></aside>
       <div class="sidebar__block"><div class="sidebar__label">Tecniche MITRE ATT&CK</div><div class="ttp-grid"><a class="ttp" href="https://attack.mitre.org/techniques/T1078/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1078</span> Valid Accounts</a><a class="ttp" href="https://attack.mitre.org/techniques/T1195/001/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1195.001</span> Supply Chain Compromise: Compromise Software Dependencies and Development Tools</a><a class="ttp" href="https://attack.mitre.org/techniques/T1550/001/" data-tactic="Defense Evasion" target="_blank" rel="noopener"><span class="ttp__id">T1550.001</span> Use Alternate Authentication Material: Application Access Token</a><a class="ttp" href="https://attack.mitre.org/techniques/T1027/" data-tactic="Defense Evasion" target="_blank" rel="noopener"><span class="ttp__id">T1027</span> Obfuscated Files or Information</a><a class="ttp" href="https://attack.mitre.org/techniques/T1552/001/" data-tactic="Credential Access" target="_blank" rel="noopener"><span class="ttp__id">T1552.001</span> Unsecured Credentials: Credentials In Files</a><a class="ttp" href="https://attack.mitre.org/techniques/T1526/" data-tactic="Discovery" target="_blank" rel="noopener"><span class="ttp__id">T1526</span> Cloud Service Discovery</a></div></div>
       <div class="sidebar__block"><div class="sidebar__label">Fonti primarie</div><ul class="sources"><li><a href="https://access.redhat.com/security/vulnerabilities/RHSB-2026-006" target="_blank" rel="noopener">Red Hat — RHSB-2026-006</a></li><li><a href="https://www.wiz.io/blog/miasma-supply-chain-attack-targeting-redhat-npm-packages" target="_blank" rel="noopener">Wiz Research — Miasma supply chain attack targeting Red Hat npm packages</a></li><li><a href="https://www.stepsecurity.io/blog/multiple-redhat-cloud-services-npm-packages-compromised" target="_blank" rel="noopener">StepSecurity — Multiple @redhat-cloud-services npm packages compromised</a></li></ul></div>
+      <div class="sidebar__block"><div class="sidebar__label">Condividi</div><div class="share"><a href="https://x.com/intent/tweet?text=Miasma%3A%20il%20malware%20aveva%20un%20certificato%20di%20provenienza%20valido&url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/miasma-redhat-npm.html" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/miasma-redhat-npm.html" target="_blank" rel="noopener">LinkedIn</a><a href="https://news.ycombinator.com/submitlink?u=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/miasma-redhat-npm.html&t=Miasma%3A%20il%20malware%20aveva%20un%20certificato%20di%20provenienza%20valido" target="_blank" rel="noopener">HN</a><button class="share__copy" data-url="https://spidercivi.github.io/HACK-PROJECT/it/a/miasma-redhat-npm.html" type="button">Link</button></div></div>
     </div>
   </div>
-</article></main>
+  <aside class="authorcard"><img class="authorcard__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="72" height="72" loading="lazy"><div><p class="authorcard__label">Scritto da</p><p class="authorcard__name"><a href="../about.html">Spid</a> <span class="authorcard__handle">@SpiderCivi</span></p><p class="authorcard__bio">Appassionato di cybersecurity e sviluppatore. Mi occupo di ethical hacking, sicurezza dei sistemi e AI: costruisco, rompo e miglioro sistemi. Mente curiosa, approccio pratico.</p><p class="authorcard__links"><a href="https://github.com/SpiderCivi" target="_blank" rel="noopener">GitHub</a><a href="mailto:riccardo.civiero@icloud.com">riccardo.civiero@icloud.com</a></p></div></aside>
+  <nav class="pager"><a class="pager__item pager__item--prev" href="sharepoint-cve-2026-45659.html"><span>&larr; Precedente</span><strong>«Exploitation Less Likely», poi tre giorni per patchare</strong></a><a class="pager__item pager__item--next" href="kimsuky-quishing.html"><span>Successivo &rarr;</span><strong>Il QR code che ruba la sessione, non la password</strong></a></nav>
+</article>
+<section class="rel shell"><div class="section-head"><h2>Altri dossier</h2></div><div class="rel__grid"><a class="rel__card" href="interlock-clickfix.html"><img src="../assets/img/it/interlock-clickfix.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--high">high</span><h3>Interlock, il ransomware che entra dalla porta principale</h3></div></a><a class="rel__card" href="kimsuky-quishing.html"><img src="../assets/img/it/kimsuky-quishing.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--high">high</span><h3>Il QR code che ruba la sessione, non la password</h3></div></a><a class="rel__card" href="sharepoint-cve-2026-45659.html"><img src="../assets/img/it/sharepoint-cve-2026-45659.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--high">high</span><h3>«Exploitation Less Likely», poi tre giorni per patchare</h3></div></a></div></section></main>
 <footer class="footer shell">
   <p class="disclaimer"><strong>HACK/PROJECT</strong> &mdash; analisi di attacchi informatici documentati pubblicamente, mappati su MITRE ATT&amp;CK&reg;. Contenuto a scopo difensivo ed educativo: descriviamo tattiche e tecniche cosi&#768; come riportate da agenzie e ricercatori, senza distribuire codice offensivo. Dove le fonti sono incerte, lo dichiariamo nel testo. ATT&amp;CK&reg; e&#768; un marchio registrato di The MITRE Corporation; progetto non affiliato a MITRE.</p>
   <p><a href="https://github.com/SpiderCivi/HACK-PROJECT">github.com/SpiderCivi/HACK-PROJECT</a></p>

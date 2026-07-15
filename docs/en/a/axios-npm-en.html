@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/main.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Axios: the manifest, the RAT, and the token nobody revoked", "description": "On 31 March 2026 two malicious axios releases added a booby-trapped dependency without touching a single line of source code. npm had rolled out OIDC Trusted Publishing to stop exactly this. The actor walked around it with an old classic token.", "datePublished": "2026-07-15", "dateModified": "2026-07-15", "inLanguage": "en", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/en/a/axios-npm-en.html", "author": {"@type": "Person", "name": "Spid", "url": "https://github.com/SpiderCivi"}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/"}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/en/axios-npm.svg"], "keywords": "Unattributed actor, T1195.001, T1059.001, T1059.006, T1105, T1071.001, T1547.001, T1036.005", "citation": [{"@type": "CreativeWork", "name": "Microsoft Threat Intelligence — Mitigating the axios npm supply chain compromise", "url": "https://www.microsoft.com/en-us/security/blog/2026/04/01/mitigating-the-axios-npm-supply-chain-compromise/"}, {"@type": "CreativeWork", "name": "CISA — Supply Chain Compromise Impacts axios Node Package Manager", "url": "https://www.cisa.gov/news-events/alerts/2026/04/20/supply-chain-compromise-impacts-axios-node-package-manager"}, {"@type": "CreativeWork", "name": "Axios — post-mortem (issue #10636)", "url": "https://github.com/axios/axios/issues/10636"}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -24,6 +25,7 @@
     <span class="masthead__tagline">Daily Threat Intelligence</span>
     <nav class="masthead__nav" aria-label="Main">
       <a href="../index.html">Archive</a>
+      <a href="../../about.html">About</a>
       <a href="https://github.com/SpiderCivi/HACK-PROJECT">Source</a>
       <a class="lang" href="../../it/a/axios-npm.html" rel="alternate">Italiano</a>
     </nav>
@@ -32,34 +34,43 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed live</span>
-    <span>Updated &mdash; 15.07.2026 17:23 CET</span>
+    <span>Updated &mdash; 15.07.2026 17:27 CET</span>
     <span>11 dossiers</span>
     <span>MITRE ATT&CK mapping</span>
   </div>
 </div>
+<div class="progress" aria-hidden="true"><i></i></div>
 <main id="main">
 
 <article class="article shell">
+  <nav class="crumb" aria-label="breadcrumb"><a href="../index.html">HACK/PROJECT</a><span>/</span><a href="../index.html">Archive</a><span>/</span><em>Axios: the manifest, the RAT, and the token nobo</em></nav>
   <header class="article__head">
-    <p class="kicker" data-reveal style="--i:0">15.07.2026 &nbsp;/&nbsp; Dossier &nbsp;/&nbsp; <span class="sev sev--critical">critical</span> &nbsp;/&nbsp; 4 min read</p>
+    <p class="kicker" data-reveal style="--i:0">15.07.2026 &nbsp;/&nbsp; <span class="sev sev--critical">critical</span> &nbsp;/&nbsp; 4 min read</p>
     <h1 class="article__title" data-reveal style="--i:1">Axios: the manifest, the RAT, and the token nobody revoked</h1>
     <p class="article__standfirst" data-reveal style="--i:2">On 31 March 2026 two malicious axios releases added a booby-trapped dependency without touching a single line of source code. npm had rolled out OIDC Trusted Publishing to stop exactly this. The actor walked around it with an old classic token.</p>
+    <div class="byline" data-reveal style="--i:2">
+      <img class="byline__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="40" height="40" loading="lazy">
+      <div class="byline__meta">
+        <span class="byline__name">by <a href="../about.html">Spid</a></span>
+        <span class="byline__handle">@SpiderCivi &nbsp;·&nbsp; 15.07.2026</span>
+      </div>
+    </div>
   </header>
   <figure class="hero-figure" data-reveal style="--i:3"><img src="../../assets/img/en/axios-npm.svg" alt="" width="1200" height="675"></figure>
   <div class="article__layout">
-    <div class="prose" data-reveal style="--i:4"><p>Anyone who code-reviewed axios on 31 March 2026 would have found nothing. Not through carelessness — there was nothing there. The library's source was untouched. Not one line. The only change lived in <code>package.json</code>: one extra dependency, a plausible name, <code>plain-crypto-js</code>. That single line was enough to drop a RAT on every machine that ran <code>npm install</code>.</p>
+    <div class="prose" data-reveal style="--i:4"><p class="lede">Anyone who code-reviewed axios on 31 March 2026 would have found nothing. Not through carelessness — there was nothing there. The library's source was untouched. Not one line. The only change lived in <code>package.json</code>: one extra dependency, a plausible name, <code>plain-crypto-js</code>. That single line was enough to drop a RAT on every machine that ran <code>npm install</code>.</p>
 <p>axios is the JavaScript ecosystem's default HTTP client: <strong>more than 70 million downloads a week</strong>, per the figure Microsoft cites. It isn't a library, it's infrastructure. And this compromise carries no CVE, because there is nothing to fix in the product. What was compromised is the <strong>distribution channel</strong>, not the software. The identifier to track is <strong>GHSA-fw8c-xr5c-95f9</strong>.</p>
-<h2 data-n="01." id="the-origin">The origin</h2>
+<h2 id="the-origin">The origin</h2>
 <p>On 31 March 2026, <strong>axios@1.14.1</strong> and <strong>axios@0.30.4</strong> land on npm. Both are malicious. The last safe versions remain <strong>1.14.0</strong> and <strong>0.30.3</strong>. On 1 April at 21:00 UTC, Microsoft Threat Intelligence publishes its analysis; on 20 April, CISA issues its alert.</p>
 <p>The actor obtained publish access to the maintainer's npm account. <strong>Microsoft does not say how.</strong> The initial vector is unspecified in the report and should be treated as unknown rather than assumed to be phishing. A "less than three hours" exposure window is also circulating: it comes from secondary reporting and is <strong>not confirmed by the primary source</strong> — treat it as indicative. Even so, three hours on a package pulled 70 million times a week is an enormous number of CI builds.</p>
 <p>And here is the detail that matters. npm had shipped <strong>OIDC Trusted Publishing</strong> precisely to make this scenario impossible: no more static tokens to steal, just ephemeral credentials bound to a build pipeline. The actor didn't defeat it. He <strong>routed around</strong> it, using a <strong>classic token issued earlier</strong> and never revoked. The by-design mitigation was live and worked for what it covered. It just didn't cover the past: <strong>a new security architecture does not retroactively protect credentials minted under the old one.</strong> As long as the legacy token lives, the new model is decoration.</p>
-<h2 data-n="02." id="the-attack-chain">The attack chain</h2>
+<h2 id="the-attack-chain">The attack chain</h2>
 <p>The setup is the most interesting part, and the part almost nobody tells.</p>
 <p><strong>First, the seeding.</strong> The actor publishes <code>plain-crypto-js</code> version <strong>4.2.0</strong>: clean, harmless, payload-free. Its only job is to exist — to accumulate history, downloads, an npm profile that doesn't look like it was born yesterday. Same logic as a bank account opened months before the fraud. Only then comes <strong>4.2.1</strong>, identical on the surface, plus an <strong>install script</strong> (<code>node setup.js</code>) that is <strong>never imported by any runtime code</strong>. Nothing needs to call it. <code>npm install</code> runs it for you.</p>
 <p><strong>Then the surgical strike.</strong> The two axios releases do exactly one thing: add <code>plain-crypto-js</code> to the dependency list. No source changes at all (<strong>T1195.001</strong>). Every control that inspects the library's code passes clean. The dangerous diff is in the manifest, where far fewer eyes linger.</p>
 <p>On install, the post-install script decodes itself at runtime and reaches out over HTTP to the C2 at <strong>sfrclak[.]com:8000</strong> (<strong>T1071.001</strong>). The server replies with an <strong>OS-specific payload</strong>, selected from the POST body: <code>product0</code> for macOS, <code>product1</code> for Windows, <code>product2</code> for Linux (<strong>T1105</strong>). The result is a persistent, per-platform RAT: <strong>AppleScript</strong> dropping a binary on macOS; <strong>VBScript</strong> kicking off <strong>PowerShell</strong> on Windows (<strong>T1059.001</strong>), persisted through the registry key <code>HKCU\...\Run\MicrosoftUpdate</code> (<strong>T1547.001</strong>); <strong>Python</strong> on Linux (<strong>T1059.006</strong>).</p>
 <p>Then it cleans up. The script deletes <code>setup.js</code> and <strong>replaces <code>package.json</code> with a clean copy</strong> — the artifact that infected you removes itself from disk. The implant names finish the job: <code>wt.exe</code>, <code>com.apple.act.mond</code> (<strong>T1036.005</strong>). Nothing that raises an eyebrow in a process list.</p>
-<h2 data-n="03." id="detection">Detection</h2>
+<h2 id="detection">Detection</h2>
 <p>Hunt the C2, not the package. The package deleted itself.</p>
 <ul>
 <li><strong>Domain:</strong> <code>sfrclak[.]com</code> — <strong>IP:</strong> <code>142.11.206.73:8000</code></li>
@@ -70,7 +81,7 @@
 <li><strong>Microsoft Defender:</strong> <code>Trojan:JS/AxioRAT.DA!MTB</code>, <code>Backdoor:MacOS/TalonStrike.A!dha</code>, <code>Trojan:Python/TalonStrike.C!dha</code></li>
 </ul>
 <p>The most durable signal is <strong>egress from build runners</strong>. A CI container speaking plain HTTP to an unfamiliar host on port 8000 during <code>npm install</code> is the answer, not a lead.</p>
-<h2 data-n="04." id="remediation">Remediation</h2>
+<h2 id="remediation">Remediation</h2>
 <pre><code class="language-bash"># 1. Roll back to a safe version
 npm install axios@1.14.0   # or axios@0.30.3
 
@@ -85,15 +96,20 @@ npm config set ignore-scripts true
 </code></pre>
 <p>Then the unglamorous half: <strong>audit CI/CD logs</strong> across the 31 March window and <strong>rotate every secret</strong> those builds could see. Not the important ones — all of them. A RAT on the runner owned the whole environment.</p>
 <p>Longer term: <strong>OIDC Trusted Publishing</strong>, followed immediately by <strong>systematically revoking leftover classic tokens</strong>. Skip the second step and you get April 2026 again.</p>
-<h2 data-n="05." id="what-it-teaches">What it teaches</h2>
+<h2 id="what-it-teaches">What it teaches</h2>
 <p>The lesson isn't "audit your dependencies." It's less comfortable than that: <strong>your attack surface includes the credentials you stopped using but never revoked.</strong> The ecosystem built the right defence, shipped it, documented it — and the attack strolled in through the door the previous architecture left open.</p>
 <p>And this: <code>npm install</code> is not a download. It is <strong>arbitrary third-party code execution with your privileges</strong>. We all know that, and we keep running it on runners that hold production keys in memory.</p></div>
-    <div class="sidebar"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Actor profile</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Actor</dt><dd>Unattributed actor</dd></div><div class="field"><dt>Aliases</dt><dd>AxioRAT, TalonStrike</dd></div><div class="field"><dt>First seen</dt><dd>March 2026</dd></div><div class="field"><dt>Targets</dt><dd>Global</dd></div><div class="field"><dt>Sectors</dt><dd>Software development, Cross-sector</dd></div></dl></aside>
+    <div class="sidebar">
+      <aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Actor profile</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Actor</dt><dd>Unattributed actor</dd></div><div class="field"><dt>Aliases</dt><dd>AxioRAT, TalonStrike</dd></div><div class="field"><dt>First seen</dt><dd>March 2026</dd></div><div class="field"><dt>Targets</dt><dd>Global</dd></div><div class="field"><dt>Sectors</dt><dd>Software development, Cross-sector</dd></div></dl></aside>
       <div class="sidebar__block"><div class="sidebar__label">MITRE ATT&CK techniques</div><div class="ttp-grid"><a class="ttp" href="https://attack.mitre.org/techniques/T1195/001/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1195.001</span> Supply Chain Compromise: Compromise Software Dependencies and Development Tools</a><a class="ttp" href="https://attack.mitre.org/techniques/T1059/001/" data-tactic="Execution" target="_blank" rel="noopener"><span class="ttp__id">T1059.001</span> Command and Scripting Interpreter: PowerShell</a><a class="ttp" href="https://attack.mitre.org/techniques/T1059/006/" data-tactic="Execution" target="_blank" rel="noopener"><span class="ttp__id">T1059.006</span> Command and Scripting Interpreter: Python</a><a class="ttp" href="https://attack.mitre.org/techniques/T1105/" data-tactic="Command and Control" target="_blank" rel="noopener"><span class="ttp__id">T1105</span> Ingress Tool Transfer</a><a class="ttp" href="https://attack.mitre.org/techniques/T1071/001/" data-tactic="Command and Control" target="_blank" rel="noopener"><span class="ttp__id">T1071.001</span> Application Layer Protocol: Web Protocols</a><a class="ttp" href="https://attack.mitre.org/techniques/T1547/001/" data-tactic="Persistence" target="_blank" rel="noopener"><span class="ttp__id">T1547.001</span> Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder</a><a class="ttp" href="https://attack.mitre.org/techniques/T1036/005/" data-tactic="Defense Evasion" target="_blank" rel="noopener"><span class="ttp__id">T1036.005</span> Masquerading: Match Legitimate Name or Location</a></div></div>
       <div class="sidebar__block"><div class="sidebar__label">Primary sources</div><ul class="sources"><li><a href="https://www.microsoft.com/en-us/security/blog/2026/04/01/mitigating-the-axios-npm-supply-chain-compromise/" target="_blank" rel="noopener">Microsoft Threat Intelligence — Mitigating the axios npm supply chain compromise</a></li><li><a href="https://www.cisa.gov/news-events/alerts/2026/04/20/supply-chain-compromise-impacts-axios-node-package-manager" target="_blank" rel="noopener">CISA — Supply Chain Compromise Impacts axios Node Package Manager</a></li><li><a href="https://github.com/axios/axios/issues/10636" target="_blank" rel="noopener">Axios — post-mortem (issue #10636)</a></li></ul></div>
+      <div class="sidebar__block"><div class="sidebar__label">Share</div><div class="share"><a href="https://x.com/intent/tweet?text=Axios%3A%20the%20manifest%2C%20the%20RAT%2C%20and%20the%20token%20nobody%20revoked&url=https%3A//spidercivi.github.io/HACK-PROJECT/en/a/axios-npm-en.html" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//spidercivi.github.io/HACK-PROJECT/en/a/axios-npm-en.html" target="_blank" rel="noopener">LinkedIn</a><a href="https://news.ycombinator.com/submitlink?u=https%3A//spidercivi.github.io/HACK-PROJECT/en/a/axios-npm-en.html&t=Axios%3A%20the%20manifest%2C%20the%20RAT%2C%20and%20the%20token%20nobody%20revoked" target="_blank" rel="noopener">HN</a><button class="share__copy" data-url="https://spidercivi.github.io/HACK-PROJECT/en/a/axios-npm-en.html" type="button">Link</button></div></div>
     </div>
   </div>
-</article></main>
+  <aside class="authorcard"><img class="authorcard__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="72" height="72" loading="lazy"><div><p class="authorcard__label">Written by</p><p class="authorcard__name"><a href="../about.html">Spid</a> <span class="authorcard__handle">@SpiderCivi</span></p><p class="authorcard__bio">Cybersecurity enthusiast and developer. Focused on ethical hacking, system security and AI: building, breaking and improving systems. Curious mind, hands-on.</p><p class="authorcard__links"><a href="https://github.com/SpiderCivi" target="_blank" rel="noopener">GitHub</a><a href="mailto:riccardo.civiero@icloud.com">riccardo.civiero@icloud.com</a></p></div></aside>
+  <nav class="pager"><a class="pager__item pager__item--prev" href="medusa-ummc-en.html"><span>&larr; Previous</span><strong>Medusa and UMMC: The Clinic That Learned to Run Offline</strong></a><a class="pager__item pager__item--next" href="apt28-router-dns-en.html"><span>Next &rarr;</span><strong>The thirty-euro router that wiretapped foreign ministries</strong></a></nav>
+</article>
+<section class="rel shell"><div class="section-head"><h2>More dossiers</h2></div><div class="rel__grid"><a class="rel__card" href="apt28-router-dns-en.html"><img src="../assets/img/en/apt28-router-dns.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>The thirty-euro router that wiretapped foreign ministries</h3></div></a><a class="rel__card" href="medusa-ummc-en.html"><img src="../assets/img/en/medusa-ummc.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Medusa and UMMC: The Clinic That Learned to Run Offline</h3></div></a><a class="rel__card" href="qilin-checkpoint-en.html"><img src="../assets/img/en/qilin-checkpoint.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Qilin and the Interest on Technical Debt: Logging Into a VPN Without a Password</h3></div></a></div></section></main>
 <footer class="footer shell">
   <p class="disclaimer"><strong>HACK/PROJECT</strong> &mdash; analysis of publicly documented cyber attacks, mapped to MITRE ATT&amp;CK&reg;. Content is defensive and educational: we describe tactics and techniques as reported by agencies and researchers, without distributing offensive code. Where sources are uncertain, we say so in the text. ATT&amp;CK&reg; is a registered trademark of The MITRE Corporation; not affiliated with MITRE.</p>
   <p><a href="https://github.com/SpiderCivi/HACK-PROJECT">github.com/SpiderCivi/HACK-PROJECT</a></p>

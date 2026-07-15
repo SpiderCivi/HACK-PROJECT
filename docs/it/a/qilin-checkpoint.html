@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/main.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Qilin e il debito tecnico: come si entra in una VPN senza password", "description": "Un difetto logico nella validazione dei certificati durante lo scambio chiavi IKEv1 permetteva di aprire una sessione VPN Check Point senza conoscere alcuna password. Qilin lo sfruttava da un mese quando il vendor se ne è accorto. Ma la vera notizia non è il bug: è che colpisce solo chi non ha mai spento un protocollo deprecato.", "datePublished": "2026-07-15", "dateModified": "2026-07-15", "inLanguage": "it", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/it/a/qilin-checkpoint.html", "author": {"@type": "Person", "name": "Spid", "url": "https://github.com/SpiderCivi"}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/"}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/it/qilin-checkpoint.svg"], "keywords": "Qilin, T1190, T1133, T1567.002", "citation": [{"@type": "CreativeWork", "name": "Check Point Releases Important Hotfix for Vulnerabilities in Deprecated IKEv1 VPN Protocol", "url": "https://blog.checkpoint.com/security/check-point-releases-important-hotfix-for-vulnerabilities-in-deprecated-ikev1-vpn-protocol/"}, {"@type": "CreativeWork", "name": "Check Point advisory sk185033", "url": "https://support.checkpoint.com/results/sk/sk185033"}, {"@type": "CreativeWork", "name": "CISA Known Exploited Vulnerabilities Catalog — CVE-2026-50751", "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-50751"}, {"@type": "CreativeWork", "name": "MITRE ATT&CK — Qilin (S1242)", "url": "https://attack.mitre.org/software/S1242/"}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Salta al contenuto</a>
@@ -24,6 +25,7 @@
     <span class="masthead__tagline">Threat Intelligence Quotidiana</span>
     <nav class="masthead__nav" aria-label="Principale">
       <a href="../index.html">Archivio</a>
+      <a href="../../about.html">Chi sono</a>
       <a href="https://github.com/SpiderCivi/HACK-PROJECT">Sorgente</a>
       <a class="lang" href="../../en/a/qilin-checkpoint-en.html" rel="alternate">English</a>
     </nav>
@@ -32,35 +34,44 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed attivo</span>
-    <span>Aggiornato &mdash; 15.07.2026 17:23 CET</span>
+    <span>Aggiornato &mdash; 15.07.2026 17:27 CET</span>
     <span>11 dossier</span>
     <span>Mappatura MITRE ATT&CK</span>
   </div>
 </div>
+<div class="progress" aria-hidden="true"><i></i></div>
 <main id="main">
 
 <article class="article shell">
+  <nav class="crumb" aria-label="breadcrumb"><a href="../index.html">HACK/PROJECT</a><span>/</span><a href="../index.html">Archivio</a><span>/</span><em>Qilin e il debito tecnico: come si entra in una </em></nav>
   <header class="article__head">
-    <p class="kicker" data-reveal style="--i:0">15.07.2026 &nbsp;/&nbsp; Dossier &nbsp;/&nbsp; <span class="sev sev--critical">critical</span> &nbsp;/&nbsp; 5 min di lettura</p>
+    <p class="kicker" data-reveal style="--i:0">15.07.2026 &nbsp;/&nbsp; <span class="sev sev--critical">critical</span> &nbsp;/&nbsp; 5 min di lettura</p>
     <h1 class="article__title" data-reveal style="--i:1">Qilin e il debito tecnico: come si entra in una VPN senza password</h1>
     <p class="article__standfirst" data-reveal style="--i:2">Un difetto logico nella validazione dei certificati durante lo scambio chiavi IKEv1 permetteva di aprire una sessione VPN Check Point senza conoscere alcuna password. Qilin lo sfruttava da un mese quando il vendor se ne è accorto. Ma la vera notizia non è il bug: è che colpisce solo chi non ha mai spento un protocollo deprecato.</p>
+    <div class="byline" data-reveal style="--i:2">
+      <img class="byline__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="40" height="40" loading="lazy">
+      <div class="byline__meta">
+        <span class="byline__name">di <a href="../about.html">Spid</a></span>
+        <span class="byline__handle">@SpiderCivi &nbsp;·&nbsp; 15.07.2026</span>
+      </div>
+    </div>
   </header>
   <figure class="dossier-video" data-reveal style="--i:3"><div class="dossier-video__frame"><video controls preload="none" playsinline poster="../../video/poster/qilin-checkpoint-it.jpg" width="1080" height="1920"><source src="../../video/qilin-checkpoint-it.mp4" type="video/mp4"></video></div></figure>
   <div class="article__layout">
-    <div class="prose" data-reveal style="--i:4"><p>Il 7 maggio 2026 qualcuno ha aperto una sessione VPN su un gateway Check Point senza conoscere nessuna password. Non l'ha indovinata, non l'ha comprata da un broker, non l'ha estratta da un dump. Semplicemente non gli serviva.</p>
+    <div class="prose" data-reveal style="--i:4"><p class="lede">Il 7 maggio 2026 qualcuno ha aperto una sessione VPN su un gateway Check Point senza conoscere nessuna password. Non l'ha indovinata, non l'ha comprata da un broker, non l'ha estratta da un dump. Semplicemente non gli serviva.</p>
 <p>Check Point se ne accorge il 4 giugno: quasi un mese di ritardo. L'8 giugno pubblica l'hotfix e l'advisory <strong>sk185033</strong>. Lo stesso giorno CISA inserisce <strong>CVE-2026-50751</strong> nel catalogo Known Exploited Vulnerabilities, con deadline per le agenzie federali civili fissata all'<strong>11 giugno</strong> — tre giorni, il minimo previsto dalla BOD 22-01. Quando CISA concede tre giorni, non sta segnalando un rischio teorico.</p>
-<h2 data-n="01." id="lorigine">L'origine</h2>
+<h2 id="lorigine">L'origine</h2>
 <p>La vulnerabilità è classificata <strong>CWE-287, Improper Authentication</strong>. Non è un buffer overflow, non è una injection: è un difetto di logica. Durante lo scambio di chiavi <strong>IKEv1</strong>, il gateway valida i certificati in modo incompleto, e da quella falla si ottiene una sessione VPN autenticata senza credenziali. Non c'è un payload da costruire, non c'è una race da vincere. C'è una porta che si apre.</p>
 <p>Le fonti terze riportano un <strong>CVSS 9.3</strong>. Va detto chiaramente che si tratta di un punteggio attribuito da terzi: al momento della pubblicazione <strong>NVD non aveva ancora assegnato uno score ufficiale</strong>. La cifra circola, ma non è ancora canonica.</p>
 <p>C'è però una condizione che restringe tutto. Il difetto colpisce <strong>solo i gateway che espongono IKEv1 legacy e non impongono il machine certificate</strong>. Chi ha forzato IKEv2 non è vulnerabile. Chi ha reso obbligatoria la Machine Certificate Authentication non è vulnerabile. IKEv1 è deprecato da anni: RFC obsolete, raccomandazioni di dismissione, sostituto disponibile da oltre un decennio.</p>
 <p>Questo non è un bug nuovo. È <strong>debito tecnico che presenta il conto</strong>. La CVE del 2026 esiste perché nel 2016, nel 2019, nel 2023 nessuno ha spento un protocollo che tutti sapevano andasse spento. La vulnerabilità è stata scoperta quest'anno; la decisione che l'ha resa sfruttabile è vecchia di anni, ed è stata presa — o non presa — da un amministratore che aveva una casella "compatibilità client legacy" e ha scelto di lasciarla spuntata.</p>
-<h2 data-n="02." id="la-catena-dattacco">La catena d'attacco</h2>
+<h2 id="la-catena-dattacco">La catena d'attacco</h2>
 <p>Dopo l'accesso iniziale (<strong>T1190</strong>, Exploit Public-Facing Application; <strong>T1133</strong>, External Remote Services) gli operatori — che Trend Micro traccia come <strong>Water Galura</strong> — si muovono con una discrezione notevole. La comunicazione passa dal protocollo <strong>Tox</strong>, peer-to-peer e cifrato, senza server centrale da sequestrare. L'esfiltrazione usa <strong>Rclone</strong> verso cloud storage (<strong>T1567.002</strong>), cioè uno strumento legittimo, firmato, con un traffico che assomiglia a un backup.</p>
 <p>L'infrastruttura è <strong>VPS a noleggio</strong>: Kaupo Cloud Hong Kong, Shock Hosting, Vultr. Il dettaglio interessante è la <strong>correlazione geografica tra vittima e infrastruttura</strong> — i nodi vengono scelti vicino al bersaglio, perché una sessione VPN da un IP della stessa regione non accende nessun alert di viaggio impossibile. È una scelta di evasione, non di latenza.</p>
 <p>Qui la ricostruzione si ferma, e bisogna essere onesti su dove. <strong>La fase di cifratura non è confermata pubblicamente per questo incidente.</strong> Ciò che risulta documentato è accesso iniziale ed esfiltrazione. Che sia stato un attacco a doppia estorsione andato fino in fondo, o una campagna fermata prima dell'impatto, o una raccolta dati senza intenzione di cifrare, le fonti pubbliche non lo dicono.</p>
 <p>Allo stesso modo, le TTP che il profilo generale di Qilin associa al gruppo — <strong>T1003.001</strong> (dump di LSASS), <strong>T1486</strong> (Data Encrypted for Impact), <strong>T1490</strong> (Inhibit System Recovery), <strong>T1036.005</strong> (Masquerading) — provengono da <strong>altri casi</strong>. Sono utili come previsione, non come cronaca: <strong>nessuna fonte le conferma in questo incidente</strong>. Trattarle come fatti accertati sarebbe inventare un report forense che non esiste.</p>
 <p>Anche la vittimologia resta opaca. Check Point parla di "poche dozzine di organizzazioni globali". <strong>Nessun settore, nessun Paese, nessun nome sono stati resi pubblici.</strong></p>
-<h2 data-n="03." id="detection">Detection</h2>
+<h2 id="detection">Detection</h2>
 <p>Il vantaggio, per una volta, è che il segnale è strutturale e non comportamentale.</p>
 <ul>
 <li><strong>Inventariare i gateway con IKEv1 abilitato.</strong> È una configurazione, non un'inferenza: la si legge, non la si deduce. Se IKEv1 è attivo e il machine certificate non è obbligatorio, il sistema è nel perimetro di rischio.</li>
@@ -69,7 +80,7 @@
 <li><strong>Monitorare traffico Rclone in uscita</strong>: volumi elevati verso cloud storage da segmenti che non fanno backup verso il cloud.</li>
 <li><strong>Cercare traffico Tox</strong>, che su una rete aziendale non ha nessuna ragione legittima di esistere.</li>
 </ul>
-<h2 data-n="04." id="rimedi">Rimedi</h2>
+<h2 id="rimedi">Rimedi</h2>
 <p>L'ordine conta, perché il secondo punto rende il primo quasi superfluo.</p>
 <ol>
 <li><strong>Applicare l'hotfix sk185033.</strong> Immediato, non negoziabile.</li>
@@ -80,16 +91,21 @@
 <li><strong>MFA su tutti gli accessi VPN.</strong></li>
 </ol>
 <p>Check Point segnala inoltre che la stessa infrastruttura sta <strong>probabilmente colpendo anche Palo Alto, Fortinet e F5</strong>. Se l'ipotesi regge, non è una campagna contro un vendor: è una campagna contro <strong>la categoria degli apparati edge</strong>, e patchare solo Check Point significa aver chiuso una finestra in una stanza con quattro finestre.</p>
-<h2 data-n="05." id="cosa-insegna">Cosa insegna</h2>
+<h2 id="cosa-insegna">Cosa insegna</h2>
 <p>C'è un dettaglio in MITRE ATT&amp;CK che vale più dell'intera CVE. Qilin è catalogato come <strong>S1242</strong>, e nella pagina si legge che <strong>Moonstone Sleet — gruppo statale nordcoreano — ha distribuito Qilin</strong>.</p>
 <p>È il punto in cui la categoria "ransomware = crimine finanziario" smette di funzionare. Un gruppo statale non compra un ransomware per arricchirsi: lo usa perché è <strong>infrastruttura pronta, negabile e indistinguibile dal rumore di fondo criminale</strong>. La RaaS economy ha smesso di essere un mercato e è diventata una <strong>base condivisa tra criminali e Stati</strong>. Il che significa che l'attribuzione, davanti a un encryptor Qilin, non dice quasi nulla sul movente — e che il vostro modello di minaccia "tanto siamo troppo piccoli per interessare a uno Stato" ha appena perso la sua premessa.</p>
 <p>Ma la lezione operativa è più prosaica, e più scomoda. Questo attacco non ha funzionato per un exploit brillante. Ha funzionato perché un protocollo che andava spento anni fa era ancora acceso. Il gap tra "deprecato" e "disattivato" è dove vivono i gruppi ransomware — e quel gap non lo chiude un hotfix. Lo chiude qualcuno che decide di rompere la compatibilità con un client legacy, accetta le telefonate del giorno dopo, e spegne IKEv1.</p></div>
-    <div class="sidebar"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Qilin</dd></div><div class="field"><dt>Alias</dt><dd>Agenda, Water Galura</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>Luglio 2022</dd></div><div class="field"><dt>Bersagli</dt><dd>Globale</dd></div><div class="field"><dt>Settori</dt><dd>Non divulgati</dd></div></dl></aside>
+    <div class="sidebar">
+      <aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Qilin</dd></div><div class="field"><dt>Alias</dt><dd>Agenda, Water Galura</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>Luglio 2022</dd></div><div class="field"><dt>Bersagli</dt><dd>Globale</dd></div><div class="field"><dt>Settori</dt><dd>Non divulgati</dd></div></dl></aside>
       <div class="sidebar__block"><div class="sidebar__label">Tecniche MITRE ATT&CK</div><div class="ttp-grid"><a class="ttp" href="https://attack.mitre.org/techniques/T1190/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1190</span> Exploit Public-Facing Application</a><a class="ttp" href="https://attack.mitre.org/techniques/T1133/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1133</span> External Remote Services</a><a class="ttp" href="https://attack.mitre.org/techniques/T1567/002/" data-tactic="Exfiltration" target="_blank" rel="noopener"><span class="ttp__id">T1567.002</span> Exfiltration to Cloud Storage</a></div></div>
       <div class="sidebar__block"><div class="sidebar__label">Fonti primarie</div><ul class="sources"><li><a href="https://blog.checkpoint.com/security/check-point-releases-important-hotfix-for-vulnerabilities-in-deprecated-ikev1-vpn-protocol/" target="_blank" rel="noopener">Check Point Releases Important Hotfix for Vulnerabilities in Deprecated IKEv1 VPN Protocol</a></li><li><a href="https://support.checkpoint.com/results/sk/sk185033" target="_blank" rel="noopener">Check Point advisory sk185033</a></li><li><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-50751" target="_blank" rel="noopener">CISA Known Exploited Vulnerabilities Catalog — CVE-2026-50751</a></li><li><a href="https://attack.mitre.org/software/S1242/" target="_blank" rel="noopener">MITRE ATT&amp;CK — Qilin (S1242)</a></li></ul></div>
+      <div class="sidebar__block"><div class="sidebar__label">Condividi</div><div class="share"><a href="https://x.com/intent/tweet?text=Qilin%20e%20il%20debito%20tecnico%3A%20come%20si%20entra%20in%20una%20VPN%20senza%20password&url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/qilin-checkpoint.html" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/qilin-checkpoint.html" target="_blank" rel="noopener">LinkedIn</a><a href="https://news.ycombinator.com/submitlink?u=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/qilin-checkpoint.html&t=Qilin%20e%20il%20debito%20tecnico%3A%20come%20si%20entra%20in%20una%20VPN%20senza%20password" target="_blank" rel="noopener">HN</a><button class="share__copy" data-url="https://spidercivi.github.io/HACK-PROJECT/it/a/qilin-checkpoint.html" type="button">Link</button></div></div>
     </div>
   </div>
-</article></main>
+  <aside class="authorcard"><img class="authorcard__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="72" height="72" loading="lazy"><div><p class="authorcard__label">Scritto da</p><p class="authorcard__name"><a href="../about.html">Spid</a> <span class="authorcard__handle">@SpiderCivi</span></p><p class="authorcard__bio">Appassionato di cybersecurity e sviluppatore. Mi occupo di ethical hacking, sicurezza dei sistemi e AI: costruisco, rompo e miglioro sistemi. Mente curiosa, approccio pratico.</p><p class="authorcard__links"><a href="https://github.com/SpiderCivi" target="_blank" rel="noopener">GitHub</a><a href="mailto:riccardo.civiero@icloud.com">riccardo.civiero@icloud.com</a></p></div></aside>
+  <nav class="pager"><a class="pager__item pager__item--prev" href="splunk-cve-2026-20253.html"><span>&larr; Precedente</span><strong>Il SIEM che non chiedeva la password</strong></a><a class="pager__item pager__item--next" href="medusa-ummc.html"><span>Successivo &rarr;</span><strong>Medusa e UMMC: la clinica che ha imparato a funzionare offline</strong></a></nav>
+</article>
+<section class="rel shell"><div class="section-head"><h2>Altri dossier</h2></div><div class="rel__grid"><a class="rel__card" href="apt28-router-dns.html"><img src="../assets/img/it/apt28-router-dns.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Il router da trenta euro che intercettava i ministeri degli esteri</h3></div></a><a class="rel__card" href="axios-npm.html"><img src="../assets/img/it/axios-npm.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Axios, il manifest e il token che nessuno aveva revocato</h3></div></a><a class="rel__card" href="medusa-ummc.html"><img src="../assets/img/it/medusa-ummc.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Medusa e UMMC: la clinica che ha imparato a funzionare offline</h3></div></a></div></section></main>
 <footer class="footer shell">
   <p class="disclaimer"><strong>HACK/PROJECT</strong> &mdash; analisi di attacchi informatici documentati pubblicamente, mappati su MITRE ATT&amp;CK&reg;. Contenuto a scopo difensivo ed educativo: descriviamo tattiche e tecniche cosi&#768; come riportate da agenzie e ricercatori, senza distribuire codice offensivo. Dove le fonti sono incerte, lo dichiariamo nel testo. ATT&amp;CK&reg; e&#768; un marchio registrato di The MITRE Corporation; progetto non affiliato a MITRE.</p>
   <p><a href="https://github.com/SpiderCivi/HACK-PROJECT">github.com/SpiderCivi/HACK-PROJECT</a></p>

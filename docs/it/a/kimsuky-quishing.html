@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/main.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Il QR code che ruba la sessione, non la password", "description": "Kimsuky ha smesso di combattere i filtri email aziendali. Ha semplicemente cambiato canale: un QR code costringe la vittima a passare al telefono personale, fuori dal perimetro IT. E ruba il token di sessione, non la password — così l'MFA cade senza generare un solo alert.", "datePublished": "2026-07-15", "dateModified": "2026-07-15", "inLanguage": "it", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/it/a/kimsuky-quishing.html", "author": {"@type": "Person", "name": "Spid", "url": "https://github.com/SpiderCivi"}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/"}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/it/kimsuky-quishing.svg"], "keywords": "Kimsuky, T1566.002, T1598, T1589, T1056.003, T1550.004, T1098, T1566", "citation": [{"@type": "CreativeWork", "name": "FBI FLASH AC-000001-MW — North Korean Kimsuky Actors Leverage Malicious QR Codes", "url": "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korean-kimsuky-actors-leverage-malicious-qr-codes-in-spearphishing-campaigns-targeting-us-entities"}, {"@type": "CreativeWork", "name": "MITRE ATT&CK — Kimsuky (G0094)", "url": "https://attack.mitre.org/groups/G0094/"}, {"@type": "CreativeWork", "name": "Kaspersky Securelist — Kimsuky targets organizations with PebbleDash-based tools", "url": "https://securelist.com/kimsuky-appleseed-pebbledash-campaigns/119785/"}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Salta al contenuto</a>
@@ -24,6 +25,7 @@
     <span class="masthead__tagline">Threat Intelligence Quotidiana</span>
     <nav class="masthead__nav" aria-label="Principale">
       <a href="../index.html">Archivio</a>
+      <a href="../../about.html">Chi sono</a>
       <a href="https://github.com/SpiderCivi/HACK-PROJECT">Sorgente</a>
       <a class="lang" href="../../en/a/kimsuky-quishing-en.html" rel="alternate">English</a>
     </nav>
@@ -32,27 +34,36 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed attivo</span>
-    <span>Aggiornato &mdash; 15.07.2026 17:23 CET</span>
+    <span>Aggiornato &mdash; 15.07.2026 17:27 CET</span>
     <span>11 dossier</span>
     <span>Mappatura MITRE ATT&CK</span>
   </div>
 </div>
+<div class="progress" aria-hidden="true"><i></i></div>
 <main id="main">
 
 <article class="article shell">
+  <nav class="crumb" aria-label="breadcrumb"><a href="../index.html">HACK/PROJECT</a><span>/</span><a href="../index.html">Archivio</a><span>/</span><em>Il QR code che ruba la sessione, non la password</em></nav>
   <header class="article__head">
-    <p class="kicker" data-reveal style="--i:0">15.07.2026 &nbsp;/&nbsp; Dossier &nbsp;/&nbsp; <span class="sev sev--high">high</span> &nbsp;/&nbsp; 4 min di lettura</p>
+    <p class="kicker" data-reveal style="--i:0">15.07.2026 &nbsp;/&nbsp; <span class="sev sev--high">high</span> &nbsp;/&nbsp; 4 min di lettura</p>
     <h1 class="article__title" data-reveal style="--i:1">Il QR code che ruba la sessione, non la password</h1>
     <p class="article__standfirst" data-reveal style="--i:2">Kimsuky ha smesso di combattere i filtri email aziendali. Ha semplicemente cambiato canale: un QR code costringe la vittima a passare al telefono personale, fuori dal perimetro IT. E ruba il token di sessione, non la password — così l&#x27;MFA cade senza generare un solo alert.</p>
+    <div class="byline" data-reveal style="--i:2">
+      <img class="byline__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="40" height="40" loading="lazy">
+      <div class="byline__meta">
+        <span class="byline__name">di <a href="../about.html">Spid</a></span>
+        <span class="byline__handle">@SpiderCivi &nbsp;·&nbsp; 15.07.2026</span>
+      </div>
+    </div>
   </header>
   <figure class="dossier-video" data-reveal style="--i:3"><div class="dossier-video__frame"><video controls preload="none" playsinline poster="../../video/poster/kimsuky-quishing-it.jpg" width="1080" height="1920"><source src="../../video/kimsuky-quishing-it.mp4" type="video/mp4"></video></div></figure>
   <div class="article__layout">
-    <div class="prose" data-reveal style="--i:4"><h2 data-n="01." id="lorigine">L'origine</h2>
-<p>Kimsuky opera dal 2012 per conto della Corea del Nord, e il suo mestiere non è cambiato: capire cosa pensa l'Occidente della Corea del Nord. Non ruba brevetti né cifra dischi. Legge la posta di chi scrive i paper che finiscono sulle scrivanie dei ministri.</p>
+    <div class="prose" data-reveal style="--i:4"><h2 id="lorigine">L'origine</h2>
+<p class="lede">Kimsuky opera dal 2012 per conto della Corea del Nord, e il suo mestiere non è cambiato: capire cosa pensa l'Occidente della Corea del Nord. Non ruba brevetti né cifra dischi. Legge la posta di chi scrive i paper che finiscono sulle scrivanie dei ministri.</p>
 <p>L'<strong>8 gennaio 2026</strong> l'FBI ha pubblicato il FLASH <strong>AC-000001-MW</strong>, unico advisory dedicato al gruppo quest'anno, descrivendo episodi risalenti a maggio-giugno 2025. Il documento non usa formule prudenti: parla direttamente di <em>"North Korean state-sponsored cyber threat group Kimsuky"</em> — anche se, va detto, non allega un livello di confidenza percentuale esplicito. Kaspersky ha corroborato attività più ampia il 14 maggio 2026, su campioni raccolti tra agosto 2025 e febbraio 2026.</p>
 <p>I bersagli sono coerenti da un decennio: think tank, ONG, accademici, esperti di politica estera sulla Corea del Nord, enti governativi. Bersaglio primario dichiarato nel FLASH: gli <strong>Stati Uniti</strong>.</p>
 <p>La novità non è chi colpiscono. È <strong>come</strong>.</p>
-<h2 data-n="02." id="la-catena-dattacco">La catena d'attacco</h2>
+<h2 id="la-catena-dattacco">La catena d'attacco</h2>
 <p>Non c'è una CVE in questa storia. Non c'è un exploit. C'è un'immagine.</p>
 <p>L'email di spearphishing impersona un advisor su temi coreani, un dipendente di ambasciata, un organizzatore di conferenze. Dentro, un <strong>QR code</strong>.</p>
 <p>Quello che segue è il punto che rende questa tecnica difficile da fermare, e conviene fermarsi a considerarlo:</p>
@@ -69,7 +80,7 @@
 <p>Un'azienda può avere il miglior gateway email del mercato. Sandboxing degli allegati, riscrittura degli URL, detonazione dei link, machine learning sul testo. Tutto quel castello difende <strong>il laptop aziendale</strong>.</p>
 <p>Ma un QR code non si clicca: si inquadra. E si inquadra con il telefono che sta in tasca — un dispositivo che quasi mai è dentro il perimetro IT, non ha il proxy aziendale, non passa dal gateway, non ha l'EDR. Kimsuky non ha bucato la email security. <strong>Ha cambiato canale di input</strong>, e il resto della catena si svolge in un posto dove la difesa aziendale semplicemente non guarda.</p>
 <p>È social engineering che aggira dieci anni di investimenti spostando il problema di dieci centimetri.</p>
-<h2 data-n="03." id="detection">Detection</h2>
+<h2 id="detection">Detection</h2>
 <p>Qui c'è il dettaglio operativo più prezioso del FLASH, e va capito bene perché ribalta un'assunzione comune.</p>
 <p>Molti SOC costruiscono detection sui <strong>fallimenti</strong>: tentativi MFA falliti, password sbagliate ripetute, login negati. È una logica ragionevole — l'attaccante che forza sbaglia, e gli errori si vedono.</p>
 <p>Il furto di token di sessione <strong>non sbaglia mai</strong>. L'attaccante non tenta l'MFA: la scavalca presentando un token già validato. Nei log, il risultato è un login riuscito al primo colpo, da un utente legittimo, con una sessione valida. Non c'è alcun evento negativo da correlare.</p>
@@ -79,7 +90,7 @@
 <li><strong>Credential entry immediatamente successiva a una scansione QR da mobile</strong></li>
 <li><strong>Regole di inoltro o filtri sospetti</strong> creati su mailbox compromesse — è il segnale che la fase 8 è già iniziata</li>
 </ul>
-<h2 data-n="04." id="rimedi">Rimedi</h2>
+<h2 id="rimedi">Rimedi</h2>
 <p>Dal FLASH FBI, in ordine di efficacia reale contro <em>questa</em> catena:</p>
 <p><strong>La misura che chiude il problema:</strong></p>
 <ul>
@@ -98,16 +109,21 @@
 <li>Segnalazione al FBI Field Office locale</li>
 </ul>
 <p><em>Nota di trasparenza:</em> durante la verifica delle fonti abbiamo riscontrato una discrepanza di cache sulla pagina MITRE G0094 — due letture ravvicinate hanno restituito 7 e 9 alias con date di ultima modifica diverse. Non incide sulla sostanza tecnica, ma lo segnaliamo.</p>
-<h2 data-n="05." id="cosa-insegna">Cosa insegna</h2>
+<h2 id="cosa-insegna">Cosa insegna</h2>
 <p>Kimsuky dimostra che la superficie d'attacco di un'organizzazione non finisce dove finisce la sua rete. Finisce dove finisce l'<strong>attenzione</strong> delle sue persone — e quella si porta in tasca, si accende in metropolitana, e non ha un EDR installato.</p>
 <p>Ma la lezione più scomoda è sull'MFA. Per anni l'abbiamo venduta come la casella da spuntare, il punto fermo, la cosa che se fai quella hai fatto il grosso. Kimsuky non la sconfigge: <strong>la aggira</strong>, rubando la prova che l'MFA è già stata superata. Il token non sa di essere stato rubato. Il server non sa di parlare con un impostore.</p>
 <p>Se la vostra strategia di identità si ferma a "abbiamo l'MFA", contro questo attacco avete esattamente zero.</p></div>
-    <div class="sidebar"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--high">high</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Kimsuky</dd></div><div class="field"><dt>Alias</dt><dd>Black Banshee, Velvet Chollima, Emerald Sleet, THALLIUM, APT43, TA427, Springtail</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>2012</dd></div><div class="field"><dt>Bersagli</dt><dd>Stati Uniti, Corea del Sud</dd></div><div class="field"><dt>Settori</dt><dd>Think tank, ONG, Accademia, Governo</dd></div></dl></aside>
+    <div class="sidebar">
+      <aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--high">high</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Kimsuky</dd></div><div class="field"><dt>Alias</dt><dd>Black Banshee, Velvet Chollima, Emerald Sleet, THALLIUM, APT43, TA427, Springtail</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>2012</dd></div><div class="field"><dt>Bersagli</dt><dd>Stati Uniti, Corea del Sud</dd></div><div class="field"><dt>Settori</dt><dd>Think tank, ONG, Accademia, Governo</dd></div></dl></aside>
       <div class="sidebar__block"><div class="sidebar__label">Tecniche MITRE ATT&CK</div><div class="ttp-grid"><a class="ttp" href="https://attack.mitre.org/techniques/T1566/002/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1566.002</span> Spearphishing Link</a><a class="ttp" href="https://attack.mitre.org/techniques/T1598/" data-tactic="Reconnaissance" target="_blank" rel="noopener"><span class="ttp__id">T1598</span> Phishing for Information</a><a class="ttp" href="https://attack.mitre.org/techniques/T1589/" data-tactic="Reconnaissance" target="_blank" rel="noopener"><span class="ttp__id">T1589</span> Gather Victim Identity Information</a><a class="ttp" href="https://attack.mitre.org/techniques/T1056/003/" data-tactic="Collection" target="_blank" rel="noopener"><span class="ttp__id">T1056.003</span> Web Portal Capture</a><a class="ttp" href="https://attack.mitre.org/techniques/T1550/004/" data-tactic="Defense Evasion" target="_blank" rel="noopener"><span class="ttp__id">T1550.004</span> Web Session Cookie</a><a class="ttp" href="https://attack.mitre.org/techniques/T1098/" data-tactic="Persistence" target="_blank" rel="noopener"><span class="ttp__id">T1098</span> Account Manipulation</a><a class="ttp" href="https://attack.mitre.org/techniques/T1566/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1566</span> Phishing</a></div></div>
       <div class="sidebar__block"><div class="sidebar__label">Fonti primarie</div><ul class="sources"><li><a href="https://www.fbi.gov/investigate/cyber/alerts/2026/north-korean-kimsuky-actors-leverage-malicious-qr-codes-in-spearphishing-campaigns-targeting-us-entities" target="_blank" rel="noopener">FBI FLASH AC-000001-MW — North Korean Kimsuky Actors Leverage Malicious QR Codes</a></li><li><a href="https://attack.mitre.org/groups/G0094/" target="_blank" rel="noopener">MITRE ATT&amp;CK — Kimsuky (G0094)</a></li><li><a href="https://securelist.com/kimsuky-appleseed-pebbledash-campaigns/119785/" target="_blank" rel="noopener">Kaspersky Securelist — Kimsuky targets organizations with PebbleDash-based tools</a></li></ul></div>
+      <div class="sidebar__block"><div class="sidebar__label">Condividi</div><div class="share"><a href="https://x.com/intent/tweet?text=Il%20QR%20code%20che%20ruba%20la%20sessione%2C%20non%20la%20password&url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/kimsuky-quishing.html" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/kimsuky-quishing.html" target="_blank" rel="noopener">LinkedIn</a><a href="https://news.ycombinator.com/submitlink?u=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/kimsuky-quishing.html&t=Il%20QR%20code%20che%20ruba%20la%20sessione%2C%20non%20la%20password" target="_blank" rel="noopener">HN</a><button class="share__copy" data-url="https://spidercivi.github.io/HACK-PROJECT/it/a/kimsuky-quishing.html" type="button">Link</button></div></div>
     </div>
   </div>
-</article></main>
+  <aside class="authorcard"><img class="authorcard__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="72" height="72" loading="lazy"><div><p class="authorcard__label">Scritto da</p><p class="authorcard__name"><a href="../about.html">Spid</a> <span class="authorcard__handle">@SpiderCivi</span></p><p class="authorcard__bio">Appassionato di cybersecurity e sviluppatore. Mi occupo di ethical hacking, sicurezza dei sistemi e AI: costruisco, rompo e miglioro sistemi. Mente curiosa, approccio pratico.</p><p class="authorcard__links"><a href="https://github.com/SpiderCivi" target="_blank" rel="noopener">GitHub</a><a href="mailto:riccardo.civiero@icloud.com">riccardo.civiero@icloud.com</a></p></div></aside>
+  <nav class="pager"><a class="pager__item pager__item--prev" href="miasma-redhat-npm.html"><span>&larr; Precedente</span><strong>Miasma: il malware aveva un certificato di provenienza valido</strong></a><a class="pager__item pager__item--next" href="interlock-clickfix.html"><span>Successivo &rarr;</span><strong>Interlock, il ransomware che entra dalla porta principale</strong></a></nav>
+</article>
+<section class="rel shell"><div class="section-head"><h2>Altri dossier</h2></div><div class="rel__grid"><a class="rel__card" href="interlock-clickfix.html"><img src="../assets/img/it/interlock-clickfix.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--high">high</span><h3>Interlock, il ransomware che entra dalla porta principale</h3></div></a><a class="rel__card" href="miasma-redhat-npm.html"><img src="../assets/img/it/miasma-redhat-npm.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--high">high</span><h3>Miasma: il malware aveva un certificato di provenienza valido</h3></div></a><a class="rel__card" href="sharepoint-cve-2026-45659.html"><img src="../assets/img/it/sharepoint-cve-2026-45659.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--high">high</span><h3>«Exploitation Less Likely», poi tre giorni per patchare</h3></div></a></div></section></main>
 <footer class="footer shell">
   <p class="disclaimer"><strong>HACK/PROJECT</strong> &mdash; analisi di attacchi informatici documentati pubblicamente, mappati su MITRE ATT&amp;CK&reg;. Contenuto a scopo difensivo ed educativo: descriviamo tattiche e tecniche cosi&#768; come riportate da agenzie e ricercatori, senza distribuire codice offensivo. Dove le fonti sono incerte, lo dichiariamo nel testo. ATT&amp;CK&reg; e&#768; un marchio registrato di The MITRE Corporation; progetto non affiliato a MITRE.</p>
   <p><a href="https://github.com/SpiderCivi/HACK-PROJECT">github.com/SpiderCivi/HACK-PROJECT</a></p>

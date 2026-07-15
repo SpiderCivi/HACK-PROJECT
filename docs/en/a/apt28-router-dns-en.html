@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/main.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "The thirty-euro router that wiretapped foreign ministries", "description": "APT28 turned thousands of home routers into a wiretapping network aimed at foreign ministries and law enforcement, hijacking DNS to steal already-authenticated OAuth tokens. No exotic malware — just the least-defended infrastructure on earth, and a US court order letting the FBI reach into five thousand privately owned devices to clean them up.", "datePublished": "2026-07-15", "dateModified": "2026-07-15", "inLanguage": "en", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/en/a/apt28-router-dns-en.html", "author": {"@type": "Person", "name": "Spid", "url": "https://github.com/SpiderCivi"}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/"}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/en/apt28-router-dns.svg"], "keywords": "APT28, T1190, T1557, T1583.002, T1583.003, T1584.008, T1586, T1588.006", "citation": [{"@type": "CreativeWork", "name": "NCSC-UK — APT28 exploit routers to enable DNS hijacking operations", "url": "https://www.ncsc.gov.uk/news/apt28-exploit-routers-to-enable-dns-hijacking-operations"}, {"@type": "CreativeWork", "name": "FBI / IC3 / NSA — Public Service Announcement PSA260407", "url": "https://www.ic3.gov/PSA/2026/PSA260407"}, {"@type": "CreativeWork", "name": "Microsoft Threat Intelligence — SOHO router compromise leads to DNS hijacking and adversary-in-the-middle attacks", "url": "https://www.microsoft.com/en-us/security/blog/2026/04/07/soho-router-compromise-leads-to-dns-hijacking-and-adversary-in-the-middle-attacks/"}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -24,6 +25,7 @@
     <span class="masthead__tagline">Daily Threat Intelligence</span>
     <nav class="masthead__nav" aria-label="Main">
       <a href="../index.html">Archive</a>
+      <a href="../../about.html">About</a>
       <a href="https://github.com/SpiderCivi/HACK-PROJECT">Source</a>
       <a class="lang" href="../../it/a/apt28-router-dns.html" rel="alternate">Italiano</a>
     </nav>
@@ -32,35 +34,44 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed live</span>
-    <span>Updated &mdash; 15.07.2026 17:23 CET</span>
+    <span>Updated &mdash; 15.07.2026 17:27 CET</span>
     <span>11 dossiers</span>
     <span>MITRE ATT&CK mapping</span>
   </div>
 </div>
+<div class="progress" aria-hidden="true"><i></i></div>
 <main id="main">
 
 <article class="article shell">
+  <nav class="crumb" aria-label="breadcrumb"><a href="../index.html">HACK/PROJECT</a><span>/</span><a href="../index.html">Archive</a><span>/</span><em>The thirty-euro router that wiretapped foreign m</em></nav>
   <header class="article__head">
-    <p class="kicker" data-reveal style="--i:0">15.07.2026 &nbsp;/&nbsp; Dossier &nbsp;/&nbsp; <span class="sev sev--critical">critical</span> &nbsp;/&nbsp; 5 min read</p>
+    <p class="kicker" data-reveal style="--i:0">15.07.2026 &nbsp;/&nbsp; <span class="sev sev--critical">critical</span> &nbsp;/&nbsp; 5 min read</p>
     <h1 class="article__title" data-reveal style="--i:1">The thirty-euro router that wiretapped foreign ministries</h1>
     <p class="article__standfirst" data-reveal style="--i:2">APT28 turned thousands of home routers into a wiretapping network aimed at foreign ministries and law enforcement, hijacking DNS to steal already-authenticated OAuth tokens. No exotic malware — just the least-defended infrastructure on earth, and a US court order letting the FBI reach into five thousand privately owned devices to clean them up.</p>
+    <div class="byline" data-reveal style="--i:2">
+      <img class="byline__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="40" height="40" loading="lazy">
+      <div class="byline__meta">
+        <span class="byline__name">by <a href="../about.html">Spid</a></span>
+        <span class="byline__handle">@SpiderCivi &nbsp;·&nbsp; 15.07.2026</span>
+      </div>
+    </div>
   </header>
   <figure class="hero-figure" data-reveal style="--i:3"><img src="../../assets/img/en/apt28-router-dns.svg" alt="" width="1200" height="675"></figure>
   <div class="article__layout">
-    <div class="prose" data-reveal style="--i:4"><p>On 7 April 2026, five organisations that rarely sing from the same hymn sheet all published on the same day. The UK's NCSC. The FBI, alongside IC3, the NSA and fifteen other countries. The US Department of Justice, arriving with a court case already built. Microsoft Threat Intelligence. Lumen's Black Lotus Labs. Five accounts, no daylight between them: <strong>APT28</strong> — Russia's GRU, 85th Main Special Service Centre, Military Unit 26165 — had stood up a wiretapping network against foreign ministries and law enforcement agencies.</p>
+    <div class="prose" data-reveal style="--i:4"><p class="lede">On 7 April 2026, five organisations that rarely sing from the same hymn sheet all published on the same day. The UK's NCSC. The FBI, alongside IC3, the NSA and fifteen other countries. The US Department of Justice, arriving with a court case already built. Microsoft Threat Intelligence. Lumen's Black Lotus Labs. Five accounts, no daylight between them: <strong>APT28</strong> — Russia's GRU, 85th Main Special Service Centre, Military Unit 26165 — had stood up a wiretapping network against foreign ministries and law enforcement agencies.</p>
 <p>Not with bespoke implants. With routers that cost less than a dinner out.</p>
-<h2 data-n="01." id="the-origin">The origin</h2>
+<h2 id="the-origin">The origin</h2>
 <p>As attributions go, this one is about as good as the trade gets. NCSC uses <strong>"almost certainly"</strong> — the top rung of its probabilistic confidence ladder. DOJ went further than assessment and took the matter to a judge, where evidence answers to a different standard than a vendor blog. When five independent evidence chains — signals intelligence, product telemetry, backbone sinkholing, court filings — land on the same actor on the same morning, the attribution debate is over before it starts.</p>
 <p>The timelines differ slightly, which is exactly what you'd expect. Microsoft dates the activity to <strong>August 2025</strong>; Lumen sees it beginning in <strong>May 2025</strong>, peaking between December 2025 and January 2026. Two sensors watching different layers — endpoints versus backbone — not two competing stories.</p>
 <p>The scale is what stops you. More than <strong>200 organisations</strong> compromised. Over <strong>5,000 consumer devices</strong>. At least three African government bodies, one Afghan government entity, foreign ministries, police forces, and email and cloud providers across North Africa, Central America and Southeast Asia. Routers in Ukraine. And an initial foothold on a <strong>Nethesis firewall in Italy</strong> — not a target, a stepping stone. At its peak the infrastructure spanned over <strong>18,000 unique IP addresses across 120-plus countries</strong>.</p>
 <p>The way in was a <strong>TP-Link WR841N</strong> SOHO router, exploited — NCSC says "<strong>likely</strong>" — via <strong>CVE-2023-50224</strong>, which leaks credentials through unauthenticated, malformed HTTP GET requests. That hedge deserves to be read as written: it is the source's own qualifier, not boilerplate. The specific link between that model and that CVE is the weakest link in an otherwise unusually strong chain. No CVSS score was published. <strong>MikroTik</strong> devices and ageing <strong>Fortinet</strong> and <strong>Nethesis</strong> firewalls also appear in the campaign.</p>
-<h2 data-n="02." id="the-attack-chain">The attack chain</h2>
+<h2 id="the-attack-chain">The attack chain</h2>
 <p>The mechanics are almost a teaching exercise.</p>
 <p>The operators rent <strong>VPS</strong> capacity and run malicious DNS servers on it (<strong>T1583.002</strong>, <strong>T1583.003</strong>). From there they hit the router: one malformed GET lifts the management credentials, a second rewrites the device's <strong>DHCP/DNS</strong> settings (<strong>T1584.008</strong>). The router then keeps working flawlessly. No lag, no symptom, nothing a user would ever notice. It just quietly hands every laptop, phone and server behind it a GRU-controlled resolver over DHCP.</p>
 <p>That resolver doesn't lie about everything — noisy and pointless. It lies <strong>selectively</strong>, against a surgical list of Microsoft domains: <code>autodiscover-s.outlook[.]com</code>, <code>imap-mail.outlook[.]com</code>, <code>outlook.live[.]com</code>, <code>office[.]com</code>, <code>office365[.]com</code>. Everything else resolves clean.</p>
 <p>Victims following those answers land on attacker infrastructure, where the <strong>Adversary-in-the-Middle</strong> stage begins (<strong>T1557</strong>): a transparent proxy, or DNS spoofing fronted by an <strong>invalid TLS certificate</strong> whose only real cost is a browser warning that someone, eventually, clicks through.</p>
 <p>And here is the part that matters. The AitM stage isn't primarily after passwords — it harvests <strong>already-authenticated OAuth tokens</strong> (<strong>T1586</strong>). A token is proof that MFA has <em>already been satisfied</em>. Stealing one doesn't break multi-factor authentication; it simply shows up afterwards and pockets the result. The victim's logs record no failure, no rejected second factor, no anomaly. They record a successful sign-in.</p>
-<h2 data-n="03." id="detection">Detection</h2>
+<h2 id="detection">Detection</h2>
 <p>The infrastructure left workable fingerprints.</p>
 <ul>
 <li>Two distinct <strong>SSH banner clusters</strong> on the VPS estate, on TCP ports <strong>56777</strong> and <strong>35681</strong>; <strong>dnsmasq-2.85</strong> listening on UDP <strong>53</strong>.</li>
@@ -70,7 +81,7 @@
 <li>Known AitM nodes: <strong>64.120.31.96</strong>, <strong>79.141.160.78</strong>.</li>
 </ul>
 <p>One honest caveat on sourcing: every MITRE ID above comes <strong>from NCSC alone</strong>, the only one of the five publishers to map them. FBI, DOJ, Microsoft and Lumen describe the same behaviour without assigning identifiers.</p>
-<h2 data-n="04." id="remediation">Remediation</h2>
+<h2 id="remediation">Remediation</h2>
 <ul>
 <li><strong>Never expose router management to the internet.</strong> If the admin panel answers from the WAN, everything else is detail.</li>
 <li>Patch firmware; physically <strong>replace</strong> end-of-life hardware. An unpatchable router isn't hardened, it's binned.</li>
@@ -79,17 +90,22 @@
 <li><strong>Conditional Access</strong> plus <strong>passkeys</strong> for privileged accounts. Passkeys are origin-bound and refuse to be proxied.</li>
 <li>Periodically verify the <strong>authenticity of the resolvers</strong> actually in use.</li>
 </ul>
-<h2 data-n="05." id="what-it-teaches">What it teaches</h2>
+<h2 id="what-it-teaches">What it teaches</h2>
 <p>Three lessons, and none of them are technical.</p>
 <p>First: the worst-defended perimeter on the planet is the router. No EDR, no central logging, no clear owner. APT28 never breached a foreign ministry — it breached the thirty-euro box sitting upstream and let the ministry talk through it.</p>
 <p>Second, a legal precedent that deserves far more argument than it has had. Under <strong>Operation Masquerade</strong>, DOJ secured authorisation across <strong>23-plus US states</strong> for the FBI to push remote commands to thousands of <strong>privately owned routers</strong> and reset their DNS. Defensive disruption, and effective. But this is the first time at this scale that a federal agency has reached into citizens' homes — into hardware those citizens own — to fix it for them. The precedent outlives the campaign.</p>
 <p>Third, the uncomfortable one: when the theft is of tokens, MFA isn't defeated. It's <strong>bypassed as irrelevant</strong>. Anyone whose security posture rests on "we have MFA, we're fine" doesn't have a weakness. They have a blind spot.</p></div>
-    <div class="sidebar"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Actor profile</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Actor</dt><dd>APT28</dd></div><div class="field"><dt>Aliases</dt><dd>Fancy Bear, Forest Blizzard, STRONTIUM, Sofacy, Sednit, Pawn Storm</dd></div><div class="field"><dt>First seen</dt><dd>May 2025</dd></div><div class="field"><dt>Targets</dt><dd>North Africa, Central America, Southeast Asia, Europe, Afghanistan</dd></div><div class="field"><dt>Sectors</dt><dd>Government, Diplomacy, Law enforcement, Email and cloud providers</dd></div></dl></aside>
+    <div class="sidebar">
+      <aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Actor profile</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Actor</dt><dd>APT28</dd></div><div class="field"><dt>Aliases</dt><dd>Fancy Bear, Forest Blizzard, STRONTIUM, Sofacy, Sednit, Pawn Storm</dd></div><div class="field"><dt>First seen</dt><dd>May 2025</dd></div><div class="field"><dt>Targets</dt><dd>North Africa, Central America, Southeast Asia, Europe, Afghanistan</dd></div><div class="field"><dt>Sectors</dt><dd>Government, Diplomacy, Law enforcement, Email and cloud providers</dd></div></dl></aside>
       <div class="sidebar__block"><div class="sidebar__label">MITRE ATT&CK techniques</div><div class="ttp-grid"><a class="ttp" href="https://attack.mitre.org/techniques/T1190/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1190</span> Exploit Public-Facing Application</a><a class="ttp" href="https://attack.mitre.org/techniques/T1557/" data-tactic="Collection" target="_blank" rel="noopener"><span class="ttp__id">T1557</span> Adversary-in-the-Middle</a><a class="ttp" href="https://attack.mitre.org/techniques/T1583/002/" data-tactic="Resource Development" target="_blank" rel="noopener"><span class="ttp__id">T1583.002</span> Acquire Infrastructure: DNS Server</a><a class="ttp" href="https://attack.mitre.org/techniques/T1583/003/" data-tactic="Resource Development" target="_blank" rel="noopener"><span class="ttp__id">T1583.003</span> Acquire Infrastructure: Virtual Private Server</a><a class="ttp" href="https://attack.mitre.org/techniques/T1584/008/" data-tactic="Resource Development" target="_blank" rel="noopener"><span class="ttp__id">T1584.008</span> Compromise Infrastructure: Network Devices</a><a class="ttp" href="https://attack.mitre.org/techniques/T1586/" data-tactic="Resource Development" target="_blank" rel="noopener"><span class="ttp__id">T1586</span> Compromise Accounts</a><a class="ttp" href="https://attack.mitre.org/techniques/T1588/006/" data-tactic="Resource Development" target="_blank" rel="noopener"><span class="ttp__id">T1588.006</span> Obtain Capabilities: Vulnerabilities</a></div></div>
       <div class="sidebar__block"><div class="sidebar__label">Primary sources</div><ul class="sources"><li><a href="https://www.ncsc.gov.uk/news/apt28-exploit-routers-to-enable-dns-hijacking-operations" target="_blank" rel="noopener">NCSC-UK — APT28 exploit routers to enable DNS hijacking operations</a></li><li><a href="https://www.ic3.gov/PSA/2026/PSA260407" target="_blank" rel="noopener">FBI / IC3 / NSA — Public Service Announcement PSA260407</a></li><li><a href="https://www.microsoft.com/en-us/security/blog/2026/04/07/soho-router-compromise-leads-to-dns-hijacking-and-adversary-in-the-middle-attacks/" target="_blank" rel="noopener">Microsoft Threat Intelligence — SOHO router compromise leads to DNS hijacking and adversary-in-the-middle attacks</a></li></ul></div>
+      <div class="sidebar__block"><div class="sidebar__label">Share</div><div class="share"><a href="https://x.com/intent/tweet?text=The%20thirty-euro%20router%20that%20wiretapped%20foreign%20ministries&url=https%3A//spidercivi.github.io/HACK-PROJECT/en/a/apt28-router-dns-en.html" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//spidercivi.github.io/HACK-PROJECT/en/a/apt28-router-dns-en.html" target="_blank" rel="noopener">LinkedIn</a><a href="https://news.ycombinator.com/submitlink?u=https%3A//spidercivi.github.io/HACK-PROJECT/en/a/apt28-router-dns-en.html&t=The%20thirty-euro%20router%20that%20wiretapped%20foreign%20ministries" target="_blank" rel="noopener">HN</a><button class="share__copy" data-url="https://spidercivi.github.io/HACK-PROJECT/en/a/apt28-router-dns-en.html" type="button">Link</button></div></div>
     </div>
   </div>
-</article></main>
+  <aside class="authorcard"><img class="authorcard__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="72" height="72" loading="lazy"><div><p class="authorcard__label">Written by</p><p class="authorcard__name"><a href="../about.html">Spid</a> <span class="authorcard__handle">@SpiderCivi</span></p><p class="authorcard__bio">Cybersecurity enthusiast and developer. Focused on ethical hacking, system security and AI: building, breaking and improving systems. Curious mind, hands-on.</p><p class="authorcard__links"><a href="https://github.com/SpiderCivi" target="_blank" rel="noopener">GitHub</a><a href="mailto:riccardo.civiero@icloud.com">riccardo.civiero@icloud.com</a></p></div></aside>
+  <nav class="pager"><a class="pager__item pager__item--prev" href="axios-npm-en.html"><span>&larr; Previous</span><strong>Axios: the manifest, the RAT, and the token nobody revoked</strong></a></nav>
+</article>
+<section class="rel shell"><div class="section-head"><h2>More dossiers</h2></div><div class="rel__grid"><a class="rel__card" href="axios-npm-en.html"><img src="../assets/img/en/axios-npm.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Axios: the manifest, the RAT, and the token nobody revoked</h3></div></a><a class="rel__card" href="medusa-ummc-en.html"><img src="../assets/img/en/medusa-ummc.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Medusa and UMMC: The Clinic That Learned to Run Offline</h3></div></a><a class="rel__card" href="qilin-checkpoint-en.html"><img src="../assets/img/en/qilin-checkpoint.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Qilin and the Interest on Technical Debt: Logging Into a VPN Without a Password</h3></div></a></div></section></main>
 <footer class="footer shell">
   <p class="disclaimer"><strong>HACK/PROJECT</strong> &mdash; analysis of publicly documented cyber attacks, mapped to MITRE ATT&amp;CK&reg;. Content is defensive and educational: we describe tactics and techniques as reported by agencies and researchers, without distributing offensive code. Where sources are uncertain, we say so in the text. ATT&amp;CK&reg; is a registered trademark of The MITRE Corporation; not affiliated with MITRE.</p>
   <p><a href="https://github.com/SpiderCivi/HACK-PROJECT">github.com/SpiderCivi/HACK-PROJECT</a></p>
