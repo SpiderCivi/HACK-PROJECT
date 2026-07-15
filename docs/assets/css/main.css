@@ -53,7 +53,7 @@ body {
   line-height: 1.7;
   font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-wrap: break-word;
 }
 
 img { max-width: 100%; display: block; }
@@ -1111,3 +1111,38 @@ body::after {
 img, video, svg, pre, table { max-width: 100%; }
 .toc__list a.is-active { color: var(--oxide-lit); }
 .toc__list a.is-active .toc__n { color: var(--oxide-lit); }
+
+
+/* ============================================================
+   GUARDIE ANTI-SFONDAMENTO — nessuna stringa puo' allargare la pagina
+   ============================================================ */
+html, body { max-width: 100%; }
+.prose, .prose p, .prose li, .prose h2, .prose h3,
+.entry__title, .entry__summary, .article__title, .hero__title,
+.article__standfirst, .hero__standfirst, .crumb em, .field dd {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+.prose pre { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.prose code { overflow-wrap: anywhere; }
+.ttp { max-width: 100%; overflow-wrap: anywhere; }
+.sources a, .about__links a, .authorcard__links a { overflow-wrap: anywhere; }
+.dossier, .dossier__body, .field { min-width: 0; }
+.article__layout > *, .about__grid > *, .hero > * { min-width: 0; }
+
+/* — Chi sono: dati e ruolo — */
+.about__facts {
+  margin-top: 1.3rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--rule-soft);
+}
+.about__facts .field { grid-template-columns: 1fr; gap: .1rem; padding-block: .5rem; }
+.about__facts .field dd { color: var(--ink-dim); }
+.authorcard__role {
+  font-family: var(--mono);
+  font-size: .66rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--oxide-lit);
+  margin-top: .25rem;
+}
