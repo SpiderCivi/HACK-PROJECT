@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Medusa and UMMC: The Clinic That Learned to Run Offline — HACK/PROJECT</title>
+<meta name="description" content="On 19 February 2026 Mississippi&#x27;s largest health system went dark: 35 clinical sites shut, the state&#x27;s only Level I trauma center paralysed. But the instructive story isn">
+<meta property="og:title" content="Medusa and UMMC: The Clinic That Learned to Run Offline — HACK/PROJECT">
+<meta property="og:description" content="On 19 February 2026 Mississippi&#x27;s largest health system went dark: 35 clinical sites shut, the state&#x27;s only Level I trauma center paralysed. But the instructive story isn">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="it" href="https://spidercivi.github.io/HACK-PROJECT/it/">
+<link rel="alternate" hreflang="en" href="https://spidercivi.github.io/HACK-PROJECT/en/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../index.html">HACK<em>/</em>PROJECT</a>
+    <span class="masthead__tagline">Daily Threat Intelligence</span>
+    <nav class="masthead__nav" aria-label="Main">
+      <a href="../index.html">Archive</a>
+      <a href="https://github.com/SpiderCivi/HACK-PROJECT">Source</a>
+      <a class="lang" href="../../it/a/medusa-ummc.html" rel="alternate">Italiano</a>
+    </nav>
+  </div>
+</header>
+<div class="shell">
+  <div class="ticker">
+    <span class="live">Threat feed live</span>
+    <span>Updated &mdash; 15.07.2026 14:37 CET</span>
+    <span>11 dossiers</span>
+    <span>MITRE ATT&CK mapping</span>
+  </div>
+</div>
+<main id="main">
+
+<article class="article shell">
+  <header class="article__head">
+    <p class="kicker" data-reveal style="--i:0">15.07.2026 &nbsp;/&nbsp; Dossier &nbsp;/&nbsp; <span class="sev sev--critical">critical</span> &nbsp;/&nbsp; 5 min read</p>
+    <h1 class="article__title" data-reveal style="--i:1">Medusa and UMMC: The Clinic That Learned to Run Offline</h1>
+    <p class="article__standfirst" data-reveal style="--i:2">On 19 February 2026 Mississippi&#x27;s largest health system went dark: 35 clinical sites shut, the state&#x27;s only Level I trauma center paralysed. But the instructive story isn&#x27;t how they got in — nobody has made that public — it&#x27;s how the oncology unit rebuilt a working clinic with no IT at all.</p>
+  </header>
+  <figure class="hero-figure" data-reveal style="--i:3">
+    <img src="../assets/img/medusa-ummc.svg" alt="" width="1200" height="675">
+  </figure>
+  <div class="article__layout">
+    <div class="prose" data-reveal style="--i:4"><p>The <strong>University of Mississippi Medical Center</strong> is not one hospital among many. It is the state's <strong>only children's hospital</strong>. Its only <strong>Level I trauma center</strong>. Its only <strong>Level IV NICU</strong>. Its only <strong>transplant program</strong>. Ten thousand employees. When UMMC stops, Mississippi has no second option.</p>
+<p>On <strong>19 February 2026</strong>, it stopped. <strong>Thirty-five clinical sites closed until 2 March.</strong></p>
+<h2 data-n="01." id="the-origin">The origin</h2>
+<p><strong>Medusa</strong> has run as Ransomware-as-a-Service since <strong>June 2021</strong>. In their joint advisory with MS-ISAC, CISA and the FBI take the trouble to spell out something that reads like pedantry and isn't: Medusa is <strong>distinct from MedusaLocker</strong> and <strong>distinct from the mobile malware also called "Medusa."</strong> Three different things, one name. Confusing them means reaching for the wrong countermeasures.</p>
+<p>On <strong>12 March</strong> the group claimed UMMC on its leak site: <strong>$800,000</strong>, deadline <strong>20 March</strong>, plus <strong>$100,000</strong> to extend by a week. Around the same time Medusa also claimed <strong>Passaic County, New Jersey</strong> for the identical sum. And UMMC is the <strong>fourth Mississippi hospital system hit in three years</strong> — not an isolated incident but a <strong>regional pattern</strong>.</p>
+<h3 id="what-we-dont-know-stated-up-front">What we don't know — stated up front</h3>
+<p>Transparency comes before narrative here, because this case invites the temptation to fill in the blanks.</p>
+<ul>
+<li><strong>The initial access vector at UMMC has not been made public by any source.</strong> How they got in is simply unknown.</li>
+<li><strong>CISA advisory AA25-071A dates from March 2025</strong>, nearly <strong>a year before</strong> the attack, and <strong>does not mention UMMC</strong>. The chain below is the group's <strong>general profile</strong>, not a forensic report on UMMC. It's what Medusa usually does — not what has been established in Jackson, Mississippi.</li>
+<li><strong>Attribution to Medusa rests solely on the group's own leak-site claim and press reporting.</strong> <strong>UMMC has never publicly confirmed the actor</strong>, nor whether it paid.</li>
+<li><strong>The exfiltration figure — 1 TB, one million files — comes from the criminals themselves.</strong> It is unverified. The victim hasn't confirmed it, and the extortionist has an obvious interest in inflating it.</li>
+<li><strong>Mississippi Today</strong> reported on 23 April 2026 that <strong>UMMC does not appear to have filed a breach report with HHS/OCR</strong>.</li>
+</ul>
+<h2 data-n="02." id="the-attack-chain">The attack chain</h2>
+<p><em>(Medusa's general profile per AA25-071A — ATT&amp;CK v16. Not confirmed at UMMC.)</em></p>
+<p>Entry comes via <strong>initial access brokers</strong>, <strong>phishing</strong> (<strong>T1566</strong>), or <strong>exploitation of known CVEs</strong> on exposed assets (<strong>T1190</strong>). Discovery follows with <strong>Advanced IP Scanner</strong> and <strong>SoftPerfect</strong> (<strong>T1046</strong>), plus PowerShell enumeration — <code>systeminfo</code>, <code>net share</code>, <code>ipconfig /all</code> (<strong>T1082</strong>, <strong>T1059.001</strong>).</p>
+<p>Evasion is methodical: <strong>certutil</strong> to pull payloads, <strong>obfuscated PowerShell</strong> in base64/gzip, <strong>PowerShell history wiped</strong>, and <strong>signed drivers</strong> to kill EDR (<strong>T1562.001</strong>). C2 runs through <strong>Ligolo</strong> and <strong>Cloudflared</strong>. Credentials come from <strong>Mimikatz</strong> against LSASS (<strong>T1003.001</strong>).</p>
+<p>Lateral movement is almost entirely <strong>living-off-the-land</strong>: <strong>PsExec</strong> via <code>openrdp.bat</code> (<strong>T1569.002</strong>), <strong>RDP</strong> (<strong>T1021.001</strong>), and <strong>legitimate RMM tooling</strong> — AnyDesk, Atera, ConnectWise, SimpleHelp, Splashtop. None of it is malware. All of it is probably already installed somewhere on your network.</p>
+<p>Then <strong>Rclone</strong> for exfiltration (<strong>T1567.002</strong>), and finally the <strong>gaze.exe</strong> encryptor: <strong>AES-256</strong>, <strong>.medusa</strong> extension (<strong>T1486</strong>), shadow copies destroyed (<strong>T1490</strong>). Double extortion, contact within 48 hours over Tor or Tox, <strong>$10,000 to buy another day</strong> (<strong>T1657</strong>).</p>
+<h2 data-n="03." id="detection">Detection</h2>
+<p><strong>Hashes:</strong></p>
+<pre><code>openrdp.bat   MD5  44370f5c977e415981febf7dbb87a85c
+pu.exe        MD5  80d852cd199ac923205b61658a9ec5bc
+</code></pre>
+<p><strong>Artefacts:</strong> ransom note <code>!!!READ_ME_MEDUSA!!!.txt</code>; <code>.medusa</code> extension; <code>gaze.exe</code> process.</p>
+<p><strong>Behaviours worth alerting on</strong> — these outlast hashes, which change:</p>
+<pre><code>vssadmin.exe Delete Shadows /all /quiet
+</code></pre>
+<p>A command that destroys shadow copies has no legitimate use in a healthcare environment. Also watch for: PowerShell carrying base64/gzip blobs, PowerShell history being cleared, known-vulnerable signed drivers loading, and RMM tools appearing on hosts that never had them.</p>
+<p><strong>Negotiation addresses:</strong> <code>key.medusa.serviceteam@protonmail.com</code>, <code>MedusaSupport@cock.li</code>.</p>
+<h2 data-n="04." id="remediation">Remediation</h2>
+<ul>
+<li><strong>Patch internet-facing assets.</strong> It's Medusa's preferred route when they aren't simply buying access.</li>
+<li><strong>Segment the network.</strong> In healthcare that's the difference between losing a department and losing 35 sites.</li>
+<li><strong>MFA on every remote service</strong>, RDP included.</li>
+<li><strong>Offline, immutable, tested backups.</strong> <em>Immutable</em>, because Medusa deletes shadow copies. <em>Tested</em>, because a backup you've never restored is a hypothesis.</li>
+<li><strong>Audit privileged accounts.</strong></li>
+<li><strong>A tested continuity plan for operating offline.</strong> This isn't the last item on the list. It's the first, and the next section explains why.</li>
+</ul>
+<h2 data-n="05." id="what-it-teaches">What it teaches</h2>
+<p>The most remarkable thing about UMMC isn't technical. It's <strong>organisational</strong>.</p>
+<p>While IT was down, the oncology department built — in real time, mid-crisis — what <strong>Devika Das</strong>, director of hematology and oncology, described to <em>The Record</em> as:</p>
+<blockquote>
+<p>"a fully functioning, offline, urgent infusion clinic"</p>
+</blockquote>
+<p>That deserves a second read. Cancer patients on infusion therapy cannot wait for an Active Directory domain to be restored; chemotherapy runs on a clinical window. With no electronic health records, no order entry, no network, that unit rebuilt the clinical function on paper and human procedure. <strong>They didn't recover IT. They recovered care, which is not the same thing.</strong></p>
+<p>It demonstrates that operational resilience is not a by-product of cyber resilience. They are two distinct capabilities, and the second does not imply the first. Any continuity plan that opens with "we restore systems within X hours" is answering the wrong question. The right question is: <strong>what, concretely, do we keep doing if the systems don't come back today?</strong> UMMC had to answer by improvising. Organisations that already have the answer written down and rehearsed improvise a great deal less.</p>
+<p>On the criminal side, Medusa's extortion structure is worth studying because it shows where the model is heading. Pay to have the data <strong>deleted</strong>. Pay to <strong>extend</strong> the deadline. Or a <strong>third party</strong> pays to <strong>buy it</strong>. This is no longer a two-party shakedown with a victim and an extortionist. It's <strong>an open auction</strong>, in which the victim is merely one potential buyer of their own data — and not necessarily the highest bidder.</p>
+<p>And the structural fact stands: <strong>four Mississippi hospitals in three years</strong>. That isn't bad luck. It's a sector identified as vulnerable, in a region identified as vulnerable, hit repeatedly because it worked repeatedly.</p></div>
+    <div class="sidebar"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Actor profile</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Actor</dt><dd>Medusa</dd></div><div class="field"><dt>Aliases</dt><dd>Distinct from MedusaLocker, Distinct from the Medusa mobile malware</dd></div><div class="field"><dt>First seen</dt><dd>June 2021</dd></div><div class="field"><dt>Targets</dt><dd>United States, Mississippi</dd></div><div class="field"><dt>Sectors</dt><dd>Healthcare, Local government</dd></div></dl></aside>
+      <div class="sidebar__block"><div class="sidebar__label">MITRE ATT&CK techniques</div><div class="ttp-grid"><a class="ttp" href="https://attack.mitre.org/techniques/T1190/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1190</span> Exploit Public-Facing Application</a><a class="ttp" href="https://attack.mitre.org/techniques/T1566/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1566</span> Phishing</a><a class="ttp" href="https://attack.mitre.org/techniques/T1046/" data-tactic="Discovery" target="_blank" rel="noopener"><span class="ttp__id">T1046</span> Network Service Discovery</a><a class="ttp" href="https://attack.mitre.org/techniques/T1082/" data-tactic="Discovery" target="_blank" rel="noopener"><span class="ttp__id">T1082</span> System Information Discovery</a><a class="ttp" href="https://attack.mitre.org/techniques/T1003/001/" data-tactic="Credential Access" target="_blank" rel="noopener"><span class="ttp__id">T1003.001</span> OS Credential Dumping: LSASS Memory</a><a class="ttp" href="https://attack.mitre.org/techniques/T1059/001/" data-tactic="Execution" target="_blank" rel="noopener"><span class="ttp__id">T1059.001</span> PowerShell</a><a class="ttp" href="https://attack.mitre.org/techniques/T1021/001/" data-tactic="Lateral Movement" target="_blank" rel="noopener"><span class="ttp__id">T1021.001</span> Remote Desktop Protocol</a><a class="ttp" href="https://attack.mitre.org/techniques/T1569/002/" data-tactic="Lateral Movement" target="_blank" rel="noopener"><span class="ttp__id">T1569.002</span> System Services: Service Execution</a><a class="ttp" href="https://attack.mitre.org/techniques/T1562/001/" data-tactic="Defense Evasion" target="_blank" rel="noopener"><span class="ttp__id">T1562.001</span> Impair Defenses: Disable or Modify Tools</a><a class="ttp" href="https://attack.mitre.org/techniques/T1567/002/" data-tactic="Exfiltration" target="_blank" rel="noopener"><span class="ttp__id">T1567.002</span> Exfiltration to Cloud Storage</a><a class="ttp" href="https://attack.mitre.org/techniques/T1486/" data-tactic="Impact" target="_blank" rel="noopener"><span class="ttp__id">T1486</span> Data Encrypted for Impact</a><a class="ttp" href="https://attack.mitre.org/techniques/T1490/" data-tactic="Impact" target="_blank" rel="noopener"><span class="ttp__id">T1490</span> Inhibit System Recovery</a><a class="ttp" href="https://attack.mitre.org/techniques/T1657/" data-tactic="Impact" target="_blank" rel="noopener"><span class="ttp__id">T1657</span> Financial Theft</a></div></div>
+      <div class="sidebar__block"><div class="sidebar__label">Primary sources</div><ul class="sources"><li><a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa25-071a" target="_blank" rel="noopener">CISA / FBI / MS-ISAC — #StopRansomware: Medusa Ransomware (AA25-071A)</a></li><li><a href="https://umc.edu/news/News_Articles/2026/03/Cyberattack.html" target="_blank" rel="noopener">University of Mississippi Medical Center — Cyberattack</a></li><li><a href="https://therecord.media/medusa-ransomware-mississippi-cyber" target="_blank" rel="noopener">The Record — Medusa ransomware, Mississippi cyber</a></li><li><a href="https://www.npr.org/2026/02/21/nx-s1-5721746/mississippi-health-system-ransomware-attack" target="_blank" rel="noopener">NPR — Mississippi health system ransomware attack</a></li></ul></div>
+    </div>
+  </div>
+</article></main>
+<footer class="footer shell">
+  <p class="disclaimer"><strong>HACK/PROJECT</strong> &mdash; analysis of publicly documented cyber attacks, mapped to MITRE ATT&amp;CK&reg;. Content is defensive and educational: we describe tactics and techniques as reported by agencies and researchers, without distributing offensive code. Where sources are uncertain, we say so in the text. ATT&amp;CK&reg; is a registered trademark of The MITRE Corporation; not affiliated with MITRE.</p>
+  <p><a href="https://github.com/SpiderCivi/HACK-PROJECT">github.com/SpiderCivi/HACK-PROJECT</a></p>
+</footer>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

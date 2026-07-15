@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Due attaccanti, una rete: il caso Storm-2603 e la fine dell&#x27;intrusione singola — HACK/PROJECT</title>
+<meta name="description" content="Storm-2603 sfrutta un bypass di autenticazione in SmarterMail per installare Velociraptor come C2 e mettere in scena il ransomware Warlock. Ma il dettaglio che conta è emerso dopo:">
+<meta property="og:title" content="Due attaccanti, una rete: il caso Storm-2603 e la fine dell&#x27;intrusione singola — HACK/PROJECT">
+<meta property="og:description" content="Storm-2603 sfrutta un bypass di autenticazione in SmarterMail per installare Velociraptor come C2 e mettere in scena il ransomware Warlock. Ma il dettaglio che conta è emerso dopo:">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="it" href="https://spidercivi.github.io/HACK-PROJECT/it/">
+<link rel="alternate" hreflang="en" href="https://spidercivi.github.io/HACK-PROJECT/en/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<a class="skip" href="#main">Salta al contenuto</a>
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../index.html">HACK<em>/</em>PROJECT</a>
+    <span class="masthead__tagline">Threat Intelligence Quotidiana</span>
+    <nav class="masthead__nav" aria-label="Principale">
+      <a href="../index.html">Archivio</a>
+      <a href="https://github.com/SpiderCivi/HACK-PROJECT">Sorgente</a>
+      <a class="lang" href="../../en/a/storm2603-warlock-en.html" rel="alternate">English</a>
+    </nav>
+  </div>
+</header>
+<div class="shell">
+  <div class="ticker">
+    <span class="live">Threat feed attivo</span>
+    <span>Aggiornato &mdash; 15.07.2026 14:37 CET</span>
+    <span>11 dossier</span>
+    <span>Mappatura MITRE ATT&CK</span>
+  </div>
+</div>
+<main id="main">
+
+<article class="article shell">
+  <header class="article__head">
+    <p class="kicker" data-reveal style="--i:0">15.07.2026 &nbsp;/&nbsp; Dossier &nbsp;/&nbsp; <span class="sev sev--critical">critical</span> &nbsp;/&nbsp; 5 min di lettura</p>
+    <h1 class="article__title" data-reveal style="--i:1">Due attaccanti, una rete: il caso Storm-2603 e la fine dell&#x27;intrusione singola</h1>
+    <p class="article__standfirst" data-reveal style="--i:2">Storm-2603 sfrutta un bypass di autenticazione in SmarterMail per installare Velociraptor come C2 e mettere in scena il ransomware Warlock. Ma il dettaglio che conta è emerso dopo: in una rete compromessa Microsoft ha trovato due gruppi non collegati che lavoravano in parallelo, ciascuno coprendo le tracce dell&#x27;altro.</p>
+  </header>
+  <figure class="hero-figure" data-reveal style="--i:3">
+    <img src="../assets/img/storm2603-warlock.svg" alt="" width="1200" height="675">
+  </figure>
+  <div class="article__layout">
+    <div class="prose" data-reveal style="--i:4"><p>Il presupposto silenzioso di ogni incident response è che l'intrusione sia una. Si ricostruisce una timeline, si attribuisce a un attore, si mappano le sue TTP. Il 22 giugno 2026 il team <strong>DART di Microsoft</strong> ha pubblicato un report che manda in pezzi quel presupposto: dentro la stessa rete c'erano <strong>due gruppi non collegati</strong>, attivi nello stesso periodo, ciascuno dei quali <strong>mascherava inconsapevolmente le tracce dell'altro</strong>.</p>
+<h2 data-n="01." id="lorigine">L'origine</h2>
+<p><strong>Storm-2603</strong> è una designazione Microsoft per un attore con <strong>nesso cinese</strong>, che distribuisce il ransomware <strong>Warlock</strong> (in precedenza <strong>4L4MD4R</strong>). Rientra nella campagna che MITRE traccia come <strong>C0058, SharePoint ToolShell Exploitation</strong>, esplosa nel luglio 2025.</p>
+<p>La cronologia successiva è quella di un attore che non si è fermato. Il <strong>26 gennaio 2026</strong> CISA aggiunge <strong>CVE-2026-23760</strong> al catalogo KEV. Il <strong>2 febbraio</strong> aggiunge <strong>CVE-2026-24423</strong>, con deadline al 26 febbraio. Intorno al <strong>9 febbraio</strong> ReliaQuest pubblica il proprio report — e lo stesso giorno accade la cosa che un vendor non vorrebbe mai vedere scritta: <strong>SmarterTools, l'azienda che produce SmarterMail, viene violata attraverso la vulnerabilità del proprio prodotto</strong>. Chi scrive il codice non è al riparo dal codice che ha scritto.</p>
+<h2 data-n="02." id="la-catena-dattacco">La catena d'attacco</h2>
+<p>Il punto d'ingresso è <strong>CVE-2026-23760</strong>, un bypass di autenticazione nell'API di reset password di SmarterMail. Il meccanismo è di una semplicità imbarazzante: <strong>l'endpoint accetta qualunque vecchia password, anche errata</strong>. Non c'è overflow, non c'è crittanalisi. C'è un controllo che non controlla.</p>
+<p>Da lì la sequenza smette di usare exploit e comincia a usare funzionalità.</p>
+<ol>
+<li><strong>Abuso di Volume Mount</strong> — una funzione legittima di SmarterMail — per iniettare comandi che <strong>ereditano i permessi del servizio</strong>.</li>
+<li><strong>MailService.exe genera cmd.exe</strong>. Un mail server che apre una shell è, di per sé, la fine della storia.</li>
+<li><strong>msiexec.exe</strong> scarica <code>v4.msi</code> da <strong>Supabase</strong> (<strong>T1218.007</strong>, Msiexec).</li>
+<li>Installazione di <strong>Velociraptor</strong> — strumento forense DFIR perfettamente legittimo — riadattato a <strong>C2</strong> (<strong>T1588.002</strong>, Obtain Capabilities: Tool).</li>
+</ol>
+<p>E qui arriva il dato raro: <strong>il ransomware non è mai stato eseguito</strong>. La catena è stata intercettata <strong>in fase di staging</strong>. In un panorama fatto di post-mortem, questo è un successo difensivo documentato — categoria di cui esistono pochissimi esemplari pubblici, non perché le difese non funzionino mai, ma perché nessuno scrive un report su un attacco che non è successo.</p>
+<h3 id="lepisodio-sharepoint">L'episodio SharePoint</h3>
+<p>Il report DART descrive una <strong>rete diversa</strong>, e una catena parallela: <strong>probing LFI</strong> su <code>win.ini</code> e <code>web.config</code> → <strong>Velociraptor con privilegi SYSTEM</strong> → tunneling con <strong>Cloudflare Tunnel</strong>, <strong>Zoho Assist</strong> e <strong>VS Code Remote-SSH</strong> → creazione di <strong>account admin non autorizzati</strong> (<strong>T1136</strong>) → <strong>driver vulnerabile (BYOVD)</strong> per disabilitare le protezioni (<strong>T1562.001</strong>).</p>
+<p>Ed è alla fine di questa catena che gli analisti trovano il <strong>secondo attore</strong>, non collegato al primo, nella stessa rete.</p>
+<p>Va detto con chiarezza che <strong>la mappatura MITRE per gli episodi 2026 è ragionata, non ufficiale</strong>. La pagina <strong>C0058 è ferma al luglio 2025</strong>: le tecniche confermate da MITRE sono T1190, T1505.003, T1059.001, T1003.001, T1484.001, T1486 e T1657. Le altre — <strong>T1218.007, T1588.002, T1133, T1136, T1562.001</strong> — sono una lettura degli episodi del 2026 fatta in questa sede, non un'estrazione da una pagina ATT&amp;CK. Allo stesso modo, <strong>per l'episodio SharePoint Microsoft non conferma quale vulnerabilità specifica sia stata sfruttata</strong>, le <strong>vittime non sono nominate</strong>, e <strong>non è chiaro se il probing di CVE-2026-24423 da infrastruttura diversa sia lo stesso attore</strong>.</p>
+<h2 data-n="03." id="detection">Detection</h2>
+<p>I segnali migliori qui non sono IOC, ma <strong>implausibilità comportamentali</strong>: cose che un mail server non fa.</p>
+<ul>
+<li><strong>POST verso <code>/api/v1/settings/sysadmin/connect-to-hub</code> senza una sessione valida.</strong> È l'impronta diretta dello sfruttamento.</li>
+<li><strong><code>MailService.exe</code> → <code>cmd.exe</code> → <code>msiexec.exe</code>.</strong> Questa catena di processi non ha nessuna ragione benigna di esistere su un server di posta.</li>
+<li><strong>Traffico verso <code>*.supabase.co</code> o <code>*.workers.dev</code> da un server email.</strong> Un mail server parla SMTP, IMAP e POP3. Non parla con un backend-as-a-service.</li>
+<li><strong>Velociraptor non pianificato in esecuzione come SYSTEM.</strong> Se il vostro team DFIR non l'ha installato, qualcun altro l'ha fatto.</li>
+</ul>
+<p><strong>IOC (ReliaQuest):</strong></p>
+<pre><code>auth.qgtxtebl.workers[.]dev
+vdfccjpnedujhrzscjtq.supabase[.]co
+2-api.mooo[.]com
+162.252.198[.]197
+199.217.99[.]93
+157.245.156[.]118
+</code></pre>
+<p>Questi indicatori hanno però una data di scadenza breve, e il motivo è istruttivo. Il gruppo <strong>prima usava GitHub</strong> per lo staging del payload. GitHub è finito in blocklist. Ora usa <strong>Supabase</strong>. La rotazione è <strong>infrastrutturale, non tattica</strong>: i gruppi riciclano piattaforme cloud legittime appena le precedenti bruciano. Bloccare un dominio compra settimane. Rilevare che <em>un mail server sta parlando con un BaaS</em> copre anche la prossima piattaforma, che non conoscete ancora.</p>
+<h2 data-n="04." id="rimedi">Rimedi</h2>
+<ul>
+<li><strong>Aggiornare SmarterMail alla build 9511 o superiore.</strong> Prima di tutto il resto.</li>
+<li><strong>Isolare i mail server in DMZ.</strong> Un server esposto non deve poter raggiungere il resto della rete.</li>
+<li><strong>Restringere l'outbound a SMTP/IMAP/POP3.</strong> Se questa regola fosse stata attiva, il download da Supabase sarebbe fallito e la catena si sarebbe interrotta al passo 3.</li>
+<li><strong>Applicare le patch SharePoint</strong> della campagna ToolShell.</li>
+<li><strong>Allowlisting dei tool di tunneling</strong>: Cloudflare Tunnel, Zoho Assist, VS Code Remote-SSH sono legittimi — il che è esattamente il problema. Devono essere autorizzati per eccezione, non tollerati per default.</li>
+<li><strong>Blocklist dei driver vulnerabili e HVCI attivo</strong>, contro il BYOVD.</li>
+</ul>
+<h2 data-n="05." id="cosa-insegna">Cosa insegna</h2>
+<p>Il report DART di giugno non aggiunge una tecnica al catalogo: incrina un modello mentale.</p>
+<p>Quando due gruppi non collegati operano contemporaneamente nella stessa rete, <strong>l'incident response perde la sua unità di misura</strong>. Un artefatto viene attribuito all'attore A quando è dell'attore B. Un account creato dal gruppo 1 viene letto come persistenza del gruppo 2. Si bonifica un'intrusione, si dichiara chiusa, e l'altra è ancora dentro — sopravvissuta non perché fosse più abile, ma perché la vostra timeline aveva una casella sola. Ciascun attaccante <strong>copre le tracce dell'altro senza saperlo</strong>, e senza pagare nulla per il privilegio.</p>
+<p>Microsoft suggerisce che il fenomeno sia <strong>più comune di quanto documentato</strong>, ed è un'ipotesi ragionevole per un motivo scomodo: non lo cercavamo. Se la domanda dell'analista è <em>chi è stato</em>, al singolare, la risposta al plurale non emerge quasi mai.</p>
+<p>C'è poi la nota a margine che vale come promemoria: <strong>SmarterTools è stata violata tramite la vulnerabilità del proprio prodotto</strong>. Il vendor che vi manda l'advisory non è, per questo, al sicuro dal contenuto dell'advisory. Il patch management non è un favore che fate a chi scrive il software. È l'unica cosa che vi separa da chi lo scrive.</p></div>
+    <div class="sidebar"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Storm-2603</dd></div><div class="field"><dt>Alias</dt><dd>Warlock, 4L4MD4R</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>Luglio 2025</dd></div><div class="field"><dt>Bersagli</dt><dd>Globale</dd></div><div class="field"><dt>Settori</dt><dd>Non divulgati</dd></div></dl></aside>
+      <div class="sidebar__block"><div class="sidebar__label">Tecniche MITRE ATT&CK</div><div class="ttp-grid"><a class="ttp" href="https://attack.mitre.org/techniques/T1190/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1190</span> Exploit Public-Facing Application</a><a class="ttp" href="https://attack.mitre.org/techniques/T1505/003/" data-tactic="Persistence" target="_blank" rel="noopener"><span class="ttp__id">T1505.003</span> Web Shell</a><a class="ttp" href="https://attack.mitre.org/techniques/T1059/001/" data-tactic="Execution" target="_blank" rel="noopener"><span class="ttp__id">T1059.001</span> PowerShell</a><a class="ttp" href="https://attack.mitre.org/techniques/T1003/001/" data-tactic="Credential Access" target="_blank" rel="noopener"><span class="ttp__id">T1003.001</span> OS Credential Dumping: LSASS Memory</a><a class="ttp" href="https://attack.mitre.org/techniques/T1484/001/" data-tactic="Defense Evasion" target="_blank" rel="noopener"><span class="ttp__id">T1484.001</span> Group Policy Modification</a><a class="ttp" href="https://attack.mitre.org/techniques/T1486/" data-tactic="Impact" target="_blank" rel="noopener"><span class="ttp__id">T1486</span> Data Encrypted for Impact</a><a class="ttp" href="https://attack.mitre.org/techniques/T1657/" data-tactic="Impact" target="_blank" rel="noopener"><span class="ttp__id">T1657</span> Financial Theft</a></div></div>
+      <div class="sidebar__block"><div class="sidebar__label">Fonti primarie</div><ul class="sources"><li><a href="https://reliaquest.com/blog/threat-spotlight-storm-2603-exploits-CVE-2026-23760-to-stage-warlock-ransomware/" target="_blank" rel="noopener">ReliaQuest — Threat Spotlight: Storm-2603 Exploits CVE-2026-23760 to Stage Warlock Ransomware</a></li><li><a href="https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/" target="_blank" rel="noopener">Microsoft DART — One intrusion, two cyberattackers: uncovering parallel threat activity</a></li><li><a href="https://attack.mitre.org/campaigns/C0058/" target="_blank" rel="noopener">MITRE ATT&amp;CK — SharePoint ToolShell Exploitation (C0058)</a></li></ul></div>
+    </div>
+  </div>
+</article></main>
+<footer class="footer shell">
+  <p class="disclaimer"><strong>HACK/PROJECT</strong> &mdash; analisi di attacchi informatici documentati pubblicamente, mappati su MITRE ATT&amp;CK&reg;. Contenuto a scopo difensivo ed educativo: descriviamo tattiche e tecniche cosi&#768; come riportate da agenzie e ricercatori, senza distribuire codice offensivo. Dove le fonti sono incerte, lo dichiariamo nel testo. ATT&amp;CK&reg; e&#768; un marchio registrato di The MITRE Corporation; progetto non affiliato a MITRE.</p>
+  <p><a href="https://github.com/SpiderCivi/HACK-PROJECT">github.com/SpiderCivi/HACK-PROJECT</a></p>
+</footer>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

@@ -666,3 +666,137 @@ body::after {
   body::before, body::after, .masthead, .ticker { display: none; }
   body { background: #fff; color: #000; }
 }
+
+/* ============================================================
+   LAYOUT EDITORIALE — immagini, hero, archivio a griglia
+   ============================================================ */
+
+.masthead__tagline {
+  font-family: var(--mono);
+  font-size: .6rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border-left: 1px solid var(--rule);
+  padding-left: 1rem;
+}
+@media (max-width: 720px) { .masthead__tagline { display: none; } }
+
+.masthead__nav .lang {
+  color: var(--signal);
+  border: 1px solid var(--rule);
+  padding: .3em .7em;
+  border-bottom: 1px solid var(--rule);
+}
+.masthead__nav .lang:hover {
+  border-color: var(--signal);
+  color: var(--signal);
+}
+
+/* — HERO con arte — */
+.hero { align-items: center; }
+.hero__art {
+  display: block;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  position: relative;
+  transition: border-color .4s;
+}
+.hero__art::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(10,10,11,.7));
+  pointer-events: none;
+}
+.hero__art img {
+  width: 100%; height: auto;
+  transition: transform 1.2s cubic-bezier(.22,1,.36,1), filter .6s;
+  filter: saturate(.85);
+}
+.hero__art:hover img { transform: scale(1.04); filter: saturate(1.1); }
+.hero__art:hover { border-color: var(--oxide); }
+
+.cta {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: .74rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  border: 1px solid var(--oxide);
+  color: var(--oxide-lit);
+  padding: .85em 1.6em;
+  transition: background .3s, color .3s, transform .3s;
+}
+.cta:hover {
+  background: var(--oxide);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* — figura articolo — */
+.article__head { max-width: 40ch; }
+.article__title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+  line-height: 1;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+  margin-bottom: 1.2rem;
+}
+.article__standfirst {
+  font-size: 1.22rem;
+  color: var(--ink-dim);
+  text-wrap: pretty;
+  margin-bottom: 2rem;
+}
+.article__head { max-width: 58ch; }
+
+.hero-figure {
+  margin: 0 0 clamp(2rem, 5vw, 3.5rem);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--oxide);
+  overflow: hidden;
+}
+.hero-figure img { width: 100%; height: auto; filter: saturate(.9); }
+
+/* — ARCHIVIO a griglia editoriale — */
+.entries {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+}
+.entry {
+  display: block;
+  grid-template-columns: none;
+  background: var(--paper);
+  padding: 0;
+  border: 0;
+  transition: background .3s;
+}
+.entry::before { display: none; }
+.entry:hover { background: var(--paper-2); }
+
+.entry__thumb {
+  width: 100%; height: auto;
+  display: block;
+  filter: saturate(.7) brightness(.75);
+  transition: filter .5s, transform .8s cubic-bezier(.22,1,.36,1);
+}
+.entry:hover .entry__thumb { filter: saturate(1) brightness(1); transform: scale(1.03); }
+
+.entry__body { padding: 1.3rem 1.4rem 1.6rem; }
+.entry__summary {
+  font-size: .92rem;
+  color: var(--ink-dim);
+  margin-top: .6rem;
+  text-wrap: pretty;
+}
+.entry__title { font-size: 1.4rem; margin-top: .4rem; }
+.entry__date { padding: 0; }
+
+/* leggibilita' prosa */
+.prose { font-size: 1.06rem; line-height: 1.78; }
+.prose h2 { margin-top: 2.4em; }

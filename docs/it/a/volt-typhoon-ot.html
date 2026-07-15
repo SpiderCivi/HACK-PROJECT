@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Volt Typhoon ha smesso di guardare: ora cerca il pulsante di arresto — HACK/PROJECT</title>
+<meta name="description" content="Per cinque anni Volt Typhoon si è nascosto dentro le infrastrutture critiche americane senza toccare nulla. Nel 2026 Dragos lo vede manipolare le workstation di ingegneria per capi">
+<meta property="og:title" content="Volt Typhoon ha smesso di guardare: ora cerca il pulsante di arresto — HACK/PROJECT">
+<meta property="og:description" content="Per cinque anni Volt Typhoon si è nascosto dentro le infrastrutture critiche americane senza toccare nulla. Nel 2026 Dragos lo vede manipolare le workstation di ingegneria per capi">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="it" href="https://spidercivi.github.io/HACK-PROJECT/it/">
+<link rel="alternate" hreflang="en" href="https://spidercivi.github.io/HACK-PROJECT/en/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<a class="skip" href="#main">Salta al contenuto</a>
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../index.html">HACK<em>/</em>PROJECT</a>
+    <span class="masthead__tagline">Threat Intelligence Quotidiana</span>
+    <nav class="masthead__nav" aria-label="Principale">
+      <a href="../index.html">Archivio</a>
+      <a href="https://github.com/SpiderCivi/HACK-PROJECT">Sorgente</a>
+      <a class="lang" href="../../en/a/volt-typhoon-ot-en.html" rel="alternate">English</a>
+    </nav>
+  </div>
+</header>
+<div class="shell">
+  <div class="ticker">
+    <span class="live">Threat feed attivo</span>
+    <span>Aggiornato &mdash; 15.07.2026 14:37 CET</span>
+    <span>11 dossier</span>
+    <span>Mappatura MITRE ATT&CK</span>
+  </div>
+</div>
+<main id="main">
+
+<article class="article shell">
+  <header class="article__head">
+    <p class="kicker" data-reveal style="--i:0">15.07.2026 &nbsp;/&nbsp; Dossier &nbsp;/&nbsp; <span class="sev sev--critical">critical</span> &nbsp;/&nbsp; 5 min di lettura</p>
+    <h1 class="article__title" data-reveal style="--i:1">Volt Typhoon ha smesso di guardare: ora cerca il pulsante di arresto</h1>
+    <p class="article__standfirst" data-reveal style="--i:2">Per cinque anni Volt Typhoon si è nascosto dentro le infrastrutture critiche americane senza toccare nulla. Nel 2026 Dragos lo vede manipolare le workstation di ingegneria per capire quali condizioni fermano un impianto industriale. E non si procura più gli accessi da solo: glieli passa un broker interno al suo stesso apparato.</p>
+  </header>
+  <figure class="hero-figure" data-reveal style="--i:3">
+    <img src="../assets/img/volt-typhoon-ot.svg" alt="" width="1200" height="675">
+  </figure>
+  <div class="article__layout">
+    <div class="prose" data-reveal style="--i:4"><p>Per cinque anni Volt Typhoon ha fatto una cosa sola, e l'ha fatta benissimo: niente. Dentro alcune reti di infrastrutture critiche americane la CISA documenta accessi persistenti da "<strong>almeno cinque anni</strong>". Nessun ransomware, nessuna esfiltrazione di massa, nessun sabotaggio. Solo presenza. Il pre-posizionamento è la dottrina: entrare oggi per poter agire il giorno che qualcuno lo deciderà, altrove.</p>
+<p>Nel 2026 quella disciplina si è incrinata — e l'ha fatto nella direzione peggiore.</p>
+<h2 data-n="01." id="lorigine">L'origine</h2>
+<p>Volt Typhoon è attribuito allo stato cinese ed è tracciato dal 2021 sotto una collezione di nomi che dice molto sulla frammentazione del settore: BRONZE SILHOUETTE per Secureworks, Vanguard Panda per CrowdStrike, UNC3236 per Mandiant, Voltzite per Dragos, Insidious Taurus per Unit 42.</p>
+<p>Il bersaglio è dichiarato e ripetuto: <strong>Comunicazioni, Energia, Trasporti, Acqua e acque reflue</strong> negli Stati Uniti e nei territori, <strong>Guam</strong> compresa — dettaglio geografico che nessun analista serio legge come casuale. Ci sono poi i servizi di emergenza, la base industriale della difesa, i servizi satellitari, e un'espansione verso Africa e Sud-Est asiatico.</p>
+<p>Le porte d'ingresso storiche sono quelle di sempre: <strong>Fortinet, Ivanti/Pulse Secure, NETGEAR, Citrix, Cisco</strong>. Le CVE nominate nelle campagne precedenti — <strong>CVE-2024-39717</strong> su Versa Director, <strong>CVE-2021-40539</strong> su Zoho ManageEngine ADSelfService Plus — appartengono al passato dell'attore, non all'attività del 2026. Va detto chiaramente: <strong>per la fase 2026 nessuna fonte nomina una CVE specifica</strong>. Chi vi vende un IoC decisivo su questa campagna sta vendendo qualcosa che le fonti primarie non hanno.</p>
+<h2 data-n="02." id="la-catena-dattacco">La catena d'attacco</h2>
+<p>La novità strutturale sta a monte di tutto il resto, e Dragos la chiama <strong>SYLVANITE</strong>.</p>
+<p>SYLVANITE non fa spionaggio OT. Fa <strong>accesso iniziale, e basta</strong>: sfrutta vulnerabilità su edge, VPN e firewall — pesando le weaponizza <strong>entro 48 ore dalla disclosure</strong> — spesso appoggiandosi a <strong>Cobalt Strike</strong> o <strong>Sliver</strong>. Poi <strong>cede l'accesso</strong> a Voltzite/Volt Typhoon, che esegue l'intrusione vera.</p>
+<p>È una divisione del lavoro quasi aziendale, ricalcata sui modelli di <em>initial access broker</em> del cybercrimine finanziario e applicata allo spionaggio statale. Volt Typhoon diventa il <strong>cliente finale</strong> di una supply chain interna al proprio apparato. Le implicazioni difensive sono ruvide: la velocità di weaponizzazione non è più un vincolo dell'attore OT, è un servizio che compra da qualcun altro.</p>
+<p>Una dichiarazione di incertezza è d'obbligo, qui. Il cluster SYLVANITE come broker separato viene da <strong>una sola fonte vendor</strong>, Dragos, ed è corroborato solo indirettamente dalla pagina MITRE, che si limita a un prudente "<em>reporting indicates</em>". Questo è il pezzo più fragile del quadro. Il nucleo storico è invece granitico: <strong>AA23-144A</strong> e <strong>AA24-038A</strong>, firmate CISA, NSA e FBI.</p>
+<p>Dopo la consegna dell'accesso, la sequenza è nota:</p>
+<ul>
+<li><strong>Discovery</strong> con comandi nativi — <code>net user</code>, <code>quser</code>, <code>net group /dom</code> (<strong>T1087.001</strong>, <strong>T1087.002</strong>).</li>
+<li><strong>Credenziali</strong> da OpenSSH, RealVNC, PuTTY, e — dettaglio che rivela il livello di mira — la <strong>cronologia del browser degli amministratori di rete</strong> (<strong>T1555.003</strong>). Non cercano password: cercano la mappa mentale di chi la rete la gestisce.</li>
+<li><strong><code>vssadmin</code></strong> per le shadow copy, estrazione di <strong><code>ntds.dit</code></strong> e degli hive <strong>SYSTEM/SECURITY</strong> dai domain controller.</li>
+<li><strong>Staging</strong> in archivi <strong>7-Zip multi-volume protetti da password</strong> in <code>C:\Windows\Temp\</code> (<strong>T1074</strong>).</li>
+<li><strong>Persistenza</strong> via VPN legittime (<strong>T1133</strong>), C2 su VPS e server <strong>PRTG di terzi</strong> compromessi (<strong>T1583.003</strong>).</li>
+<li><strong>Offuscamento</strong> attraverso la <strong>KV Botnet</strong> — router SOHO Cisco e NETGEAR end-of-life, campagna MITRE <strong>C0035</strong> (<strong>T1584.008</strong>, <strong>T1090.003</strong>).</li>
+<li><strong>Cancellazione selettiva</strong> dei log eventi di Windows. Selettiva: cancellare tutto è un allarme, cancellare le righe giuste è invisibile.</li>
+</ul>
+<p>Poi arriva il 2026. Dragos osserva la manipolazione delle <strong>workstation di ingegneria</strong> per estrarre configurazioni e dati di allarme, con un obiettivo che le fonti descrivono senza giri di parole: capire <strong>quali condizioni fermano i processi industriali</strong>. Dragos la classifica come <strong>"Stage 2 capability"</strong>.</p>
+<p>Tradotto: non stanno più mappando la rete. Stanno studiando il pulsante di arresto.</p>
+<h2 data-n="03." id="detection">Detection</h2>
+<ul>
+<li><strong><code>csvde.exe</code></strong> usato per esportare dati da Active Directory: strumento legittimo, contesto quasi mai legittimo.</li>
+<li><strong>Volume Shadow Copy</strong> seguita da estrazione di <strong>NTDS.dit</strong> su un domain controller. Se lo vedete, è già tardi ma non troppo.</li>
+<li>Archivi 7-Zip multi-volume in <code>C:\Windows\Temp\</code>.</li>
+<li>Accessi VPN validi da geolocalizzazioni o orari incoerenti con l'utente.</li>
+</ul>
+<p>Il problema di fondo è che l'uso pesante di <strong>living-off-the-land</strong> rende il rilevamento tradizionale strutturalmente inefficace. I dati Dragos 2026 lo quantificano brutalmente: il <strong>56% dei penetration test</strong> ha eluso il rilevamento usando solo strumenti LOTL, e il <strong>73% dei casi di incident response</strong> ha coinvolto credenziali VPN o jump host compromessi. Non c'è firma da scrivere. C'è solo comportamento da modellare.</p>
+<h2 data-n="04." id="rimedi">Rimedi</h2>
+<ul>
+<li><strong>Hardening della superficie d'attacco</strong> sui dispositivi edge: sono la porta, sempre.</li>
+<li><strong>Protezione delle credenziali</strong> — in particolare quelle degli amministratori, che sono l'obiettivo dichiarato.</li>
+<li><strong>Limitazione dell'accesso remoto</strong> e <strong>segmentazione</strong>, con separazione reale tra IT e OT.</li>
+<li><strong>Protezione degli asset cloud</strong>, logging esteso, <strong>threat modeling</strong> e training.</li>
+<li>Per il contesto americano, l'iniziativa CISA <strong>"CI Fortify"</strong> (maggio 2026) sposta l'accento su <strong>isolamento e recovery</strong>: presuppone cioè che l'intrusione sia già avvenuta. È l'ammissione più onesta contenuta in un documento ufficiale recente.</li>
+</ul>
+<h2 data-n="05." id="cosa-insegna">Cosa insegna</h2>
+<p>Un attore che si nasconde per cinque anni senza toccare nulla è un problema di intelligence. Un attore che comincia a testare cosa ferma un impianto è un problema di protezione civile.</p>
+<p>Il salto dal pre-posizionamento passivo alla manipolazione attiva delle workstation di ingegneria cambia la natura della domanda difensiva. Per anni la domanda è stata: <em>sono dentro?</em> La risposta, statisticamente, è sì. La domanda del 2026 è un'altra, e molto meno confortevole: <strong>quanto sanno del nostro processo fisico, e cosa hanno già imparato su come fermarlo?</strong></p>
+<p>Nel frattempo l'apparato che li serve si è organizzato come un'azienda, con un reparto che procura gli accessi e un reparto che li usa. Noi difendiamo ancora per silos. Loro hanno scoperto la specializzazione prima di noi.</p></div>
+    <div class="sidebar"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Volt Typhoon</dd></div><div class="field"><dt>Alias</dt><dd>BRONZE SILHOUETTE, Vanguard Panda, UNC3236, Voltzite, Insidious Taurus</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>2021</dd></div><div class="field"><dt>Bersagli</dt><dd>Stati Uniti e territori, Guam, Africa, Sud-Est asiatico</dd></div><div class="field"><dt>Settori</dt><dd>Comunicazioni, Energia, Trasporti, Acqua e acque reflue, Base industriale della difesa, Servizi di emergenza</dd></div></dl></aside>
+      <div class="sidebar__block"><div class="sidebar__label">Tecniche MITRE ATT&CK</div><div class="ttp-grid"><a class="ttp" href="https://attack.mitre.org/techniques/T1190/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1190</span> Exploit Public-Facing Application</a><a class="ttp" href="https://attack.mitre.org/techniques/T1133/" data-tactic="Persistence" target="_blank" rel="noopener"><span class="ttp__id">T1133</span> External Remote Services</a><a class="ttp" href="https://attack.mitre.org/techniques/T1059/001/" data-tactic="Execution" target="_blank" rel="noopener"><span class="ttp__id">T1059.001</span> Command and Scripting Interpreter: PowerShell</a><a class="ttp" href="https://attack.mitre.org/techniques/T1087/001/" data-tactic="Discovery" target="_blank" rel="noopener"><span class="ttp__id">T1087.001</span> Account Discovery: Local Account</a><a class="ttp" href="https://attack.mitre.org/techniques/T1087/002/" data-tactic="Discovery" target="_blank" rel="noopener"><span class="ttp__id">T1087.002</span> Account Discovery: Domain Account</a><a class="ttp" href="https://attack.mitre.org/techniques/T1555/003/" data-tactic="Credential Access" target="_blank" rel="noopener"><span class="ttp__id">T1555.003</span> Credentials from Password Stores: Credentials from Web Browsers</a><a class="ttp" href="https://attack.mitre.org/techniques/T1074/" data-tactic="Collection" target="_blank" rel="noopener"><span class="ttp__id">T1074</span> Data Staged</a><a class="ttp" href="https://attack.mitre.org/techniques/T1583/003/" data-tactic="Resource Development" target="_blank" rel="noopener"><span class="ttp__id">T1583.003</span> Acquire Infrastructure: Virtual Private Server</a><a class="ttp" href="https://attack.mitre.org/techniques/T1584/008/" data-tactic="Resource Development" target="_blank" rel="noopener"><span class="ttp__id">T1584.008</span> Compromise Infrastructure: Network Devices</a><a class="ttp" href="https://attack.mitre.org/techniques/T1090/003/" data-tactic="Command and Control" target="_blank" rel="noopener"><span class="ttp__id">T1090.003</span> Proxy: Multi-hop Proxy</a></div></div>
+      <div class="sidebar__block"><div class="sidebar__label">Fonti primarie</div><ul class="sources"><li><a href="https://attack.mitre.org/groups/G1017/" target="_blank" rel="noopener">MITRE ATT&amp;CK — Volt Typhoon (G1017)</a></li><li><a href="https://www.dragos.com/blog/dragos-2026-ot-cybersecurity-year-in-review" target="_blank" rel="noopener">Dragos — 9th Annual OT Cybersecurity Year in Review</a></li><li><a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a" target="_blank" rel="noopener">CISA / NSA / FBI — Advisory AA24-038A</a></li></ul></div>
+    </div>
+  </div>
+</article></main>
+<footer class="footer shell">
+  <p class="disclaimer"><strong>HACK/PROJECT</strong> &mdash; analisi di attacchi informatici documentati pubblicamente, mappati su MITRE ATT&amp;CK&reg;. Contenuto a scopo difensivo ed educativo: descriviamo tattiche e tecniche cosi&#768; come riportate da agenzie e ricercatori, senza distribuire codice offensivo. Dove le fonti sono incerte, lo dichiariamo nel testo. ATT&amp;CK&reg; e&#768; un marchio registrato di The MITRE Corporation; progetto non affiliato a MITRE.</p>
+  <p><a href="https://github.com/SpiderCivi/HACK-PROJECT">github.com/SpiderCivi/HACK-PROJECT</a></p>
+</footer>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

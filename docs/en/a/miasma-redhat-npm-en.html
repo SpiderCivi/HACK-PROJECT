@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Miasma: valid SLSA provenance for malicious packages — HACK/PROJECT</title>
+<meta name="description" content="Thirty-two Red Hat npm packages were published with malicious payloads — carrying valid SLSA provenance attestations. The technology built to guarantee build integrity certified th">
+<meta property="og:title" content="Miasma: valid SLSA provenance for malicious packages — HACK/PROJECT">
+<meta property="og:description" content="Thirty-two Red Hat npm packages were published with malicious payloads — carrying valid SLSA provenance attestations. The technology built to guarantee build integrity certified th">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="it" href="https://spidercivi.github.io/HACK-PROJECT/it/">
+<link rel="alternate" hreflang="en" href="https://spidercivi.github.io/HACK-PROJECT/en/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../index.html">HACK<em>/</em>PROJECT</a>
+    <span class="masthead__tagline">Daily Threat Intelligence</span>
+    <nav class="masthead__nav" aria-label="Main">
+      <a href="../index.html">Archive</a>
+      <a href="https://github.com/SpiderCivi/HACK-PROJECT">Source</a>
+      <a class="lang" href="../../it/a/miasma-redhat-npm.html" rel="alternate">Italiano</a>
+    </nav>
+  </div>
+</header>
+<div class="shell">
+  <div class="ticker">
+    <span class="live">Threat feed live</span>
+    <span>Updated &mdash; 15.07.2026 14:37 CET</span>
+    <span>11 dossiers</span>
+    <span>MITRE ATT&CK mapping</span>
+  </div>
+</div>
+<main id="main">
+
+<article class="article shell">
+  <header class="article__head">
+    <p class="kicker" data-reveal style="--i:0">15.07.2026 &nbsp;/&nbsp; Dossier &nbsp;/&nbsp; <span class="sev sev--high">high</span> &nbsp;/&nbsp; 4 min read</p>
+    <h1 class="article__title" data-reveal style="--i:1">Miasma: valid SLSA provenance for malicious packages</h1>
+    <p class="article__standfirst" data-reveal style="--i:2">Thirty-two Red Hat npm packages were published with malicious payloads — carrying valid SLSA provenance attestations. The technology built to guarantee build integrity certified the malware, because SLSA attests where a package was built, not whether the build&#x27;s input was legitimate.</p>
+  </header>
+  <figure class="hero-figure" data-reveal style="--i:3">
+    <img src="../assets/img/miasma-redhat-npm.svg" alt="" width="1200" height="675">
+  </figure>
+  <div class="article__layout">
+    <div class="prose" data-reveal style="--i:4"><h2 data-n="01." id="the-origin">The origin</h2>
+<p>On <strong>1 June 2026</strong>, between roughly 10:53 and 13:46 UTC, malicious commits landed on Red Hat's RedHatInsights repositories. By 13:00 UTC npm had revoked most of the malicious versions. By 18:50 UTC Red Hat had published security bulletin <strong>RHSB-2026-006</strong>, and Wiz Research had gone public.</p>
+<p>Under three hours from compromise to disclosure. As incident response goes, that's fast.</p>
+<p>The scope: the <code>@redhat-cloud-services</code> npm namespace — frontend JavaScript libraries for the Hybrid Cloud Console. At least <strong>32 distinct packages</strong>, 90-plus malicious versions, roughly <strong>80,000 downloads a week</strong> according to Wiz. On 4 June, Wiz published a follow-up advisory on a second wave using a <code>binding.gyp</code> technique.</p>
+<p>Red Hat's own framing deserves to be quoted accurately, because it's less alarming than the headline suggests: the packages don't touch managed cloud services (ARO, OSD, ROSA, ACS Cloud, AAP Managed), <strong>no customer action is required</strong>, and no product build included the compromised versions. At the time of writing the bulletin's status remains <strong>"Ongoing"</strong>.</p>
+<h2 data-n="02." id="the-attack-chain">The attack chain</h2>
+<ol>
+<li>A Red Hat employee's <strong>GitHub account</strong> is compromised. How, exactly, has never been publicly confirmed by Red Hat or Wiz — a gap worth stating plainly rather than filling with speculation.</li>
+<li>The account pushes <strong>orphan commits</strong> to temporary branches, bypassing code review entirely.</li>
+<li>Those commits introduce a minimal GitHub Actions workflow requesting an OIDC token (<code>id-token: write</code>) and publishing to npm.</li>
+<li>Because the publish happens through a legitimate CI workflow with a legitimate OIDC token, npm issues <strong>valid SLSA provenance attestations</strong> for the malicious packages.</li>
+<li>The payload — <code>preinstall</code>/<code>index.js</code>, heavily obfuscated with <code>eval()</code> and ROT encoding — harvests cloud credentials, with new emphasis on GCP and Azure identities reachable from the infected machine, plus CI/CD secrets.</li>
+</ol>
+<h3 id="the-recycled-malware">The recycled malware</h3>
+<p>The payload derives from the <strong>"(Mini) Shai-Hulud"</strong> family, which the group tracked as <strong>TeamPCP</strong> released as open source. A second actor picked it up, swapped the cosmetics — Dune references out, Greek mythology in, repos created with the description <em>"Miasma: The Spreading Blight"</em> — and shipped it.</p>
+<p>This matters beyond trivia. When malware becomes a public toolkit, attribution stops being a reliable signal. The code tells you nothing about who ran it.</p>
+<h2 data-n="03." id="detection">Detection</h2>
+<ul>
+<li>Repository description created by the attacker: <code>"Miasma: The Spreading Blight"</code></li>
+<li>User agent used for GCP queries: <code>google-api-nodejs-client/7.0.0 gl-node/20.11.0 gccl/7.0.0</code></li>
+<li>The full list of 32+ malicious versions is published by both Wiz and Red Hat — use theirs, it's authoritative</li>
+<li>Orphan commits on temporary branches in repositories that normally require review</li>
+<li>Any GitHub Actions workflow requesting <code>id-token: write</code> that you didn't put there</li>
+</ul>
+<p><em>A caveat on the technical detail:</em> the two main reports — Wiz and StepSecurity — <strong>diverge</strong> on obfuscation specifics and payload capabilities. Treat the fine-grained technical claims as evolving rather than settled.</p>
+<h2 data-n="04." id="remediation">Remediation</h2>
+<ul>
+<li>Malicious versions are already revoked and removed from npm by Red Hat</li>
+<li><strong>Audit</strong> developer workstations, CI/CD environments and repositories for signs of compromise</li>
+<li><strong>Rotate precautionarily</strong>: GitHub tokens, SSH keys, cloud credentials, CI/CD secrets. If a payload spent even minutes harvesting, assume it succeeded</li>
+<li>Adopt <strong>SBOM</strong>, package allowlisting, and hardened pipeline monitoring</li>
+<li>Require review on all branches — including the ones nobody uses</li>
+</ul>
+<h2 data-n="05." id="what-it-teaches">What it teaches</h2>
+<p>The malicious packages carried <strong>valid SLSA provenance attestations</strong>. Sit with that.</p>
+<p>SLSA exists to guarantee supply chain integrity. It's the answer the industry built after years of npm incidents. And it worked exactly as designed — which is the problem. SLSA certifies <strong>where</strong> a package was built and that the build wasn't tampered with in transit. It says nothing about <strong>whether the input to that build was legitimate</strong>.</p>
+<p>The attacker didn't break SLSA. They fed it poison through the front door and received a certificate of authenticity in return. A consumer verifying provenance would have seen a green check: built by Red Hat's CI, from Red Hat's repo, with a valid attestation. All true. All useless.</p>
+<p>This is the most important and least understood distinction in supply chain security: <strong>provenance is not integrity of intent</strong>. Knowing where something came from tells you nothing about whether it should exist.</p>
+<p>Every organisation that has ticked "we verify provenance" as a supply chain control should read RHSB-2026-006 and ask what, precisely, that check was buying them.</p></div>
+    <div class="sidebar"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Actor profile</span><span class="sev sev--high">high</span></div><dl class="dossier__body"><div class="field"><dt>Actor</dt><dd>TeamPCP (derived tooling)</dd></div><div class="field"><dt>Aliases</dt><dd>Miasma, (Mini) Shai-Hulud variant</dd></div><div class="field"><dt>First seen</dt><dd>June 2026</dd></div><div class="field"><dt>Targets</dt><dd>Global</dd></div><div class="field"><dt>Sectors</dt><dd>Software development, Cloud</dd></div></dl></aside>
+      <div class="sidebar__block"><div class="sidebar__label">MITRE ATT&CK techniques</div><div class="ttp-grid"><a class="ttp" href="https://attack.mitre.org/techniques/T1078/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1078</span> Valid Accounts</a><a class="ttp" href="https://attack.mitre.org/techniques/T1195/001/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1195.001</span> Compromise Software Dependencies and Development Tools</a><a class="ttp" href="https://attack.mitre.org/techniques/T1550/001/" data-tactic="Defense Evasion" target="_blank" rel="noopener"><span class="ttp__id">T1550.001</span> Application Access Token</a><a class="ttp" href="https://attack.mitre.org/techniques/T1027/" data-tactic="Defense Evasion" target="_blank" rel="noopener"><span class="ttp__id">T1027</span> Obfuscated Files or Information</a><a class="ttp" href="https://attack.mitre.org/techniques/T1552/001/" data-tactic="Credential Access" target="_blank" rel="noopener"><span class="ttp__id">T1552.001</span> Credentials In Files</a><a class="ttp" href="https://attack.mitre.org/techniques/T1526/" data-tactic="Discovery" target="_blank" rel="noopener"><span class="ttp__id">T1526</span> Cloud Service Discovery</a></div></div>
+      <div class="sidebar__block"><div class="sidebar__label">Primary sources</div><ul class="sources"><li><a href="https://access.redhat.com/security/vulnerabilities/RHSB-2026-006" target="_blank" rel="noopener">Red Hat — RHSB-2026-006 Supply chain compromise of @redhat-cloud-services npm packages</a></li><li><a href="https://www.wiz.io/blog/miasma-supply-chain-attack-targeting-redhat-npm-packages" target="_blank" rel="noopener">Wiz Research — Miasma: Supply Chain Attack Targeting RedHat npm Packages</a></li><li><a href="https://www.stepsecurity.io/blog/multiple-redhat-cloud-services-npm-packages-compromised" target="_blank" rel="noopener">StepSecurity — Multiple redhat-cloud-services npm Packages compromised</a></li></ul></div>
+    </div>
+  </div>
+</article></main>
+<footer class="footer shell">
+  <p class="disclaimer"><strong>HACK/PROJECT</strong> &mdash; analysis of publicly documented cyber attacks, mapped to MITRE ATT&amp;CK&reg;. Content is defensive and educational: we describe tactics and techniques as reported by agencies and researchers, without distributing offensive code. Where sources are uncertain, we say so in the text. ATT&amp;CK&reg; is a registered trademark of The MITRE Corporation; not affiliated with MITRE.</p>
+  <p><a href="https://github.com/SpiderCivi/HACK-PROJECT">github.com/SpiderCivi/HACK-PROJECT</a></p>
+</footer>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

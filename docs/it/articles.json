@@ -1,0 +1,227 @@
+[
+  {
+    "title": "Il router da trenta euro che intercettava i ministeri degli esteri",
+    "slug": "apt28-router-dns",
+    "date": "2026-07-15",
+    "severity": "critical",
+    "actor": [
+      "APT28"
+    ],
+    "summary": "APT28 ha trasformato migliaia di router domestici in una rete di intercettazione contro ministeri degli esteri e forze dell'ordine, dirottando il DNS per rubare token OAuth già autenticati. Nessun malware sofisticato: solo l'infrastruttura più trascurata del pianeta, e un tribunale americano che ha autorizzato l'FBI a entrare in cinquemila dispositivi privati per ripulirli.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/apt28-router-dns.html",
+    "mitre": [
+      "T1190",
+      "T1557",
+      "T1583.002",
+      "T1583.003",
+      "T1584.008",
+      "T1586",
+      "T1588.006"
+    ]
+  },
+  {
+    "title": "Axios, il manifest e il token che nessuno aveva revocato",
+    "slug": "axios-npm",
+    "date": "2026-07-15",
+    "severity": "critical",
+    "actor": [
+      "Attore non attribuito"
+    ],
+    "summary": "Il 31 marzo 2026 due release malevole di axios aggiungono una dipendenza-trappola senza toccare una riga del codice sorgente. npm aveva introdotto il Trusted Publishing OIDC proprio per impedirlo: l'attore l'ha aggirato con un token classico già emesso.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/axios-npm.html",
+    "mitre": [
+      "T1195.001",
+      "T1059.001",
+      "T1059.006",
+      "T1105",
+      "T1071.001",
+      "T1547.001",
+      "T1036.005"
+    ]
+  },
+  {
+    "title": "Medusa e UMMC: la clinica che ha imparato a funzionare offline",
+    "slug": "medusa-ummc",
+    "date": "2026-07-15",
+    "severity": "critical",
+    "actor": [
+      "Medusa"
+    ],
+    "summary": "Il 19 febbraio 2026 il più grande sistema sanitario del Mississippi va offline: 35 sedi cliniche chiuse, unico trauma center di Livello I dello stato paralizzato. Ma la storia più istruttiva non è come sono entrati — che nessuno ha reso pubblico — bensì come l'oncologia ha ricostruito una clinica funzionante senza IT.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/medusa-ummc.html",
+    "mitre": [
+      "T1190",
+      "T1566",
+      "T1046",
+      "T1082",
+      "T1003.001",
+      "T1059.001",
+      "T1021.001",
+      "T1569.002",
+      "T1562.001",
+      "T1567.002",
+      "T1486",
+      "T1490",
+      "T1657"
+    ]
+  },
+  {
+    "title": "Qilin e il debito tecnico: come si entra in una VPN senza password",
+    "slug": "qilin-checkpoint",
+    "date": "2026-07-15",
+    "severity": "critical",
+    "actor": [
+      "Qilin"
+    ],
+    "summary": "Un difetto logico nella validazione dei certificati durante lo scambio chiavi IKEv1 permetteva di aprire una sessione VPN Check Point senza conoscere alcuna password. Qilin lo sfruttava da un mese quando il vendor se ne è accorto. Ma la vera notizia non è il bug: è che colpisce solo chi non ha mai spento un protocollo deprecato.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/qilin-checkpoint.html",
+    "mitre": [
+      "T1190",
+      "T1133",
+      "T1567.002"
+    ]
+  },
+  {
+    "title": "Il SIEM che non chiedeva la password",
+    "slug": "splunk-cve-2026-20253",
+    "date": "2026-07-15",
+    "severity": "critical",
+    "actor": [
+      "Non attribuito"
+    ],
+    "summary": "CVSS 9.8, pre-autenticazione, RCE. La vulnerabilità non è in Splunk, ma in un componente PostgreSQL interno che accetta qualunque credenziale gli venga passata. Un buco pre-auth nello strumento che le aziende comprano per accorgersi delle intrusioni.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/splunk-cve-2026-20253.html",
+    "mitre": [
+      "T1190",
+      "T1552.001",
+      "T1565.001",
+      "T1059.006"
+    ]
+  },
+  {
+    "title": "Due attaccanti, una rete: il caso Storm-2603 e la fine dell'intrusione singola",
+    "slug": "storm2603-warlock",
+    "date": "2026-07-15",
+    "severity": "critical",
+    "actor": [
+      "Storm-2603"
+    ],
+    "summary": "Storm-2603 sfrutta un bypass di autenticazione in SmarterMail per installare Velociraptor come C2 e mettere in scena il ransomware Warlock. Ma il dettaglio che conta è emerso dopo: in una rete compromessa Microsoft ha trovato due gruppi non collegati che lavoravano in parallelo, ciascuno coprendo le tracce dell'altro.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/storm2603-warlock.html",
+    "mitre": [
+      "T1190",
+      "T1505.003",
+      "T1059.001",
+      "T1003.001",
+      "T1484.001",
+      "T1486",
+      "T1657"
+    ]
+  },
+  {
+    "title": "Volt Typhoon ha smesso di guardare: ora cerca il pulsante di arresto",
+    "slug": "volt-typhoon-ot",
+    "date": "2026-07-15",
+    "severity": "critical",
+    "actor": [
+      "Volt Typhoon"
+    ],
+    "summary": "Per cinque anni Volt Typhoon si è nascosto dentro le infrastrutture critiche americane senza toccare nulla. Nel 2026 Dragos lo vede manipolare le workstation di ingegneria per capire quali condizioni fermano un impianto industriale. E non si procura più gli accessi da solo: glieli passa un broker interno al suo stesso apparato.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/volt-typhoon-ot.html",
+    "mitre": [
+      "T1190",
+      "T1133",
+      "T1059.001",
+      "T1087.001",
+      "T1087.002",
+      "T1555.003",
+      "T1074",
+      "T1583.003",
+      "T1584.008",
+      "T1090.003"
+    ]
+  },
+  {
+    "title": "Interlock, il ransomware che entra dalla porta principale",
+    "slug": "interlock-clickfix",
+    "date": "2026-07-15",
+    "severity": "high",
+    "actor": [
+      "Interlock"
+    ],
+    "summary": "Interlock ha ribaltato il copione del ransomware: niente phishing, niente VPN bucata. La vittima visita un sito legittimo compromesso, vede un finto CAPTCHA, e incolla da sola il comando che la infetta. Anatomia di una catena d'attacco in cui l'utente è l'exploit.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/interlock-clickfix.html",
+    "mitre": [
+      "T1189",
+      "T1204.004",
+      "T1059.001",
+      "T1547.001",
+      "T1036.005",
+      "T1218.011",
+      "T1070.004",
+      "T1555.003",
+      "T1056.001",
+      "T1558.003",
+      "T1078.002",
+      "T1021.001",
+      "T1530",
+      "T1567.002",
+      "T1486",
+      "T1657"
+    ]
+  },
+  {
+    "title": "Il QR code che ruba la sessione, non la password",
+    "slug": "kimsuky-quishing",
+    "date": "2026-07-15",
+    "severity": "high",
+    "actor": [
+      "Kimsuky"
+    ],
+    "summary": "Kimsuky ha smesso di combattere i filtri email aziendali. Ha semplicemente cambiato canale: un QR code costringe la vittima a passare al telefono personale, fuori dal perimetro IT. E ruba il token di sessione, non la password — così l'MFA cade senza generare un solo alert.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/kimsuky-quishing.html",
+    "mitre": [
+      "T1566.002",
+      "T1598",
+      "T1589",
+      "T1056.003",
+      "T1550.004",
+      "T1098",
+      "T1566"
+    ]
+  },
+  {
+    "title": "Miasma: il malware aveva un certificato di provenienza valido",
+    "slug": "miasma-redhat-npm",
+    "date": "2026-07-15",
+    "severity": "high",
+    "actor": [
+      "Attore non attribuito (codice derivato da TeamPCP)"
+    ],
+    "summary": "Il 1° giugno 2026 oltre 90 versioni malevole dei pacchetti @redhat-cloud-services finiscono su npm con attestazioni di provenienza SLSA perfettamente valide. Perché SLSA certifica dove un pacchetto è stato costruito, non se l'input era legittimo.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/miasma-redhat-npm.html",
+    "mitre": [
+      "T1078",
+      "T1195.001",
+      "T1550.001",
+      "T1027",
+      "T1552.001",
+      "T1526"
+    ]
+  },
+  {
+    "title": "«Exploitation Less Likely», poi tre giorni per patchare",
+    "slug": "sharepoint-cve-2026-45659",
+    "date": "2026-07-15",
+    "severity": "high",
+    "actor": [
+      "Non attribuito"
+    ],
+    "summary": "Microsoft l'aveva classificata «Exploitation Less Likely». Cinque settimane dopo CISA la inseriva nel KEV con tre giorni di tempo per rimediare. Una lezione su quanto valgano le previsioni di sfruttabilità dei vendor.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/sharepoint-cve-2026-45659.html",
+    "mitre": [
+      "T1190",
+      "T1059"
+    ]
+  }
+]

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qilin and the Interest on Technical Debt: Logging Into a VPN Without a Password — HACK/PROJECT</title>
+<meta name="description" content="A logic flaw in certificate validation during the IKEv1 key exchange let attackers open an authenticated Check Point VPN session without knowing any password. Qilin had been using ">
+<meta property="og:title" content="Qilin and the Interest on Technical Debt: Logging Into a VPN Without a Password — HACK/PROJECT">
+<meta property="og:description" content="A logic flaw in certificate validation during the IKEv1 key exchange let attackers open an authenticated Check Point VPN session without knowing any password. Qilin had been using ">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="it" href="https://spidercivi.github.io/HACK-PROJECT/it/">
+<link rel="alternate" hreflang="en" href="https://spidercivi.github.io/HACK-PROJECT/en/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../index.html">HACK<em>/</em>PROJECT</a>
+    <span class="masthead__tagline">Daily Threat Intelligence</span>
+    <nav class="masthead__nav" aria-label="Main">
+      <a href="../index.html">Archive</a>
+      <a href="https://github.com/SpiderCivi/HACK-PROJECT">Source</a>
+      <a class="lang" href="../../it/a/qilin-checkpoint.html" rel="alternate">Italiano</a>
+    </nav>
+  </div>
+</header>
+<div class="shell">
+  <div class="ticker">
+    <span class="live">Threat feed live</span>
+    <span>Updated &mdash; 15.07.2026 14:37 CET</span>
+    <span>11 dossiers</span>
+    <span>MITRE ATT&CK mapping</span>
+  </div>
+</div>
+<main id="main">
+
+<article class="article shell">
+  <header class="article__head">
+    <p class="kicker" data-reveal style="--i:0">15.07.2026 &nbsp;/&nbsp; Dossier &nbsp;/&nbsp; <span class="sev sev--critical">critical</span> &nbsp;/&nbsp; 5 min read</p>
+    <h1 class="article__title" data-reveal style="--i:1">Qilin and the Interest on Technical Debt: Logging Into a VPN Without a Password</h1>
+    <p class="article__standfirst" data-reveal style="--i:2">A logic flaw in certificate validation during the IKEv1 key exchange let attackers open an authenticated Check Point VPN session without knowing any password. Qilin had been using it for a month before the vendor noticed. But the bug isn&#x27;t the story — the story is that it only bites organisations that never switched off a dead protocol.</p>
+  </header>
+  <figure class="hero-figure" data-reveal style="--i:3">
+    <img src="../assets/img/qilin-checkpoint.svg" alt="" width="1200" height="675">
+  </figure>
+  <div class="article__layout">
+    <div class="prose" data-reveal style="--i:4"><p>On 7 May 2026, someone opened a VPN session on a Check Point gateway without knowing a password. They didn't guess it, didn't buy it from a broker, didn't pull it out of a credential dump. They simply didn't need one.</p>
+<p>Check Point spotted it on 4 June — roughly a month later. On 8 June the company shipped a hotfix and published advisory <strong>sk185033</strong>. The same day, CISA added <strong>CVE-2026-50751</strong> to its Known Exploited Vulnerabilities catalog and gave federal civilian agencies until <strong>11 June</strong> to remediate. Three days: the floor allowed under BOD 22-01. CISA does not hand out three-day deadlines for theoretical risk.</p>
+<h2 data-n="01." id="the-origin">The origin</h2>
+<p>The flaw is classified <strong>CWE-287, Improper Authentication</strong>. It isn't a buffer overflow and it isn't an injection — it's a reasoning error. During the <strong>IKEv1</strong> key exchange, the gateway validates certificates incompletely, and that gap yields an authenticated VPN session with no credentials at all. There's no payload to craft, no race to win. There's a door that opens.</p>
+<p>Third-party sources put the score at <strong>CVSS 9.3</strong>. That figure deserves an asterisk: it was assigned by third parties, and at time of publication <strong>NVD had not yet issued an official score</strong>. The number is circulating, but it isn't canonical yet.</p>
+<p>One condition narrows the whole thing. The flaw only reaches gateways that <strong>expose legacy IKEv1 and don't enforce a machine certificate</strong>. Force IKEv2 and you're not affected. Require Machine Certificate Authentication and you're not affected. IKEv1 has been deprecated for years — obsolete RFCs, retirement guidance, a replacement available for over a decade.</p>
+<p>So this isn't a new bug. It's <strong>technical debt calling in the loan</strong>. A 2026 CVE exists because in 2016, in 2019, in 2023, nobody turned off a protocol everyone agreed should be turned off. The vulnerability was discovered this year; the decision that made it exploitable is years old, and it was made — or avoided — by an administrator who had a "legacy client compatibility" checkbox and chose to leave it ticked.</p>
+<h2 data-n="02." id="the-attack-chain">The attack chain</h2>
+<p>After initial access (<strong>T1190</strong>, Exploit Public-Facing Application; <strong>T1133</strong>, External Remote Services), the operators — tracked by Trend Micro as <strong>Water Galura</strong> — move with real discipline. Command and control runs over <strong>Tox</strong>: peer-to-peer, encrypted, with no central server to seize. Exfiltration runs through <strong>Rclone</strong> to cloud storage (<strong>T1567.002</strong>) — a legitimate, signed tool whose traffic looks like a backup job.</p>
+<p>The infrastructure is <strong>rented VPS</strong>: Kaupo Cloud Hong Kong, Shock Hosting, Vultr. The telling detail is the <strong>geographic correlation between victim and infrastructure</strong>. Nodes are chosen close to the target, because a VPN session from an IP in the same region trips no impossible-travel rule. That's an evasion decision, not a latency one.</p>
+<p>This is where the reconstruction stops, and it's worth being precise about where. <strong>The encryption phase is not publicly confirmed for this incident.</strong> What is documented is initial access and exfiltration. Whether this was a double-extortion attack carried through to impact, a campaign stopped short, or a pure data-collection operation with no intent to encrypt, public sources don't say.</p>
+<p>The same caveat applies to the TTPs generally associated with Qilin — <strong>T1003.001</strong> (LSASS dumping), <strong>T1486</strong> (Data Encrypted for Impact), <strong>T1490</strong> (Inhibit System Recovery), <strong>T1036.005</strong> (Masquerading). Those come from <strong>other cases</strong>. They are useful as a forecast, not as reporting: <strong>no source confirms them here</strong>. Treating them as established fact would mean inventing a forensic report that doesn't exist.</p>
+<p>Victimology is opaque too. Check Point refers to "a few dozen global organisations." <strong>No sector, no country and no names have been made public.</strong></p>
+<h2 data-n="03." id="detection">Detection</h2>
+<p>For once the advantage is that the signal is structural rather than behavioural.</p>
+<ul>
+<li><strong>Inventory gateways with IKEv1 enabled.</strong> This is a configuration, not an inference — you read it, you don't deduce it. IKEv1 on plus machine certificate not enforced puts a system inside the blast radius.</li>
+<li><strong>Hunt for authenticated VPN sessions with no matching authentication event.</strong> That's the most direct fingerprint: a session that exists although nobody ever presented credentials.</li>
+<li><strong>Correlate source IP geolocation against your actual footprint.</strong> Geographic proximity is engineered to look normal — but a commercial VPS IP in a region where you employ nobody is still an anomaly, however "nearby" it is.</li>
+<li><strong>Watch outbound Rclone traffic</strong>: large volumes to cloud storage from segments that don't back up to the cloud.</li>
+<li><strong>Look for Tox traffic</strong>, which has no legitimate reason to exist on a corporate network.</li>
+</ul>
+<h2 data-n="04." id="remediation">Remediation</h2>
+<p>Order matters here, because step two makes step one nearly redundant.</p>
+<ol>
+<li><strong>Apply hotfix sk185033.</strong> Immediately. Non-negotiable.</li>
+<li><strong>Disable IKEv1 and force IKEv2.</strong> This is the actual fix: it kills the whole class of problem, not one CVE.</li>
+<li><strong>Drop legacy client support.</strong> It's the reason IKEv1 was on in the first place; while it stays, the box gets re-ticked.</li>
+<li><strong>Enforce Machine Certificate Authentication.</strong></li>
+<li><strong>Turn IPS on</strong> at the gateway.</li>
+<li><strong>Require MFA on all VPN access.</strong></li>
+</ol>
+<p>Check Point further reports that the same infrastructure is <strong>likely hitting Palo Alto, Fortinet and F5</strong> as well. If that holds, this isn't a campaign against one vendor — it's a campaign against <strong>the edge-appliance category</strong>, and patching only Check Point means closing one window in a room with four.</p>
+<h2 data-n="05." id="what-it-teaches">What it teaches</h2>
+<p>One line in MITRE ATT&amp;CK matters more than the CVE itself. Qilin is catalogued as <strong>S1242</strong>, and the page notes that <strong>Moonstone Sleet — a North Korean state group — has deployed Qilin</strong>.</p>
+<p>That's where the "ransomware equals financial crime" category quietly breaks. A state actor doesn't license ransomware to get rich; it uses ransomware because it's <strong>ready-made infrastructure, deniable, and indistinguishable from criminal background noise</strong>. The RaaS economy has stopped being a market and become a <strong>shared platform for crooks and governments alike</strong>. Which means attribution, when you're staring at a Qilin encryptor, tells you almost nothing about motive — and the threat model that starts "we're too small to interest a nation-state" has just lost its premise.</p>
+<p>The operational lesson is duller, and more uncomfortable. This attack didn't succeed on the strength of a brilliant exploit. It succeeded because a protocol that should have been dead years ago was still answering. The gap between "deprecated" and "disabled" is where ransomware crews live — and no hotfix closes it. It gets closed by someone willing to break a legacy client, take the support calls the next morning, and switch IKEv1 off.</p></div>
+    <div class="sidebar"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Actor profile</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Actor</dt><dd>Qilin</dd></div><div class="field"><dt>Aliases</dt><dd>Agenda, Water Galura</dd></div><div class="field"><dt>First seen</dt><dd>July 2022</dd></div><div class="field"><dt>Targets</dt><dd>Global</dd></div><div class="field"><dt>Sectors</dt><dd>Undisclosed</dd></div></dl></aside>
+      <div class="sidebar__block"><div class="sidebar__label">MITRE ATT&CK techniques</div><div class="ttp-grid"><a class="ttp" href="https://attack.mitre.org/techniques/T1190/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1190</span> Exploit Public-Facing Application</a><a class="ttp" href="https://attack.mitre.org/techniques/T1133/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1133</span> External Remote Services</a><a class="ttp" href="https://attack.mitre.org/techniques/T1567/002/" data-tactic="Exfiltration" target="_blank" rel="noopener"><span class="ttp__id">T1567.002</span> Exfiltration to Cloud Storage</a></div></div>
+      <div class="sidebar__block"><div class="sidebar__label">Primary sources</div><ul class="sources"><li><a href="https://blog.checkpoint.com/security/check-point-releases-important-hotfix-for-vulnerabilities-in-deprecated-ikev1-vpn-protocol/" target="_blank" rel="noopener">Check Point Releases Important Hotfix for Vulnerabilities in Deprecated IKEv1 VPN Protocol</a></li><li><a href="https://support.checkpoint.com/results/sk/sk185033" target="_blank" rel="noopener">Check Point advisory sk185033</a></li><li><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-50751" target="_blank" rel="noopener">CISA Known Exploited Vulnerabilities Catalog — CVE-2026-50751</a></li><li><a href="https://attack.mitre.org/software/S1242/" target="_blank" rel="noopener">MITRE ATT&amp;CK — Qilin (S1242)</a></li></ul></div>
+    </div>
+  </div>
+</article></main>
+<footer class="footer shell">
+  <p class="disclaimer"><strong>HACK/PROJECT</strong> &mdash; analysis of publicly documented cyber attacks, mapped to MITRE ATT&amp;CK&reg;. Content is defensive and educational: we describe tactics and techniques as reported by agencies and researchers, without distributing offensive code. Where sources are uncertain, we say so in the text. ATT&amp;CK&reg; is a registered trademark of The MITRE Corporation; not affiliated with MITRE.</p>
+  <p><a href="https://github.com/SpiderCivi/HACK-PROJECT">github.com/SpiderCivi/HACK-PROJECT</a></p>
+</footer>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>
