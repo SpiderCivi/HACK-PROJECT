@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interlock, il ransomware che entra dalla porta principale — HACK/PROJECT</title>
+<meta name="description" content="Interlock ha ribaltato il copione del ransomware: niente phishing, niente VPN bucata. La vittima visita un sito legittimo compromesso, vede un finto CAPTCHA, e incolla da sola il c">
+<meta property="og:title" content="Interlock, il ransomware che entra dalla porta principale — HACK/PROJECT">
+<meta property="og:description" content="Interlock ha ribaltato il copione del ransomware: niente phishing, niente VPN bucata. La vittima visita un sito legittimo compromesso, vede un finto CAPTCHA, e incolla da sola il c">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<a class="skip" href="#main">Salta al contenuto</a>
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../index.html">HACK<em>/</em>PROJECT</a>
+    <nav class="masthead__nav" aria-label="Principale">
+      <a href="../index.html">Archivio</a>
+      <a href="https://github.com/SpiderCivi/HACK-PROJECT">Sorgente</a>
+    </nav>
+  </div>
+</header>
+<div class="shell">
+  <div class="ticker">
+    <span class="live">Threat feed attivo</span>
+    <span>Ultimo aggiornamento &mdash; 15.07.2026 10:06 CET</span>
+    <span>1 dossier pubblicati</span>
+    <span>Mappatura MITRE ATT&amp;CK</span>
+  </div>
+</div>
+<main id="main">
+
+<article class="article shell">
+  <header>
+    <p class="kicker" data-reveal style="--i:0">
+      15.07.2026 &nbsp;/&nbsp; Dossier &nbsp;/&nbsp;
+      <span class="sev sev--high">high</span>
+    </p>
+    <h1 class="hero__title" data-reveal style="--i:1">Interlock, il ransomware che entra dalla porta principale</h1>
+    <p class="hero__standfirst" data-reveal style="--i:2">Interlock ha ribaltato il copione del ransomware: niente phishing, niente VPN bucata. La vittima visita un sito legittimo compromesso, vede un finto CAPTCHA, e incolla da sola il comando che la infetta. Anatomia di una catena d&#x27;attacco in cui l&#x27;utente è l&#x27;exploit.</p>
+  </header>
+  <hr class="rule--double">
+  <div class="article__layout">
+    <div class="prose" data-reveal style="--i:4"><h2 data-n="01." id="lorigine">L'origine</h2>
+<p>Interlock compare per la prima volta a <strong>fine settembre 2024</strong>. Nei due anni successivi colpisce aziende, università e infrastrutture critiche tra Nord America ed Europa. L'FBI è netto su un punto: non è spionaggio, non c'è una nazione dietro. Gli attori <strong>scelgono le vittime per opportunità</strong>, e la motivazione è il denaro.</p>
+<p>C'è un dettaglio che ha attirato l'attenzione dei ricercatori: diverse analisi open source segnalano <strong>somiglianze tra Interlock e Rhysida</strong>, al punto che si ipotizza una derivazione o una condivisione di codice tra i due gruppi.</p>
+<p>Ma la cosa che rende Interlock interessante da studiare non è la sua origine. È <strong>come entra</strong>.</p>
+<h2 data-n="02." id="il-vettore-quando-lutente-e-lexploit">Il vettore: quando l'utente è l'exploit</h2>
+<p>La stragrande maggioranza dei gruppi ransomware entra in tre modi: phishing con allegato, credenziali comprate, o vulnerabilità nota su un dispositivo perimetrale. Interlock ne usa uno <strong>atipico</strong>, tanto che l'FBI lo segnala esplicitamente come "uncommon method among ransomware groups": il <strong>drive-by download da siti legittimi compromessi</strong>.</p>
+<p>Il funzionamento è questo. Gli attori compromettono un sito reale — uno che i dipendenti della vittima visitano normalmente, per lavoro. Su quel sito piazzano un payload mascherato da aggiornamento. All'inizio erano finti update di <strong>Google Chrome</strong> o <strong>Microsoft Edge</strong>. Poi, secondo Sekoia, il travestimento si è evoluto in qualcosa di più insidioso: <strong>finti aggiornamenti di software di sicurezza</strong>.</p>
+<pre><code>FortiClient.exe
+Ivanti-Secure-Access-Client.exe
+GlobalProtect.exe
+Cisco-Secure-Client.exe
+AnyConnectVPN.exe
+Webex.exe
+zyzoom_antimalware.exe
+</code></pre>
+<p>Guardate bene quella lista. Sono i nomi degli strumenti che il reparto IT <strong>dice ai dipendenti di tenere aggiornati</strong>. L'attaccante non sta aggirando la cultura della sicurezza aziendale: la sta usando come vettore. Un utente che vede "aggiorna il tuo client VPN" e clicca sta facendo, dal suo punto di vista, esattamente la cosa giusta.</p>
+<h3 id="clickfix-il-captcha-che-infetta">ClickFix: il CAPTCHA che infetta</h3>
+<p>La seconda variante di initial access è ancora più elegante, e vale la pena capirla perché è ormai ovunque — la stessa tecnica è stata usata da <strong>Lumma Stealer</strong> e <strong>DarkGate</strong>.</p>
+<p>Si chiama <strong>ClickFix</strong> e sfrutta un riflesso condizionato. All'utente compare un finto CAPTCHA: "verifica di non essere un robot". Ma invece della solita griglia di semafori, il CAPTCHA dà delle <em>istruzioni</em>:</p>
+<ol>
+<li>Premi <code>Windows + R</code></li>
+<li>Premi <code>CTRL + V</code></li>
+<li>Premi <code>Invio</code></li>
+</ol>
+<p>L'utente non lo sa, ma la pagina gli ha già messo negli appunti uno script <strong>PowerShell codificato in Base64</strong>. Seguendo le istruzioni, apre la finestra Esegui e lancia il payload <strong>con le proprie mani, sul proprio account, senza alcun exploit</strong>.</p>
+<p>Questo è il punto concettuale che rende ClickFix difficile da fermare: <strong>non c'è vulnerabilità da patchare</strong>. Nessun software si comporta in modo scorretto. L'antivirus non vede un exploit perché non c'è. Vede un utente che apre Esegui e lancia un comando — cosa che gli amministratori fanno dieci volte al giorno. In ATT&amp;CK questa tecnica ha un ID dedicato, <strong>T1204.004 (Malicious Copy and Paste)</strong>, e la sua esistenza dice molto: il framework ha dovuto creare una casella per "l'utente incolla da solo il proprio malware".</p>
+<h2 data-n="03." id="la-catena-dattacco">La catena d'attacco</h2>
+<p>Una volta eseguito il payload, la sequenza è metodica.</p>
+<h3 id="persistenza">Persistenza</h3>
+<p>Il finto eseguibile di Chrome è in realtà un <strong>RAT</strong>. Esegue uno script PowerShell che deposita un file nella cartella <strong>Esecuzione automatica</strong> di Windows: da quel momento il RAT riparte a ogni login. In alternativa, gli attori modificano il registro aggiungendo una chiave Run chiamata — con una certa sfacciataggine — <strong>"Chrome Updater"</strong>.</p>
+<p>È masquerading da manuale (<strong>T1036.005</strong>): un nome che nessun amministratore guarderà due volte.</p>
+<h3 id="ricognizione">Ricognizione</h3>
+<p>Uno script PowerShell raccoglie il quadro della macchina. Nulla di esotico, tutti comandi legittimi:</p>
+<pre><code>WindowsIdentity.GetCurrent()   → chi sono            (T1033)
+systeminfo                     → che macchina è      (T1082)
+tasklist /svc                  → cosa gira           (T1007)
+Get-Service                    → quali servizi       (T1007)
+Get-PSDrive                    → quali dischi e share(T1082)
+arp -a                         → chi c'è in rete     (T1016)
+</code></pre>
+<p>Nessuno di questi comandi è malevolo. È la <strong>sequenza</strong> a esserlo — sei comandi di discovery in pochi secondi, dallo stesso processo. Ed è esattamente lì che va costruita la detection.</p>
+<h3 id="credenziali">Credenziali</h3>
+<p>Stabilito il controllo remoto, scaricano un credential stealer (<code>cht.exe</code>) e un keylogger (<code>klg.dll</code>). Il primo raccoglie login e URL dai browser (<strong>T1555.003</strong>), il secondo registra i tasti in un file chiamato <code>conhost.txt</code> — di nuovo, un nome che sembra Windows.</p>
+<p>Da febbraio 2025 sono stati osservati anche <strong>Lumma Stealer</strong> e <strong>Berserk Stealer</strong>. Per arrivare agli account <strong>domain admin</strong>, i ricercatori Talos ipotizzano un attacco <strong>Kerberoasting</strong> (<strong>T1558.003</strong>).</p>
+<h3 id="movimento-laterale">Movimento laterale</h3>
+<p>Credenziali valide + <strong>RDP</strong> (<strong>T1021.001</strong>). Più <strong>AnyDesk</strong> per la connettività e <strong>PuTTY</strong> per gli spostamenti. Tutti strumenti legittimi, spesso già presenti e già in whitelist. È living-off-the-land: l'attaccante usa la vostra cassetta degli attrezzi.</p>
+<h3 id="esfiltrazione">Esfiltrazione</h3>
+<p>Qui c'è la scelta più astuta. Gli attori usano <strong>Azure Storage Explorer</strong> e <strong>AzCopy</strong> per caricare i dati su un blob Azure (<strong>T1567.002</strong>).</p>
+<p>Perché funziona: il traffico verso Azure esce da quasi tutte le reti aziendali senza far scattare nulla. È Microsoft. È già in whitelist. Un DLP che blocca l'upload verso domini sconosciuti non batte ciglio davanti a un trasferimento verso <code>*.blob.core.windows.net</code>.</p>
+<h3 id="impatto">Impatto</h3>
+<p>Il binario di cifratura si chiama — inevitabilmente — <strong><code>conhost.exe</code></strong>, come il legittimo Console Window Host di Windows. Cifra con <strong>AES + RSA</strong>. Esistono encryptor per <strong>Windows, Linux e persino FreeBSD</strong>: quest'ultimo è una rarità, e suggerisce un interesse per appliance e sistemi che spesso non hanno EDR.</p>
+<p>Un dettaglio operativo importante: Interlock <strong>cifra le macchine virtuali, lasciando host fisici e workstation intatti</strong>. Se il vostro EDR è installato sulle workstation ma non sulle VM, siete ciechi esattamente dove colpiscono.</p>
+<p>Dopo la cifratura, una DLL (<code>tmp41.wasd</code>) eseguita via <code>rundll32.exe</code> <strong>cancella il binario di cifratura</strong> (<strong>T1070.004</strong>). Niente artefatto, niente analisi.</p>
+<p>La nota di riscatto (<code>!__README__!.txt</code>) arriva via <strong>GPO</strong> — cioè usando l'infrastruttura di distribuzione dell'azienda stessa. Non contiene una cifra: solo un codice univoco e un indirizzo <code>.onion</code>. La doppia estorsione (<strong>T1657</strong>) è dichiarata, e il gruppo ha già dimostrato di pubblicare davvero i dati.</p>
+<h2 data-n="04." id="detection-dove-guardare">Detection: dove guardare</h2>
+<p>L'errore sarebbe cercare hash. Gli hash cambiano. I <strong>comportamenti</strong> no.</p>
+<p><strong>1. ClickFix lascia una traccia precisa.</strong> L'esecuzione via finestra Esegui popola <code>RunMRU</code> nel registro:</p>
+<pre><code>HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
+</code></pre>
+<p>Una voce in <code>RunMRU</code> che contiene <code>powershell</code>, <code>-enc</code>, o stringhe Base64 lunghe è un segnale ad altissima confidenza. Gli utenti normali non incollano PowerShell offuscato nella finestra Esegui. Questa singola regola intercetta ClickFix a prescindere dal payload.</p>
+<p><strong>2. PowerShell che genera processi figli anomali.</strong> <code>powershell.exe</code> che lancia <code>rundll32.exe</code>, o che scrive nella cartella Startup, o che modifica chiavi Run.</p>
+<p><strong>3. Nomi legittimi in posti sbagliati.</strong> <code>conhost.exe</code> vive in <code>C:\Windows\System32</code>. Se compare altrove, non è conhost. Stessa logica per <code>cht.exe</code> e <code>klg.dll</code>.</p>
+<p><strong>4. La sequenza di discovery.</strong> Sei comandi di ricognizione in rapida successione dallo stesso processo padre.</p>
+<p><strong>5. Traffico Azure anomalo.</strong> <code>AzCopy</code> o <code>StorageExplorer.exe</code> su un endpoint che non ha mai toccato Azure. Il volume in uscita conta più della destinazione.</p>
+<p><strong>6. EDR sulle VM.</strong> Non è una regola di detection, è un prerequisito. Interlock colpisce lì apposta.</p>
+<h2 data-n="05." id="rimedi">Rimedi</h2>
+<p>CISA e le agenzie coautrici raccomandano queste misure. Le ho ordinate per rapporto efficacia/sforzo contro <em>questa specifica</em> catena:</p>
+<p><strong>Contro l'initial access — dove si vince davvero:</strong></p>
+<ul>
+<li><strong>Filtraggio DNS</strong> per bloccare l'accesso a siti e applicazioni malevoli</li>
+<li><strong>Web application firewall</strong> per intercettare comandi o injection da domini sospetti</li>
+<li><strong>Formazione degli utenti</strong> a riconoscere e segnalare social engineering. Contro ClickFix il messaggio è uno solo, e deve essere letterale: <em>nessun sito web legittimo vi chiederà mai di premere Windows+R e incollare qualcosa</em>. Mai. Chi lo chiede vi sta attaccando.</li>
+</ul>
+<p><strong>Contro l'esecuzione:</strong></p>
+<ul>
+<li><strong>Limitare command line e scripting</strong> dove non servono (CPG 2.N). Non tutti gli utenti hanno bisogno di PowerShell.</li>
+<li><strong>EDR robusto su VM, sistemi e reti</strong> — con priorità alle VM, per i motivi visti sopra.</li>
+</ul>
+<p><strong>Contro il movimento laterale:</strong></p>
+<ul>
+<li><strong>Segmentazione di rete</strong> (CPG 2.F)</li>
+<li><strong>MFA su tutti i servizi</strong> possibili, in particolare webmail, VPN e accessi a sistemi critici (CPG 2.H)</li>
+<li><strong>Least privilege</strong> e audit degli account amministrativi (CPG 2.E)</li>
+<li><strong>Accesso just-in-time</strong>: gli account admin restano disabilitati finché non servono davvero</li>
+<li><strong>Filtrare il traffico</strong> impedendo a origini sconosciute di raggiungere servizi remoti interni</li>
+</ul>
+<p><strong>Per sopravvivere all'impatto:</strong></p>
+<ul>
+<li><strong>Backup offline, cifrati e immutabili</strong> (CPG 2.R) — immutabili è la parola chiave: un backup che l'attaccante può cancellare non è un backup</li>
+<li><strong>Piano di ripristino testato</strong> (CPG 5.A) con copie in posizione fisicamente separata</li>
+</ul>
+<p><strong>Sul pagamento:</strong> le agenzie non incoraggiano a pagare. Pagare non garantisce il recupero dei file, e finanzia il prossimo attacco.</p>
+<h2 data-n="06." id="cosa-insegna-interlock">Cosa insegna Interlock</h2>
+<p>Il tema di questo dossier non è un malware. È che <strong>la catena d'attacco più efficace del 2025-2026 non contiene un solo exploit</strong>.</p>
+<p>Un sito legittimo. Un CAPTCHA. Un utente che segue le istruzioni. PowerShell, che è preinstallato. RDP, che è già acceso. AnyDesk, che magari l'IT usa davvero. Azure, che è in whitelist. Nomi di file identici a quelli di Windows.</p>
+<p>Non c'è una CVE da patchare in tutta la sequenza. E questo ribalta la priorità difensiva: contro Interlock, un programma di patching perfetto vi protegge molto meno di un utente che sa che <strong>nessun CAPTCHA chiede di aprire la finestra Esegui</strong>.</p></div>
+    <div class="sidebar">
+      
+<aside class="dossier" data-reveal style="--i:3">
+  <div class="dossier__head">
+    <span>Scheda attore</span>
+    <span class="sev sev--high">high</span>
+  </div>
+  <dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Interlock</dd></div><div class="field"><dt>Alias</dt><dd>Possibile derivazione da Rhysida</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>Settembre 2024</dd></div><div class="field"><dt>Bersagli</dt><dd>Nord America, Europa</dd></div><div class="field"><dt>Settori</dt><dd>Sanità, Infrastrutture critiche, Università, Imprese</dd></div></dl>
+</aside>
+      <div class="sidebar__block">
+        <div class="sidebar__label">Tecniche MITRE ATT&amp;CK</div>
+        <div class="ttp-grid"><a class="ttp" href="https://attack.mitre.org/techniques/T1189/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1189</span> Drive-by Compromise</a><a class="ttp" href="https://attack.mitre.org/techniques/T1204/004/" data-tactic="Execution" target="_blank" rel="noopener"><span class="ttp__id">T1204.004</span> Malicious Copy and Paste</a><a class="ttp" href="https://attack.mitre.org/techniques/T1059/001/" data-tactic="Execution" target="_blank" rel="noopener"><span class="ttp__id">T1059.001</span> PowerShell</a><a class="ttp" href="https://attack.mitre.org/techniques/T1547/001/" data-tactic="Persistence" target="_blank" rel="noopener"><span class="ttp__id">T1547.001</span> Registry Run Keys / Startup Folder</a><a class="ttp" href="https://attack.mitre.org/techniques/T1036/005/" data-tactic="Defense Evasion" target="_blank" rel="noopener"><span class="ttp__id">T1036.005</span> Match Legitimate Name or Location</a><a class="ttp" href="https://attack.mitre.org/techniques/T1218/011/" data-tactic="Defense Evasion" target="_blank" rel="noopener"><span class="ttp__id">T1218.011</span> Rundll32</a><a class="ttp" href="https://attack.mitre.org/techniques/T1070/004/" data-tactic="Defense Evasion" target="_blank" rel="noopener"><span class="ttp__id">T1070.004</span> File Deletion</a><a class="ttp" href="https://attack.mitre.org/techniques/T1555/003/" data-tactic="Credential Access" target="_blank" rel="noopener"><span class="ttp__id">T1555.003</span> Credentials from Web Browsers</a><a class="ttp" href="https://attack.mitre.org/techniques/T1056/001/" data-tactic="Credential Access" target="_blank" rel="noopener"><span class="ttp__id">T1056.001</span> Keylogging</a><a class="ttp" href="https://attack.mitre.org/techniques/T1558/003/" data-tactic="Credential Access" target="_blank" rel="noopener"><span class="ttp__id">T1558.003</span> Kerberoasting</a><a class="ttp" href="https://attack.mitre.org/techniques/T1078/002/" data-tactic="Privilege Escalation" target="_blank" rel="noopener"><span class="ttp__id">T1078.002</span> Valid Accounts: Domain Accounts</a><a class="ttp" href="https://attack.mitre.org/techniques/T1021/001/" data-tactic="Lateral Movement" target="_blank" rel="noopener"><span class="ttp__id">T1021.001</span> Remote Desktop Protocol</a><a class="ttp" href="https://attack.mitre.org/techniques/T1530/" data-tactic="Collection" target="_blank" rel="noopener"><span class="ttp__id">T1530</span> Data from Cloud Storage</a><a class="ttp" href="https://attack.mitre.org/techniques/T1567/002/" data-tactic="Exfiltration" target="_blank" rel="noopener"><span class="ttp__id">T1567.002</span> Exfiltration to Cloud Storage</a><a class="ttp" href="https://attack.mitre.org/techniques/T1486/" data-tactic="Impact" target="_blank" rel="noopener"><span class="ttp__id">T1486</span> Data Encrypted for Impact</a><a class="ttp" href="https://attack.mitre.org/techniques/T1657/" data-tactic="Impact" target="_blank" rel="noopener"><span class="ttp__id">T1657</span> Financial Theft</a></div>
+      </div>
+      
+<div class="sidebar__block">
+  <div class="sidebar__label">Fonti primarie</div>
+  <ul class="sources"><li><a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa25-203a" target="_blank" rel="noopener">CISA AA25-203A — #StopRansomware: Interlock</a></li><li><a href="https://blog.talosintelligence.com/emerging-interlock-ransomware/" target="_blank" rel="noopener">Cisco Talos — Unwrapping the Emerging Interlock Ransomware Attack</a></li><li><a href="https://blog.sekoia.io/interlock-ransomware-evolving-under-the-radar/" target="_blank" rel="noopener">Sekoia — Interlock Ransomware Evolving Under the Radar</a></li><li><a href="https://www.bleepingcomputer.com/news/security/interlock-ransomware-gang-deploys-new-nodesnake-rat-on-universities/" target="_blank" rel="noopener">BleepingComputer — NodeSnake RAT deployed on universities</a></li><li><a href="https://www.bleepingcomputer.com/news/security/meet-interlock-the-new-ransomware-targeting-freebsd-servers/" target="_blank" rel="noopener">BleepingComputer — Interlock targeting FreeBSD servers</a></li></ul>
+</div>
+    </div>
+  </div>
+</article></main>
+<footer class="footer shell">
+  <p class="disclaimer">
+    <strong>HACK/PROJECT</strong> &mdash; analisi di attacchi informatici documentati pubblicamente,
+    mappati su MITRE ATT&amp;CK&reg;. Contenuto a scopo difensivo ed educativo: descriviamo tattiche e
+    tecniche cosi&#768; come riportate da ricercatori e vendor, senza distribuire codice offensivo.
+    ATT&amp;CK&reg; e&#768; un marchio registrato di The MITRE Corporation.
+  </p>
+  <p><a href="https://github.com/SpiderCivi/HACK-PROJECT">github.com/SpiderCivi/HACK-PROJECT</a></p>
+</footer>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>
