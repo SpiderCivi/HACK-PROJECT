@@ -1,0 +1,16 @@
+# Credenziali - MAI committare
+.env
+*.env
+!.env.example
+
+# Artefatti pipeline
+/build/
+/tmp/
+/audio/
+/video/
+node_modules/
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
