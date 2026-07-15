@@ -8,6 +8,10 @@ Disponibile in italiano e inglese. Ogni dossier è pubblicato anche come video s
 
 ---
 
+Questa repository contiene esclusivamente il sito generato, pubblicato via GitHub Pages.
+
 Contenuto difensivo ed educativo, costruito su fonti primarie: advisory CISA/FBI/NCSC, report vendor, ricerca open source. Dove l'attribuzione o le fonti sono incerte, lo dichiariamo nel testo.
 
 MITRE ATT&CK® è un marchio registrato di The MITRE Corporation. Progetto non affiliato a MITRE.
+
+© Riccardo Civiero

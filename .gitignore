@@ -1,15 +1,3 @@
-# Credenziali - MAI committare
 .env
 *.env
-!.env.example
-
-# Artefatti pipeline
-/build/
-/tmp/
-/audio/
-node_modules/
-
-# OS
-Thumbs.db
-desktop.ini
-.DS_Store
+__pycache__/
