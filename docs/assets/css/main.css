@@ -592,30 +592,6 @@ body::after {
 .sources a:hover { color: var(--signal); }
 
 /* ============================================================
-   FOOTER
-   ============================================================ */
-.footer {
-  border-top: 1px solid var(--rule);
-  margin-top: 5rem;
-  padding-block: 3rem 4rem;
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  color: var(--ink-faint);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: space-between;
-}
-.footer a { color: var(--ink-dim); }
-.footer a:hover { color: var(--oxide-lit); }
-
-.disclaimer {
-  max-width: 60ch;
-  line-height: 1.6;
-  color: var(--ink-faint);
-}
-
-/* ============================================================
    REVEAL — load staggered
    ============================================================ */
 @media (prefers-reduced-motion: no-preference) {
@@ -1146,3 +1122,96 @@ html, body { max-width: 100%; }
   color: var(--oxide-lit);
   margin-top: .25rem;
 }
+
+/* ============================================================
+   FOOTER a colonne
+   ============================================================ */
+.footer {
+  border-top: 1px solid var(--rule);
+  margin-top: clamp(3rem, 7vw, 6rem);
+  background: var(--paper-2);
+}
+.footer__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+}
+@media (max-width: 860px) { .footer__top { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .footer__top { grid-template-columns: 1fr; gap: 2rem; } }
+
+.footer__brand .wordmark { font-size: 1.5rem; display: block; margin-bottom: .5rem; }
+.footer__tag {
+  font-family: var(--mono); font-size: .62rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--oxide-lit); margin-bottom: 1rem;
+}
+.footer__disclaimer {
+  font-size: .85rem; line-height: 1.65; color: var(--ink-faint); max-width: 46ch;
+}
+.footer__col { display: flex; flex-direction: column; gap: .55rem; }
+.footer__label {
+  font-family: var(--mono); font-size: .6rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--ink-faint);
+  padding-bottom: .7rem; margin-bottom: .3rem; border-bottom: 1px solid var(--rule);
+}
+.footer__col a {
+  font-family: var(--mono); font-size: .74rem; color: var(--ink-dim);
+  overflow-wrap: anywhere; transition: color .2s;
+}
+.footer__col a:hover { color: var(--oxide-lit); }
+.footer__bottom {
+  display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between;
+  padding-block: 1.4rem 2.5rem; border-top: 1px solid var(--rule);
+  font-family: var(--mono); font-size: .64rem; color: var(--ink-faint);
+}
+.footer__legal { max-width: 76ch; line-height: 1.7; }
+
+/* ============================================================
+   HOME — intro, numeri, gravita', TikTok
+   ============================================================ */
+.intro { padding-block: clamp(2.5rem, 5vw, 4rem); }
+.intro__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  padding-block: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+@media (max-width: 860px) { .intro__grid { grid-template-columns: 1fr; } }
+.intro__text { font-size: 1.06rem; line-height: 1.8; color: var(--ink-dim); max-width: 58ch; text-wrap: pretty; }
+.intro__link {
+  display: inline-block; margin-top: 1.2rem;
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--oxide-lit);
+  border-bottom: 1px solid var(--rule); padding-bottom: 2px;
+}
+.intro__link:hover { border-bottom-color: var(--oxide); }
+
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule-soft); border: 1px solid var(--rule-soft); }
+.stat { background: var(--paper); padding: .9rem 1rem; }
+.stat__n { display: block; font-family: var(--display); font-size: 2rem; line-height: 1; color: var(--ink); }
+.stat__l { display: block; font-family: var(--mono); font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); margin-top: .35rem; }
+
+.sevbars { display: flex; flex-direction: column; gap: .55rem; }
+.sevbar { display: grid; grid-template-columns: 5.6rem 1fr 1.6rem; gap: .7rem; align-items: center; }
+.sevbar__track { height: 4px; background: var(--rule-soft); }
+.sevbar__fill { display: block; height: 100%; }
+.sevbar__fill--critical { background: var(--sev-critical); }
+.sevbar__fill--high { background: var(--sev-high); }
+.sevbar__fill--medium { background: var(--sev-medium); }
+.sevbar__fill--low { background: var(--sev-low); }
+.sevbar__n { font-family: var(--mono); font-size: .72rem; color: var(--ink-dim); text-align: right; }
+@media (max-width: 420px) { .sevbar { grid-template-columns: 5rem 1fr 1.4rem; gap: .5rem; } }
+
+.follow { padding-block: clamp(2rem, 4vw, 3rem); }
+.follow__inner {
+  display: flex; flex-wrap: wrap; gap: 1.5rem 2rem;
+  align-items: center; justify-content: space-between;
+  padding: clamp(1.6rem, 4vw, 2.5rem);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--oxide);
+  background: radial-gradient(ellipse 60% 120% at 15% 50%, rgba(194,65,12,.10), transparent 70%), var(--paper-2);
+}
+.follow__title { font-family: var(--display); font-weight: 400; font-size: clamp(1.6rem, 3.5vw, 2.2rem); line-height: 1.05; margin-top: .3rem; }
+.follow__body { font-size: .95rem; color: var(--ink-dim); margin-top: .5rem; max-width: 48ch; }

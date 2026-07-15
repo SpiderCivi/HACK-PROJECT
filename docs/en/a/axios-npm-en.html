@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/css/main.css?v=72816405">
+<link rel="stylesheet" href="../../assets/css/main.css?v=9e6cba58">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Axios: the manifest, the RAT, and the token nobody revoked", "description": "On 31 March 2026 two malicious axios releases added a booby-trapped dependency without touching a single line of source code. npm had rolled out OIDC Trusted Publishing to stop exactly this. The actor walked around it with an old classic token.", "datePublished": "2026-07-15", "dateModified": "2026-07-15", "inLanguage": "en", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/en/a/axios-npm-en.html", "author": {"@type": "Person", "name": "Riccardo Civiero", "url": "https://github.com/SpiderCivi"}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/"}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/en/axios-npm.svg"], "keywords": "Unattributed actor, T1195.001, T1059.001, T1059.006, T1105, T1071.001, T1547.001, T1036.005", "citation": [{"@type": "CreativeWork", "name": "Microsoft Threat Intelligence — Mitigating the axios npm supply chain compromise", "url": "https://www.microsoft.com/en-us/security/blog/2026/04/01/mitigating-the-axios-npm-supply-chain-compromise/"}, {"@type": "CreativeWork", "name": "CISA — Supply Chain Compromise Impacts axios Node Package Manager", "url": "https://www.cisa.gov/news-events/alerts/2026/04/20/supply-chain-compromise-impacts-axios-node-package-manager"}, {"@type": "CreativeWork", "name": "Axios — post-mortem (issue #10636)", "url": "https://github.com/axios/axios/issues/10636"}]}</script>
 </head>
 <body>
@@ -26,7 +26,6 @@
     <nav class="masthead__nav" aria-label="Main">
       <a href="../index.html">Archive</a>
       <a href="../about.html">About</a>
-      <a href="https://github.com/SpiderCivi/HACK-PROJECT">Source</a>
       <a class="lang" href="../../it/a/axios-npm.html" rel="alternate">Italiano</a>
     </nav>
   </div>
@@ -34,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed live</span>
-    <span>Updated &mdash; 15.07.2026 17:42 CET</span>
+    <span>Updated &mdash; 15.07.2026 17:47 CET</span>
     <span>11 dossiers</span>
     <span>MITRE ATT&CK mapping</span>
   </div>
@@ -110,9 +109,21 @@ npm config set ignore-scripts true
   <nav class="pager"><a class="pager__item pager__item--prev" href="medusa-ummc-en.html"><span>&larr; Previous</span><strong>Medusa and UMMC: The Clinic That Learned to Run Offline</strong></a><a class="pager__item pager__item--next" href="apt28-router-dns-en.html"><span>Next &rarr;</span><strong>The thirty-euro router that wiretapped foreign ministries</strong></a></nav>
 </article>
 <section class="rel shell"><div class="section-head"><h2>More dossiers</h2></div><div class="rel__grid"><a class="rel__card" href="apt28-router-dns-en.html"><img src="../../assets/img/en/apt28-router-dns.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>The thirty-euro router that wiretapped foreign ministries</h3></div></a><a class="rel__card" href="medusa-ummc-en.html"><img src="../../assets/img/en/medusa-ummc.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Medusa and UMMC: The Clinic That Learned to Run Offline</h3></div></a><a class="rel__card" href="qilin-checkpoint-en.html"><img src="../../assets/img/en/qilin-checkpoint.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Qilin and the Interest on Technical Debt: Logging Into a VPN Without a Password</h3></div></a></div></section></main>
-<footer class="footer shell">
-  <p class="disclaimer"><strong>HACK/PROJECT</strong> &mdash; analysis of publicly documented cyber attacks, mapped to MITRE ATT&amp;CK&reg;. Content is defensive and educational: we describe tactics and techniques as reported by agencies and researchers, without distributing offensive code. Where sources are uncertain, we say so in the text. ATT&amp;CK&reg; is a registered trademark of The MITRE Corporation; not affiliated with MITRE.</p>
-  <p><a href="https://github.com/SpiderCivi/HACK-PROJECT">github.com/SpiderCivi/HACK-PROJECT</a></p>
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="wordmark">HACK<em>/</em>PROJECT</p>
+        <p class="footer__tag">Daily Threat Intelligence</p>
+        <p class="footer__disclaimer"><strong>HACK/PROJECT</strong> &mdash; analysis of publicly documented cyber attacks, mapped to MITRE ATT&amp;CK&reg;. Content is defensive and educational: we describe tactics and techniques as reported by agencies and researchers, without distributing offensive code. Where sources are uncertain, we say so in the text. ATT&amp;CK&reg; is a registered trademark of The MITRE Corporation; not affiliated with MITRE.</p>
+      </div>
+      <div class="footer__col"><p class="footer__label">Archive</p><a href="../index.html">Latest dossiers</a><a href="../feed.xml">RSS</a></div><div class="footer__col"><p class="footer__label">About</p><a href="../about.html">About</a><a href="../about.html#contatti">Get in touch</a><a href="https://spidercivi.github.io/">Portfolio</a></div><div class="footer__col"><p class="footer__label">Follow</p><a href="https://www.tiktok.com/@h4ckprojct">TikTok</a><a href="https://github.com/SpiderCivi">GitHub</a><a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Riccardo Civiero</p>
+      <p class="footer__legal">Content published for defensive and educational purposes. MITRE ATT&amp;CK&reg; is a registered trademark of The MITRE Corporation; this project is not affiliated with or endorsed by MITRE, CISA or any vendor mentioned.</p>
+    </div>
+  </div>
 </footer>
 <script src="../../assets/js/main.js?v=b4b0f0fd" defer></script>
 </body>
