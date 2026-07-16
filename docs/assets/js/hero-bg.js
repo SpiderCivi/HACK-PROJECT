@@ -19,11 +19,11 @@
     c.width = W * dpr; c.height = H * dpr;
     x.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    const n = Math.round(Math.min(90, Math.max(34, (W * H) / 12000)));
+    const n = Math.round(Math.min(130, Math.max(52, (W * H) / 8200)));
     nodes = Array.from({ length: n }, () => ({
       x: R(0, W), y: R(0, H),
       vx: R(-0.09, 0.09), vy: R(-0.09, 0.09),
-      r: R(1, 2.6),
+      r: R(1.6, 4.2),
       c: Math.random() > 0.86 ? VIOLET : (Math.random() > 0.5 ? OXIDE : CYAN),
       ph: R(0, 6.28),
     }));
@@ -34,7 +34,7 @@
         const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
         if (dx * dx + dy * dy < D * D) links.push([i, j]);
       }
-    pulses = Array.from({ length: Math.max(6, (links.length / 14) | 0) }, () => ({
+    pulses = Array.from({ length: Math.max(14, (links.length / 7) | 0) }, () => ({
       l: (Math.random() * links.length) | 0, t: Math.random(), s: R(0.0016, 0.005),
     }));
   }
@@ -50,13 +50,13 @@
     }
 
     const D = Math.min(190, W / 7);
-    x.lineWidth = 0.7;
+    x.lineWidth = 1.05;
     for (const [i, j] of links) {
       const a = nodes[i], b = nodes[j];
       const dx = a.x - b.x, dy = a.y - b.y;
       const d = Math.hypot(dx, dy);
       if (d > D) continue;
-      x.strokeStyle = "rgba(" + CYAN + "," + (0.3 * (1 - d / D)).toFixed(3) + ")";
+      x.strokeStyle = "rgba(" + CYAN + "," + (0.72 * (1 - d / D)).toFixed(3) + ")";
       x.beginPath(); x.moveTo(a.x, a.y); x.lineTo(b.x, b.y); x.stroke();
     }
 
@@ -66,23 +66,23 @@
       const L = links[p.l]; if (!L) continue;
       const a = nodes[L[0]], b = nodes[L[1]];
       const px = a.x + (b.x - a.x) * p.t, py = a.y + (b.y - a.y) * p.t;
-      const g = x.createRadialGradient(px, py, 0, px, py, 7);
+      const g = x.createRadialGradient(px, py, 0, px, py, 11);
       g.addColorStop(0, "rgba(" + OXIDE + ",.95)");
       g.addColorStop(1, "rgba(" + OXIDE + ",0)");
       x.fillStyle = g;
-      x.beginPath(); x.arc(px, py, 7, 0, 6.284); x.fill();
+      x.beginPath(); x.arc(px, py, 11, 0, 6.284); x.fill();
     }
 
     for (const n of nodes) {
       const pulse = 0.55 + 0.45 * Math.sin(t * 1.1 + n.ph);
-      x.fillStyle = "rgba(" + n.c + "," + (0.75 * pulse).toFixed(3) + ")";
+      x.fillStyle = "rgba(" + n.c + "," + (0.98 * pulse).toFixed(3) + ")";
       x.beginPath(); x.arc(n.x, n.y, n.r, 0, 6.284); x.fill();
-      if (n.r > 2) {
-        const g = x.createRadialGradient(n.x, n.y, 0, n.x, n.y, 11);
-        g.addColorStop(0, "rgba(" + n.c + "," + (0.28 * pulse).toFixed(3) + ")");
+      if (n.r > 2.4) {
+        const g = x.createRadialGradient(n.x, n.y, 0, n.x, n.y, 18);
+        g.addColorStop(0, "rgba(" + n.c + "," + (0.6 * pulse).toFixed(3) + ")");
         g.addColorStop(1, "rgba(" + n.c + ",0)");
         x.fillStyle = g;
-        x.beginPath(); x.arc(n.x, n.y, 11, 0, 6.284); x.fill();
+        x.beginPath(); x.arc(n.x, n.y, 18, 0, 6.284); x.fill();
       }
     }
     raf = requestAnimationFrame(frame);

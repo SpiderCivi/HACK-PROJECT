@@ -1334,8 +1334,8 @@ html, body { max-width: 100%; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, var(--paper) 2%, rgba(11,11,15,.55) 46%, rgba(11,11,15,.3) 100%),
-    linear-gradient(180deg, var(--paper) 0%, transparent 22%, transparent 72%, var(--paper) 100%);
+    linear-gradient(90deg, rgba(11,11,15,.94) 0%, rgba(11,11,15,.88) 34%, rgba(11,11,15,.45) 52%, rgba(11,11,15,.05) 72%, transparent 100%),
+    linear-gradient(180deg, var(--paper) 0%, transparent 16%, transparent 80%, var(--paper) 100%);
 }
 @media (prefers-reduced-motion: reduce) { .hero__bg video { display: none; } }
 @media (max-width: 760px) { .hero__bg video { opacity: .22; } }
