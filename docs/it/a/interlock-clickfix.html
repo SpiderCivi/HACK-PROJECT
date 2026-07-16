@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/css/main.css?v=1ba4b459">
+<link rel="stylesheet" href="../../assets/css/main.css?v=ba8571bd">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Interlock, il ransomware che entra dalla porta principale", "description": "Interlock ha ribaltato il copione del ransomware: niente phishing, niente VPN bucata. La vittima visita un sito legittimo compromesso, vede un finto CAPTCHA, e incolla da sola il comando che la infetta. Anatomia di una catena d'attacco in cui l'utente è l'exploit.", "datePublished": "2026-07-15", "dateModified": "2026-07-15", "inLanguage": "it", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/it/a/interlock-clickfix.html", "author": {"@type": "Person", "name": "Riccardo Civiero", "url": "https://github.com/SpiderCivi"}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/"}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/it/interlock-clickfix.svg"], "keywords": "Interlock, T1189, T1204.004, T1059.001, T1547.001, T1036.005, T1218.011, T1070.004, T1555.003, T1056.001, T1558.003, T1078.002, T1021.001, T1530, T1567.002, T1486, T1657", "citation": [{"@type": "CreativeWork", "name": "CISA AA25-203A — #StopRansomware: Interlock", "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa25-203a"}, {"@type": "CreativeWork", "name": "Cisco Talos — Unwrapping the Emerging Interlock Ransomware Attack", "url": "https://blog.talosintelligence.com/emerging-interlock-ransomware/"}, {"@type": "CreativeWork", "name": "Sekoia — Interlock Ransomware Evolving Under the Radar", "url": "https://blog.sekoia.io/interlock-ransomware-evolving-under-the-radar/"}, {"@type": "CreativeWork", "name": "BleepingComputer — NodeSnake RAT deployed on universities", "url": "https://www.bleepingcomputer.com/news/security/interlock-ransomware-gang-deploys-new-nodesnake-rat-on-universities/"}, {"@type": "CreativeWork", "name": "BleepingComputer — Interlock targeting FreeBSD servers", "url": "https://www.bleepingcomputer.com/news/security/meet-interlock-the-new-ransomware-targeting-freebsd-servers/"}]}</script>
 </head>
 <body>
@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed attivo</span>
-    <span>Aggiornato &mdash; 16.07.2026 09:16 CET</span>
+    <span>Aggiornato &mdash; 16.07.2026 09:32 CET</span>
     <span>11 dossier</span>
     <span>Mappatura MITRE ATT&CK</span>
   </div>
@@ -44,7 +44,7 @@
 <article class="article shell">
   <nav class="crumb" aria-label="breadcrumb"><a href="../index.html">HACK/PROJECT</a><span>/</span><a href="../index.html">Archivio</a><span>/</span><em>Interlock, il ransomware che entra dalla porta p</em></nav>
   <header class="article__head">
-    <p class="kicker" data-reveal style="--i:0">15.07.2026 &nbsp;/&nbsp; <span class="sev sev--high">high</span> &nbsp;/&nbsp; 8 min di lettura</p>
+    <p class="eyebrow" data-reveal style="--i:0"><span class="eyebrow__topic">Interlock</span><span class="sev sev--high">high</span></p>
     <h1 class="article__title" data-reveal style="--i:1">Interlock, il ransomware che entra dalla porta principale</h1>
     <p class="article__standfirst" data-reveal style="--i:2">Interlock ha ribaltato il copione del ransomware: niente phishing, niente VPN bucata. La vittima visita un sito legittimo compromesso, vede un finto CAPTCHA, e incolla da sola il comando che la infetta. Anatomia di una catena d&#x27;attacco in cui l&#x27;utente è l&#x27;exploit.</p>
     <div class="byline" data-reveal style="--i:2">
@@ -55,6 +55,9 @@
       </div>
     </div>
   </header>
+  <div class="article__meta" data-reveal style="--i:2">
+    <span><i class="ti"></i>15.07.2026</span><span>8 min di lettura</span><span>5 fonti primarie</span>
+  </div>
   <figure class="dossier-video" data-reveal style="--i:3"><div class="dossier-video__frame"><video controls preload="none" playsinline poster="../../video/poster/interlock-clickfix-it.jpg" width="1080" height="1920"><source src="../../video/interlock-clickfix-it.mp4" type="video/mp4"></video></div></figure>
   <div class="article__layout">
     <div class="prose" data-reveal style="--i:4"><h2 id="lorigine">L'origine</h2>
@@ -172,7 +175,7 @@ arp -a                         → chi c'è in rete     (T1016)
         <p class="footer__tag">Threat Intelligence Quotidiana</p>
         <p class="footer__disclaimer"><strong>HACK/PROJECT</strong> &mdash; analisi di attacchi informatici documentati pubblicamente, mappati su MITRE ATT&amp;CK&reg;. Contenuto a scopo difensivo ed educativo: descriviamo tattiche e tecniche cosi&#768; come riportate da agenzie e ricercatori, senza distribuire codice offensivo. Dove le fonti sono incerte, lo dichiariamo nel testo. ATT&amp;CK&reg; e&#768; un marchio registrato di The MITRE Corporation; progetto non affiliato a MITRE.</p>
       </div>
-      <div class="footer__col"><p class="footer__label">Archivio</p><a href="../index.html">Ultimi dossier</a><a href="../feed.xml">RSS</a></div><div class="footer__col"><p class="footer__label">Chi sono</p><a href="../about.html">Chi sono</a><a href="../about.html#contatti">Contattami</a><a href="https://spidercivi.github.io/">Portfolio</a></div><div class="footer__col"><p class="footer__label">Segui</p><a href="https://www.tiktok.com/@h4ckprojct">TikTok</a><a href="https://github.com/SpiderCivi">GitHub</a><a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></div>
+      <div class="footer__col"><p class="footer__label">Archivio</p><a href="../index.html">Ultimi dossier</a><a href="../about.html">Chi sono</a></div><div class="footer__col"><p class="footer__label">Chi sono</p><a href="../about.html">Chi sono</a><a href="../about.html#contatti">Contattami</a><a href="https://spidercivi.github.io/">Portfolio</a></div><div class="footer__col"><p class="footer__label">Segui</p><a href="https://www.tiktok.com/@h4ckprojct">TikTok</a><a href="https://github.com/SpiderCivi">GitHub</a><a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></div>
     </div>
     <div class="footer__bottom">
       <p>&copy; 2026 Riccardo Civiero</p>

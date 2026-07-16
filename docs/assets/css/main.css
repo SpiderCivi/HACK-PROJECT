@@ -1242,3 +1242,98 @@ html, body { max-width: 100%; }
   transition: border-color .25s, transform .25s;
 }
 .entry:hover .entry__more { border-bottom-color: var(--oxide); transform: translateX(3px); }
+
+/* ============================================================
+   TESTATA — occhiello, riga dati, pull-quote, sfondo video
+   ============================================================ */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.2rem;
+}
+.eyebrow__topic {
+  font-family: var(--mono);
+  font-size: .64rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--oxide-lit);
+  border-left: 2px solid var(--oxide);
+  padding-left: .6rem;
+}
+
+/* riga dati sotto la firma, come i quotidiani serious */
+.article__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1.6rem;
+  padding: .9rem 0;
+  margin-bottom: clamp(1.5rem, 3vw, 2.2rem);
+  border-top: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
+  font-family: var(--mono);
+  font-size: .64rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.article__meta span { display: inline-flex; align-items: center; gap: .45rem; }
+.article__meta span::before {
+  content: "";
+  width: 4px; height: 4px;
+  background: var(--violet);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* pull-quote: la frase che il lettore ricorda */
+.prose blockquote.pull {
+  border-left: 0;
+  padding: 1.4rem 0 1.4rem 2rem;
+  margin-block: 2.4rem;
+  position: relative;
+  font-family: var(--display);
+  font-weight: 500;
+  font-style: normal;
+  font-size: clamp(1.3rem, 2.4vw, 1.65rem);
+  line-height: 1.35;
+  letter-spacing: -.015em;
+  color: var(--ink);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.prose blockquote.pull::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 1.4rem; bottom: 1.4rem;
+  width: 3px;
+  background: linear-gradient(180deg, var(--oxide), var(--violet));
+}
+.prose blockquote.pull p { margin: 0; }
+
+/* sfondo video dell'intestazione */
+.hero { position: relative; isolation: isolate; }
+.hero__bg {
+  position: absolute;
+  inset: -1px calc(var(--gutter) * -1);
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hero__bg video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: .34;
+  filter: saturate(1.15) contrast(1.05);
+}
+.hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, var(--paper) 4%, rgba(11,11,15,.72) 42%, rgba(11,11,15,.5) 100%),
+    linear-gradient(180deg, var(--paper) 0%, transparent 22%, transparent 72%, var(--paper) 100%);
+}
+@media (prefers-reduced-motion: reduce) { .hero__bg video { display: none; } }
+@media (max-width: 760px) { .hero__bg video { opacity: .22; } }
