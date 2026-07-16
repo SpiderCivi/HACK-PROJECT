@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HACK/PROJECT — Threat Intelligence Quotidiana</title>
-<meta name="description" content="APT28 ha trasformato migliaia di router domestici in una rete di intercettazione contro ministeri degli esteri e forze dell&#x27;ordine, dirottando il DNS per rubare token OAuth gi">
+<meta name="description" content="Circa metà dei firewall Fortinet esposti su internet ha le credenziali amministrative in mano a un access broker. Non c&#x27;è una CVE da patchare: ci sono file di configurazione e">
 <meta property="og:title" content="HACK/PROJECT — Threat Intelligence Quotidiana">
-<meta property="og:description" content="APT28 ha trasformato migliaia di router domestici in una rete di intercettazione contro ministeri degli esteri e forze dell&#x27;ordine, dirottando il DNS per rubare token OAuth gi">
+<meta property="og:description" content="Circa metà dei firewall Fortinet esposti su internet ha le credenziali amministrative in mano a un access broker. Non c&#x27;è una CVE da patchare: ci sono file di configurazione e">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" hreflang="it" href="https://spidercivi.github.io/HACK-PROJECT/it/">
@@ -32,8 +32,8 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed attivo</span>
-    <span>Aggiornato &mdash; 16.07.2026 10:21 CET</span>
-    <span>11 dossier</span>
+    <span>Aggiornato &mdash; 16.07.2026 11:38 CET</span>
+    <span>12 dossier</span>
     <span>Mappatura MITRE ATT&CK</span>
   </div>
 </div>
@@ -42,15 +42,15 @@
 
 <section class="hero shell">
   <div class="hero__text">
-    <p class="kicker" data-reveal style="--i:0">Dossier del giorno &nbsp;/&nbsp; 15.07.2026</p>
-    <h1 class="hero__title" data-reveal style="--i:1">Il router da trenta euro che intercettava i ministeri degli esteri</h1>
-    <p class="hero__standfirst" data-reveal style="--i:2">APT28 ha trasformato migliaia di router domestici in una rete di intercettazione contro ministeri degli esteri e forze dell&#x27;ordine, dirottando il DNS per rubare token OAuth già autenticati. Nessun malware sofisticato: solo l&#x27;infrastruttura più trascurata del pianeta, e un tribunale americano che ha autorizzato l&#x27;FBI a entrare in cinquemila dispositivi privati per ripulirli.</p>
-    <p data-reveal style="--i:3"><a class="cta" href="a/apt28-router-dns.html">Leggi il dossier &rarr;</a></p>
+    <p class="kicker" data-reveal style="--i:0">Dossier del giorno &nbsp;/&nbsp; 16.07.2026</p>
+    <h1 class="hero__title" data-reveal style="--i:1">FortiBleed: non c&#x27;è una patch, perché non c&#x27;è una vulnerabilità</h1>
+    <p class="hero__standfirst" data-reveal style="--i:2">Circa metà dei firewall Fortinet esposti su internet ha le credenziali amministrative in mano a un access broker. Non c&#x27;è una CVE da patchare: ci sono file di configurazione esportati, hash SHA-256 crackati offline e login perfettamente legittimi. A luglio SOCRadar ha collegato l&#x27;operazione ai ransomware INC e Lynx.</p>
+    <p data-reveal style="--i:3"><a class="cta" href="a/fortibleed-inc-lynx.html">Leggi il dossier &rarr;</a></p>
   </div>
-  <a class="hero__art" href="a/apt28-router-dns.html" aria-hidden="true" tabindex="-1"><img src="../assets/img/it/apt28-router-dns.svg" alt="" width="1200" height="675"></a>
+  <a class="hero__art" href="a/fortibleed-inc-lynx.html" aria-hidden="true" tabindex="-1"><img src="../assets/img/it/fortibleed-inc-lynx.svg" alt="" width="1200" height="675"></a>
 </section>
 
-<section class="shell"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>APT28</dd></div><div class="field"><dt>Alias</dt><dd>Fancy Bear, Forest Blizzard, STRONTIUM, Sofacy, Sednit, Pawn Storm</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>Maggio 2025</dd></div><div class="field"><dt>Bersagli</dt><dd>Nord Africa, America Centrale, Sud-Est asiatico, Europa, Afghanistan</dd></div><div class="field"><dt>Settori</dt><dd>Governo, Diplomazia, Forze dell'ordine, Provider email e cloud</dd></div></dl></aside></section>
+<section class="shell"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--high">high</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Initial Access Broker russofono (valutazione SOCRadar, attribuzione formale non confermata)</dd></div><div class="field"><dt>Alias</dt><dd>FortiBleed, CyberStrike Harvester, INC Ransom, Lynx</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>Giugno 2026 (disclosure)</dd></div><div class="field"><dt>Bersagli</dt><dd>194 paesi, Telecomunicazioni, PA, sanità, finanza, energia</dd></div><div class="field"><dt>Settori</dt><dd>Tutti i settori</dd></div></dl></aside></section>
 
 <section class="intro shell">
   <div class="intro__grid">
@@ -61,16 +61,26 @@
     </div>
     <div class="intro__side">
       <p class="sidebar__label">A colpo d'occhio</p>
-      <div class="stats"><div class="stat"><span class="stat__n">11</span><span class="stat__l">dossier</span></div><div class="stat"><span class="stat__n">2</span><span class="stat__l">lingue</span></div><div class="stat"><span class="stat__n">39</span><span class="stat__l">fonti primarie</span></div><div class="stat"><span class="stat__n">54</span><span class="stat__l">tecniche ATT&CK</span></div></div>
+      <div class="stats"><div class="stat"><span class="stat__n">12</span><span class="stat__l">dossier</span></div><div class="stat"><span class="stat__n">2</span><span class="stat__l">lingue</span></div><div class="stat"><span class="stat__n">44</span><span class="stat__l">fonti primarie</span></div><div class="stat"><span class="stat__n">57</span><span class="stat__l">tecniche ATT&CK</span></div></div>
       <p class="sidebar__label" style="margin-top:1.6rem">Per gravità</p>
-      <div class="sevbars"><div class="sevbar"><span class="sev sev--critical">critical</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--critical" style="width:64%"></i></div><span class="sevbar__n">7</span></div><div class="sevbar"><span class="sev sev--high">high</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--high" style="width:36%"></i></div><span class="sevbar__n">4</span></div></div>
+      <div class="sevbars"><div class="sevbar"><span class="sev sev--critical">critical</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--critical" style="width:58%"></i></div><span class="sevbar__n">7</span></div><div class="sevbar"><span class="sev sev--high">high</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--high" style="width:42%"></i></div><span class="sevbar__n">5</span></div></div>
     </div>
   </div>
 </section>
 
 <section class="archive shell">
-  <div class="section-head"><h2>Archivio</h2><span class="count">11 dossier</span></div>
+  <div class="section-head"><h2>Archivio</h2><span class="count">12 dossier</span></div>
   <div class="entries">
+<a class="entry" href="a/apt28-router-dns.html">
+  <img class="entry__thumb" src="../assets/img/it/apt28-router-dns.svg" alt="" width="1200" height="675" loading="lazy">
+  <div class="entry__body">
+    <time class="entry__date" datetime="2026-07-15">15.07.2026</time>
+    <h3 class="entry__title">Il router da trenta euro che intercettava i ministeri degli esteri</h3>
+    <p class="entry__summary">APT28 ha trasformato migliaia di router domestici in una rete di intercettazione contro ministeri degli esteri e forze dell&#x27;ordine, dirottando il&hellip;</p>
+    <p class="entry__actor">APT28 &nbsp;·&nbsp; <span class="sev sev--critical">critical</span></p>
+    <span class="entry__more">Continua a leggere &rarr;</span>
+  </div>
+</a>
 <a class="entry" href="a/axios-npm.html">
   <img class="entry__thumb" src="../assets/img/it/axios-npm.svg" alt="" width="1200" height="675" loading="lazy">
   <div class="entry__body">

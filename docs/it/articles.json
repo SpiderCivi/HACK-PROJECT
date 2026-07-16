@@ -1,5 +1,24 @@
 [
   {
+    "title": "FortiBleed: non c'è una patch, perché non c'è una vulnerabilità",
+    "slug": "fortibleed-inc-lynx",
+    "date": "2026-07-16",
+    "severity": "high",
+    "actor": [
+      "Initial Access Broker russofono (valutazione SOCRadar, attribuzione formale non confermata)"
+    ],
+    "summary": "Circa metà dei firewall Fortinet esposti su internet ha le credenziali amministrative in mano a un access broker. Non c'è una CVE da patchare: ci sono file di configurazione esportati, hash SHA-256 crackati offline e login perfettamente legittimi. A luglio SOCRadar ha collegato l'operazione ai ransomware INC e Lynx.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/fortibleed-inc-lynx.html",
+    "mitre": [
+      "T1078",
+      "T1133",
+      "T1602.002",
+      "T1040",
+      "T1110.004",
+      "T1552.001"
+    ]
+  },
+  {
     "title": "Il router da trenta euro che intercettava i ministeri degli esteri",
     "slug": "apt28-router-dns",
     "date": "2026-07-15",

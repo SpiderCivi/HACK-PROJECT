@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FortiBleed: non c&#x27;è una patch, perché non c&#x27;è una vulnerabilità — HACK/PROJECT</title>
+<meta name="description" content="Circa metà dei firewall Fortinet esposti su internet ha le credenziali amministrative in mano a un access broker. Non c&#x27;è una CVE da patchare: ci sono file di configurazione e">
+<meta property="og:title" content="FortiBleed: non c&#x27;è una patch, perché non c&#x27;è una vulnerabilità — HACK/PROJECT">
+<meta property="og:description" content="Circa metà dei firewall Fortinet esposti su internet ha le credenziali amministrative in mano a un access broker. Non c&#x27;è una CVE da patchare: ci sono file di configurazione e">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="it" href="https://spidercivi.github.io/HACK-PROJECT/it/">
+<link rel="alternate" hreflang="en" href="https://spidercivi.github.io/HACK-PROJECT/en/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/main.css?v=c17cc88a">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "FortiBleed: non c'è una patch, perché non c'è una vulnerabilità", "description": "Circa metà dei firewall Fortinet esposti su internet ha le credenziali amministrative in mano a un access broker. Non c'è una CVE da patchare: ci sono file di configurazione esportati, hash SHA-256 crackati offline e login perfettamente legittimi. A luglio SOCRadar ha collegato l'operazione ai ransomware INC e Lynx.", "datePublished": "2026-07-16", "dateModified": "2026-07-16", "inLanguage": "it", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/it/a/fortibleed-inc-lynx.html", "author": {"@type": "Person", "name": "Riccardo Civiero", "url": "https://github.com/SpiderCivi"}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/"}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/it/fortibleed-inc-lynx.svg"], "keywords": "Initial Access Broker russofono (valutazione SOCRadar, attribuzione formale non confermata), T1078, T1133, T1602.002, T1040, T1110.004, T1552.001", "citation": [{"@type": "CreativeWork", "name": "CISA — Urges Hardening Fortinet Devices After Reports of Credential Exposure", "url": "https://www.cisa.gov/news-events/alerts/2026/06/18/cisa-urges-hardening-fortinet-devices-after-reports-credential-exposure"}, {"@type": "CreativeWork", "name": "Arctic Wolf Labs — Inside FortiBleed: Reverse Engineering the CyberStrike Harvester", "url": "https://arcticwolf.com/resources/blog/inside-fortibleed-reverse-engineering-the-cyberstrike-harvester-behind-a-global-fortigate-credential-factory/"}, {"@type": "CreativeWork", "name": "SOCRadar STRU — FortiBleed Campaign Linked to INC and Lynx Ransomware", "url": "https://socradar.io/blog/fortibleed-inc-lynx-ransomware-link/"}, {"@type": "CreativeWork", "name": "Fortinet PSIRT — FG-IR-26-060", "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-060"}, {"@type": "CreativeWork", "name": "Cloud Security Alliance — Research Note: FortiBleed", "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-fortibleed-default-credentials-20260620-cs/"}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Salta al contenuto</a>
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../index.html">HACK<em>/</em>PROJECT</a>
+    <span class="masthead__tagline">Threat Intelligence Quotidiana</span>
+    <nav class="masthead__nav" aria-label="Principale">
+      <a href="../index.html">Archivio</a>
+      <a href="../about.html">Chi sono</a>
+      <a class="lang" href="../../en/a/fortibleed-inc-lynx-en.html" rel="alternate">English</a>
+    </nav>
+  </div>
+</header>
+<div class="shell">
+  <div class="ticker">
+    <span class="live">Threat feed attivo</span>
+    <span>Aggiornato &mdash; 16.07.2026 11:38 CET</span>
+    <span>12 dossier</span>
+    <span>Mappatura MITRE ATT&CK</span>
+  </div>
+</div>
+<div class="progress" aria-hidden="true"><i></i></div>
+<main id="main">
+
+<article class="article shell">
+  <nav class="crumb" aria-label="breadcrumb"><a href="../index.html">HACK/PROJECT</a><span>/</span><a href="../index.html">Archivio</a><span>/</span><em>FortiBleed: non c&#x27;è una patch, perché non c</em></nav>
+  <header class="article__head">
+    <p class="eyebrow" data-reveal style="--i:0"><span class="eyebrow__topic">Initial Access Broker russofono (valutazione SOCRadar, attribuzione formale non confermata)</span><span class="sev sev--high">high</span></p>
+    <h1 class="article__title" data-reveal style="--i:1">FortiBleed: non c&#x27;è una patch, perché non c&#x27;è una vulnerabilità</h1>
+    <p class="article__standfirst" data-reveal style="--i:2">Circa metà dei firewall Fortinet esposti su internet ha le credenziali amministrative in mano a un access broker. Non c&#x27;è una CVE da patchare: ci sono file di configurazione esportati, hash SHA-256 crackati offline e login perfettamente legittimi. A luglio SOCRadar ha collegato l&#x27;operazione ai ransomware INC e Lynx.</p>
+    <div class="byline" data-reveal style="--i:2">
+      <img class="byline__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="40" height="40" loading="lazy">
+      <div class="byline__meta">
+        <span class="byline__name">di <a href="../about.html">Riccardo Civiero</a></span>
+        <span class="byline__handle">@SpiderCivi &nbsp;·&nbsp; 16.07.2026</span>
+      </div>
+    </div>
+  </header>
+  <div class="article__meta" data-reveal style="--i:2">
+    <span><i class="ti"></i>16.07.2026</span><span>5 min di lettura</span><span>5 fonti primarie</span>
+  </div>
+  <figure class="dossier-video" data-reveal style="--i:3"><div class="dossier-video__frame"><video controls preload="none" playsinline poster="../../video/poster/fortibleed-inc-lynx-it.jpg" width="1080" height="1920"><source src="../../video/fortibleed-inc-lynx-it.mp4" type="video/mp4"></video></div></figure>
+  <div class="article__layout">
+    <div class="prose" data-reveal style="--i:4"><h2 id="la-cosa-che-manca">La cosa che manca</h2>
+<p class="lede">Ogni dossier di questo sito, finora, ha avuto al centro un difetto: un CVE, una deserializzazione, un header non validato. FortiBleed non ne ha. Non c'è un bug, non c'è un exploit, non c'è una patch che chiuda la faccenda — e Fortinet, su questo, ha ragione. È esattamente ciò che lo rende difficile da gestire.</p>
+<p>Il 13 giugno 2026 il ricercatore Volodymyr «Bob» Diachenko rende pubblico un server di un attaccante rimasto esposto su internet: dentro, un database in crescita di credenziali amministrative FortiGate, già validate. Il 16 giugno SOCRadar e Arctic Wolf pubblicano l'analisi. Il 18 giugno CISA emette un alert di hardening. Il 22 giugno Fortinet risponde formalmente, rimandando agli advisory <a href="https://fortiguard.fortinet.com/psirt/FG-IR-26-060">FG-IR-26-060</a> e FG-IR-25-647.</p>
+<p>I dispositivi con credenziali confermate arrivano a <strong>86.644, in 194 paesi</strong>: circa <strong>metà di tutti i firewall Fortinet raggiungibili da internet</strong>.</p>
+<h2 id="come-funziona-una-campagna-senza-exploit">Come funziona una campagna senza exploit</h2>
+<p>La catena è banale, e la banalità è il punto. L'attaccante scansiona internet in cerca di FortiGate con l'interfaccia di gestione o l'endpoint SSL VPN esposti. Da questi estrae il <strong>file di configurazione</strong> — un file nato per i backup e le migrazioni, che contiene la topologia della rete e gli hash delle password di amministratori e utenti locali. Poi cracka gli hash offline, con cluster GPU affittati a ore.</p>
+<p>Il bersaglio sono i vecchi hash <strong>SHA-256 con sale</strong>, veloci da testare. Fortinet è passata a PBKDF2 nelle build 7.2.11, 7.4.8 e 7.6.1, con una condizione che vale la pena leggere due volte: <strong>l'aggiornamento non riscrive gli hash esistenti</strong>. Ogni amministratore resta su SHA-256 finché non fa il primo login <em>dopo</em> l'upgrade. E c'è di peggio: per retrocompatibilità quelle build conservano l'hash originale in un campo nascosto <code>old-password</code>, invisibile dalla console ma leggibile in qualunque backup di configurazione. Un dispositivo che <em>credi</em> protetto da PBKDF2 può ancora consegnare materiale crackabile.</p>
+<p>A quel punto l'attaccante fa login. Niente shellcode, niente file su disco, niente da intercettare al perimetro: <strong>le credenziali sono corrette, l'autenticazione riesce perché deve riuscire</strong>.</p>
+<h2 id="il-loop">Il loop</h2>
+<p>Qui la campagna smette di essere un furto di credenziali e diventa una macchina. Ottenuto l'accesso amministrativo, l'attaccante configura il firewall come <strong>posto d'ascolto passivo</strong>. Arctic Wolf ha fatto reverse engineering della toolchain: un pannello «FortiGate Sniffer» che pilota la cattura, e un binario Go chiamato <strong>CyberStrike Harvester v1.5</strong> che digerisce pcap e testo FortiGate estraendo credenziali da NTLM, Kerberos, RADIUS, TACACS+, LDAP, HTTP, FTP, MSSQL, cookie e token di sessione — già formattati per Hashcat.</p>
+<p>Il firewall non viene bucato: viene <em>usato per quello che sa fare</em>. Sta al confine, tutto il traffico di autenticazione gli passa davanti per definizione, e il comando FortiOS per catturarlo è nel manuale.</p>
+<p>Le credenziali raccolte rientrano nell'infrastruttura di scansione e generano il bersaglio successivo. Arctic Wolf lo chiama <em>credential feedback loop</em>: <strong>ogni vittima è insieme bersaglio e reclutatore</strong>. Fra il 31 maggio e il 15 giugno: 659 pipeline di raccolta, oltre <strong>110 milioni di credenziali</strong>.</p>
+<h2 id="dove-finisce-laccesso">Dove finisce l'accesso</h2>
+<p>Per due settimane la domanda aperta è stata: un access broker vende, ma a chi?</p>
+<p>Il 1° luglio SOCRadar risponde, per la via più antica: <strong>un errore di OPSEC degli attaccanti</strong>. Un server lasciato accessibile ha esposto file interni, log e documentazione operativa. Dentro, un operatore risultava <strong>loggato nei pannelli di negoziazione di INC Ransom e di Lynx</strong>, intento a trattare riscatti. Secondo riscontro indipendente: le vittime di FortiBleed si sovrappongono a quelle di una directory aperta collegata a INC.</p>
+<p>Dagli stessi documenti emerge un'organizzazione di <strong>circa 20 persone</strong> con divisione del lavoro: un nucleo ristretto per le intrusioni ad alto impatto, specialisti, un back-office di junior. La fase post-accesso: scansione di ~11.250 portali FortiGate in oltre 150 paesi, accesso admin confermato su <strong>409</strong> bersagli, catena completa — VPN, domain controller, domain admin — su <strong>354</strong>, e almeno <strong>12 deployment di ransomware</strong> con centinaia di endpoint cifrati.</p>
+<h2 id="cosa-non-sappiamo">Cosa non sappiamo</h2>
+<p>Molto.</p>
+<ul>
+<li><strong>I numeri non concordano</strong> perché non misurano la stessa cosa: ~74.000 dispositivi (CISA, 18 giugno), 86.644 (19 giugno), 430.000+ <em>bersagliati</em>, 110 milioni di <em>credenziali</em>, 30.000-75.000 <em>verificate</em> secondo Arctic Wolf. Stadi di validazione diversi, in date diverse.</li>
+<li><strong>L'attribuzione è una valutazione, non un fatto.</strong> «Russofono» deriva da indicatori indiretti sull'infrastruttura. Nessuna agenzia l'ha confermata formalmente.</li>
+<li><strong>Il legame con INC e Lynx poggia su un solo vendor</strong>, che trattiene alias, tooling e IOC in attesa del whitepaper. Evidenza forte, non ancora replicata da terzi.</li>
+<li><strong>Fortinet non condivide l'inquadramento</strong>: parla di riuso di credenziali da incidenti precedenti più brute force contro dispositivi senza igiene delle password né MFA, e dichiara l'attività «non collegata ad alcun incidente o advisory recente».</li>
+<li><strong>Sull'AI i vendor si contraddicono.</strong> Alcuni report descrivono tooling AI-assistito; Arctic Wolf ha esaminato il materiale recuperato e scrive che l'automazione è massiccia ma <strong>non prova un processo decisionale basato su AI</strong>: il marchio «CyberStrike» usa linguaggio da «AI pentest», e questo è quanto.</li>
+</ul>
+<p>Gli ID ATT&amp;CK in testa a questo dossier sono copiati dalla mappatura pubblicata da Arctic Wolf Labs, non dedotti.</p>
+<h2 id="cosa-si-fa">Cosa si fa</h2>
+<p>Senza aspettare un aggiornamento che non esiste: togliere interfaccia di gestione e SSL VPN dall'esposizione diretta a internet — la mitigazione a impatto più alto; ruotare <strong>tutte</strong> le credenziali admin, utente locale e VPN, trattandole come già compromesse; imporre MFA resistente al phishing (FIDO2 o certificati) su ogni accesso amministrativo e remoto.</p>
+<p>Poi la parte che quasi tutti sbagliano: aggiornare a 7.2.11 / 7.4.8 / 7.6.1, far fare a <strong>ogni</strong> amministratore un login post-upgrade, e su 7.2.x e 7.4.x abilitare <code>login-lockout-upon-weaker-encryption</code> per purgare gli SHA-256 residui. L'upgrade da solo non basta.</p>
+<p>Per la caccia retrospettiva l'indicatore migliore è documentato: <strong>export del file di configurazione verso un IP esterno</strong> nei log di audit del FortiGate. Poi login admin da geografie anomale, account nuovi fuori workflow, modifiche alla configurazione di logging.</p>
+<p>La finestra della patch è delimitata, quella delle credenziali no. Un CVE ti dà uno scope e una data. Un database di credenziali valide resta aperto finché non le ruoti tu, una per una — e sopravvive a qualunque aggiornamento.</p></div>
+    <div class="sidebar">
+      <aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--high">high</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Initial Access Broker russofono (valutazione SOCRadar, attribuzione formale non confermata)</dd></div><div class="field"><dt>Alias</dt><dd>FortiBleed, CyberStrike Harvester, INC Ransom, Lynx</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>Giugno 2026 (disclosure)</dd></div><div class="field"><dt>Bersagli</dt><dd>194 paesi, Telecomunicazioni, PA, sanità, finanza, energia</dd></div><div class="field"><dt>Settori</dt><dd>Tutti i settori</dd></div></dl></aside>
+      <div class="sidebar__block"><div class="sidebar__label">Tecniche MITRE ATT&CK</div><div class="ttp-grid"><a class="ttp" href="https://attack.mitre.org/techniques/T1078/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1078</span> Valid Accounts</a><a class="ttp" href="https://attack.mitre.org/techniques/T1133/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1133</span> External Remote Services</a><a class="ttp" href="https://attack.mitre.org/techniques/T1602/002/" data-tactic="Collection" target="_blank" rel="noopener"><span class="ttp__id">T1602.002</span> Network Device Configuration Dump</a><a class="ttp" href="https://attack.mitre.org/techniques/T1040/" data-tactic="Credential Access" target="_blank" rel="noopener"><span class="ttp__id">T1040</span> Network Sniffing</a><a class="ttp" href="https://attack.mitre.org/techniques/T1110/004/" data-tactic="Credential Access" target="_blank" rel="noopener"><span class="ttp__id">T1110.004</span> Credential Stuffing</a><a class="ttp" href="https://attack.mitre.org/techniques/T1552/001/" data-tactic="Credential Access" target="_blank" rel="noopener"><span class="ttp__id">T1552.001</span> Credentials In Files</a></div></div>
+      <div class="sidebar__block"><div class="sidebar__label">Fonti primarie</div><ul class="sources"><li><a href="https://www.cisa.gov/news-events/alerts/2026/06/18/cisa-urges-hardening-fortinet-devices-after-reports-credential-exposure" target="_blank" rel="noopener">CISA — Urges Hardening Fortinet Devices After Reports of Credential Exposure</a></li><li><a href="https://arcticwolf.com/resources/blog/inside-fortibleed-reverse-engineering-the-cyberstrike-harvester-behind-a-global-fortigate-credential-factory/" target="_blank" rel="noopener">Arctic Wolf Labs — Inside FortiBleed: Reverse Engineering the CyberStrike Harvester</a></li><li><a href="https://socradar.io/blog/fortibleed-inc-lynx-ransomware-link/" target="_blank" rel="noopener">SOCRadar STRU — FortiBleed Campaign Linked to INC and Lynx Ransomware</a></li><li><a href="https://fortiguard.fortinet.com/psirt/FG-IR-26-060" target="_blank" rel="noopener">Fortinet PSIRT — FG-IR-26-060</a></li><li><a href="https://labs.cloudsecurityalliance.org/research/csa-research-note-fortibleed-default-credentials-20260620-cs/" target="_blank" rel="noopener">Cloud Security Alliance — Research Note: FortiBleed</a></li></ul></div>
+      <div class="sidebar__block"><div class="sidebar__label">Condividi</div><div class="share"><a href="https://x.com/intent/tweet?text=FortiBleed%3A%20non%20c%27%C3%A8%20una%20patch%2C%20perch%C3%A9%20non%20c%27%C3%A8%20una%20vulnerabilit%C3%A0&url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/fortibleed-inc-lynx.html" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/fortibleed-inc-lynx.html" target="_blank" rel="noopener">LinkedIn</a><a href="https://news.ycombinator.com/submitlink?u=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/fortibleed-inc-lynx.html&t=FortiBleed%3A%20non%20c%27%C3%A8%20una%20patch%2C%20perch%C3%A9%20non%20c%27%C3%A8%20una%20vulnerabilit%C3%A0" target="_blank" rel="noopener">HN</a><button class="share__copy" data-url="https://spidercivi.github.io/HACK-PROJECT/it/a/fortibleed-inc-lynx.html" type="button">Link</button></div></div>
+    </div>
+  </div>
+  <aside class="authorcard"><img class="authorcard__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="72" height="72" loading="lazy"><div><p class="authorcard__label">Scritto da</p><p class="authorcard__name"><a href="../about.html">Riccardo Civiero</a> <span class="authorcard__handle">@SpiderCivi</span></p><p class="authorcard__role">Cybersecurity & Software Developer</p><p class="authorcard__bio">Sviluppatore e specialista in cybersecurity. Formato all'ITIS E. Barsanti, con specializzazione in Cyber Security all'ITS Digital Academy di Treviso. Appassionato di sicurezza offensiva: CTF e Hack The Box. Qui applico lo stesso sguardo in senso difensivo — capire come funziona un attacco per spiegare come si ferma.</p><p class="authorcard__links"><a href="https://github.com/SpiderCivi" target="_blank" rel="noopener">GitHub</a><a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></p></div></aside>
+  <nav class="pager"><a class="pager__item pager__item--prev" href="apt28-router-dns.html"><span>&larr; Precedente</span><strong>Il router da trenta euro che intercettava i ministeri degli esteri</strong></a></nav>
+</article>
+<section class="rel shell"><div class="section-head"><h2>Altri dossier</h2></div><div class="rel__grid"><a class="rel__card" href="interlock-clickfix.html"><img src="../../assets/img/it/interlock-clickfix.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--high">high</span><h3>Interlock, il ransomware che entra dalla porta principale</h3></div></a><a class="rel__card" href="kimsuky-quishing.html"><img src="../../assets/img/it/kimsuky-quishing.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--high">high</span><h3>Il QR code che ruba la sessione, non la password</h3></div></a><a class="rel__card" href="miasma-redhat-npm.html"><img src="../../assets/img/it/miasma-redhat-npm.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--high">high</span><h3>Miasma: il malware aveva un certificato di provenienza valido</h3></div></a></div></section></main>
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="wordmark">HACK<em>/</em>PROJECT</p>
+        <p class="footer__tag">Threat Intelligence Quotidiana</p>
+        <p class="footer__disclaimer"><strong>HACK/PROJECT</strong> &mdash; analisi di attacchi informatici documentati pubblicamente, mappati su MITRE ATT&amp;CK&reg;. Contenuto a scopo difensivo ed educativo: descriviamo tattiche e tecniche cosi&#768; come riportate da agenzie e ricercatori, senza distribuire codice offensivo. Dove le fonti sono incerte, lo dichiariamo nel testo. ATT&amp;CK&reg; e&#768; un marchio registrato di The MITRE Corporation; progetto non affiliato a MITRE.</p>
+      </div>
+      <div class="footer__col"><p class="footer__label">Archivio</p><a href="../index.html">Ultimi dossier</a><a href="../about.html">Chi sono</a></div><div class="footer__col"><p class="footer__label">Chi sono</p><a href="../about.html">Chi sono</a><a href="../about.html#contatti">Contattami</a><a href="https://spidercivi.github.io/">Portfolio</a></div><div class="footer__col"><p class="footer__label">Segui</p><a href="https://www.tiktok.com/@h4ckprojct">TikTok</a><a href="https://github.com/SpiderCivi">GitHub</a><a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Riccardo Civiero</p>
+      <p class="footer__legal">Contenuto a scopo difensivo ed educativo. MITRE ATT&amp;CK&reg; &egrave; un marchio registrato di The MITRE Corporation; questo progetto non &egrave; affiliato n&eacute; sponsorizzato da MITRE, CISA o dai vendor citati.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/js/main.js?v=24ab82c1" defer></script>
+</body>
+</html>
