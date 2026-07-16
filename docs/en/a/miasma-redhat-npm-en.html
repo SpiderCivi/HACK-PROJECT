@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/css/main.css?v=c17cc88a">
+<link rel="stylesheet" href="../../assets/css/main.css?v=1d2aa809">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Miasma: valid SLSA provenance for malicious packages", "description": "Thirty-two Red Hat npm packages were published with malicious payloads — carrying valid SLSA provenance attestations. The technology built to guarantee build integrity certified the malware, because SLSA attests where a package was built, not whether the build's input was legitimate.", "datePublished": "2026-07-15", "dateModified": "2026-07-15", "inLanguage": "en", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/en/a/miasma-redhat-npm-en.html", "author": {"@type": "Person", "name": "Riccardo Civiero", "url": "https://github.com/SpiderCivi"}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/"}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/en/miasma-redhat-npm.svg"], "keywords": "TeamPCP (derived tooling), T1078, T1195.001, T1550.001, T1027, T1552.001, T1526", "citation": [{"@type": "CreativeWork", "name": "Red Hat — RHSB-2026-006 Supply chain compromise of @redhat-cloud-services npm packages", "url": "https://access.redhat.com/security/vulnerabilities/RHSB-2026-006"}, {"@type": "CreativeWork", "name": "Wiz Research — Miasma: Supply Chain Attack Targeting RedHat npm Packages", "url": "https://www.wiz.io/blog/miasma-supply-chain-attack-targeting-redhat-npm-packages"}, {"@type": "CreativeWork", "name": "StepSecurity — Multiple redhat-cloud-services npm Packages compromised", "url": "https://www.stepsecurity.io/blog/multiple-redhat-cloud-services-npm-packages-compromised"}]}</script>
 </head>
 <body>
@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed live</span>
-    <span>Updated &mdash; 16.07.2026 11:38 CET</span>
+    <span>Updated &mdash; 16.07.2026 16:02 CET</span>
     <span>12 dossiers</span>
     <span>MITRE ATT&CK mapping</span>
   </div>
@@ -43,22 +43,24 @@
 
 <article class="article shell">
   <nav class="crumb" aria-label="breadcrumb"><a href="../index.html">HACK/PROJECT</a><span>/</span><a href="../index.html">Archive</a><span>/</span><em>Miasma: valid SLSA provenance for malicious pack</em></nav>
-  <header class="article__head">
-    <p class="eyebrow" data-reveal style="--i:0"><span class="eyebrow__topic">TeamPCP (derived tooling)</span><span class="sev sev--high">high</span></p>
-    <h1 class="article__title" data-reveal style="--i:1">Miasma: valid SLSA provenance for malicious packages</h1>
-    <p class="article__standfirst" data-reveal style="--i:2">Thirty-two Red Hat npm packages were published with malicious payloads — carrying valid SLSA provenance attestations. The technology built to guarantee build integrity certified the malware, because SLSA attests where a package was built, not whether the build&#x27;s input was legitimate.</p>
-    <div class="byline" data-reveal style="--i:2">
-      <img class="byline__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="40" height="40" loading="lazy">
-      <div class="byline__meta">
-        <span class="byline__name">by <a href="../about.html">Riccardo Civiero</a></span>
-        <span class="byline__handle">@SpiderCivi &nbsp;·&nbsp; 15.07.2026</span>
+  <div class="article__hero">
+    <header class="article__head">
+      <p class="eyebrow" data-reveal style="--i:0"><span class="eyebrow__topic">TeamPCP (derived tooling)</span><span class="sev sev--high">high</span></p>
+      <h1 class="article__title" data-reveal style="--i:1">Miasma: valid SLSA provenance for malicious packages</h1>
+      <p class="article__standfirst" data-reveal style="--i:2">Thirty-two Red Hat npm packages were published with malicious payloads — carrying valid SLSA provenance attestations. The technology built to guarantee build integrity certified the malware, because SLSA attests where a package was built, not whether the build&#x27;s input was legitimate.</p>
+      <div class="byline" data-reveal style="--i:2">
+        <img class="byline__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="40" height="40" loading="lazy">
+        <div class="byline__meta">
+          <span class="byline__name">by <a href="../about.html">Riccardo Civiero</a></span>
+          <span class="byline__handle">@SpiderCivi &nbsp;·&nbsp; 15.07.2026</span>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
+    <div class="article__hero-media"><figure class="hero-figure" data-reveal style="--i:3"><img src="../../assets/img/en/miasma-redhat-npm.svg" alt="" width="1200" height="675"></figure></div>
+  </div>
   <div class="article__meta" data-reveal style="--i:2">
     <span><i class="ti"></i>15.07.2026</span><span>4 min read</span><span>3 primary sources</span>
   </div>
-  <figure class="hero-figure" data-reveal style="--i:3"><img src="../../assets/img/en/miasma-redhat-npm.svg" alt="" width="1200" height="675"></figure>
   <div class="article__layout">
     <div class="prose" data-reveal style="--i:4"><h2 id="the-origin">The origin</h2>
 <p class="lede">On <strong>1 June 2026</strong>, between roughly 10:53 and 13:46 UTC, malicious commits landed on Red Hat's RedHatInsights repositories. By 13:00 UTC npm had revoked most of the malicious versions. By 18:50 UTC Red Hat had published security bulletin <strong>RHSB-2026-006</strong>, and Wiz Research had gone public.</p>

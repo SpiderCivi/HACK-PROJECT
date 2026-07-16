@@ -5,7 +5,7 @@
     "date": "2026-07-16",
     "severity": "high",
     "actor": [
-      "Russian-speaking Initial Access Broker (SOCRadar assessment, formal attribution unconfirmed)"
+      "Russian-speaking Initial Access Broker (unconfirmed)"
     ],
     "summary": "Roughly half of all internet-facing Fortinet firewalls have their admin credentials in the hands of an access broker. There is no CVE to patch: there are exported config files, SHA-256 hashes cracked offline, and perfectly legitimate logins. In July, SOCRadar tied the operation to the INC and Lynx ransomware brands.",
     "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/fortibleed-inc-lynx-en.html",

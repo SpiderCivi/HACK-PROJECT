@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/css/main.css?v=c17cc88a">
+<link rel="stylesheet" href="../../assets/css/main.css?v=1d2aa809">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Axios: the manifest, the RAT, and the token nobody revoked", "description": "On 31 March 2026 two malicious axios releases added a booby-trapped dependency without touching a single line of source code. npm had rolled out OIDC Trusted Publishing to stop exactly this. The actor walked around it with an old classic token.", "datePublished": "2026-07-15", "dateModified": "2026-07-15", "inLanguage": "en", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/en/a/axios-npm-en.html", "author": {"@type": "Person", "name": "Riccardo Civiero", "url": "https://github.com/SpiderCivi"}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/"}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/en/axios-npm.svg"], "keywords": "Unattributed actor, T1195.001, T1059.001, T1059.006, T1105, T1071.001, T1547.001, T1036.005", "citation": [{"@type": "CreativeWork", "name": "Microsoft Threat Intelligence — Mitigating the axios npm supply chain compromise", "url": "https://www.microsoft.com/en-us/security/blog/2026/04/01/mitigating-the-axios-npm-supply-chain-compromise/"}, {"@type": "CreativeWork", "name": "CISA — Supply Chain Compromise Impacts axios Node Package Manager", "url": "https://www.cisa.gov/news-events/alerts/2026/04/20/supply-chain-compromise-impacts-axios-node-package-manager"}, {"@type": "CreativeWork", "name": "Axios — post-mortem (issue #10636)", "url": "https://github.com/axios/axios/issues/10636"}]}</script>
 </head>
 <body>
@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed live</span>
-    <span>Updated &mdash; 16.07.2026 11:38 CET</span>
+    <span>Updated &mdash; 16.07.2026 16:02 CET</span>
     <span>12 dossiers</span>
     <span>MITRE ATT&CK mapping</span>
   </div>
@@ -43,22 +43,24 @@
 
 <article class="article shell">
   <nav class="crumb" aria-label="breadcrumb"><a href="../index.html">HACK/PROJECT</a><span>/</span><a href="../index.html">Archive</a><span>/</span><em>Axios: the manifest, the RAT, and the token nobo</em></nav>
-  <header class="article__head">
-    <p class="eyebrow" data-reveal style="--i:0"><span class="eyebrow__topic">Unattributed actor</span><span class="sev sev--critical">critical</span></p>
-    <h1 class="article__title" data-reveal style="--i:1">Axios: the manifest, the RAT, and the token nobody revoked</h1>
-    <p class="article__standfirst" data-reveal style="--i:2">On 31 March 2026 two malicious axios releases added a booby-trapped dependency without touching a single line of source code. npm had rolled out OIDC Trusted Publishing to stop exactly this. The actor walked around it with an old classic token.</p>
-    <div class="byline" data-reveal style="--i:2">
-      <img class="byline__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="40" height="40" loading="lazy">
-      <div class="byline__meta">
-        <span class="byline__name">by <a href="../about.html">Riccardo Civiero</a></span>
-        <span class="byline__handle">@SpiderCivi &nbsp;·&nbsp; 15.07.2026</span>
+  <div class="article__hero">
+    <header class="article__head">
+      <p class="eyebrow" data-reveal style="--i:0"><span class="eyebrow__topic">Unattributed actor</span><span class="sev sev--critical">critical</span></p>
+      <h1 class="article__title" data-reveal style="--i:1">Axios: the manifest, the RAT, and the token nobody revoked</h1>
+      <p class="article__standfirst" data-reveal style="--i:2">On 31 March 2026 two malicious axios releases added a booby-trapped dependency without touching a single line of source code. npm had rolled out OIDC Trusted Publishing to stop exactly this. The actor walked around it with an old classic token.</p>
+      <div class="byline" data-reveal style="--i:2">
+        <img class="byline__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="40" height="40" loading="lazy">
+        <div class="byline__meta">
+          <span class="byline__name">by <a href="../about.html">Riccardo Civiero</a></span>
+          <span class="byline__handle">@SpiderCivi &nbsp;·&nbsp; 15.07.2026</span>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
+    <div class="article__hero-media"><figure class="hero-figure" data-reveal style="--i:3"><img src="../../assets/img/en/axios-npm.svg" alt="" width="1200" height="675"></figure></div>
+  </div>
   <div class="article__meta" data-reveal style="--i:2">
     <span><i class="ti"></i>15.07.2026</span><span>4 min read</span><span>3 primary sources</span>
   </div>
-  <figure class="hero-figure" data-reveal style="--i:3"><img src="../../assets/img/en/axios-npm.svg" alt="" width="1200" height="675"></figure>
   <div class="article__layout">
     <div class="prose" data-reveal style="--i:4"><p class="lede">Anyone who code-reviewed axios on 31 March 2026 would have found nothing. Not through carelessness — there was nothing there. The library's source was untouched. Not one line. The only change lived in <code>package.json</code>: one extra dependency, a plausible name, <code>plain-crypto-js</code>. That single line was enough to drop a RAT on every machine that ran <code>npm install</code>.</p>
 <p>axios is the JavaScript ecosystem's default HTTP client: <strong>more than 70 million downloads a week</strong>, per the figure Microsoft cites. It isn't a library, it's infrastructure. And this compromise carries no CVE, because there is nothing to fix in the product. What was compromised is the <strong>distribution channel</strong>, not the software. The identifier to track is <strong>GHSA-fw8c-xr5c-95f9</strong>.</p>
