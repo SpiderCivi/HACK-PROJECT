@@ -73,7 +73,7 @@ body::before {
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.035;
+  opacity: 0.026;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -83,27 +83,7 @@ body::after {
   inset: 0;
   z-index: 9998;
   pointer-events: none;
-  background:
-    repeating-linear-gradient(
-      180deg,
-      transparent 0 3px,
-      rgba(0, 0, 0, 0.22) 3px 4px
-    ),
-    radial-gradient(
-      ellipse 120% 80% at 50% 0%,
-      transparent 40%,
-      rgba(0, 0, 0, 0.55) 100%
-    );
-  opacity: 0.5;
-  mix-blend-mode: multiply;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  body::after { animation: drift 12s linear infinite; }
-}
-@keyframes drift {
-  from { background-position: 0 0, 0 0; }
-  to   { background-position: 0 4px, 0 0; }
+  background: radial-gradient(ellipse 130% 90% at 50% -10%, transparent 42%, rgba(0,0,0,.45) 100%);
 }
 
 /* ============================================================
@@ -198,9 +178,7 @@ body::after {
 .ticker .live::before {
   content: "●";
   margin-right: 0.4em;
-  animation: pulse 2s ease-in-out infinite;
 }
-@keyframes pulse { 50% { opacity: 0.25; } }
 
 /* ============================================================
    HERO — articolo del giorno
@@ -598,23 +576,8 @@ body::after {
 .sources a { color: var(--ink-dim); transition: color 0.2s; }
 .sources a:hover { color: var(--cyan-lit); }
 
-/* ============================================================
-   REVEAL — load staggered
-   ============================================================ */
-@media (prefers-reduced-motion: no-preference) {
-  [data-reveal] {
-    opacity: 0;
-    transform: translateY(16px);
-    animation: reveal 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    animation-delay: calc(var(--i, 0) * 90ms);
-  }
-}
-@keyframes reveal {
-  to { opacity: 1; transform: none; }
-}
 
-/* scroll reveal */
-.in-view { animation: reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
 
 /* ============================================================
    A11Y
@@ -1312,32 +1275,3 @@ html, body { max-width: 100%; }
 }
 .prose blockquote.pull p { margin: 0; }
 
-/* sfondo dell'intestazione: NON deve mai allargare la pagina */
-.hero { position: relative; isolation: isolate; }
-.hero__bg {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-  /* si estende oltre il gutter senza creare scroll: il clip lo contiene */
-  margin-inline: calc(var(--gutter) * -1);
-}
-.hero__bg video {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  opacity: .6;
-  filter: saturate(1.2) contrast(1.05);
-}
-.hero__bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, rgba(11,11,15,.94) 0%, rgba(11,11,15,.88) 34%, rgba(11,11,15,.45) 52%, rgba(11,11,15,.05) 72%, transparent 100%),
-    linear-gradient(180deg, var(--paper) 0%, transparent 16%, transparent 80%, var(--paper) 100%);
-}
-@media (prefers-reduced-motion: reduce) { .hero__bg video { display: none; } }
-@media (max-width: 760px) { .hero__bg video { opacity: .22; } }
-.hero__bg canvas { width: 100%; height: 100%; display: block; }
-.hero { overflow-x: clip; }

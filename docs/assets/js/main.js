@@ -60,19 +60,4 @@
     heads.forEach((h) => io.observe(h));
   }
 
-  if (reduced) return;
-
-  /* Comparsa delle voci d'archivio */
-  const io2 = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (!e.isIntersecting) return;
-      e.target.style.setProperty("--i", (i % 6).toString());
-      e.target.classList.add("in-view");
-      io2.unobserve(e.target);
-    });
-  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
-  document.querySelectorAll(".entry, .rel__card").forEach((el) => {
-    el.style.opacity = "0";
-    io2.observe(el);
-  });
 })();
