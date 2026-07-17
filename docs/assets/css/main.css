@@ -1468,3 +1468,6 @@ html, body { max-width: 100%; }
 @media (max-width: 374px) {
   .ticker span:nth-child(n+2) { display: none; }
 }
+
+/* — "Aggiornato il": la policy di correzione dev'essere visibile, non dichiarata e basta — */
+.article__meta .upd { color: var(--signal); }
