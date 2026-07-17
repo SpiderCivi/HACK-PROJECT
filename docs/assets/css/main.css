@@ -1459,3 +1459,12 @@ html, body { max-width: 100%; }
 @media print {
   .stat, .tl, .flow, .figure img { border-color: #999; }
 }
+
+/* — Schermi molto stretti (<=374px: iPhone SE 1a gen, Android piccoli) —
+   Il ticker e' nowrap + overflow:hidden: sotto i 375px "Threat feed attivo" +
+   l'orologio chiedono ~306px e ne hanno 280, quindi l'orologio veniva TAGLIATO a meta'.
+   Stessa strategia gia' usata a 720px per le voci 3 e 4: si lascia cadere il meno
+   importante. Resta il segnale che conta, "● Threat feed attivo". */
+@media (max-width: 374px) {
+  .ticker span:nth-child(n+2) { display: none; }
+}
