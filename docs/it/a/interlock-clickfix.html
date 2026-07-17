@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed attivo</span>
-    <span>Aggiornato &mdash; 17.07.2026 10:44 CET</span>
+    <span>Aggiornato &mdash; 17.07.2026 10:53 CET</span>
     <span>13 dossier</span>
     <span>Mappatura MITRE ATT&CK</span>
   </div>
@@ -67,6 +67,7 @@
 <p>C'è un dettaglio che ha attirato l'attenzione dei ricercatori: diverse analisi open source segnalano <strong>somiglianze tra Interlock e Rhysida</strong>, al punto che si ipotizza una derivazione o una condivisione di codice tra i due gruppi.</p>
 <p>Ma la cosa che rende Interlock interessante da studiare non è la sua origine. È <strong>come entra</strong>.</p>
 <h2 id="il-vettore-quando-lutente-e-lexploit">Il vettore: quando l'utente è l'exploit</h2>
+<ol class="flow" data-reveal><li class="flow__step"><span class="flow__n">01</span><div class="flow__b"><div class="flow__t">Sito legittimo</div><div class="flow__note">gli attori compromettono un sito che i dipendenti visitano per lavoro</div></div></li><li class="flow__step"><span class="flow__n">02</span><div class="flow__b"><div class="flow__t">Finto aggiornamento</div><div class="flow__note">mascherato da update di Chrome o di software di sicurezza</div></div></li><li class="flow__step"><span class="flow__n">03</span><div class="flow__b"><div class="flow__t">Finto CAPTCHA</div><div class="flow__note">la pagina ha già messo negli appunti PowerShell in Base64</div></div></li><li class="flow__step"><span class="flow__n">04</span><div class="flow__b"><div class="flow__t">L&#x27;utente incolla</div><div class="flow__note">apre Esegui e lancia il payload con le proprie mani</div></div></li></ol>
 <p>La stragrande maggioranza dei gruppi ransomware entra in tre modi: phishing con allegato, credenziali comprate, o vulnerabilità nota su un dispositivo perimetrale. Interlock ne usa uno <strong>atipico</strong>, tanto che l'FBI lo segnala esplicitamente come "uncommon method among ransomware groups": il <strong>drive-by download da siti legittimi compromessi</strong>.</p>
 <p>Il funzionamento è questo. Gli attori compromettono un sito reale — uno che i dipendenti della vittima visitano normalmente, per lavoro. Su quel sito piazzano un payload mascherato da aggiornamento. All'inizio erano finti update di <strong>Google Chrome</strong> o <strong>Microsoft Edge</strong>. Poi, secondo Sekoia, il travestimento si è evoluto in qualcosa di più insidioso: <strong>finti aggiornamenti di software di sicurezza</strong>.</p>
 <pre><code>FortiClient.exe
@@ -90,6 +91,7 @@ zyzoom_antimalware.exe
 <p>Questo è il punto concettuale che rende ClickFix difficile da fermare: <strong>non c'è vulnerabilità da patchare</strong>. Nessun software si comporta in modo scorretto. L'antivirus non vede un exploit perché non c'è. Vede un utente che apre Esegui e lancia un comando — cosa che gli amministratori fanno dieci volte al giorno. In ATT&amp;CK questa tecnica ha un ID dedicato, <strong>T1204.004 (Malicious Copy and Paste)</strong>, e la sua esistenza dice molto: il framework ha dovuto creare una casella per "l'utente incolla da solo il proprio malware".</p>
 <h2 id="la-catena-dattacco">La catena d'attacco</h2>
 <p>Una volta eseguito il payload, la sequenza è metodica.</p>
+<ol class="flow" data-reveal><li class="flow__step"><span class="flow__n">01</span><div class="flow__b"><div class="flow__t">Persistenza</div><div class="flow__note">un RAT nella cartella Esecuzione automatica, o una chiave Run &quot;Chrome Updater&quot;</div></div></li><li class="flow__step"><span class="flow__n">02</span><div class="flow__b"><div class="flow__t">Ricognizione</div><div class="flow__note">sei comandi PowerShell legittimi di discovery in pochi secondi</div></div></li><li class="flow__step"><span class="flow__n">03</span><div class="flow__b"><div class="flow__t">Credenziali</div><div class="flow__note"><code>cht.exe</code> e <code>klg.dll</code>, poi Kerberoasting verso i domain admin</div></div></li><li class="flow__step"><span class="flow__n">04</span><div class="flow__b"><div class="flow__t">Movimento laterale</div><div class="flow__note">RDP, AnyDesk e PuTTY: tutti già in whitelist</div></div></li><li class="flow__step"><span class="flow__n">05</span><div class="flow__b"><div class="flow__t">Esfiltrazione e impatto</div><div class="flow__note">AzCopy verso un blob Azure, poi <code>conhost.exe</code> cifra le VM</div></div></li></ol>
 <h3 id="persistenza">Persistenza</h3>
 <p>Il finto eseguibile di Chrome è in realtà un <strong>RAT</strong>. Esegue uno script PowerShell che deposita un file nella cartella <strong>Esecuzione automatica</strong> di Windows: da quel momento il RAT riparte a ogni login. In alternativa, gli attori modificano il registro aggiungendo una chiave Run chiamata — con una certa sfacciataggine — <strong>"Chrome Updater"</strong>.</p>
 <p>È masquerading da manuale (<strong>T1036.005</strong>): un nome che nessun amministratore guarderà due volte.</p>

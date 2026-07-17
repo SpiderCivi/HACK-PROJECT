@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed live</span>
-    <span>Updated &mdash; 17.07.2026 10:44 CET</span>
+    <span>Updated &mdash; 17.07.2026 10:53 CET</span>
     <span>13 dossiers</span>
     <span>MITRE ATT&CK mapping</span>
   </div>
@@ -59,7 +59,7 @@
     <div class="article__hero-media"><figure class="hero-figure" data-reveal style="--i:3"><img src="../../assets/img/en/interlock-clickfix.svg" alt="" width="1200" height="675"></figure></div>
   </div>
   <div class="article__meta" data-reveal style="--i:2">
-    <span><i class="ti"></i>15.07.2026</span><span>7 min read</span><span>5 primary sources</span>
+    <span><i class="ti"></i>15.07.2026</span><span>8 min read</span><span>5 primary sources</span>
   </div>
   <div class="article__layout">
     <div class="prose" data-reveal style="--i:4"><h2 id="the-origin">The origin</h2>
@@ -67,6 +67,7 @@
 <p>One detail caught researchers' attention: multiple open-source analyses report <strong>similarities between Interlock and Rhysida</strong>, to the point of suggesting shared code or lineage.</p>
 <p>But what makes Interlock worth studying isn't its origin. It's <strong>how it gets in</strong>.</p>
 <h2 id="the-vector-when-the-user-is-the-exploit">The vector: when the user is the exploit</h2>
+<ol class="flow" data-reveal><li class="flow__step"><span class="flow__n">01</span><div class="flow__b"><div class="flow__t">Legitimate site</div><div class="flow__note">the actors compromise a real site employees visit routinely, for work</div></div></li><li class="flow__step"><span class="flow__n">02</span><div class="flow__b"><div class="flow__t">Fake update</div><div class="flow__note">disguised as a Chrome update or as security software</div></div></li><li class="flow__step"><span class="flow__n">03</span><div class="flow__b"><div class="flow__t">Fake CAPTCHA</div><div class="flow__note">the page has already placed Base64 PowerShell in the clipboard</div></div></li><li class="flow__step"><span class="flow__n">04</span><div class="flow__b"><div class="flow__t">The user pastes</div><div class="flow__note">opens the Run dialog and launches the payload with their own hands</div></div></li></ol>
 <p>The overwhelming majority of ransomware crews enter three ways: phishing with an attachment, purchased credentials, or a known vulnerability on an edge device. Interlock uses an <strong>atypical</strong> one — so much so that the FBI explicitly flags it as an "uncommon method among ransomware groups": <strong>drive-by download from compromised legitimate websites</strong>.</p>
 <p>It works like this. The actors compromise a real site — one the victim's employees visit routinely, for work. On it they plant a payload disguised as an update. Early on it was fake <strong>Google Chrome</strong> or <strong>Microsoft Edge</strong> updates. Then, per Sekoia, the disguise evolved into something more insidious: <strong>fake security software updates</strong>.</p>
 <pre><code>FortiClient.exe
@@ -90,6 +91,7 @@ zyzoom_antimalware.exe
 <p>This is the conceptual point that makes ClickFix hard to stop: <strong>there is no vulnerability to patch</strong>. No software misbehaves. The antivirus sees no exploit because there isn't one. It sees a user opening Run and executing a command — something administrators do ten times a day. ATT&amp;CK gave this technique its own ID, <strong>T1204.004 (Malicious Copy and Paste)</strong>, and its existence says a lot: the framework had to create a box for "the user pastes their own malware".</p>
 <h2 id="the-attack-chain">The attack chain</h2>
 <p>Once the payload runs, the sequence is methodical.</p>
+<ol class="flow" data-reveal><li class="flow__step"><span class="flow__n">01</span><div class="flow__b"><div class="flow__t">Persistence</div><div class="flow__note">a RAT in the Startup folder, or a Run key named &quot;Chrome Updater&quot;</div></div></li><li class="flow__step"><span class="flow__n">02</span><div class="flow__b"><div class="flow__t">Reconnaissance</div><div class="flow__note">six legitimate PowerShell discovery commands in seconds</div></div></li><li class="flow__step"><span class="flow__n">03</span><div class="flow__b"><div class="flow__t">Credentials</div><div class="flow__note"><code>cht.exe</code> and <code>klg.dll</code>, then Kerberoasting towards domain admin</div></div></li><li class="flow__step"><span class="flow__n">04</span><div class="flow__b"><div class="flow__t">Lateral movement</div><div class="flow__note">RDP, AnyDesk and PuTTY: all already allowlisted</div></div></li><li class="flow__step"><span class="flow__n">05</span><div class="flow__b"><div class="flow__t">Exfiltration and impact</div><div class="flow__note">AzCopy to an Azure blob, then <code>conhost.exe</code> encrypts the VMs</div></div></li></ol>
 <h3 id="persistence">Persistence</h3>
 <p>The fake Chrome executable is in fact a <strong>RAT</strong>. It runs a PowerShell script that drops a file into the Windows <strong>Startup</strong> folder: from then on, the RAT restarts at every login. Alternatively the actors modify the registry, adding a Run key named — with some cheek — <strong>"Chrome Updater"</strong>.</p>
 <p>Textbook masquerading (<strong>T1036.005</strong>): a name no administrator will look at twice.</p>

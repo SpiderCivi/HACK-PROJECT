@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed live</span>
-    <span>Updated &mdash; 17.07.2026 10:44 CET</span>
+    <span>Updated &mdash; 17.07.2026 10:53 CET</span>
     <span>13 dossiers</span>
     <span>MITRE ATT&CK mapping</span>
   </div>
@@ -59,13 +59,14 @@
     <div class="article__hero-media"><figure class="hero-figure" data-reveal style="--i:3"><img src="../../assets/img/en/storm2603-warlock.svg" alt="" width="1200" height="675"></figure></div>
   </div>
   <div class="article__meta" data-reveal style="--i:2">
-    <span><i class="ti"></i>15.07.2026</span><span>5 min read</span><span>3 primary sources</span>
+    <span><i class="ti"></i>15.07.2026</span><span>6 min read</span><span>3 primary sources</span>
   </div>
   <div class="article__layout">
     <div class="prose" data-reveal style="--i:4"><p class="lede">Every incident response rests on an unspoken assumption: that there is one intrusion. You build a timeline, attribute it to an actor, map their TTPs. On 22 June 2026, <strong>Microsoft's DART team</strong> published a report that takes that assumption apart. Inside a single network there were <strong>two unrelated crews</strong>, active in the same window, each <strong>unknowingly masking the other's tracks</strong>.</p>
 <h2 id="the-origin">The origin</h2>
 <p><strong>Storm-2603</strong> is Microsoft's designation for a <strong>China-nexus</strong> actor deploying the <strong>Warlock</strong> ransomware, previously known as <strong>4L4MD4R</strong>. It sits inside the campaign MITRE tracks as <strong>C0058, SharePoint ToolShell Exploitation</strong>, which broke out in July 2025.</p>
 <p>What follows is the timeline of a crew that never slowed down. On <strong>26 January 2026</strong>, CISA added <strong>CVE-2026-23760</strong> to the KEV catalog. On <strong>2 February</strong>, it added <strong>CVE-2026-24423</strong> with a 26 February deadline. Around <strong>9 February</strong>, ReliaQuest published its report — and on the very same day came the sentence no vendor wants written about them: <strong>SmarterTools, the company behind SmarterMail, was breached through its own product's vulnerability</strong>. Writing the code is no protection from the code you wrote.</p>
+<ol class="tl" data-reveal><li class="tl__item"><div class="tl__when">26 January 2026</div><div class="tl__body"><div class="tl__what">CVE-2026-23760 lands in KEV</div><p class="tl__txt">CISA catalogs the SmarterMail authentication bypass.</p></div></li><li class="tl__item"><div class="tl__when">2 February 2026</div><div class="tl__body"><div class="tl__what">CVE-2026-24423 lands in KEV</div><p class="tl__txt">remediation deadline set at 26 February.</p></div></li><li class="tl__item"><div class="tl__when">9 February 2026</div><div class="tl__body"><div class="tl__what">The ReliaQuest report</div><p class="tl__txt">the same day, SmarterTools is breached through its own product&#x27;s vulnerability.</p></div></li><li class="tl__item"><div class="tl__when">22 June 2026</div><div class="tl__body"><div class="tl__what">The DART report</div><p class="tl__txt">Microsoft finds two unrelated crews inside the same network.</p></div></li></ol>
 <h2 id="the-attack-chain">The attack chain</h2>
 <p>Entry is <strong>CVE-2026-23760</strong>, an authentication bypass in SmarterMail's password reset API. The mechanism is almost embarrassing: <strong>the endpoint accepts any old password, including a wrong one</strong>. No overflow, no cryptanalysis. Just a check that doesn't check.</p>
 <p>From there the sequence stops using exploits and starts using features.</p>
@@ -79,6 +80,7 @@
 <h3 id="the-sharepoint-episode">The SharePoint episode</h3>
 <p>DART's report covers a <strong>different network</strong> and a parallel chain: <strong>LFI probing</strong> against <code>win.ini</code> and <code>web.config</code> → <strong>Velociraptor running as SYSTEM</strong> → tunnelling via <strong>Cloudflare Tunnel</strong>, <strong>Zoho Assist</strong> and <strong>VS Code Remote-SSH</strong> → <strong>unauthorised admin accounts</strong> (<strong>T1136</strong>) → a <strong>vulnerable driver (BYOVD)</strong> to switch protections off (<strong>T1562.001</strong>).</p>
 <p>It is at the end of that chain that analysts found the <strong>second actor</strong>, unconnected to the first, inside the same network.</p>
+<ol class="flow" data-reveal><li class="flow__step"><span class="flow__n">01</span><div class="flow__b"><div class="flow__t">LFI probing</div><div class="flow__note">tests against <code>win.ini</code> and <code>web.config</code></div></div></li><li class="flow__step"><span class="flow__n">02</span><div class="flow__b"><div class="flow__t">Velociraptor</div><div class="flow__note">running with SYSTEM privileges</div></div></li><li class="flow__step"><span class="flow__n">03</span><div class="flow__b"><div class="flow__t">Tunnelling</div><div class="flow__note">Cloudflare Tunnel, Zoho Assist, VS Code Remote-SSH</div></div></li><li class="flow__step"><span class="flow__n">04</span><div class="flow__b"><div class="flow__t">Admin accounts</div><div class="flow__note">created without authorisation (<strong>T1136</strong>)</div></div></li><li class="flow__step"><span class="flow__n">05</span><div class="flow__b"><div class="flow__t">BYOVD</div><div class="flow__note">vulnerable driver to switch protections off</div></div></li></ol>
 <p>It should be stated plainly that <strong>the MITRE mapping for the 2026 episodes is reasoned, not official</strong>. The <strong>C0058 page stops at July 2025</strong>: the MITRE-confirmed techniques are T1190, T1505.003, T1059.001, T1003.001, T1484.001, T1486 and T1657. The others — <strong>T1218.007, T1588.002, T1133, T1136, T1562.001</strong> — are this article's reading of the 2026 activity, not an extract from an ATT&amp;CK page. Likewise, <strong>Microsoft does not confirm which specific vulnerability was exploited in the SharePoint episode</strong>, <strong>no victims are named</strong>, and <strong>it remains unclear whether the CVE-2026-24423 probing from separate infrastructure is the same actor</strong>.</p>
 <h2 id="detection">Detection</h2>
 <p>The strongest signals here aren't IOCs. They're <strong>behavioural implausibilities</strong> — things a mail server does not do.</p>

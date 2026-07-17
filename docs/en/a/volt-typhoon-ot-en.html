@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed live</span>
-    <span>Updated &mdash; 17.07.2026 10:44 CET</span>
+    <span>Updated &mdash; 17.07.2026 10:53 CET</span>
     <span>13 dossiers</span>
     <span>MITRE ATT&CK mapping</span>
   </div>
@@ -72,6 +72,7 @@
 <p>The structural news sits upstream of everything else, and Dragos calls it <strong>SYLVANITE</strong>.</p>
 <p>SYLVANITE doesn't do OT espionage. It does <strong>initial access, full stop</strong>: exploiting edge, VPN and firewall vulnerabilities — often weaponised <strong>within 48 hours of disclosure</strong> — typically leaning on <strong>Cobalt Strike</strong> or <strong>Sliver</strong>. Then it <strong>hands the access over</strong> to Voltzite/Volt Typhoon, who runs the actual intrusion.</p>
 <p>This is a near-corporate division of labour, lifted from the initial-access-broker model of financially motivated crime and applied to state espionage. Volt Typhoon becomes the <strong>end customer</strong> of a supply chain internal to its own apparatus. The defensive implication is blunt: weaponisation speed is no longer a constraint on the OT actor. It's a service they buy.</p>
+<ol class="flow" data-reveal><li class="flow__step"><span class="flow__n">01</span><div class="flow__b"><div class="flow__t">SYLVANITE</div><div class="flow__note">does initial access, full stop</div></div></li><li class="flow__step"><span class="flow__n">02</span><div class="flow__b"><div class="flow__t">Edge, VPN, firewall</div><div class="flow__note">flaws weaponised within 48 hours of disclosure</div></div></li><li class="flow__step"><span class="flow__n">03</span><div class="flow__b"><div class="flow__t">Cobalt Strike or Sliver</div><div class="flow__note">the tooling it leans on</div></div></li><li class="flow__step"><span class="flow__n">04</span><div class="flow__b"><div class="flow__t">Access handed over</div><div class="flow__note">Volt Typhoon becomes the <strong>end customer</strong></div></div></li><li class="flow__step"><span class="flow__n">05</span><div class="flow__b"><div class="flow__t">Voltzite</div><div class="flow__note">runs the actual intrusion</div></div></li></ol>
 <p>An uncertainty statement is mandatory here. SYLVANITE-as-separate-broker comes from <strong>a single vendor source</strong>, Dragos, corroborated only indirectly by the MITRE page, which manages a careful "<em>reporting indicates</em>". This is the softest part of the picture. The historical core, by contrast, is bedrock: <strong>AA23-144A</strong> and <strong>AA24-038A</strong>, jointly signed by CISA, NSA and FBI.</p>
 <p>Once access changes hands, the sequence is well documented:</p>
 <ul>
@@ -85,6 +86,7 @@
 </ul>
 <p>Then 2026 arrives. Dragos observes manipulation of <strong>engineering workstations</strong> to pull configurations and alarm data, with a purpose the reporting states without euphemism: working out <strong>which conditions stop industrial processes</strong>. Dragos classes it as a <strong>"Stage 2 capability"</strong>.</p>
 <p>Translation: they've stopped mapping the network. They're studying the stop button.</p>
+<div class="stat stat--n2" data-reveal><div class="stat__item"><div class="stat__val">56%</div><div class="stat__lab">of penetration tests</div><div class="stat__note">evaded detection using LOTL tooling alone, Dragos 2026 figures</div></div><div class="stat__item"><div class="stat__val">73%</div><div class="stat__lab">of incident response cases</div><div class="stat__note">involved compromised VPN credentials or jump hosts</div></div></div>
 <h2 id="detection">Detection</h2>
 <ul>
 <li><strong><code>csvde.exe</code></strong> used to export Active Directory data: legitimate tool, almost never a legitimate context.</li>

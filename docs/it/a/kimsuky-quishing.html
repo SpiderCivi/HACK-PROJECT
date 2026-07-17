@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed attivo</span>
-    <span>Aggiornato &mdash; 17.07.2026 10:44 CET</span>
+    <span>Aggiornato &mdash; 17.07.2026 10:53 CET</span>
     <span>13 dossier</span>
     <span>Mappatura MITRE ATT&CK</span>
   </div>
@@ -59,13 +59,14 @@
     <div class="article__hero-media"><figure class="dossier-video" data-reveal style="--i:3"><div class="dossier-video__frame"><video controls preload="none" playsinline poster="../../video/poster/kimsuky-quishing-it.jpg" width="1080" height="1920"><source src="../../video/kimsuky-quishing-it.mp4" type="video/mp4"></video></div></figure></div>
   </div>
   <div class="article__meta" data-reveal style="--i:2">
-    <span><i class="ti"></i>15.07.2026</span><span>4 min di lettura</span><span>3 fonti primarie</span>
+    <span><i class="ti"></i>15.07.2026</span><span>5 min di lettura</span><span>3 fonti primarie</span>
   </div>
   <div class="article__layout">
     <div class="prose" data-reveal style="--i:4"><h2 id="lorigine">L'origine</h2>
 <p class="lede">Kimsuky opera dal 2012 per conto della Corea del Nord, e il suo mestiere non è cambiato: capire cosa pensa l'Occidente della Corea del Nord. Non ruba brevetti né cifra dischi. Legge la posta di chi scrive i paper che finiscono sulle scrivanie dei ministri.</p>
 <p>L'<strong>8 gennaio 2026</strong> l'FBI ha pubblicato il FLASH <strong>AC-000001-MW</strong>, unico advisory dedicato al gruppo quest'anno, descrivendo episodi risalenti a maggio-giugno 2025. Il documento non usa formule prudenti: parla direttamente di <em>"North Korean state-sponsored cyber threat group Kimsuky"</em> — anche se, va detto, non allega un livello di confidenza percentuale esplicito. Kaspersky ha corroborato attività più ampia il 14 maggio 2026, su campioni raccolti tra agosto 2025 e febbraio 2026.</p>
 <p>I bersagli sono coerenti da un decennio: think tank, ONG, accademici, esperti di politica estera sulla Corea del Nord, enti governativi. Bersaglio primario dichiarato nel FLASH: gli <strong>Stati Uniti</strong>.</p>
+<ol class="tl" data-reveal><li class="tl__item"><div class="tl__when">2012</div><div class="tl__body"><div class="tl__what">L&#x27;inizio</div><p class="tl__txt">Kimsuky opera per conto della Corea del Nord.</p></div></li><li class="tl__item"><div class="tl__when">Maggio-giugno 2025</div><div class="tl__body"><div class="tl__what">Gli episodi</div><p class="tl__txt">Gli incidenti che il FLASH descrive.</p></div></li><li class="tl__item"><div class="tl__when">8 gennaio 2026</div><div class="tl__body"><div class="tl__what">Il FLASH FBI</div><p class="tl__txt">AC-000001-MW, unico advisory sul gruppo quest&#x27;anno.</p></div></li><li class="tl__item"><div class="tl__when">14 maggio 2026</div><div class="tl__body"><div class="tl__what">La corroborazione</div><p class="tl__txt">Kaspersky documenta attività più ampia, su campioni di agosto 2025-febbraio 2026.</p></div></li></ol>
 <p>La novità non è chi colpiscono. È <strong>come</strong>.</p>
 <h2 id="la-catena-dattacco">La catena d'attacco</h2>
 <p>Non c'è una CVE in questa storia. Non c'è un exploit. C'è un'immagine.</p>
@@ -88,6 +89,7 @@
 <p>Qui c'è il dettaglio operativo più prezioso del FLASH, e va capito bene perché ribalta un'assunzione comune.</p>
 <p>Molti SOC costruiscono detection sui <strong>fallimenti</strong>: tentativi MFA falliti, password sbagliate ripetute, login negati. È una logica ragionevole — l'attaccante che forza sbaglia, e gli errori si vedono.</p>
 <p>Il furto di token di sessione <strong>non sbaglia mai</strong>. L'attaccante non tenta l'MFA: la scavalca presentando un token già validato. Nei log, il risultato è un login riuscito al primo colpo, da un utente legittimo, con una sessione valida. Non c'è alcun evento negativo da correlare.</p>
+<div class="stat stat--n2" data-reveal><div class="stat__item"><div class="stat__val">0</div><div class="stat__lab">alert &quot;MFA failed&quot;</div><div class="stat__note">l&#x27;attaccante non tenta l&#x27;MFA: presenta un token già validato</div></div><div class="stat__item"><div class="stat__val">1</div><div class="stat__lab">login al primo colpo</div><div class="stat__note">da un utente legittimo, con una sessione valida</div></div></div>
 <p>Su cosa lavorare, allora:</p>
 <ul>
 <li><strong>L'assenza di alert "MFA failed" nonostante il bypass sia avvenuto</strong> — è un indicatore comportamentale, non statico: se avete evidenza di accesso anomalo <em>senza</em> fallimenti MFA a monte, il replay di token è l'ipotesi principale</li>

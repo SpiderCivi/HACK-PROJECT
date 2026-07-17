@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed live</span>
-    <span>Updated &mdash; 17.07.2026 10:44 CET</span>
+    <span>Updated &mdash; 17.07.2026 10:53 CET</span>
     <span>13 dossiers</span>
     <span>MITRE ATT&CK mapping</span>
   </div>
@@ -59,7 +59,7 @@
     <div class="article__hero-media"><figure class="hero-figure" data-reveal style="--i:3"><img src="../../assets/img/en/medusa-ummc.svg" alt="" width="1200" height="675"></figure></div>
   </div>
   <div class="article__meta" data-reveal style="--i:2">
-    <span><i class="ti"></i>15.07.2026</span><span>5 min read</span><span>4 primary sources</span>
+    <span><i class="ti"></i>15.07.2026</span><span>6 min read</span><span>4 primary sources</span>
   </div>
   <div class="article__layout">
     <div class="prose" data-reveal style="--i:4"><p class="lede">The <strong>University of Mississippi Medical Center</strong> is not one hospital among many. It is the state's <strong>only children's hospital</strong>. Its only <strong>Level I trauma center</strong>. Its only <strong>Level IV NICU</strong>. Its only <strong>transplant program</strong>. Ten thousand employees. When UMMC stops, Mississippi has no second option.</p>
@@ -67,6 +67,7 @@
 <h2 id="the-origin">The origin</h2>
 <p><strong>Medusa</strong> has run as Ransomware-as-a-Service since <strong>June 2021</strong>. In their joint advisory with MS-ISAC, CISA and the FBI take the trouble to spell out something that reads like pedantry and isn't: Medusa is <strong>distinct from MedusaLocker</strong> and <strong>distinct from the mobile malware also called "Medusa."</strong> Three different things, one name. Confusing them means reaching for the wrong countermeasures.</p>
 <p>On <strong>12 March</strong> the group claimed UMMC on its leak site: <strong>$800,000</strong>, deadline <strong>20 March</strong>, plus <strong>$100,000</strong> to extend by a week. Around the same time Medusa also claimed <strong>Passaic County, New Jersey</strong> for the identical sum. And UMMC is the <strong>fourth Mississippi hospital system hit in three years</strong> — not an isolated incident but a <strong>regional pattern</strong>.</p>
+<ol class="tl" data-reveal><li class="tl__item"><div class="tl__when">19 February 2026</div><div class="tl__body"><div class="tl__what">The attack</div><p class="tl__txt">UMMC stops: thirty-five clinical sites closed.</p></div></li><li class="tl__item"><div class="tl__when">2 March</div><div class="tl__body"><div class="tl__what">The reopening</div><p class="tl__txt">The clinical sites stay shut until this date.</p></div></li><li class="tl__item"><div class="tl__when">12 March</div><div class="tl__body"><div class="tl__what">The claim</div><p class="tl__txt">Medusa claims UMMC on its own leak site.</p></div></li><li class="tl__item"><div class="tl__when">20 March</div><div class="tl__body"><div class="tl__what">The deadline</div><p class="tl__txt">The date the group set for payment.</p></div></li><li class="tl__item"><div class="tl__when">23 April 2026</div><div class="tl__body"><div class="tl__what">The missing breach report</div><p class="tl__txt">Mississippi Today: UMMC does not appear to have filed one with HHS/OCR.</p></div></li></ol>
 <h3 id="what-we-dont-know-stated-up-front">What we don't know — stated up front</h3>
 <p>Transparency comes before narrative here, because this case invites the temptation to fill in the blanks.</p>
 <ul>
@@ -82,6 +83,7 @@
 <p>Evasion is methodical: <strong>certutil</strong> to pull payloads, <strong>obfuscated PowerShell</strong> in base64/gzip, <strong>PowerShell history wiped</strong>, and <strong>signed drivers</strong> to kill EDR (<strong>T1562.001</strong>). C2 runs through <strong>Ligolo</strong> and <strong>Cloudflared</strong>. Credentials come from <strong>Mimikatz</strong> against LSASS (<strong>T1003.001</strong>).</p>
 <p>Lateral movement is almost entirely <strong>living-off-the-land</strong>: <strong>PsExec</strong> via <code>openrdp.bat</code> (<strong>T1569.002</strong>), <strong>RDP</strong> (<strong>T1021.001</strong>), and <strong>legitimate RMM tooling</strong> — AnyDesk, Atera, ConnectWise, SimpleHelp, Splashtop. None of it is malware. All of it is probably already installed somewhere on your network.</p>
 <p>Then <strong>Rclone</strong> for exfiltration (<strong>T1567.002</strong>), and finally the <strong>gaze.exe</strong> encryptor: <strong>AES-256</strong>, <strong>.medusa</strong> extension (<strong>T1486</strong>), shadow copies destroyed (<strong>T1490</strong>). Double extortion, contact within 48 hours over Tor or Tox, <strong>$10,000 to buy another day</strong> (<strong>T1657</strong>).</p>
+<ol class="flow" data-reveal><li class="flow__step"><span class="flow__n">01</span><div class="flow__b"><div class="flow__t">Initial access</div><div class="flow__note">brokers, phishing or known CVEs on exposed assets</div></div></li><li class="flow__step"><span class="flow__n">02</span><div class="flow__b"><div class="flow__t">Discovery</div><div class="flow__note">Advanced IP Scanner, SoftPerfect and PowerShell</div></div></li><li class="flow__step"><span class="flow__n">03</span><div class="flow__b"><div class="flow__t">Evasion</div><div class="flow__note">signed drivers to kill EDR, obfuscated PowerShell</div></div></li><li class="flow__step"><span class="flow__n">04</span><div class="flow__b"><div class="flow__t">Lateral movement</div><div class="flow__note">PsExec and RDP, plus legitimate RMM already on the network</div></div></li><li class="flow__step"><span class="flow__n">05</span><div class="flow__b"><div class="flow__t">Exfiltration and impact</div><div class="flow__note">Rclone to the cloud, then <code>gaze.exe</code> and shadow copies destroyed</div></div></li></ol>
 <h2 id="detection">Detection</h2>
 <p><strong>Hashes:</strong></p>
 <pre><code>openrdp.bat   MD5  44370f5c977e415981febf7dbb87a85c
@@ -110,6 +112,7 @@ pu.exe        MD5  80d852cd199ac923205b61658a9ec5bc
 </blockquote>
 <p>That deserves a second read. Cancer patients on infusion therapy cannot wait for an Active Directory domain to be restored; chemotherapy runs on a clinical window. With no electronic health records, no order entry, no network, that unit rebuilt the clinical function on paper and human procedure. <strong>They didn't recover IT. They recovered care, which is not the same thing.</strong></p>
 <p>It demonstrates that operational resilience is not a by-product of cyber resilience. They are two distinct capabilities, and the second does not imply the first. Any continuity plan that opens with "we restore systems within X hours" is answering the wrong question. The right question is: <strong>what, concretely, do we keep doing if the systems don't come back today?</strong> UMMC had to answer by improvising. Organisations that already have the answer written down and rehearsed improvise a great deal less.</p>
+<div class="stat stat--n3" data-reveal><div class="stat__item"><div class="stat__val">$800,000</div><div class="stat__lab">the ransom demanded of UMMC</div><div class="stat__note">the identical sum was demanded of Passaic County, NJ</div></div><div class="stat__item"><div class="stat__val">$100,000</div><div class="stat__lab">to extend by a week</div><div class="stat__note">on top of the ransom</div></div><div class="stat__item"><div class="stat__val">$10,000</div><div class="stat__lab">to buy another day</div><div class="stat__note">group&#x27;s general profile, not confirmed at UMMC</div></div></div>
 <p>On the criminal side, Medusa's extortion structure is worth studying because it shows where the model is heading. Pay to have the data <strong>deleted</strong>. Pay to <strong>extend</strong> the deadline. Or a <strong>third party</strong> pays to <strong>buy it</strong>. This is no longer a two-party shakedown with a victim and an extortionist. It's <strong>an open auction</strong>, in which the victim is merely one potential buyer of their own data — and not necessarily the highest bidder.</p>
 <p>And the structural fact stands: <strong>four Mississippi hospitals in three years</strong>. That isn't bad luck. It's a sector identified as vulnerable, in a region identified as vulnerable, hit repeatedly because it worked repeatedly.</p></div>
     <div class="sidebar">

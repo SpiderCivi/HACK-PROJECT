@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed live</span>
-    <span>Updated &mdash; 17.07.2026 10:44 CET</span>
+    <span>Updated &mdash; 17.07.2026 10:53 CET</span>
     <span>13 dossiers</span>
     <span>MITRE ATT&CK mapping</span>
   </div>
@@ -59,13 +59,14 @@
     <div class="article__hero-media"><figure class="hero-figure" data-reveal style="--i:3"><img src="../../assets/img/en/kimsuky-quishing.svg" alt="" width="1200" height="675"></figure></div>
   </div>
   <div class="article__meta" data-reveal style="--i:2">
-    <span><i class="ti"></i>15.07.2026</span><span>4 min read</span><span>3 primary sources</span>
+    <span><i class="ti"></i>15.07.2026</span><span>5 min read</span><span>3 primary sources</span>
   </div>
   <div class="article__layout">
     <div class="prose" data-reveal style="--i:4"><h2 id="the-origin">The origin</h2>
 <p class="lede">Kimsuky has worked for North Korea since 2012, and its trade has never really changed: find out what the West thinks about North Korea. It doesn't steal patents or encrypt drives. It reads the mail of the people who write the papers that land on ministers' desks.</p>
 <p>On <strong>8 January 2026</strong> the FBI published FLASH <strong>AC-000001-MW</strong>, its only advisory dedicated to the group this year, describing incidents from May and June 2025. The document doesn't hedge: it names <em>"North Korean state-sponsored cyber threat group Kimsuky"</em> outright — though it's worth noting it attaches no explicit confidence percentage. Kaspersky corroborated broader activity on 14 May 2026, working from samples collected between August 2025 and February 2026.</p>
 <p>The targets have been consistent for a decade: think tanks, NGOs, academics, foreign-policy experts on North Korea, government bodies. The FLASH names the primary target explicitly: the <strong>United States</strong>.</p>
+<ol class="tl" data-reveal><li class="tl__item"><div class="tl__when">2012</div><div class="tl__body"><div class="tl__what">The start</div><p class="tl__txt">Kimsuky has worked for North Korea since then.</p></div></li><li class="tl__item"><div class="tl__when">May-June 2025</div><div class="tl__body"><div class="tl__what">The incidents</div><p class="tl__txt">The episodes the FLASH describes.</p></div></li><li class="tl__item"><div class="tl__when">8 January 2026</div><div class="tl__body"><div class="tl__what">The FBI FLASH</div><p class="tl__txt">AC-000001-MW, its only advisory on the group this year.</p></div></li><li class="tl__item"><div class="tl__when">14 May 2026</div><div class="tl__body"><div class="tl__what">The corroboration</div><p class="tl__txt">Kaspersky documents broader activity, from samples collected August 2025-February 2026.</p></div></li></ol>
 <p>What's new isn't who they hit. It's <strong>how</strong>.</p>
 <h2 id="the-attack-chain">The attack chain</h2>
 <p>There's no CVE in this story. No exploit. There's an image.</p>
@@ -88,6 +89,7 @@
 <p>Here's the most valuable operational detail in the FLASH, and it inverts a common assumption.</p>
 <p>Most SOCs build detection on <strong>failure</strong>: failed MFA prompts, repeated bad passwords, denied logins. That's reasonable logic — an attacker forcing their way in makes mistakes, and mistakes are visible.</p>
 <p>Session token theft <strong>never makes a mistake</strong>. The attacker doesn't attempt MFA; they walk past it holding a token that has already been validated. In the logs, the result is a successful first-try login by a legitimate user with a valid session. There is no negative event to correlate on.</p>
+<div class="stat stat--n2" data-reveal><div class="stat__item"><div class="stat__val">0</div><div class="stat__lab">&quot;MFA failed&quot; alerts</div><div class="stat__note">the attacker never attempts MFA: the token is already validated</div></div><div class="stat__item"><div class="stat__val">1</div><div class="stat__lab">first-try login</div><div class="stat__note">by a legitimate user, with a valid session</div></div></div>
 <p>So what to work with:</p>
 <ul>
 <li><strong>The absence of "MFA failed" alerts despite a bypass having occurred</strong> — a behavioural indicator, not a static one. If you have evidence of anomalous access with no upstream MFA failures, token replay is your leading hypothesis</li>

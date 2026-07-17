@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed live</span>
-    <span>Updated &mdash; 17.07.2026 10:44 CET</span>
+    <span>Updated &mdash; 17.07.2026 10:53 CET</span>
     <span>13 dossiers</span>
     <span>MITRE ATT&CK mapping</span>
   </div>
@@ -62,11 +62,13 @@
     <span><i class="ti"></i>15.07.2026</span><span>4 min read</span><span>3 primary sources</span>
   </div>
   <div class="article__layout">
-    <div class="prose" data-reveal style="--i:4"><h2 id="the-origin">The origin</h2>
-<p class="lede">On <strong>1 June 2026</strong>, between roughly 10:53 and 13:46 UTC, malicious commits landed on Red Hat's RedHatInsights repositories. By 13:00 UTC npm had revoked most of the malicious versions. By 18:50 UTC Red Hat had published security bulletin <strong>RHSB-2026-006</strong>, and Wiz Research had gone public.</p>
+    <div class="prose" data-reveal style="--i:4"><ol class="tl" data-reveal><li class="tl__item"><div class="tl__when">1 June 2026, ~10:53–13:46 UTC</div><div class="tl__body"><div class="tl__what">The malicious commits</div><p class="tl__txt">land on the RedHatInsights GitHub repositories.</p></div></li><li class="tl__item"><div class="tl__when">1 June 2026, ~13:00 UTC</div><div class="tl__body"><div class="tl__what">The revocation</div><p class="tl__txt">npm pulls most of the malicious versions.</p></div></li><li class="tl__item"><div class="tl__when">1 June 2026, 18:50 UTC</div><div class="tl__body"><div class="tl__what">The bulletin</div><p class="tl__txt">Red Hat publishes <strong>RHSB-2026-006</strong> as Wiz Research goes public.</p></div></li><li class="tl__item"><div class="tl__when">4 June 2026</div><div class="tl__body"><div class="tl__what">The second wave</div><p class="tl__txt">Wiz documents a different technique based on <code>binding.gyp</code>.</p></div></li></ol>
+<h2 id="the-origin">The origin</h2>
+<p>On <strong>1 June 2026</strong>, between roughly 10:53 and 13:46 UTC, malicious commits landed on Red Hat's RedHatInsights repositories. By 13:00 UTC npm had revoked most of the malicious versions. By 18:50 UTC Red Hat had published security bulletin <strong>RHSB-2026-006</strong>, and Wiz Research had gone public.</p>
 <p>Under three hours from compromise to disclosure. As incident response goes, that's fast.</p>
 <p>The scope: the <code>@redhat-cloud-services</code> npm namespace — frontend JavaScript libraries for the Hybrid Cloud Console. At least <strong>32 distinct packages</strong>, 90-plus malicious versions, roughly <strong>80,000 downloads a week</strong> according to Wiz. On 4 June, Wiz published a follow-up advisory on a second wave using a <code>binding.gyp</code> technique.</p>
 <p>Red Hat's own framing deserves to be quoted accurately, because it's less alarming than the headline suggests: the packages don't touch managed cloud services (ARO, OSD, ROSA, ACS Cloud, AAP Managed), <strong>no customer action is required</strong>, and no product build included the compromised versions. At the time of writing the bulletin's status remains <strong>"Ongoing"</strong>.</p>
+<div class="stat stat--n3" data-reveal><div class="stat__item"><div class="stat__val">32</div><div class="stat__lab">packages affected</div><div class="stat__note"><code>@redhat-cloud-services</code> namespace, according to Wiz</div></div><div class="stat__item"><div class="stat__val">90+</div><div class="stat__lab">malicious versions</div><div class="stat__note">published to npm on 1 June 2026</div></div><div class="stat__item"><div class="stat__val">80,000</div><div class="stat__lab">downloads a week</div><div class="stat__note">aggregate across the packages</div></div></div>
 <h2 id="the-attack-chain">The attack chain</h2>
 <ol>
 <li>A Red Hat employee's <strong>GitHub account</strong> is compromised. How, exactly, has never been publicly confirmed by Red Hat or Wiz — a gap worth stating plainly rather than filling with speculation.</li>
