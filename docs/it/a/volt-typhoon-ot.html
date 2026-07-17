@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/css/main.css?v=1d2aa809">
+<link rel="stylesheet" href="../../assets/css/main.css?v=7540cf5d">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Volt Typhoon ha smesso di guardare: ora cerca il pulsante di arresto", "description": "Per cinque anni Volt Typhoon si è nascosto dentro le infrastrutture critiche americane senza toccare nulla. Nel 2026 Dragos lo vede manipolare le workstation di ingegneria per capire quali condizioni fermano un impianto industriale. E non si procura più gli accessi da solo: glieli passa un broker interno al suo stesso apparato.", "datePublished": "2026-07-15", "dateModified": "2026-07-15", "inLanguage": "it", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/it/a/volt-typhoon-ot.html", "author": {"@type": "Person", "name": "Riccardo Civiero", "url": "https://github.com/SpiderCivi"}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/"}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/it/volt-typhoon-ot.svg"], "keywords": "Volt Typhoon, T1190, T1133, T1059.001, T1087.001, T1087.002, T1555.003, T1074, T1583.003, T1584.008, T1090.003", "citation": [{"@type": "CreativeWork", "name": "MITRE ATT&CK — Volt Typhoon (G1017)", "url": "https://attack.mitre.org/groups/G1017/"}, {"@type": "CreativeWork", "name": "Dragos — 9th Annual OT Cybersecurity Year in Review", "url": "https://www.dragos.com/blog/dragos-2026-ot-cybersecurity-year-in-review"}, {"@type": "CreativeWork", "name": "CISA / NSA / FBI — Advisory AA24-038A", "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a"}]}</script>
 </head>
 <body>
@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed attivo</span>
-    <span>Aggiornato &mdash; 17.07.2026 09:05 CET</span>
+    <span>Aggiornato &mdash; 17.07.2026 09:37 CET</span>
     <span>13 dossier</span>
     <span>Mappatura MITRE ATT&CK</span>
   </div>
@@ -68,7 +68,7 @@
 <p>Volt Typhoon è attribuito allo stato cinese ed è tracciato dal 2021 sotto una collezione di nomi che dice molto sulla frammentazione del settore: BRONZE SILHOUETTE per Secureworks, Vanguard Panda per CrowdStrike, UNC3236 per Mandiant, Voltzite per Dragos, Insidious Taurus per Unit 42.</p>
 <p>Il bersaglio è dichiarato e ripetuto: <strong>Comunicazioni, Energia, Trasporti, Acqua e acque reflue</strong> negli Stati Uniti e nei territori, <strong>Guam</strong> compresa — dettaglio geografico che nessun analista serio legge come casuale. Ci sono poi i servizi di emergenza, la base industriale della difesa, i servizi satellitari, e un'espansione verso Africa e Sud-Est asiatico.</p>
 <p>Le porte d'ingresso storiche sono quelle di sempre: <strong>Fortinet, Ivanti/Pulse Secure, NETGEAR, Citrix, Cisco</strong>. Le CVE nominate nelle campagne precedenti — <strong>CVE-2024-39717</strong> su Versa Director, <strong>CVE-2021-40539</strong> su Zoho ManageEngine ADSelfService Plus — appartengono al passato dell'attore, non all'attività del 2026. Va detto chiaramente: <strong>per la fase 2026 nessuna fonte nomina una CVE specifica</strong>. Chi vi vende un IoC decisivo su questa campagna sta vendendo qualcosa che le fonti primarie non hanno.</p>
-<h2 id="la-catena-dattacco">La catena d'attacco</h2>
+<figure class="figure figure--schema" data-reveal><img src="../../assets/img/it/volt-typhoon-ot.svg" alt="Lo schema dell'attacco." width="1200" height="675" loading="lazy"><figcaption class="figure__cap">Lo schema dell'attacco.</figcaption></figure><h2 id="la-catena-dattacco">La catena d'attacco</h2>
 <p>La novità strutturale sta a monte di tutto il resto, e Dragos la chiama <strong>SYLVANITE</strong>.</p>
 <p>SYLVANITE non fa spionaggio OT. Fa <strong>accesso iniziale, e basta</strong>: sfrutta vulnerabilità su edge, VPN e firewall — pesando le weaponizza <strong>entro 48 ore dalla disclosure</strong> — spesso appoggiandosi a <strong>Cobalt Strike</strong> o <strong>Sliver</strong>. Poi <strong>cede l'accesso</strong> a Voltzite/Volt Typhoon, che esegue l'intrusione vera.</p>
 <p>È una divisione del lavoro quasi aziendale, ricalcata sui modelli di <em>initial access broker</em> del cybercrimine finanziario e applicata allo spionaggio statale. Volt Typhoon diventa il <strong>cliente finale</strong> di una supply chain interna al proprio apparato. Le implicazioni difensive sono ruvide: la velocità di weaponizzazione non è più un vincolo dell'attore OT, è un servizio che compra da qualcun altro.</p>

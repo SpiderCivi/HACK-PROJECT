@@ -1296,3 +1296,166 @@ html, body { max-width: 100%; }
 }
 .prose blockquote.pull p { margin: 0; }
 
+
+/* ============================================================
+   BLOCCHI VISIVI NEL CORPO — spezzano il muro di testo
+   stat / timeline / flow + figura schema.
+   Regola: escono dalla misura di lettura, cosi' l'occhio si stacca.
+   ============================================================ */
+
+.figure--schema,
+.stat,
+.tl,
+.flow {
+  margin: 2.6rem 0;
+  max-width: min(100%, 52rem);
+}
+
+/* — Figura: lo schema dell'attacco — */
+.figure {
+  margin: 2.6rem 0;
+}
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  background: var(--paper-2);
+}
+.figure__cap {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+  margin-top: 0.6rem;
+  padding-left: 0.7rem;
+  border-left: 2px solid var(--rule);
+}
+
+/* — Stat: il numero che colpisce — */
+.stat {
+  display: grid;
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule);
+  grid-template-columns: 1fr;
+}
+.stat--n2 { grid-template-columns: repeat(2, 1fr); }
+.stat--n3 { grid-template-columns: repeat(3, 1fr); }
+.stat__item {
+  background: var(--paper-2);
+  padding: 1.4rem 1.3rem;
+}
+.stat__val {
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 4.6vw, 2.9rem);
+  line-height: 1;
+  color: var(--oxide-lit);
+  letter-spacing: -0.02em;
+}
+.stat__lab {
+  font-family: var(--body);
+  font-size: 0.94rem;
+  color: var(--ink);
+  margin-top: 0.5rem;
+  line-height: 1.35;
+}
+.stat__note {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  color: var(--ink-faint);
+  margin-top: 0.5rem;
+  line-height: 1.45;
+}
+
+/* — Timeline: la cronologia — */
+.tl {
+  list-style: none;
+  padding: 0;
+  border-left: 2px solid var(--rule);
+}
+.tl__item {
+  position: relative;
+  padding: 0 0 1.7rem 1.6rem;
+}
+.tl__item::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 0.45rem;
+  width: 10px;
+  height: 10px;
+  background: var(--oxide);
+  border: 2px solid var(--paper);
+  border-radius: 50%;
+}
+.tl__item:last-child { padding-bottom: 0; }
+.tl__when {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--oxide-lit);
+}
+.tl__what {
+  font-family: var(--display);
+  font-size: 1.06rem;
+  color: var(--ink);
+  margin-top: 0.24rem;
+}
+.tl__txt {
+  font-family: var(--body);
+  font-size: 0.92rem;
+  color: var(--ink-dim);
+  margin: 0.35rem 0 0;
+  line-height: 1.55;
+}
+
+/* — Flow: la catena d'attacco — */
+.flow {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule);
+}
+.flow__step {
+  background: var(--paper-2);
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  align-items: baseline;
+}
+.flow__n {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--oxide);
+  flex: 0 0 auto;
+}
+.flow__t {
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+.flow__note {
+  font-family: var(--body);
+  font-size: 0.88rem;
+  color: var(--ink-dim);
+  margin-top: 0.25rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 620px) {
+  .stat--n2,
+  .stat--n3 { grid-template-columns: 1fr; }
+  .figure--schema,
+  .stat,
+  .tl,
+  .flow { margin: 2rem 0; }
+}
+
+@media print {
+  .stat, .tl, .flow, .figure img { border-color: #999; }
+}

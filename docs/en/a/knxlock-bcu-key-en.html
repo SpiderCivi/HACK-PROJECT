@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/css/main.css?v=1d2aa809">
+<link rel="stylesheet" href="../../assets/css/main.css?v=7540cf5d">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "No malware, no ransom, no patch: the KNXlock case", "description": "On 15 July 2026 CISA added to the KEV catalog a 2023 CVE describing a 2021 attack. There is no malicious code: the attackers purge a building's KNX devices, then set the BCU key — the password the protocol provides as a protective feature. Vendors replied that no reset exists. No ransom ever arrived.", "datePublished": "2026-07-17", "dateModified": "2026-07-17", "inLanguage": "en", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/en/a/knxlock-bcu-key-en.html", "author": {"@type": "Person", "name": "Riccardo Civiero", "url": "https://github.com/SpiderCivi"}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/"}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/en/knxlock-bcu-key.svg"], "keywords": "Unknown — no attribution, no ransom demand, T0892", "citation": [{"@type": "CreativeWork", "name": "CISA — ICS Advisory ICSA-23-236-01: KNX Protocol", "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-23-236-01"}, {"@type": "CreativeWork", "name": "Limes Security — KNXlock: an attack campaign against KNX-based building automation systems", "url": "https://limessecurity.com/en/knxlock/"}, {"@type": "CreativeWork", "name": "NVD — CVE-2023-4346", "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-4346"}, {"@type": "CreativeWork", "name": "MITRE ATT&CK for ICS — T0892 Change Credential", "url": "https://attack.mitre.org/techniques/T0892/"}, {"@type": "CreativeWork", "name": "CISA — Known Exploited Vulnerabilities Catalog", "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"}]}</script>
 </head>
 <body>
@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed live</span>
-    <span>Updated &mdash; 17.07.2026 09:05 CET</span>
+    <span>Updated &mdash; 17.07.2026 09:37 CET</span>
     <span>13 dossiers</span>
     <span>MITRE ATT&CK mapping</span>
   </div>
@@ -59,7 +59,7 @@
     <div class="article__hero-media"><figure class="hero-figure" data-reveal style="--i:3"><img src="../../assets/img/en/knxlock-bcu-key.svg" alt="" width="1200" height="675"></figure></div>
   </div>
   <div class="article__meta" data-reveal style="--i:2">
-    <span><i class="ti"></i>17.07.2026</span><span>5 min read</span><span>5 primary sources</span>
+    <span><i class="ti"></i>17.07.2026</span><span>6 min read</span><span>5 primary sources</span>
   </div>
   <div class="article__layout">
     <div class="prose" data-reveal style="--i:4"><h2 id="one-word-changed-in-a-database">One word changed in a database</h2>
@@ -70,6 +70,7 @@
 <p>The account comes from Limes Security, the Austrian firm that handled the case and later reported the vulnerability to CISA. In October 2021 a German engineering company asks for help: they had designed the automation system of a mid-sized site on KNX, the most widespread building automation standard in Europe. Someone had gotten in over the internet and locked the owners out.</p>
 <p>The building held several hundred KNX components. Three quarters of them no longer worked.</p>
 <p>No malware was used. No exploit was used. The attackers did two things, both of them provided for by the protocol. First, they <strong>unloaded</strong> the devices — in KNX terms, the operation that removes the application from the device. Second, they set the <strong>BCU key</strong>, the 4-byte password the standard provides to prevent unauthorised changes to devices.</p>
+<ol class="flow" data-reveal><li class="flow__step"><span class="flow__n">01</span><div class="flow__b"><div class="flow__t">Network access</div><div class="flow__note">the KNX bus was reachable from the internet</div></div></li><li class="flow__step"><span class="flow__n">02</span><div class="flow__b"><div class="flow__t">UNLOAD</div><div class="flow__note">the application is removed from the device — provided for by the protocol</div></div></li><li class="flow__step"><span class="flow__n">03</span><div class="flow__b"><div class="flow__t">SET BCU KEY</div><div class="flow__note">4 bytes, the password the standard offers to lock out changes</div></div></li><li class="flow__step"><span class="flow__n">04</span><div class="flow__b"><div class="flow__t">No reset</div><div class="flow__note">the vendors: devices are to be considered bricked</div></div></li></ol>
 <p>The analogy Limes uses is precise: it is like wiping a computer's hard disk and then setting a password on the disk. The machine powers on and does nothing, and without that password you can never install anything on it again.</p>
 <p>The building had lost its intelligence. Not only the complex systems: light switches and shutter control too. The engineer recounted that in the end they ran the entire building in manual mode, rewiring components to operate them from the circuit breaker panel.</p>
 <h2 id="the-vendor-response">The vendor response</h2>
@@ -80,9 +81,11 @@
 <p>Limes did recover the keys in the end, but by an unintended route: dumping memory directly from the device CPUs — possible only where CPU protection was not enabled — and brute-forcing only the region where the key was plausibly written. Brute-forcing the authentication directly had been discarded immediately: the devices respond so slowly it would have taken years.</p>
 <h2 id="the-detail-that-says-everything">The detail that says everything</h2>
 <p>The CVSS vector assigned by ICS-CERT is <code>AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H</code>. Base score 7.5.</p>
-<p>Look at the last three letters. Confidentiality: <strong>no impact</strong>. Integrity: <strong>no impact</strong>. Availability: <strong>high</strong>.</p>
+<p>Look at the last three letters.</p>
+<div class="stat stat--n3" data-reveal><div class="stat__item"><div class="stat__val">C:N</div><div class="stat__lab">Confidentiality</div><div class="stat__note">no impact: nothing is stolen</div></div><div class="stat__item"><div class="stat__val">I:N</div><div class="stat__lab">Integrity</div><div class="stat__note">no impact: nothing is altered</div></div><div class="stat__item"><div class="stat__val">A:H</div><div class="stat__lab">Availability</div><div class="stat__note">high: the building stops</div></div></div>
 <p>Nothing is stolen. Nothing is altered. The building simply stops. It is the most unusual risk profile you will see in a CVE, and it describes with precision an attack that did not want data.</p>
 <p>And the ransom? <strong>It never came.</strong> No demand, no contact. Limes offers two hypotheses, stated as such: either this was advanced digital vandalism, or the attackers could not work out from the internet who to address the note to. We do not know, and anyone telling you otherwise is guessing.</p>
+<ol class="tl" data-reveal><li class="tl__item"><div class="tl__when">October 2021</div><div class="tl__body"><div class="tl__what">The attack</div><p class="tl__txt">A German engineering company loses control of the building. Three quarters of the components out of service.</p></div></li><li class="tl__item"><div class="tl__when">March 2023</div><div class="tl__body"><div class="tl__what">The technique</div><p class="tl__txt">MITRE creates T0892 <em>Change Credential</em>. Contributor: Felix Eberstaller, of Limes.</p></div></li><li class="tl__item"><div class="tl__when">August 2023</div><div class="tl__body"><div class="tl__what">The CVE</div><p class="tl__txt">CISA publishes ICSA-23-236-01. CVE-2023-4346, CVSS 7.5.</p></div></li><li class="tl__item"><div class="tl__when">October 2024</div><div class="tl__body"><div class="tl__what"><code>exploitation: none</code></div><p class="tl__txt">CISA&#x27;s SSVC vector says: no exploitation observed.</p></div></li><li class="tl__item"><div class="tl__when">15 July 2026</div><div class="tl__body"><div class="tl__what"><code>exploitation: active</code></div><p class="tl__txt">The CVE enters the KEV catalog. Due date: 29 July.</p></div></li></ol>
 <h2 id="what-we-declare-we-do-not-know">What we declare we do not know</h2>
 <p>A lot, in this case.</p>
 <p>There is no attribution: no group, no nationality, no confirmed motive. CISA writes that it has received reports of active exploitation, but publishes no indicators, no victim counts, no time window. The figure of <strong>16,000 potentially vulnerable systems in the DACH region</strong> comes from Alpha Strike Labs scans reported by Limes in August 2023: it is an exposure estimate, not a compromise count, and it is three years old. Above all we do not know <em>why</em> CISA flagged a CVE dormant since 2023 right now — whether there are new 2026 cases or whether this is a reclassification of known reports. The one documented fact is that Limes was still receiving attack reports in 2023, two years after the first case.</p>
