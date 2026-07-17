@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed attivo</span>
-    <span>Aggiornato &mdash; 17.07.2026 09:37 CET</span>
+    <span>Aggiornato &mdash; 17.07.2026 10:44 CET</span>
     <span>13 dossier</span>
     <span>Mappatura MITRE ATT&CK</span>
   </div>
@@ -66,7 +66,7 @@
 <p class="lede">Il 15 luglio 2026, dentro il record di CVE-2023-4346, un campo è passato da <code>none</code> ad <code>active</code>.</p>
 <p>È il vettore SSVC che CISA mantiene per ogni vulnerabilità: la voce <code>exploitation</code>. Fino al primo ottobre 2024 diceva <code>none</code>. Da mercoledì dice <code>active</code>, e la CVE è entrata nel catalogo delle Known Exploited Vulnerabilities con scadenza 29 luglio.</p>
 <p>La cosa curiosa è che l'attacco che quella CVE descrive è successo nell'ottobre del 2021.</p>
-<figure class="figure figure--schema" data-reveal><img src="../../assets/img/it/knxlock-bcu-key.svg" alt="Lo schema dell'attacco." width="1200" height="675" loading="lazy"><figcaption class="figure__cap">Lo schema dell'attacco.</figcaption></figure><h2 id="cosa-e-successo-davvero">Cosa è successo davvero</h2>
+<h2 id="cosa-e-successo-davvero">Cosa è successo davvero</h2>
 <p>La ricostruzione arriva da Limes Security, la società austriaca che ha gestito il caso e ha poi segnalato la vulnerabilità a CISA. Nell'ottobre 2021 un'azienda di ingegneria tedesca chiede aiuto: avevano progettato il sistema di automazione di un sito di medie dimensioni su KNX, lo standard di building automation più diffuso in Europa. Qualcuno era entrato da internet e aveva chiuso fuori i proprietari.</p>
 <p>L'edificio conteneva diverse centinaia di componenti KNX. Tre quarti non funzionavano più.</p>
 <p>Non è stato usato malware. Non è stato usato un exploit. Gli attaccanti hanno fatto due cose, entrambe previste dal protocollo. Primo: hanno <strong>scaricato</strong> i dispositivi — in gergo KNX, <em>unload</em>, l'operazione che rimuove l'applicazione dal dispositivo. Secondo: hanno impostato la <strong>BCU key</strong>, la password da 4 byte che lo standard prevede per impedire modifiche non autorizzate ai dispositivi.</p>

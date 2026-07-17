@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed attivo</span>
-    <span>Aggiornato &mdash; 17.07.2026 09:37 CET</span>
+    <span>Aggiornato &mdash; 17.07.2026 10:44 CET</span>
     <span>13 dossier</span>
     <span>Mappatura MITRE ATT&CK</span>
   </div>
@@ -66,7 +66,7 @@
 <h2 id="lorigine">L'origine</h2>
 <p><strong>Storm-2603</strong> è una designazione Microsoft per un attore con <strong>nesso cinese</strong>, che distribuisce il ransomware <strong>Warlock</strong> (in precedenza <strong>4L4MD4R</strong>). Rientra nella campagna che MITRE traccia come <strong>C0058, SharePoint ToolShell Exploitation</strong>, esplosa nel luglio 2025.</p>
 <p>La cronologia successiva è quella di un attore che non si è fermato. Il <strong>26 gennaio 2026</strong> CISA aggiunge <strong>CVE-2026-23760</strong> al catalogo KEV. Il <strong>2 febbraio</strong> aggiunge <strong>CVE-2026-24423</strong>, con deadline al 26 febbraio. Intorno al <strong>9 febbraio</strong> ReliaQuest pubblica il proprio report — e lo stesso giorno accade la cosa che un vendor non vorrebbe mai vedere scritta: <strong>SmarterTools, l'azienda che produce SmarterMail, viene violata attraverso la vulnerabilità del proprio prodotto</strong>. Chi scrive il codice non è al riparo dal codice che ha scritto.</p>
-<figure class="figure figure--schema" data-reveal><img src="../../assets/img/it/storm2603-warlock.svg" alt="Lo schema dell'attacco." width="1200" height="675" loading="lazy"><figcaption class="figure__cap">Lo schema dell'attacco.</figcaption></figure><h2 id="la-catena-dattacco">La catena d'attacco</h2>
+<h2 id="la-catena-dattacco">La catena d'attacco</h2>
 <p>Il punto d'ingresso è <strong>CVE-2026-23760</strong>, un bypass di autenticazione nell'API di reset password di SmarterMail. Il meccanismo è di una semplicità imbarazzante: <strong>l'endpoint accetta qualunque vecchia password, anche errata</strong>. Non c'è overflow, non c'è crittanalisi. C'è un controllo che non controlla.</p>
 <p>Da lì la sequenza smette di usare exploit e comincia a usare funzionalità.</p>
 <ol>

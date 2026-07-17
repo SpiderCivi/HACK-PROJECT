@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed attivo</span>
-    <span>Aggiornato &mdash; 17.07.2026 09:37 CET</span>
+    <span>Aggiornato &mdash; 17.07.2026 10:44 CET</span>
     <span>13 dossier</span>
     <span>Mappatura MITRE ATT&CK</span>
   </div>
@@ -69,7 +69,7 @@
 <p>Le fonti terze riportano un <strong>CVSS 9.3</strong>. Va detto chiaramente che si tratta di un punteggio attribuito da terzi: al momento della pubblicazione <strong>NVD non aveva ancora assegnato uno score ufficiale</strong>. La cifra circola, ma non è ancora canonica.</p>
 <p>C'è però una condizione che restringe tutto. Il difetto colpisce <strong>solo i gateway che espongono IKEv1 legacy e non impongono il machine certificate</strong>. Chi ha forzato IKEv2 non è vulnerabile. Chi ha reso obbligatoria la Machine Certificate Authentication non è vulnerabile. IKEv1 è deprecato da anni: RFC obsolete, raccomandazioni di dismissione, sostituto disponibile da oltre un decennio.</p>
 <p>Questo non è un bug nuovo. È <strong>debito tecnico che presenta il conto</strong>. La CVE del 2026 esiste perché nel 2016, nel 2019, nel 2023 nessuno ha spento un protocollo che tutti sapevano andasse spento. La vulnerabilità è stata scoperta quest'anno; la decisione che l'ha resa sfruttabile è vecchia di anni, ed è stata presa — o non presa — da un amministratore che aveva una casella "compatibilità client legacy" e ha scelto di lasciarla spuntata.</p>
-<figure class="figure figure--schema" data-reveal><img src="../../assets/img/it/qilin-checkpoint.svg" alt="Lo schema dell'attacco." width="1200" height="675" loading="lazy"><figcaption class="figure__cap">Lo schema dell'attacco.</figcaption></figure><h2 id="la-catena-dattacco">La catena d'attacco</h2>
+<h2 id="la-catena-dattacco">La catena d'attacco</h2>
 <p>Dopo l'accesso iniziale (<strong>T1190</strong>, Exploit Public-Facing Application; <strong>T1133</strong>, External Remote Services) gli operatori — che Trend Micro traccia come <strong>Water Galura</strong> — si muovono con una discrezione notevole. La comunicazione passa dal protocollo <strong>Tox</strong>, peer-to-peer e cifrato, senza server centrale da sequestrare. L'esfiltrazione usa <strong>Rclone</strong> verso cloud storage (<strong>T1567.002</strong>), cioè uno strumento legittimo, firmato, con un traffico che assomiglia a un backup.</p>
 <p>L'infrastruttura è <strong>VPS a noleggio</strong>: Kaupo Cloud Hong Kong, Shock Hosting, Vultr. Il dettaglio interessante è la <strong>correlazione geografica tra vittima e infrastruttura</strong> — i nodi vengono scelti vicino al bersaglio, perché una sessione VPN da un IP della stessa regione non accende nessun alert di viaggio impossibile. È una scelta di evasione, non di latenza.</p>
 <p>Qui la ricostruzione si ferma, e bisogna essere onesti su dove. <strong>La fase di cifratura non è confermata pubblicamente per questo incidente.</strong> Ciò che risulta documentato è accesso iniziale ed esfiltrazione. Che sia stato un attacco a doppia estorsione andato fino in fondo, o una campagna fermata prima dell'impatto, o una raccolta dati senza intenzione di cifrare, le fonti pubbliche non lo dicono.</p>

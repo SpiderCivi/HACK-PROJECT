@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed attivo</span>
-    <span>Aggiornato &mdash; 17.07.2026 09:37 CET</span>
+    <span>Aggiornato &mdash; 17.07.2026 10:44 CET</span>
     <span>13 dossier</span>
     <span>Mappatura MITRE ATT&CK</span>
   </div>
@@ -69,7 +69,7 @@
 <p>Le finestre temporali divergono leggermente, ed è normale: Microsoft data l'attività ad <strong>agosto 2025</strong>, Lumen la vede partire da <strong>maggio 2025</strong> con un picco tra dicembre 2025 e gennaio 2026. Sono due sensori che guardano fenomeni diversi — endpoint contro backbone — non due versioni in conflitto.</p>
 <p>La scala è quella che dà le vertigini. Oltre <strong>200 organizzazioni</strong> compromesse. Più di <strong>5.000 dispositivi consumer</strong>. Almeno tre enti governativi africani, un ente governativo afgano, ministeri degli esteri, forze dell'ordine e provider di posta e cloud tra Nord Africa, America Centrale e Sud-Est asiatico. Router in Ucraina. E un nodo iniziale su un <strong>firewall Nethesis in Italia</strong>: non un obiettivo, un trampolino. Al picco della campagna l'infrastruttura ha toccato oltre <strong>18.000 indirizzi IP univoci da più di 120 paesi</strong>.</p>
 <p>Il vettore d'ingresso è un router SOHO <strong>TP-Link WR841N</strong>, sfruttato secondo NCSC "<strong>likely</strong>" via <strong>CVE-2023-50224</strong>, che consente il furto di credenziali tramite richieste HTTP GET malformate e non autenticate. Va detto con precisione: quel "likely" è un hedge esplicito della fonte, non una formalità. Il legame specifico tra quel modello e quella CVE resta l'anello meno saldo di una catena per il resto solidissima. Non è stato pubblicato alcun punteggio CVSS. Nella campagna compaiono anche <strong>MikroTik</strong> e firewall <strong>Fortinet</strong> e <strong>Nethesis</strong> datati.</p>
-<figure class="figure figure--schema" data-reveal><img src="../../assets/img/it/apt28-router-dns.svg" alt="Lo schema dell'attacco." width="1200" height="675" loading="lazy"><figcaption class="figure__cap">Lo schema dell'attacco.</figcaption></figure><h2 id="la-catena-dattacco">La catena d'attacco</h2>
+<h2 id="la-catena-dattacco">La catena d'attacco</h2>
 <p>La meccanica è di una linearità quasi didattica.</p>
 <p>Gli operatori affittano <strong>VPS</strong> e ci montano sopra server DNS malevoli (<strong>T1583.002</strong>, <strong>T1583.003</strong>). Da lì colpiscono il router: una prima GET malformata estrae le credenziali di gestione, una seconda ne riscrive la configurazione <strong>DHCP/DNS</strong> (<strong>T1584.008</strong>). A questo punto il dispositivo continua a funzionare perfettamente. Nessun rallentamento, nessun sintomo. Semplicemente, ogni laptop, telefono o server che si affaccia su quella rete eredita via DHCP un resolver controllato dal GRU.</p>
 <p>Il DNS malevolo non mente su tutto: sarebbe rumoroso e inutile. Mente in modo <strong>selettivo</strong>, e solo su un elenco chirurgico di domini Microsoft — <code>autodiscover-s.outlook[.]com</code>, <code>imap-mail.outlook[.]com</code>, <code>outlook.live[.]com</code>, <code>office[.]com</code>, <code>office365[.]com</code>. Tutto il resto risolve normalmente.</p>

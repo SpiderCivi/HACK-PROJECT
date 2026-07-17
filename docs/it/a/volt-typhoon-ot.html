@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed attivo</span>
-    <span>Aggiornato &mdash; 17.07.2026 09:37 CET</span>
+    <span>Aggiornato &mdash; 17.07.2026 10:44 CET</span>
     <span>13 dossier</span>
     <span>Mappatura MITRE ATT&CK</span>
   </div>
@@ -68,7 +68,7 @@
 <p>Volt Typhoon è attribuito allo stato cinese ed è tracciato dal 2021 sotto una collezione di nomi che dice molto sulla frammentazione del settore: BRONZE SILHOUETTE per Secureworks, Vanguard Panda per CrowdStrike, UNC3236 per Mandiant, Voltzite per Dragos, Insidious Taurus per Unit 42.</p>
 <p>Il bersaglio è dichiarato e ripetuto: <strong>Comunicazioni, Energia, Trasporti, Acqua e acque reflue</strong> negli Stati Uniti e nei territori, <strong>Guam</strong> compresa — dettaglio geografico che nessun analista serio legge come casuale. Ci sono poi i servizi di emergenza, la base industriale della difesa, i servizi satellitari, e un'espansione verso Africa e Sud-Est asiatico.</p>
 <p>Le porte d'ingresso storiche sono quelle di sempre: <strong>Fortinet, Ivanti/Pulse Secure, NETGEAR, Citrix, Cisco</strong>. Le CVE nominate nelle campagne precedenti — <strong>CVE-2024-39717</strong> su Versa Director, <strong>CVE-2021-40539</strong> su Zoho ManageEngine ADSelfService Plus — appartengono al passato dell'attore, non all'attività del 2026. Va detto chiaramente: <strong>per la fase 2026 nessuna fonte nomina una CVE specifica</strong>. Chi vi vende un IoC decisivo su questa campagna sta vendendo qualcosa che le fonti primarie non hanno.</p>
-<figure class="figure figure--schema" data-reveal><img src="../../assets/img/it/volt-typhoon-ot.svg" alt="Lo schema dell'attacco." width="1200" height="675" loading="lazy"><figcaption class="figure__cap">Lo schema dell'attacco.</figcaption></figure><h2 id="la-catena-dattacco">La catena d'attacco</h2>
+<h2 id="la-catena-dattacco">La catena d'attacco</h2>
 <p>La novità strutturale sta a monte di tutto il resto, e Dragos la chiama <strong>SYLVANITE</strong>.</p>
 <p>SYLVANITE non fa spionaggio OT. Fa <strong>accesso iniziale, e basta</strong>: sfrutta vulnerabilità su edge, VPN e firewall — pesando le weaponizza <strong>entro 48 ore dalla disclosure</strong> — spesso appoggiandosi a <strong>Cobalt Strike</strong> o <strong>Sliver</strong>. Poi <strong>cede l'accesso</strong> a Voltzite/Volt Typhoon, che esegue l'intrusione vera.</p>
 <p>È una divisione del lavoro quasi aziendale, ricalcata sui modelli di <em>initial access broker</em> del cybercrimine finanziario e applicata allo spionaggio statale. Volt Typhoon diventa il <strong>cliente finale</strong> di una supply chain interna al proprio apparato. Le implicazioni difensive sono ruvide: la velocità di weaponizzazione non è più un vincolo dell'attore OT, è un servizio che compra da qualcun altro.</p>

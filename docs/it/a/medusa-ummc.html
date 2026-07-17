@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed attivo</span>
-    <span>Aggiornato &mdash; 17.07.2026 09:37 CET</span>
+    <span>Aggiornato &mdash; 17.07.2026 10:44 CET</span>
     <span>13 dossier</span>
     <span>Mappatura MITRE ATT&CK</span>
   </div>
@@ -76,7 +76,7 @@
 <li><strong>Il volume esfiltrato — 1 TB, un milione di file — è dichiarato dai criminali stessi.</strong> Non è verificato. La parte lesa non l'ha confermato, e l'estorsore ha ovvio interesse a gonfiare la cifra.</li>
 <li><strong>Mississippi Today</strong>, il 23 aprile 2026, riporta che <strong>UMMC non risulta aver presentato un breach report a HHS/OCR</strong>.</li>
 </ul>
-<figure class="figure figure--schema" data-reveal><img src="../../assets/img/it/medusa-ummc.svg" alt="Lo schema dell'attacco." width="1200" height="675" loading="lazy"><figcaption class="figure__cap">Lo schema dell'attacco.</figcaption></figure><h2 id="la-catena-dattacco">La catena d'attacco</h2>
+<h2 id="la-catena-dattacco">La catena d'attacco</h2>
 <p><em>(Profilo generale Medusa da AA25-071A — ATT&amp;CK v16. Non confermato su UMMC.)</em></p>
 <p>L'ingresso avviene via <strong>Initial Access Broker</strong>, <strong>phishing</strong> (<strong>T1566</strong>) o <strong>sfruttamento di CVE note</strong> su asset esposti (<strong>T1190</strong>). Segue la ricognizione con <strong>Advanced IP Scanner</strong> e <strong>SoftPerfect</strong> (<strong>T1046</strong>), ed enumerazione via PowerShell — <code>systeminfo</code>, <code>net share</code>, <code>ipconfig /all</code> (<strong>T1082</strong>, <strong>T1059.001</strong>).</p>
 <p>L'evasione è metodica: <strong>certutil</strong> per scaricare payload, <strong>PowerShell offuscato</strong> in base64/gzip, <strong>cancellazione della cronologia PowerShell</strong>, e <strong>driver firmati</strong> per disattivare l'EDR (<strong>T1562.001</strong>). Il C2 passa da <strong>Ligolo</strong> e <strong>Cloudflared</strong>. Le credenziali arrivano da <strong>Mimikatz</strong> su LSASS (<strong>T1003.001</strong>).</p>

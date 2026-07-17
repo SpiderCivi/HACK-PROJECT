@@ -33,7 +33,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed attivo</span>
-    <span>Aggiornato &mdash; 17.07.2026 09:37 CET</span>
+    <span>Aggiornato &mdash; 17.07.2026 10:44 CET</span>
     <span>13 dossier</span>
     <span>Mappatura MITRE ATT&CK</span>
   </div>
@@ -68,7 +68,7 @@
 <p>Il 31 marzo 2026 vengono pubblicate su npm <strong>axios@1.14.1</strong> e <strong>axios@0.30.4</strong>. Sono entrambe malevole. Le ultime versioni sicure restano <strong>1.14.0</strong> e <strong>0.30.3</strong>. Il 1° aprile alle 21:00 UTC Microsoft Threat Intelligence pubblica l'analisi tecnica; il 20 aprile CISA emette il proprio alert.</p>
 <p>L'attore ha ottenuto accesso pubblicativo all'account npm del maintainer. <strong>Come, Microsoft non lo dice</strong>: il vettore iniziale non è specificato nel report, e va trattato come sconosciuto, non come "phishing" per default. Circola anche una finestra di esposizione di "meno di tre ore": proviene da fonti secondarie e non è confermata sulla fonte primaria. Trattatela come indicativa. Tre ore su un pacchetto da 70 milioni di download settimanali restano comunque un numero enorme di build in CI.</p>
 <p>Ed è qui che sta il dettaglio che conta. npm aveva introdotto il <strong>Trusted Publishing via OIDC</strong> esattamente per rendere impossibile questo scenario: niente più token statici da rubare, ma credenziali effimere legate alla pipeline di build. L'attore non l'ha sconfitto. L'ha <strong>aggirato</strong>, usando un <strong>token classico già emesso in precedenza</strong> e mai revocato. La mitigazione "by design" era in campo e ha funzionato per ciò che copriva. Semplicemente non copriva il passato: <strong>una nuova architettura di sicurezza non protegge retroattivamente le credenziali emesse sotto la vecchia</strong>. Finché il token vecchio vive, il nuovo modello è decorativo.</p>
-<figure class="figure figure--schema" data-reveal><img src="../../assets/img/it/axios-npm.svg" alt="Lo schema dell'attacco." width="1200" height="675" loading="lazy"><figcaption class="figure__cap">Lo schema dell'attacco.</figcaption></figure><h2 id="la-catena-dattacco">La catena d'attacco</h2>
+<h2 id="la-catena-dattacco">La catena d'attacco</h2>
 <p>La preparazione è la parte più interessante, ed è quella che quasi nessuno racconta.</p>
 <p><strong>Prima il seeding.</strong> L'attore pubblica <code>plain-crypto-js</code> in versione <strong>4.2.0</strong>: pulita, innocua, priva di payload. Serve solo a esistere. A costruire storia, download, un profilo npm che non sembri nato ieri. È la stessa logica di un conto bancario aperto mesi prima di una truffa. Solo dopo arriva la <strong>4.2.1</strong>, identica in facciata, con in più uno <strong>script di installazione</strong> (<code>node setup.js</code>) che <strong>non viene mai importato dal codice runtime</strong>. Non serve che qualcuno lo chiami: <code>npm install</code> lo esegue da solo.</p>
 <p><strong>Poi il colpo chirurgico.</strong> Le due release di axios si limitano ad aggiungere <code>plain-crypto-js</code> alle dipendenze. Nessuna modifica al sorgente (<strong>T1195.001</strong>). Ogni controllo che guardi il codice della libreria passa. Il diff pericoloso sta nel manifest, dove pochi guardano con la stessa attenzione.</p>
