@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nessun malware, nessun riscatto, nessuna patch: il caso KNXlock — HACK/PROJECT</title>
+<meta name="description" content="Il 15 luglio 2026 CISA ha inserito nel catalogo KEV una CVE del 2023 che descrive un attacco del 2021. Non c&#x27;è codice malevolo: gli attaccanti svuotano i dispositivi KNX di un">
+<meta property="og:title" content="Nessun malware, nessun riscatto, nessuna patch: il caso KNXlock — HACK/PROJECT">
+<meta property="og:description" content="Il 15 luglio 2026 CISA ha inserito nel catalogo KEV una CVE del 2023 che descrive un attacco del 2021. Non c&#x27;è codice malevolo: gli attaccanti svuotano i dispositivi KNX di un">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="it" href="https://spidercivi.github.io/HACK-PROJECT/it/">
+<link rel="alternate" hreflang="en" href="https://spidercivi.github.io/HACK-PROJECT/en/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/main.css?v=1d2aa809">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Nessun malware, nessun riscatto, nessuna patch: il caso KNXlock", "description": "Il 15 luglio 2026 CISA ha inserito nel catalogo KEV una CVE del 2023 che descrive un attacco del 2021. Non c'è codice malevolo: gli attaccanti svuotano i dispositivi KNX di un edificio e poi impostano la BCU key, la password che il protocollo prevede come funzione di protezione. I vendor hanno risposto che non esiste alcun reset. Nessun riscatto è mai arrivato.", "datePublished": "2026-07-17", "dateModified": "2026-07-17", "inLanguage": "it", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/it/a/knxlock-bcu-key.html", "author": {"@type": "Person", "name": "Riccardo Civiero", "url": "https://github.com/SpiderCivi"}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/"}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/it/knxlock-bcu-key.svg"], "keywords": "Sconosciuto — nessuna attribuzione, nessuna richiesta di riscatto, T0892", "citation": [{"@type": "CreativeWork", "name": "CISA — ICS Advisory ICSA-23-236-01: KNX Protocol", "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-23-236-01"}, {"@type": "CreativeWork", "name": "Limes Security — KNXlock: an attack campaign against KNX-based building automation systems", "url": "https://limessecurity.com/en/knxlock/"}, {"@type": "CreativeWork", "name": "NVD — CVE-2023-4346", "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-4346"}, {"@type": "CreativeWork", "name": "MITRE ATT&CK for ICS — T0892 Change Credential", "url": "https://attack.mitre.org/techniques/T0892/"}, {"@type": "CreativeWork", "name": "CISA — Known Exploited Vulnerabilities Catalog", "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Salta al contenuto</a>
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../index.html">HACK<em>/</em>PROJECT</a>
+    <span class="masthead__tagline">Threat Intelligence Quotidiana</span>
+    <nav class="masthead__nav" aria-label="Principale">
+      <a href="../index.html">Archivio</a>
+      <a href="../about.html">Chi sono</a>
+      <a class="lang" href="../../en/a/knxlock-bcu-key-en.html" rel="alternate">English</a>
+    </nav>
+  </div>
+</header>
+<div class="shell">
+  <div class="ticker">
+    <span class="live">Threat feed attivo</span>
+    <span>Aggiornato &mdash; 17.07.2026 09:05 CET</span>
+    <span>13 dossier</span>
+    <span>Mappatura MITRE ATT&CK</span>
+  </div>
+</div>
+<div class="progress" aria-hidden="true"><i></i></div>
+<main id="main">
+
+<article class="article shell">
+  <nav class="crumb" aria-label="breadcrumb"><a href="../index.html">HACK/PROJECT</a><span>/</span><a href="../index.html">Archivio</a><span>/</span><em>Nessun malware, nessun riscatto, nessuna patch: </em></nav>
+  <div class="article__hero">
+    <header class="article__head">
+      <p class="eyebrow" data-reveal style="--i:0"><span class="eyebrow__topic">Sconosciuto — nessuna attribuzione, nessuna richiesta di riscatto</span><span class="sev sev--high">high</span></p>
+      <h1 class="article__title" data-reveal style="--i:1">Nessun malware, nessun riscatto, nessuna patch: il caso KNXlock</h1>
+      <p class="article__standfirst" data-reveal style="--i:2">Il 15 luglio 2026 CISA ha inserito nel catalogo KEV una CVE del 2023 che descrive un attacco del 2021. Non c&#x27;è codice malevolo: gli attaccanti svuotano i dispositivi KNX di un edificio e poi impostano la BCU key, la password che il protocollo prevede come funzione di protezione. I vendor hanno risposto che non esiste alcun reset. Nessun riscatto è mai arrivato.</p>
+      <div class="byline" data-reveal style="--i:2">
+        <img class="byline__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="40" height="40" loading="lazy">
+        <div class="byline__meta">
+          <span class="byline__name">di <a href="../about.html">Riccardo Civiero</a></span>
+          <span class="byline__handle">@SpiderCivi &nbsp;·&nbsp; 17.07.2026</span>
+        </div>
+      </div>
+    </header>
+    <div class="article__hero-media"><figure class="dossier-video" data-reveal style="--i:3"><div class="dossier-video__frame"><video controls preload="none" playsinline poster="../../video/poster/knxlock-bcu-key-it.jpg" width="1080" height="1920"><source src="../../video/knxlock-bcu-key-it.mp4" type="video/mp4"></video></div></figure></div>
+  </div>
+  <div class="article__meta" data-reveal style="--i:2">
+    <span><i class="ti"></i>17.07.2026</span><span>5 min di lettura</span><span>5 fonti primarie</span>
+  </div>
+  <div class="article__layout">
+    <div class="prose" data-reveal style="--i:4"><h2 id="una-parola-cambiata-in-un-database">Una parola cambiata in un database</h2>
+<p class="lede">Il 15 luglio 2026, dentro il record di CVE-2023-4346, un campo è passato da <code>none</code> ad <code>active</code>.</p>
+<p>È il vettore SSVC che CISA mantiene per ogni vulnerabilità: la voce <code>exploitation</code>. Fino al primo ottobre 2024 diceva <code>none</code>. Da mercoledì dice <code>active</code>, e la CVE è entrata nel catalogo delle Known Exploited Vulnerabilities con scadenza 29 luglio.</p>
+<p>La cosa curiosa è che l'attacco che quella CVE descrive è successo nell'ottobre del 2021.</p>
+<h2 id="cosa-e-successo-davvero">Cosa è successo davvero</h2>
+<p>La ricostruzione arriva da Limes Security, la società austriaca che ha gestito il caso e ha poi segnalato la vulnerabilità a CISA. Nell'ottobre 2021 un'azienda di ingegneria tedesca chiede aiuto: avevano progettato il sistema di automazione di un sito di medie dimensioni su KNX, lo standard di building automation più diffuso in Europa. Qualcuno era entrato da internet e aveva chiuso fuori i proprietari.</p>
+<p>L'edificio conteneva diverse centinaia di componenti KNX. Tre quarti non funzionavano più.</p>
+<p>Non è stato usato malware. Non è stato usato un exploit. Gli attaccanti hanno fatto due cose, entrambe previste dal protocollo. Primo: hanno <strong>scaricato</strong> i dispositivi — in gergo KNX, <em>unload</em>, l'operazione che rimuove l'applicazione dal dispositivo. Secondo: hanno impostato la <strong>BCU key</strong>, la password da 4 byte che lo standard prevede per impedire modifiche non autorizzate ai dispositivi.</p>
+<p>L'analogia che usa Limes è precisa: è come formattare il disco di un computer e poi mettere una password sul disco. La macchina si accende e non fa niente, e senza quella password non puoi più installarci sopra nulla.</p>
+<p>L'edificio aveva perso la sua intelligenza. Non solo i sistemi complessi: anche gli interruttori della luce e il controllo delle tapparelle. L'ingegnere ha raccontato che alla fine hanno fatto funzionare l'intero edificio in modalità manuale, ricablando componenti per azionarli dal quadro elettrico.</p>
+<h2 id="la-risposta-dei-vendor">La risposta dei vendor</h2>
+<p>Qui il caso smette di essere una storia di sicurezza informatica e diventa una storia di progettazione.</p>
+<p>L'azienda di ingegneria ha chiamato i produttori dei dispositivi. Più di uno. La risposta è stata unanime: <strong>nessun reset è possibile, i dispositivi sono da considerare bricked</strong>. Il consiglio: smontare e sostituire tutto. Fra hardware, installazione e verifica, oltre centomila euro.</p>
+<p>Non era un errore dei vendor. La BCU key fa esattamente quello per cui è stata progettata: impedire che qualcuno modifichi un dispositivo senza conoscere la password. Ha funzionato perfettamente. Solo che a impostarla non era stato il proprietario.</p>
+<p>È questo che rende il caso diverso dai soliti. Non c'è una vulnerabilità di memoria, non c'è un input non validato, non c'è una riga di codice sbagliata. La CWE assegnata è la 645, <em>Overly Restrictive Account Lockout Mechanism</em>: il difetto è che il meccanismo di blocco è <strong>troppo efficace</strong>. E infatti non esiste una patch. L'advisory CISA non dice "aggiornate": dice di impostare la BCU key in ogni progetto KNX già completato e di consegnarla al proprietario dell'edificio con la documentazione. La difesa è occupare il posto prima che lo occupi qualcun altro.</p>
+<p>Limes le chiavi le ha recuperate, alla fine, ma per una via non prevista: dump della memoria direttamente dalle CPU — possibile solo dove la protezione della CPU non era attiva — e brute force ristretto all'area in cui la chiave era plausibilmente scritta. Sull'autenticazione il bruteforce era stato scartato subito: i dispositivi rispondono così lentamente che ci sarebbero voluti anni.</p>
+<h2 id="il-dettaglio-che-dice-tutto">Il dettaglio che dice tutto</h2>
+<p>Il vettore CVSS assegnato da ICS-CERT è <code>AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H</code>. Base score 7.5.</p>
+<p>Guardate le ultime tre lettere. Confidenzialità: <strong>nessun impatto</strong>. Integrità: <strong>nessun impatto</strong>. Disponibilità: <strong>alto</strong>.</p>
+<p>Non viene rubato niente. Non viene alterato niente. L'edificio semplicemente si ferma. È il profilo di rischio più insolito che si veda in una CVE, e descrive con precisione un attacco che non voleva dati.</p>
+<p>E il riscatto? <strong>Non è mai arrivato.</strong> Nessuna richiesta, nessun contatto. Limes avanza due ipotesi, dichiarate come tali: o era vandalismo digitale avanzato, o gli attaccanti non sono riusciti a capire, da internet, a chi indirizzare la nota. Non lo sappiamo, e chi vi dice il contrario sta indovinando.</p>
+<h2 id="cosa-dichiariamo-di-non-sapere">Cosa dichiariamo di non sapere</h2>
+<p>Molto, in questo caso.</p>
+<p>Non c'è attribuzione: nessun gruppo, nessuna nazionalità, nessun movente confermato. CISA scrive di aver ricevuto segnalazioni di sfruttamento attivo, ma non pubblica indicatori, né conteggi di vittime, né una finestra temporale. Il dato dei <strong>16.000 sistemi potenzialmente vulnerabili nell'area DACH</strong> viene da scansioni di Alpha Strike Labs riportate da Limes nell'agosto 2023: è una stima di esposizione, non di compromissione, e ha tre anni. Non sappiamo, soprattutto, <em>perché</em> CISA abbia flaggato adesso una CVE ferma dal 2023 — se ci siano nuovi casi nel 2026 o se sia una riclassificazione di segnalazioni note. L'unica cosa documentata è che Limes riceveva ancora segnalazioni nel 2023, due anni dopo il primo caso.</p>
+<p>Sull'ID MITRE, invece, il terreno è solido, ed è una catena verificabile: T0892 <em>Change Credential</em> è stato creato il 30 marzo 2023 nella matrice ATT&amp;CK for ICS, il contributore accreditato è <strong>Felix Eberstaller</strong> — lo stesso ricercatore di Limes che ha segnalato CVE-2023-4346 a CISA — e la descrizione della tecnica cita «una catena di incidenti avvenuta in Germania, dove gli avversari hanno chiuso fuori gli operatori dai controller del sistema di automazione dell'edificio abilitando una BCU key precedentemente non impostata». Non è una mappatura ragionata: è la tecnica nata da questo caso.</p>
+<p>L'unico altro esempio che MITRE elenca sotto T0892 vale da solo il viaggio: durante gli attacchi wiper in Polonia del 2025, gli attaccanti hanno cambiato la password dei device server seriali Moxa NPort per ostacolare il ripristino. Contesto diverso, stessa idea. La lezione di KNXlock non riguarda KNX.</p>
+<h2 id="cosa-portarsi-a-casa">Cosa portarsi a casa</h2>
+<p>I protocolli di controllo industriale sono più potenti di quanto la maggior parte delle persone immagini, e le funzioni di protezione che contengono non sanno chi sia il legittimo proprietario. Sanno solo chi è arrivato prima.</p>
+<p>Se gestite un impianto KNX: la BCU key va impostata, in ogni progetto, e consegnata al committente con la documentazione. Una chiave impostata da voi è una chiave che nessun altro può impostare. Il resto sono i fondamentali che CISA ripete da vent'anni, e qui valgono più che altrove perché non c'è una patch a fare da rete: i dispositivi di controllo non raggiungibili da internet, rete di automazione separata da quella aziendale, accesso remoto solo via VPN aggiornata — ricordando che una VPN è sicura quanto i dispositivi che ci sono attaccati.</p>
+<p>E se avete un backup della configurazione ma non della chiave, non avete un backup.</p></div>
+    <div class="sidebar">
+      <aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--high">high</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Sconosciuto — nessuna attribuzione, nessuna richiesta di riscatto</dd></div><div class="field"><dt>Alias</dt><dd>KNXlock, CVE-2023-4346, ICSA-23-236-01</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>Ottobre 2021 (primo caso documentato)</dd></div><div class="field"><dt>Bersagli</dt><dd>Sistemi di automazione degli edifici basati su KNX, Oltre 16.000 sistemi potenzialmente esposti nell'area DACH</dd></div><div class="field"><dt>Settori</dt><dd>Critical Manufacturing, Edifici commerciali e industriali</dd></div></dl></aside>
+      <div class="sidebar__block"><div class="sidebar__label">Tecniche MITRE ATT&CK</div><div class="ttp-grid"><a class="ttp" href="https://attack.mitre.org/techniques/T0892/" data-tactic="Inhibit Response Function" target="_blank" rel="noopener"><span class="ttp__id">T0892</span> Change Credential</a></div></div>
+      <div class="sidebar__block"><div class="sidebar__label">Fonti primarie</div><ul class="sources"><li><a href="https://www.cisa.gov/news-events/ics-advisories/icsa-23-236-01" target="_blank" rel="noopener">CISA — ICS Advisory ICSA-23-236-01: KNX Protocol</a></li><li><a href="https://limessecurity.com/en/knxlock/" target="_blank" rel="noopener">Limes Security — KNXlock: an attack campaign against KNX-based building automation systems</a></li><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-4346" target="_blank" rel="noopener">NVD — CVE-2023-4346</a></li><li><a href="https://attack.mitre.org/techniques/T0892/" target="_blank" rel="noopener">MITRE ATT&amp;CK for ICS — T0892 Change Credential</a></li><li><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA — Known Exploited Vulnerabilities Catalog</a></li></ul></div>
+      <div class="sidebar__block"><div class="sidebar__label">Condividi</div><div class="share"><a href="https://x.com/intent/tweet?text=Nessun%20malware%2C%20nessun%20riscatto%2C%20nessuna%20patch%3A%20il%20caso%20KNXlock&url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/knxlock-bcu-key.html" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/knxlock-bcu-key.html" target="_blank" rel="noopener">LinkedIn</a><a href="https://news.ycombinator.com/submitlink?u=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/knxlock-bcu-key.html&t=Nessun%20malware%2C%20nessun%20riscatto%2C%20nessuna%20patch%3A%20il%20caso%20KNXlock" target="_blank" rel="noopener">HN</a><button class="share__copy" data-url="https://spidercivi.github.io/HACK-PROJECT/it/a/knxlock-bcu-key.html" type="button">Link</button></div></div>
+    </div>
+  </div>
+  <aside class="authorcard"><img class="authorcard__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="72" height="72" loading="lazy"><div><p class="authorcard__label">Scritto da</p><p class="authorcard__name"><a href="../about.html">Riccardo Civiero</a> <span class="authorcard__handle">@SpiderCivi</span></p><p class="authorcard__role">Cybersecurity & Software Developer</p><p class="authorcard__bio">Sviluppatore e specialista in cybersecurity. Formato all'ITIS E. Barsanti, con specializzazione in Cyber Security all'ITS Digital Academy di Treviso. Appassionato di sicurezza offensiva: CTF e Hack The Box. Qui applico lo stesso sguardo in senso difensivo — capire come funziona un attacco per spiegare come si ferma.</p><p class="authorcard__links"><a href="https://github.com/SpiderCivi" target="_blank" rel="noopener">GitHub</a><a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></p></div></aside>
+  <nav class="pager"><a class="pager__item pager__item--prev" href="fortibleed-inc-lynx.html"><span>&larr; Precedente</span><strong>FortiBleed: non c&#x27;è una patch, perché non c&#x27;è una vulnerabilità</strong></a></nav>
+</article>
+<section class="rel shell"><div class="section-head"><h2>Altri dossier</h2></div><div class="rel__grid"><a class="rel__card" href="fortibleed-inc-lynx.html"><img src="../../assets/img/it/fortibleed-inc-lynx.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--high">high</span><h3>FortiBleed: non c&#x27;è una patch, perché non c&#x27;è una vulnerabilità</h3></div></a><a class="rel__card" href="interlock-clickfix.html"><img src="../../assets/img/it/interlock-clickfix.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--high">high</span><h3>Interlock, il ransomware che entra dalla porta principale</h3></div></a><a class="rel__card" href="kimsuky-quishing.html"><img src="../../assets/img/it/kimsuky-quishing.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--high">high</span><h3>Il QR code che ruba la sessione, non la password</h3></div></a></div></section></main>
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="wordmark">HACK<em>/</em>PROJECT</p>
+        <p class="footer__tag">Threat Intelligence Quotidiana</p>
+        <p class="footer__disclaimer"><strong>HACK/PROJECT</strong> &mdash; analisi di attacchi informatici documentati pubblicamente, mappati su MITRE ATT&amp;CK&reg;. Contenuto a scopo difensivo ed educativo: descriviamo tattiche e tecniche cosi&#768; come riportate da agenzie e ricercatori, senza distribuire codice offensivo. Dove le fonti sono incerte, lo dichiariamo nel testo. ATT&amp;CK&reg; e&#768; un marchio registrato di The MITRE Corporation; progetto non affiliato a MITRE.</p>
+      </div>
+      <div class="footer__col"><p class="footer__label">Archivio</p><a href="../index.html">Ultimi dossier</a><a href="../about.html">Chi sono</a></div><div class="footer__col"><p class="footer__label">Chi sono</p><a href="../about.html">Chi sono</a><a href="../about.html#contatti">Contattami</a><a href="https://spidercivi.github.io/">Portfolio</a></div><div class="footer__col"><p class="footer__label">Segui</p><a href="https://www.tiktok.com/@h4ckprojct">TikTok</a><a href="https://github.com/SpiderCivi">GitHub</a><a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Riccardo Civiero</p>
+      <p class="footer__legal">Contenuto a scopo difensivo ed educativo. MITRE ATT&amp;CK&reg; &egrave; un marchio registrato di The MITRE Corporation; questo progetto non &egrave; affiliato n&eacute; sponsorizzato da MITRE, CISA o dai vendor citati.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/js/main.js?v=24ab82c1" defer></script>
+</body>
+</html>

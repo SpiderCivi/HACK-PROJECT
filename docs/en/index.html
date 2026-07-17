@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HACK/PROJECT — Daily Threat Intelligence</title>
-<meta name="description" content="Roughly half of all internet-facing Fortinet firewalls have their admin credentials in the hands of an access broker. There is no CVE to patch: there are exported config files, SHA">
+<meta name="description" content="On 15 July 2026 CISA added to the KEV catalog a 2023 CVE describing a 2021 attack. There is no malicious code: the attackers purge a building&#x27;s KNX devices, then set the BCU k">
 <meta property="og:title" content="HACK/PROJECT — Daily Threat Intelligence">
-<meta property="og:description" content="Roughly half of all internet-facing Fortinet firewalls have their admin credentials in the hands of an access broker. There is no CVE to patch: there are exported config files, SHA">
+<meta property="og:description" content="On 15 July 2026 CISA added to the KEV catalog a 2023 CVE describing a 2021 attack. There is no malicious code: the attackers purge a building&#x27;s KNX devices, then set the BCU k">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" hreflang="it" href="https://spidercivi.github.io/HACK-PROJECT/it/">
@@ -32,8 +32,8 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed live</span>
-    <span>Updated &mdash; 16.07.2026 16:02 CET</span>
-    <span>12 dossiers</span>
+    <span>Updated &mdash; 17.07.2026 09:05 CET</span>
+    <span>13 dossiers</span>
     <span>MITRE ATT&CK mapping</span>
   </div>
 </div>
@@ -42,15 +42,15 @@
 
 <section class="hero shell">
   <div class="hero__text">
-    <p class="kicker" data-reveal style="--i:0">Today's dossier &nbsp;/&nbsp; 16.07.2026</p>
-    <h1 class="hero__title" data-reveal style="--i:1">FortiBleed: there is no patch, because there is no vulnerability</h1>
-    <p class="hero__standfirst" data-reveal style="--i:2">Roughly half of all internet-facing Fortinet firewalls have their admin credentials in the hands of an access broker. There is no CVE to patch: there are exported config files, SHA-256 hashes cracked offline, and perfectly legitimate logins. In July, SOCRadar tied the operation to the INC and Lynx ransomware brands.</p>
-    <p data-reveal style="--i:3"><a class="cta" href="a/fortibleed-inc-lynx-en.html">Read the dossier &rarr;</a></p>
+    <p class="kicker" data-reveal style="--i:0">Today's dossier &nbsp;/&nbsp; 17.07.2026</p>
+    <h1 class="hero__title" data-reveal style="--i:1">No malware, no ransom, no patch: the KNXlock case</h1>
+    <p class="hero__standfirst" data-reveal style="--i:2">On 15 July 2026 CISA added to the KEV catalog a 2023 CVE describing a 2021 attack. There is no malicious code: the attackers purge a building&#x27;s KNX devices, then set the BCU key — the password the protocol provides as a protective feature. Vendors replied that no reset exists. No ransom ever arrived.</p>
+    <p data-reveal style="--i:3"><a class="cta" href="a/knxlock-bcu-key-en.html">Read the dossier &rarr;</a></p>
   </div>
-  <a class="hero__art" href="a/fortibleed-inc-lynx-en.html" aria-hidden="true" tabindex="-1"><img src="../assets/img/en/fortibleed-inc-lynx.svg" alt="" width="1200" height="675"></a>
+  <a class="hero__art" href="a/knxlock-bcu-key-en.html" aria-hidden="true" tabindex="-1"><img src="../assets/img/en/knxlock-bcu-key.svg" alt="" width="1200" height="675"></a>
 </section>
 
-<section class="shell"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Actor profile</span><span class="sev sev--high">high</span></div><dl class="dossier__body"><div class="field"><dt>Actor</dt><dd>Russian-speaking Initial Access Broker (unconfirmed)</dd></div><div class="field"><dt>Aliases</dt><dd>FortiBleed, CyberStrike Harvester, INC Ransom, Lynx</dd></div><div class="field"><dt>First seen</dt><dd>June 2026 (disclosure)</dd></div><div class="field"><dt>Targets</dt><dd>194 countries, Telecom, government, healthcare, finance, energy</dd></div><div class="field"><dt>Sectors</dt><dd>All sectors</dd></div></dl></aside></section>
+<section class="shell"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Actor profile</span><span class="sev sev--high">high</span></div><dl class="dossier__body"><div class="field"><dt>Actor</dt><dd>Unknown — no attribution, no ransom demand</dd></div><div class="field"><dt>Aliases</dt><dd>KNXlock, CVE-2023-4346, ICSA-23-236-01</dd></div><div class="field"><dt>First seen</dt><dd>October 2021 (first documented case)</dd></div><div class="field"><dt>Targets</dt><dd>KNX-based building automation systems, Over 16,000 potentially exposed systems in the DACH region</dd></div><div class="field"><dt>Sectors</dt><dd>Critical Manufacturing, Commercial and industrial buildings</dd></div></dl></aside></section>
 
 <section class="intro shell">
   <div class="intro__grid">
@@ -61,16 +61,26 @@
     </div>
     <div class="intro__side">
       <p class="sidebar__label">At a glance</p>
-      <div class="stats"><div class="stat"><span class="stat__n">12</span><span class="stat__l">dossiers</span></div><div class="stat"><span class="stat__n">2</span><span class="stat__l">languages</span></div><div class="stat"><span class="stat__n">44</span><span class="stat__l">primary sources</span></div><div class="stat"><span class="stat__n">57</span><span class="stat__l">ATT&CK techniques</span></div></div>
+      <div class="stats"><div class="stat"><span class="stat__n">13</span><span class="stat__l">dossiers</span></div><div class="stat"><span class="stat__n">2</span><span class="stat__l">languages</span></div><div class="stat"><span class="stat__n">49</span><span class="stat__l">primary sources</span></div><div class="stat"><span class="stat__n">58</span><span class="stat__l">ATT&CK techniques</span></div></div>
       <p class="sidebar__label" style="margin-top:1.6rem">By severity</p>
-      <div class="sevbars"><div class="sevbar"><span class="sev sev--critical">critical</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--critical" style="width:58%"></i></div><span class="sevbar__n">7</span></div><div class="sevbar"><span class="sev sev--high">high</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--high" style="width:42%"></i></div><span class="sevbar__n">5</span></div></div>
+      <div class="sevbars"><div class="sevbar"><span class="sev sev--critical">critical</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--critical" style="width:54%"></i></div><span class="sevbar__n">7</span></div><div class="sevbar"><span class="sev sev--high">high</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--high" style="width:46%"></i></div><span class="sevbar__n">6</span></div></div>
     </div>
   </div>
 </section>
 
 <section class="archive shell">
-  <div class="section-head"><h2>Archive</h2><span class="count">12 dossiers</span></div>
+  <div class="section-head"><h2>Archive</h2><span class="count">13 dossiers</span></div>
   <div class="entries">
+<a class="entry" href="a/fortibleed-inc-lynx-en.html">
+  <img class="entry__thumb" src="../assets/img/en/fortibleed-inc-lynx.svg" alt="" width="1200" height="675" loading="lazy">
+  <div class="entry__body">
+    <time class="entry__date" datetime="2026-07-16">16.07.2026</time>
+    <h3 class="entry__title">FortiBleed: there is no patch, because there is no vulnerability</h3>
+    <p class="entry__summary">Roughly half of all internet-facing Fortinet firewalls have their admin credentials in the hands of an access broker. There is no CVE to patch: there &hellip;</p>
+    <p class="entry__actor">Russian-speaking Initial Access Broker (unconfirmed) &nbsp;·&nbsp; <span class="sev sev--high">high</span></p>
+    <span class="entry__more">Continue reading &rarr;</span>
+  </div>
+</a>
 <a class="entry" href="a/apt28-router-dns-en.html">
   <img class="entry__thumb" src="../assets/img/en/apt28-router-dns.svg" alt="" width="1200" height="675" loading="lazy">
   <div class="entry__body">

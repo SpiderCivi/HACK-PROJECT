@@ -1,5 +1,19 @@
 [
   {
+    "title": "No malware, no ransom, no patch: the KNXlock case",
+    "slug": "knxlock-bcu-key-en",
+    "date": "2026-07-17",
+    "severity": "high",
+    "actor": [
+      "Unknown — no attribution, no ransom demand"
+    ],
+    "summary": "On 15 July 2026 CISA added to the KEV catalog a 2023 CVE describing a 2021 attack. There is no malicious code: the attackers purge a building's KNX devices, then set the BCU key — the password the protocol provides as a protective feature. Vendors replied that no reset exists. No ransom ever arrived.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/knxlock-bcu-key-en.html",
+    "mitre": [
+      "T0892"
+    ]
+  },
+  {
     "title": "FortiBleed: there is no patch, because there is no vulnerability",
     "slug": "fortibleed-inc-lynx-en",
     "date": "2026-07-16",
