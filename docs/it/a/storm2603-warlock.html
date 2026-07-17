@@ -7,15 +7,25 @@
 <meta name="description" content="Storm-2603 sfrutta un bypass di autenticazione in SmarterMail per installare Velociraptor come C2 e mettere in scena il ransomware Warlock. Ma il dettaglio che conta è emerso dopo:">
 <meta property="og:title" content="Due attaccanti, una rete: il caso Storm-2603 e la fine dell&#x27;intrusione singola — HACK/PROJECT">
 <meta property="og:description" content="Storm-2603 sfrutta un bypass di autenticazione in SmarterMail per installare Velociraptor come C2 e mettere in scena il ransomware Warlock. Ma il dettaglio che conta è emerso dopo:">
-<meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="alternate" hreflang="it" href="https://spidercivi.github.io/HACK-PROJECT/it/">
-<link rel="alternate" hreflang="en" href="https://spidercivi.github.io/HACK-PROJECT/en/">
+<link rel="canonical" href="https://spidercivi.github.io/HACK-PROJECT/it/a/storm2603-warlock.html">
+<meta property="og:url" content="https://spidercivi.github.io/HACK-PROJECT/it/a/storm2603-warlock.html">
+<link rel="alternate" hreflang="en" href="https://spidercivi.github.io/HACK-PROJECT/en/a/storm2603-warlock-en.html">
+<link rel="alternate" hreflang="it" href="https://spidercivi.github.io/HACK-PROJECT/it/a/storm2603-warlock.html">
+<link rel="alternate" hreflang="x-default" href="https://spidercivi.github.io/HACK-PROJECT/it/a/storm2603-warlock.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="HACK/PROJECT">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/storm2603-warlock.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<meta name="twitter:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/storm2603-warlock.png">
+<link rel="alternate" type="application/rss+xml" title="HACK/PROJECT" href="https://spidercivi.github.io/HACK-PROJECT/it/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/main.css?v=e2cae4d4">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Due attaccanti, una rete: il caso Storm-2603 e la fine dell'intrusione singola", "description": "Storm-2603 sfrutta un bypass di autenticazione in SmarterMail per installare Velociraptor come C2 e mettere in scena il ransomware Warlock. Ma il dettaglio che conta è emerso dopo: in una rete compromessa Microsoft ha trovato due gruppi non collegati che lavoravano in parallelo, ciascuno coprendo le tracce dell'altro.", "datePublished": "2026-07-15", "dateModified": "2026-07-15", "inLanguage": "it", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/it/a/storm2603-warlock.html", "author": {"@type": "Person", "name": "Riccardo Civiero", "url": "https://github.com/SpiderCivi"}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/"}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/it/storm2603-warlock.svg"], "keywords": "Storm-2603, T1190, T1505.003, T1059.001, T1003.001, T1484.001, T1486, T1657", "citation": [{"@type": "CreativeWork", "name": "ReliaQuest — Threat Spotlight: Storm-2603 Exploits CVE-2026-23760 to Stage Warlock Ransomware", "url": "https://reliaquest.com/blog/threat-spotlight-storm-2603-exploits-CVE-2026-23760-to-stage-warlock-ransomware/"}, {"@type": "CreativeWork", "name": "Microsoft DART — One intrusion, two cyberattackers: uncovering parallel threat activity", "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"}, {"@type": "CreativeWork", "name": "MITRE ATT&CK — SharePoint ToolShell Exploitation (C0058)", "url": "https://attack.mitre.org/campaigns/C0058/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Due attaccanti, una rete: il caso Storm-2603 e la fine dell'intrusione singola", "description": "Storm-2603 sfrutta un bypass di autenticazione in SmarterMail per installare Velociraptor come C2 e mettere in scena il ransomware Warlock. Ma il dettaglio che conta è emerso dopo: in una rete compromessa Microsoft ha trovato due gruppi non collegati che lavoravano in parallelo, ciascuno coprendo le tracce dell'altro.", "datePublished": "2026-07-15", "dateModified": "2026-07-15", "inLanguage": "it", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/it/a/storm2603-warlock.html", "author": {"@type": "Person", "name": "Riccardo Civiero", "url": "https://github.com/SpiderCivi"}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/"}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/it/storm2603-warlock.png"], "keywords": "Storm-2603, T1190, T1505.003, T1059.001, T1003.001, T1484.001, T1486, T1657", "citation": [{"@type": "CreativeWork", "name": "ReliaQuest — Threat Spotlight: Storm-2603 Exploits CVE-2026-23760 to Stage Warlock Ransomware", "url": "https://reliaquest.com/blog/threat-spotlight-storm-2603-exploits-CVE-2026-23760-to-stage-warlock-ransomware/"}, {"@type": "CreativeWork", "name": "Microsoft DART — One intrusion, two cyberattackers: uncovering parallel threat activity", "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"}, {"@type": "CreativeWork", "name": "MITRE ATT&CK — SharePoint ToolShell Exploitation (C0058)", "url": "https://attack.mitre.org/campaigns/C0058/"}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Salta al contenuto</a>
@@ -33,7 +43,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed attivo</span>
-    <span>Aggiornato &mdash; 17.07.2026 11:00 CET</span>
+    <span>Aggiornato &mdash; 17.07.2026 11:07 CET</span>
     <span>13 dossier</span>
     <span>Mappatura MITRE ATT&CK</span>
   </div>
