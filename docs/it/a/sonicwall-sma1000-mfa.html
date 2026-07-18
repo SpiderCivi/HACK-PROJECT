@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="rWfkr1OJmRI2zvjBJV9O9yrRoV8hskcmhZ-Kv8M3gio">
+<meta name="theme-color" content="#0b0b0f">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
+<title>SonicWall SMA1000: patchi, resetti le password, e sono ancora dentro — HACK/PROJECT</title>
+<meta name="description" content="Due zero-day sulle appliance di accesso remoto SonicWall SMA1000, sfruttati in catena prima ancora della disclosure. Il primo è un SSRF senza autenticazione con punteggio massimo; ">
+<meta property="og:title" content="SonicWall SMA1000: patchi, resetti le password, e sono ancora dentro — HACK/PROJECT">
+<meta property="og:description" content="Due zero-day sulle appliance di accesso remoto SonicWall SMA1000, sfruttati in catena prima ancora della disclosure. Il primo è un SSRF senza autenticazione con punteggio massimo; ">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://spidercivi.github.io/HACK-PROJECT/it/a/sonicwall-sma1000-mfa.html">
+<meta property="og:url" content="https://spidercivi.github.io/HACK-PROJECT/it/a/sonicwall-sma1000-mfa.html">
+<link rel="alternate" hreflang="en" href="https://spidercivi.github.io/HACK-PROJECT/en/a/sonicwall-sma1000-mfa-en.html">
+<link rel="alternate" hreflang="it" href="https://spidercivi.github.io/HACK-PROJECT/it/a/sonicwall-sma1000-mfa.html">
+<link rel="alternate" hreflang="x-default" href="https://spidercivi.github.io/HACK-PROJECT/it/a/sonicwall-sma1000-mfa.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="HACK/PROJECT">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/sonicwall-sma1000-mfa.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<meta name="twitter:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/sonicwall-sma1000-mfa.png">
+<link rel="alternate" type="application/rss+xml" title="HACK/PROJECT" href="https://spidercivi.github.io/HACK-PROJECT/it/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/main.css?v=019fe658">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "SonicWall SMA1000: patchi, resetti le password, e sono ancora dentro", "description": "Due zero-day sulle appliance di accesso remoto SonicWall SMA1000, sfruttati in catena prima ancora della disclosure. Il primo è un SSRF senza autenticazione con punteggio massimo; il secondo porta a root. Ma il dettaglio che conta è cosa hanno portato via: non solo password, i semi TOTP dell'MFA e i database delle sessioni attive — le uniche cose che un reset non ruota.", "datePublished": "2026-07-18", "dateModified": "2026-07-18", "inLanguage": "it", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/it/a/sonicwall-sma1000-mfa.html", "author": {"@type": "Person", "name": "Riccardo Civiero", "url": "https://github.com/SpiderCivi"}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/"}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/it/sonicwall-sma1000-mfa.png"], "keywords": "Non attribuito (infrastruttura dietro un provider VPN), T1190, T1068, T1552.001, T1111, T1078, T1021", "citation": [{"@type": "CreativeWork", "name": "SonicWall PSIRT — Product Notice SNWLID-2026-0008: SMA 1000 Series affected by Multiple Vulnerabilities", "url": "https://www.sonicwall.com/support/notices/product-notice-sma-1000-series-affected-by-multiple-vulnerabilities/kA1VN000001nv6D0AQ"}, {"@type": "CreativeWork", "name": "Rapid7 — MDR Team Discovers New SonicWall SMA1000 Zero Days being Actively Exploited (CVE-2026-15409, CVE-2026-15410)", "url": "https://www.rapid7.com/blog/post/etr-rapid7-mdr-team-discovers-new-sonicwall-sma1000-zero-days-being-actively-exploited-cve-2026-15409-cve-2026-15410/"}, {"@type": "CreativeWork", "name": "CISA — Known Exploited Vulnerabilities Catalog: CVE-2026-15409", "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-15409"}, {"@type": "CreativeWork", "name": "NVD — CVE-2026-15409", "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15409"}, {"@type": "CreativeWork", "name": "NVD — CVE-2026-15410", "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15410"}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Salta al contenuto</a>
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../index.html">HACK<em>/</em>PROJECT</a>
+    <span class="masthead__tagline">Threat Intelligence Quotidiana</span>
+    <nav class="masthead__nav" aria-label="Principale">
+      <a href="../index.html">Archivio</a>
+      <a href="../about.html">Chi sono</a>
+      <a class="lang" href="../../en/a/sonicwall-sma1000-mfa-en.html" rel="alternate">English</a>
+    </nav>
+  </div>
+</header>
+<div class="shell">
+  <div class="ticker">
+    <span class="live">Threat feed attivo</span>
+    <span>Aggiornato &mdash; 18.07.2026 10:13 CET</span>
+    <span>14 dossier</span>
+    <span>Mappatura MITRE ATT&CK</span>
+  </div>
+</div>
+<div class="progress" aria-hidden="true"><i></i></div>
+<main id="main">
+
+<article class="article shell">
+  <nav class="crumb" aria-label="breadcrumb"><a href="../index.html">HACK/PROJECT</a><span>/</span><a href="../index.html">Archivio</a><span>/</span><em>SonicWall SMA1000: patchi, resetti le password, </em></nav>
+  <div class="article__hero">
+    <header class="article__head">
+      <p class="eyebrow" data-reveal style="--i:0"><span class="eyebrow__topic">Non attribuito (infrastruttura dietro un provider VPN)</span><span class="sev sev--critical">critical</span></p>
+      <h1 class="article__title" data-reveal style="--i:1">SonicWall SMA1000: patchi, resetti le password, e sono ancora dentro</h1>
+      <p class="article__standfirst" data-reveal style="--i:2">Due zero-day sulle appliance di accesso remoto SonicWall SMA1000, sfruttati in catena prima ancora della disclosure. Il primo è un SSRF senza autenticazione con punteggio massimo; il secondo porta a root. Ma il dettaglio che conta è cosa hanno portato via: non solo password, i semi TOTP dell&#x27;MFA e i database delle sessioni attive — le uniche cose che un reset non ruota.</p>
+      <div class="byline" data-reveal style="--i:2">
+        <img class="byline__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="40" height="40" loading="lazy">
+        <div class="byline__meta">
+          <span class="byline__name">di <a href="../about.html">Riccardo Civiero</a></span>
+          <span class="byline__handle">@SpiderCivi &nbsp;·&nbsp; 18.07.2026</span>
+        </div>
+      </div>
+    </header>
+    <div class="article__hero-media"><figure class="dossier-video" data-reveal style="--i:3"><div class="dossier-video__frame"><video controls preload="none" playsinline poster="../../video/poster/sonicwall-sma1000-mfa-it.jpg" width="1080" height="1920"><source src="../../video/sonicwall-sma1000-mfa-it.mp4" type="video/mp4"></video></div></figure></div>
+  </div>
+  <div class="article__meta" data-reveal style="--i:2">
+    <span><i class="ti"></i>18.07.2026</span><span>7 min di lettura</span><span>5 fonti primarie</span>
+  </div>
+  <div class="article__layout">
+    <div class="prose" data-reveal style="--i:4"><h2 id="il-reset-che-non-serve-a-niente">Il reset che non serve a niente</h2>
+<p class="lede">Quando un'appliance di sicurezza viene compromessa, il manuale di risposta è quasi sempre lo stesso: si applica la patch, si cambiano le password, si torna al lavoro. È il riflesso giusto per la maggior parte degli incidenti. Per quello che è successo a luglio 2026 sulle appliance SonicWall SMA1000, non basta — e capire <em>perché</em> non basta è tutto il senso di questo dossier.</p>
+<p>Il 14 luglio 2026 SonicWall pubblica l'advisory <a href="https://www.sonicwall.com/support/notices/product-notice-sma-1000-series-affected-by-multiple-vulnerabilities/kA1VN000001nv6D0AQ">SNWLID-2026-0008</a> per due falle sulla serie SMA1000: <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-15409">CVE-2026-15409</a>, un Server-Side Request Forgery con CVSS <strong>10.0</strong>, e <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-15410">CVE-2026-15410</a>, una code injection con CVSS 7.2. Entrambe, scrive il vendor, «confermate come attivamente sfruttate in the wild». La squadra di Managed Detection and Response di Rapid7 le aveva viste in azione <em>prima</em> della disclosure: erano zero-day.</p>
+<h2 id="un-proxy-che-il-dispositivo-offre-di-suo">Un proxy che il dispositivo offre di suo</h2>
+<p>La prima falla non richiede una password. L'appliance SMA1000 espone, sull'applicazione «SonicWall WorkPlace» servita sulla porta 443, una funzione di proxy websocket raggiungibile al percorso <code>/wsproxy</code>. Quella funzione apre un tunnel TCP — un netcat via browser — verso l'host e la porta che gli passi nei parametri dell'URL. Il difetto è che non controlla dove punti quel tunnel. Se gli chiedi <code>localhost</code>, ti apre un canale verso i servizi interni che l'appliance tiene dietro il proprio firewall, mai pensati per essere raggiunti da fuori.</p>
+<ol class="flow" data-reveal><li class="flow__step"><span class="flow__n">01</span><div class="flow__b"><div class="flow__t"><code>/wsproxy</code> esposto</div><div class="flow__note">tunnel websocket verso host e porta a scelta dell&#x27;attaccante</div></div></li><li class="flow__step"><span class="flow__n">02</span><div class="flow__b"><div class="flow__t">host = localhost</div><div class="flow__note">il tunnel punta ai servizi interni dell&#x27;appliance</div></div></li><li class="flow__step"><span class="flow__n">03</span><div class="flow__b"><div class="flow__t">Erlang su <code>:1050</code></div><div class="flow__note">il cookie di autenticazione è cablato nel codice: nessuna password</div></div></li><li class="flow__step"><span class="flow__n">04</span><div class="flow__b"><div class="flow__t">comando come root</div><div class="flow__note"><code>remove_hotfix</code> con path traversal esegue uno script come root</div></div></li></ol>
+<p>Questi servizi interni sono meno induriti proprio perché «tanto stanno su localhost». Rapid7 ha scritto un exploit contro il processo Erlang in ascolto su <code>localhost:1050</code>: il cookie che quel processo usa per autenticare le chiamate è <strong>cablato nel codice</strong>, uguale su ogni dispositivo, quindi non serve conoscere alcun segreto. Da lì, una chiamata RPC <code>os:cmd</code> esegue comandi di sistema. Il primo passo era finito: da internet, senza credenziali, a esecuzione di codice sull'appliance — nel contesto dell'utente <code>couchdb</code>.</p>
+<h2 id="da-localhost-a-root">Da localhost a root</h2>
+<p>Il secondo bug serve a diventare amministratore. <code>CVE-2026-15410</code> è un path traversal nel flusso <code>remove_hotfix</code> del servizio <code>ctrl-service</code>, che ascolta sulla porta 8188. Il servizio si aspetta il nome di un hotfix da rimuovere; l'attaccante gli passa invece una sequenza di traversamento come <code>../../../../var/tmp/privesc</code> che punta a uno script che ha già caricato sul dispositivo. Il sistema lo rende eseguibile e <strong>lo lancia come root</strong>, per poi riavviare l'appliance. Nei log di monitoraggio di sistema recuperati da Rapid7 la sequenza è visibile riga per riga: <code>chmod +x</code>, esecuzione dello script, <code>shutdown -r now</code>. La catena — SSRF senza autenticazione, poi esecuzione codice, poi escalation a root — è completa.</p>
+<p>Ma se il dossier finisse qui, sarebbe un normale bollettino di patching. Il punto viene dopo.</p>
+<h2 id="cosa-hanno-portato-via">Cosa hanno portato via</h2>
+<p>Con l'accesso root, gli attaccanti non hanno installato ransomware. Hanno svuotato l'appliance di tre cose precise: le credenziali ad alto valore, i <strong>database delle sessioni attive</strong> e le <strong>configurazioni dei semi TOTP</strong> — i segreti condivisi che generano i codici a sei cifre dell'autenticazione a più fattori. Rapid7 è esplicita sul motivo: questa raccolta locale «era progettata per garantire un accesso persistente a lungo termine, capace di sopravvivere alle normali bonifiche a livello di rete».</p>
+<p>Qui sta la ragione per cui il riflesso «patcha e cambia le password» fallisce. La password la puoi cambiare. Il token di sessione già emesso lo puoi invalidare, se ci pensi. Ma il <strong>seme TOTP</strong> è il segreto che sta <em>dietro</em> al secondo fattore: è la rete di sicurezza pensata per il giorno in cui la password trapela. Se l'attaccante se n'è andato con quel seme, può generare da sé i codici MFA validi di ogni utente — e continuerà a farlo dopo la patch, dopo il reset delle password, finché quei semi non vengono rigenerati uno per uno. Non a caso, l'unica lista di rimedi che cita esplicitamente il <strong>reset dei token TOTP</strong> è quella di un vendor che ha visto la compromissione da vicino.</p>
+<div class="stat stat--n3" data-reveal><div class="stat__item"><div class="stat__val">10.0</div><div class="stat__lab">CVE-2026-15409 (SSRF)</div><div class="stat__note">non autenticato, punteggio massimo</div></div><div class="stat__item"><div class="stat__val">7.2</div><div class="stat__lab">CVE-2026-15410 (code injection)</div><div class="stat__note">ma la catena arriva fino a root</div></div><div class="stat__item"><div class="stat__val">0</div><div class="stat__lab">workaround disponibili</div><div class="stat__note">solo l&#x27;hotfix, poi la bonifica</div></div></div>
+<h2 id="il-backdoor-dentro-active-directory">Il backdoor dentro Active Directory</h2>
+<p>Raccolto il materiale, gli attaccanti si sono spostati verso l'interno. Rapid7 ha osservato una sequenza che descrive bene cosa significa perdere un'appliance di questo tipo: autenticazioni verso i domain controller <strong>senza alcun tunnel VPN attivo</strong>, originate direttamente dall'indirizzo IP interno dell'appliance, con nomi di workstation che non appartengono all'inventario aziendale — <code>kali</code> fra gli altri — sotto il contesto dell'account di servizio LDAP integrato nell'appliance stessa.</p>
+<ol class="tl" data-reveal><li class="tl__item"><div class="tl__when">9 luglio 2026</div><div class="tl__body"><div class="tl__what">Prima della disclosure</div><p class="tl__txt">I log di sistema catturano l&#x27;escalation a root in corso.</p></div></li><li class="tl__item"><div class="tl__when">14 luglio 2026</div><div class="tl__body"><div class="tl__what">L&#x27;advisory</div><p class="tl__txt">SonicWall pubblica SNWLID-2026-0008: due falle, sfruttamento confermato.</p></div></li><li class="tl__item"><div class="tl__when">14 luglio 2026</div><div class="tl__body"><div class="tl__what">CISA KEV</div><p class="tl__txt">Entrambe le CVE entrano nel catalogo, sotto la direttiva BOD 26-04.</p></div></li><li class="tl__item"><div class="tl__when">15 luglio 2026</div><div class="tl__body"><div class="tl__what">Rapid7</div><p class="tl__txt">Il team MDR pubblica l&#x27;analisi tecnica e un PoC per l&#x27;SSRF.</p></div></li><li class="tl__item"><div class="tl__when">16 luglio 2026</div><div class="tl__body"><div class="tl__what">Gli IOC</div><p class="tl__txt">Rapid7 aggiunge i nomi delle workstation e gli IP usati dagli attaccanti.</p></div></li></ol>
+<p>Un'appliance di accesso remoto è, per definizione, il ponte fra internet e la rete interna: è pensata per parlare con Active Directory. Quando è l'attaccante a guidarla, quel ponte legittimo diventa un canale di ingresso non monitorato — perché il traffico non arriva da un client VPN sospetto, arriva dall'apparato che <em>deve</em> parlare con i domain controller.</p>
+<h2 id="cosa-non-sappiamo">Cosa non sappiamo</h2>
+<p>Vale la regola di questo sito: dire dove finisce la certezza.</p>
+<ul>
+<li><strong>Non c'è attribuzione.</strong> Rapid7 non nomina alcun gruppo. Gli IP osservati appartengono a un provider di hosting VPN (FNS Holdings Limited, ASN 206092): infrastruttura noleggiata e anonimizzata, che dice poco su chi ci sta dietro.</li>
+<li><strong>Il racconto dell'intrusione poggia in gran parte su un solo vendor.</strong> SonicWall conferma lo sfruttamento in the wild, ma la ricostruzione dettagliata delle mosse post-accesso — furto dei semi TOTP, movimento laterale VPN-less — è di Rapid7. Forte, coerente con gli IOC pubblicati, ma per ora non replicata da terzi indipendenti.</li>
+<li><strong>Il movente resta aperto.</strong> Nessun ransomware osservato finora. Furto di credenziali, persistenza durevole e pivot verso l'AD sono compatibili tanto con lo spionaggio quanto con un pre-posizionamento in vista di un'azione successiva. Dire quale sarebbe indovinare.</li>
+<li><strong>Gli ID ATT&amp;CK in testa a questo dossier sono una mappatura ragionata</strong>, non copiati da un advisory: né SonicWall né Rapid7 pubblicano un mapping ufficiale. Descrivono i comportamenti osservati, non una fonte primaria.</li>
+</ul>
+<h2 id="cosa-si-fa">Cosa si fa</h2>
+<p>Prima di tutto la patch, perché non esistono workaround: portare le appliance SMA1000 (6210, 7210, 8200v e CMS) alle versioni <strong>12.4.3-03453</strong> o <strong>12.5.0-02835</strong> e superiori. Ma — ed è il punto dell'intero dossier — la patch da sola presume che tu non sia già stato colpito, e lo sfruttamento è confermato dal 9 luglio. Quindi: analisi forense dell'appliance per gli indicatori di compromissione; se ne trovi anche uno, tratta il dispositivo come compromesso e <strong>re-immagina l'hardware o ridistribuisci la macchina virtuale</strong>, cambia le password di utenti e amministratori e <strong>resetta i token TOTP</strong> — non è un passaggio decorativo, è quello che chiude la porta che il solo reset delle password lascia aperta.</p>
+<p>Per la caccia retrospettiva gli indicatori sono documentati: nel <code>extraweb_access.log</code>, richieste a <code>/wsproxy</code> con parametri host sospetti che tornano HTTP 101, e richieste a <code>/__api__/login</code> o <code>/__api__/logout</code> con esito 200; nel <code>ctrl-service.log</code>, rimozioni di hotfix con un nome che contiene un path traversal; e sul lato Windows, logon NTLM (Event ID 4624, logon type 3) verso i domain controller originati dall'IP interno dell'appliance, con nomi di workstation come <code>kali</code> e senza una sessione VPN corrispondente.</p>
+<p>Un CVE ti dà una versione da correggere e una data entro cui farlo. Un seme TOTP rubato non ha né l'una né l'altra: resta valido finché non lo rigeneri tu. La patch chiude la finestra da cui sono entrati. Non chiude quella che si sono portati via.</p></div>
+    <div class="sidebar">
+      <aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Non attribuito (infrastruttura dietro un provider VPN)</dd></div><div class="field"><dt>Alias</dt><dd>SNWLID-2026-0008, CVE-2026-15409, CVE-2026-15410</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>9 luglio 2026 (exploitation osservata)</dd></div><div class="field"><dt>Bersagli</dt><dd>Appliance SMA1000 esposte su internet, Reti aziendali con Active Directory federato</dd></div><div class="field"><dt>Settori</dt><dd>Tutti i settori con accesso remoto SonicWall</dd></div></dl></aside>
+      <div class="sidebar__block"><div class="sidebar__label">Tecniche MITRE ATT&CK</div><div class="ttp-grid"><a class="ttp" href="https://attack.mitre.org/techniques/T1190/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1190</span> Exploit Public-Facing Application</a><a class="ttp" href="https://attack.mitre.org/techniques/T1068/" data-tactic="Privilege Escalation" target="_blank" rel="noopener"><span class="ttp__id">T1068</span> Exploitation for Privilege Escalation</a><a class="ttp" href="https://attack.mitre.org/techniques/T1552/001/" data-tactic="Credential Access" target="_blank" rel="noopener"><span class="ttp__id">T1552.001</span> Credentials In Files</a><a class="ttp" href="https://attack.mitre.org/techniques/T1111/" data-tactic="Credential Access" target="_blank" rel="noopener"><span class="ttp__id">T1111</span> Multi-Factor Authentication Interception</a><a class="ttp" href="https://attack.mitre.org/techniques/T1078/" data-tactic="Lateral Movement" target="_blank" rel="noopener"><span class="ttp__id">T1078</span> Valid Accounts</a><a class="ttp" href="https://attack.mitre.org/techniques/T1021/" data-tactic="Lateral Movement" target="_blank" rel="noopener"><span class="ttp__id">T1021</span> Remote Services</a></div></div>
+      <div class="sidebar__block"><div class="sidebar__label">Fonti primarie</div><ul class="sources"><li><a href="https://www.sonicwall.com/support/notices/product-notice-sma-1000-series-affected-by-multiple-vulnerabilities/kA1VN000001nv6D0AQ" target="_blank" rel="noopener">SonicWall PSIRT — Product Notice SNWLID-2026-0008: SMA 1000 Series affected by Multiple Vulnerabilities</a></li><li><a href="https://www.rapid7.com/blog/post/etr-rapid7-mdr-team-discovers-new-sonicwall-sma1000-zero-days-being-actively-exploited-cve-2026-15409-cve-2026-15410/" target="_blank" rel="noopener">Rapid7 — MDR Team Discovers New SonicWall SMA1000 Zero Days being Actively Exploited (CVE-2026-15409, CVE-2026-15410)</a></li><li><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-15409" target="_blank" rel="noopener">CISA — Known Exploited Vulnerabilities Catalog: CVE-2026-15409</a></li><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-15409" target="_blank" rel="noopener">NVD — CVE-2026-15409</a></li><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-15410" target="_blank" rel="noopener">NVD — CVE-2026-15410</a></li></ul></div>
+      <div class="sidebar__block"><div class="sidebar__label">Condividi</div><div class="share"><a href="https://x.com/intent/tweet?text=SonicWall%20SMA1000%3A%20patchi%2C%20resetti%20le%20password%2C%20e%20sono%20ancora%20dentro&url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/sonicwall-sma1000-mfa.html" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/sonicwall-sma1000-mfa.html" target="_blank" rel="noopener">LinkedIn</a><a href="https://news.ycombinator.com/submitlink?u=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/sonicwall-sma1000-mfa.html&t=SonicWall%20SMA1000%3A%20patchi%2C%20resetti%20le%20password%2C%20e%20sono%20ancora%20dentro" target="_blank" rel="noopener">HN</a><button class="share__copy" data-url="https://spidercivi.github.io/HACK-PROJECT/it/a/sonicwall-sma1000-mfa.html" type="button">Link</button></div></div>
+    </div>
+  </div>
+  <aside class="authorcard"><img class="authorcard__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="72" height="72" loading="lazy"><div><p class="authorcard__label">Scritto da</p><p class="authorcard__name"><a href="../about.html">Riccardo Civiero</a> <span class="authorcard__handle">@SpiderCivi</span></p><p class="authorcard__role">Cybersecurity & Software Developer</p><p class="authorcard__bio">Sviluppatore e specialista in cybersecurity. Formato all'ITIS E. Barsanti, con specializzazione in Cyber Security all'ITS Digital Academy di Treviso. Appassionato di sicurezza offensiva: CTF e Hack The Box. Qui applico lo stesso sguardo in senso difensivo — capire come funziona un attacco per spiegare come si ferma.</p><p class="authorcard__links"><a href="https://github.com/SpiderCivi" target="_blank" rel="noopener">GitHub</a><a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></p></div></aside>
+  <nav class="pager"><a class="pager__item pager__item--prev" href="knxlock-bcu-key.html"><span>&larr; Precedente</span><strong>Nessun malware, nessun riscatto, nessuna patch: il caso KNXlock</strong></a></nav>
+</article>
+<section class="rel shell"><div class="section-head"><h2>Altri dossier</h2></div><div class="rel__grid"><a class="rel__card" href="apt28-router-dns.html"><img src="../../assets/img/it/apt28-router-dns.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Il router da trenta euro che intercettava i ministeri degli esteri</h3></div></a><a class="rel__card" href="axios-npm.html"><img src="../../assets/img/it/axios-npm.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Axios, il manifest e il token che nessuno aveva revocato</h3></div></a><a class="rel__card" href="medusa-ummc.html"><img src="../../assets/img/it/medusa-ummc.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Medusa e UMMC: la clinica che ha imparato a funzionare offline</h3></div></a></div></section></main>
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="wordmark">HACK<em>/</em>PROJECT</p>
+        <p class="footer__tag">Threat Intelligence Quotidiana</p>
+        <p class="footer__disclaimer"><strong>HACK/PROJECT</strong> &mdash; analisi di attacchi informatici documentati pubblicamente, mappati su MITRE ATT&amp;CK&reg;. Contenuto a scopo difensivo ed educativo: descriviamo tattiche e tecniche cosi&#768; come riportate da agenzie e ricercatori, senza distribuire codice offensivo. Dove le fonti sono incerte, lo dichiariamo nel testo. ATT&amp;CK&reg; e&#768; un marchio registrato di The MITRE Corporation; progetto non affiliato a MITRE.</p>
+      </div>
+      <div class="footer__col"><p class="footer__label">Archivio</p><a href="../index.html">Ultimi dossier</a><a href="../about.html">Chi sono</a></div><div class="footer__col"><p class="footer__label">Chi sono</p><a href="../about.html">Chi sono</a><a href="../about.html#contatti">Contattami</a><a href="https://spidercivi.github.io/">Portfolio</a></div><div class="footer__col"><p class="footer__label">Segui</p><a href="https://www.tiktok.com/@h4ckprojct">TikTok</a><a href="https://github.com/SpiderCivi">GitHub</a><a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Riccardo Civiero</p>
+      <p class="footer__legal">Contenuto a scopo difensivo ed educativo. MITRE ATT&amp;CK&reg; &egrave; un marchio registrato di The MITRE Corporation; questo progetto non &egrave; affiliato n&eacute; sponsorizzato da MITRE, CISA o dai vendor citati.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/js/main.js?v=24ab82c1" defer></script>
+</body>
+</html>

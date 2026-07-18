@@ -1,5 +1,24 @@
 [
   {
+    "title": "SonicWall SMA1000: you patch, you reset the passwords, and they are still in",
+    "slug": "sonicwall-sma1000-mfa-en",
+    "date": "2026-07-18",
+    "severity": "critical",
+    "actor": [
+      "Unattributed (infrastructure behind a VPN provider)"
+    ],
+    "summary": "Two zero-days in SonicWall SMA1000 remote-access appliances, chained and exploited before disclosure. The first is an unauthenticated SSRF with a maximum score; the second reaches root. But the detail that matters is what they took: not just passwords, the TOTP MFA seeds and the active session databases — the one thing a reset does not rotate.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/sonicwall-sma1000-mfa-en.html",
+    "mitre": [
+      "T1190",
+      "T1068",
+      "T1552.001",
+      "T1111",
+      "T1078",
+      "T1021"
+    ]
+  },
+  {
     "title": "No malware, no ransom, no patch: the KNXlock case",
     "slug": "knxlock-bcu-key-en",
     "date": "2026-07-17",

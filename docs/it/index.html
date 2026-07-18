@@ -10,9 +10,9 @@
 <link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
 <title>HACK/PROJECT — Threat Intelligence Quotidiana</title>
-<meta name="description" content="Il 15 luglio 2026 CISA ha inserito nel catalogo KEV una CVE del 2023 che descrive un attacco del 2021. Non c&#x27;è codice malevolo: gli attaccanti svuotano i dispositivi KNX di un">
+<meta name="description" content="Due zero-day sulle appliance di accesso remoto SonicWall SMA1000, sfruttati in catena prima ancora della disclosure. Il primo è un SSRF senza autenticazione con punteggio massimo; ">
 <meta property="og:title" content="HACK/PROJECT — Threat Intelligence Quotidiana">
-<meta property="og:description" content="Il 15 luglio 2026 CISA ha inserito nel catalogo KEV una CVE del 2023 che descrive un attacco del 2021. Non c&#x27;è codice malevolo: gli attaccanti svuotano i dispositivi KNX di un">
+<meta property="og:description" content="Due zero-day sulle appliance di accesso remoto SonicWall SMA1000, sfruttati in catena prima ancora della disclosure. Il primo è un SSRF senza autenticazione con punteggio massimo; ">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://spidercivi.github.io/HACK-PROJECT/it/">
 <meta property="og:url" content="https://spidercivi.github.io/HACK-PROJECT/it/">
@@ -22,10 +22,10 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="HACK/PROJECT">
 <meta property="og:locale" content="it_IT">
-<meta property="og:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/knxlock-bcu-key.png">
+<meta property="og:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/sonicwall-sma1000-mfa.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="675">
-<meta name="twitter:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/knxlock-bcu-key.png">
+<meta name="twitter:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/sonicwall-sma1000-mfa.png">
 <link rel="alternate" type="application/rss+xml" title="HACK/PROJECT" href="https://spidercivi.github.io/HACK-PROJECT/it/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,8 +48,8 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed attivo</span>
-    <span>Aggiornato &mdash; 17.07.2026 17:45 CET</span>
-    <span>13 dossier</span>
+    <span>Aggiornato &mdash; 18.07.2026 10:13 CET</span>
+    <span>14 dossier</span>
     <span>Mappatura MITRE ATT&CK</span>
   </div>
 </div>
@@ -58,15 +58,15 @@
 
 <section class="hero shell">
   <div class="hero__text">
-    <p class="kicker" data-reveal style="--i:0">Dossier del giorno &nbsp;/&nbsp; 17.07.2026</p>
-    <h1 class="hero__title" data-reveal style="--i:1">Nessun malware, nessun riscatto, nessuna patch: il caso KNXlock</h1>
-    <p class="hero__standfirst" data-reveal style="--i:2">Il 15 luglio 2026 CISA ha inserito nel catalogo KEV una CVE del 2023 che descrive un attacco del 2021. Non c&#x27;è codice malevolo: gli attaccanti svuotano i dispositivi KNX di un edificio e poi impostano la BCU key, la password che il protocollo prevede come funzione di protezione. I vendor hanno risposto che non esiste alcun reset. Nessun riscatto è mai arrivato.</p>
-    <p data-reveal style="--i:3"><a class="cta" href="a/knxlock-bcu-key.html">Leggi il dossier &rarr;</a></p>
+    <p class="kicker" data-reveal style="--i:0">Dossier del giorno &nbsp;/&nbsp; 18.07.2026</p>
+    <h1 class="hero__title" data-reveal style="--i:1">SonicWall SMA1000: patchi, resetti le password, e sono ancora dentro</h1>
+    <p class="hero__standfirst" data-reveal style="--i:2">Due zero-day sulle appliance di accesso remoto SonicWall SMA1000, sfruttati in catena prima ancora della disclosure. Il primo è un SSRF senza autenticazione con punteggio massimo; il secondo porta a root. Ma il dettaglio che conta è cosa hanno portato via: non solo password, i semi TOTP dell&#x27;MFA e i database delle sessioni attive — le uniche cose che un reset non ruota.</p>
+    <p data-reveal style="--i:3"><a class="cta" href="a/sonicwall-sma1000-mfa.html">Leggi il dossier &rarr;</a></p>
   </div>
-  <a class="hero__art" href="a/knxlock-bcu-key.html" aria-hidden="true" tabindex="-1"><img src="../assets/img/it/knxlock-bcu-key.svg" alt="" width="1200" height="675"></a>
+  <a class="hero__art" href="a/sonicwall-sma1000-mfa.html" aria-hidden="true" tabindex="-1"><img src="../assets/img/it/sonicwall-sma1000-mfa.svg" alt="" width="1200" height="675"></a>
 </section>
 
-<section class="shell"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--high">high</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Sconosciuto — nessuna attribuzione, nessuna richiesta di riscatto</dd></div><div class="field"><dt>Alias</dt><dd>KNXlock, CVE-2023-4346, ICSA-23-236-01</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>Ottobre 2021 (primo caso documentato)</dd></div><div class="field"><dt>Bersagli</dt><dd>Sistemi di automazione degli edifici basati su KNX, Oltre 16.000 sistemi potenzialmente esposti nell'area DACH</dd></div><div class="field"><dt>Settori</dt><dd>Critical Manufacturing, Edifici commerciali e industriali</dd></div></dl></aside></section>
+<section class="shell"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Non attribuito (infrastruttura dietro un provider VPN)</dd></div><div class="field"><dt>Alias</dt><dd>SNWLID-2026-0008, CVE-2026-15409, CVE-2026-15410</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>9 luglio 2026 (exploitation osservata)</dd></div><div class="field"><dt>Bersagli</dt><dd>Appliance SMA1000 esposte su internet, Reti aziendali con Active Directory federato</dd></div><div class="field"><dt>Settori</dt><dd>Tutti i settori con accesso remoto SonicWall</dd></div></dl></aside></section>
 
 <section class="intro shell">
   <div class="intro__grid">
@@ -77,16 +77,26 @@
     </div>
     <div class="intro__side">
       <p class="sidebar__label">A colpo d'occhio</p>
-      <div class="stats"><div class="stat"><span class="stat__n">13</span><span class="stat__l">dossier</span></div><div class="stat"><span class="stat__n">2</span><span class="stat__l">lingue</span></div><div class="stat"><span class="stat__n">49</span><span class="stat__l">fonti primarie</span></div><div class="stat"><span class="stat__n">58</span><span class="stat__l">tecniche ATT&CK</span></div></div>
+      <div class="stats"><div class="stat"><span class="stat__n">14</span><span class="stat__l">dossier</span></div><div class="stat"><span class="stat__n">2</span><span class="stat__l">lingue</span></div><div class="stat"><span class="stat__n">54</span><span class="stat__l">fonti primarie</span></div><div class="stat"><span class="stat__n">61</span><span class="stat__l">tecniche ATT&CK</span></div></div>
       <p class="sidebar__label" style="margin-top:1.6rem">Per gravità</p>
-      <div class="sevbars"><div class="sevbar"><span class="sev sev--critical">critical</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--critical" style="width:54%"></i></div><span class="sevbar__n">7</span></div><div class="sevbar"><span class="sev sev--high">high</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--high" style="width:46%"></i></div><span class="sevbar__n">6</span></div></div>
+      <div class="sevbars"><div class="sevbar"><span class="sev sev--critical">critical</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--critical" style="width:57%"></i></div><span class="sevbar__n">8</span></div><div class="sevbar"><span class="sev sev--high">high</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--high" style="width:43%"></i></div><span class="sevbar__n">6</span></div></div>
     </div>
   </div>
 </section>
 
 <section class="archive shell">
-  <div class="section-head"><h2>Archivio</h2><span class="count">13 dossier</span></div>
+  <div class="section-head"><h2>Archivio</h2><span class="count">14 dossier</span></div>
   <div class="entries">
+<a class="entry" href="a/knxlock-bcu-key.html">
+  <img class="entry__thumb" src="../assets/img/it/knxlock-bcu-key.svg" alt="" width="1200" height="675" loading="lazy">
+  <div class="entry__body">
+    <time class="entry__date" datetime="2026-07-17">17.07.2026</time>
+    <h3 class="entry__title">Nessun malware, nessun riscatto, nessuna patch: il caso KNXlock</h3>
+    <p class="entry__summary">Il 15 luglio 2026 CISA ha inserito nel catalogo KEV una CVE del 2023 che descrive un attacco del 2021. Non c&#x27;è codice malevolo: gli attaccanti sv&hellip;</p>
+    <p class="entry__actor">Sconosciuto — nessuna attribuzione, nessuna richiesta di riscatto &nbsp;·&nbsp; <span class="sev sev--high">high</span></p>
+    <span class="entry__more">Continua a leggere &rarr;</span>
+  </div>
+</a>
 <a class="entry" href="a/fortibleed-inc-lynx.html">
   <img class="entry__thumb" src="../assets/img/it/fortibleed-inc-lynx.svg" alt="" width="1200" height="675" loading="lazy">
   <div class="entry__body">

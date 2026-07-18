@@ -1,5 +1,24 @@
 [
   {
+    "title": "SonicWall SMA1000: patchi, resetti le password, e sono ancora dentro",
+    "slug": "sonicwall-sma1000-mfa",
+    "date": "2026-07-18",
+    "severity": "critical",
+    "actor": [
+      "Non attribuito (infrastruttura dietro un provider VPN)"
+    ],
+    "summary": "Due zero-day sulle appliance di accesso remoto SonicWall SMA1000, sfruttati in catena prima ancora della disclosure. Il primo è un SSRF senza autenticazione con punteggio massimo; il secondo porta a root. Ma il dettaglio che conta è cosa hanno portato via: non solo password, i semi TOTP dell'MFA e i database delle sessioni attive — le uniche cose che un reset non ruota.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/sonicwall-sma1000-mfa.html",
+    "mitre": [
+      "T1190",
+      "T1068",
+      "T1552.001",
+      "T1111",
+      "T1078",
+      "T1021"
+    ]
+  },
+  {
     "title": "Nessun malware, nessun riscatto, nessuna patch: il caso KNXlock",
     "slug": "knxlock-bcu-key",
     "date": "2026-07-17",
