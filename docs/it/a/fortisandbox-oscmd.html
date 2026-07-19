@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="rWfkr1OJmRI2zvjBJV9O9yrRoV8hskcmhZ-Kv8M3gio">
+<meta name="theme-color" content="#0b0b0f">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
+<title>La scatola che esegue malware, eseguita da chi bussa: due RCE su FortiSandbox — HACK/PROJECT</title>
+<meta name="description" content="FortiSandbox è la scatola dove i file sospetti vengono fatti esplodere in sicurezza. Due vulnerabilità di OS command injection senza autenticazione — una nella WEB UI, una in un en">
+<meta property="og:title" content="La scatola che esegue malware, eseguita da chi bussa: due RCE su FortiSandbox — HACK/PROJECT">
+<meta property="og:description" content="FortiSandbox è la scatola dove i file sospetti vengono fatti esplodere in sicurezza. Due vulnerabilità di OS command injection senza autenticazione — una nella WEB UI, una in un en">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://spidercivi.github.io/HACK-PROJECT/it/a/fortisandbox-oscmd.html">
+<meta property="og:url" content="https://spidercivi.github.io/HACK-PROJECT/it/a/fortisandbox-oscmd.html">
+<link rel="alternate" hreflang="en" href="https://spidercivi.github.io/HACK-PROJECT/en/a/fortisandbox-oscmd-en.html">
+<link rel="alternate" hreflang="it" href="https://spidercivi.github.io/HACK-PROJECT/it/a/fortisandbox-oscmd.html">
+<link rel="alternate" hreflang="x-default" href="https://spidercivi.github.io/HACK-PROJECT/it/a/fortisandbox-oscmd.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="HACK/PROJECT">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/fortisandbox-oscmd.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<meta name="twitter:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/fortisandbox-oscmd.png">
+<link rel="alternate" type="application/rss+xml" title="HACK/PROJECT" href="https://spidercivi.github.io/HACK-PROJECT/it/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/main.css?v=019fe658">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "La scatola che esegue malware, eseguita da chi bussa: due RCE su FortiSandbox", "description": "FortiSandbox è la scatola dove i file sospetti vengono fatti esplodere in sicurezza. Due vulnerabilità di OS command injection senza autenticazione — una nella WEB UI, una in un endpoint API — permettono a chiunque di eseguire comandi sull'appliance stessa. Patchate in silenzio ad aprile e giugno con la dicitura «Known Exploited: No», sono state aggiunte entrambe al catalogo CISA KEV il 16 luglio: segnale che qualcuno ha iniziato a usarle, con la patch già vecchia di mesi.", "datePublished": "2026-07-19", "dateModified": "2026-07-19", "inLanguage": "it", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/it/a/fortisandbox-oscmd.html", "author": {"@type": "Person", "name": "Riccardo Civiero", "url": "https://github.com/SpiderCivi"}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/"}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/it/fortisandbox-oscmd.png"], "keywords": "Non attribuito (nessuna campagna pubblica; sfruttamento segnalato da CISA), T1190, T1059", "citation": [{"@type": "CreativeWork", "name": "Fortinet PSIRT — FG-IR-26-141: Second-Order OS Command Injection via JSON Input on start vnc feature (CVE-2026-25089)", "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-141"}, {"@type": "CreativeWork", "name": "Fortinet PSIRT — FG-IR-26-100: OS Command Injection through API endpoint (CVE-2026-39808)", "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-100"}, {"@type": "CreativeWork", "name": "CISA — Known Exploited Vulnerabilities Catalog", "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"}, {"@type": "CreativeWork", "name": "NVD — CVE-2026-25089", "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25089"}, {"@type": "CreativeWork", "name": "NVD — CVE-2026-39808", "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-39808"}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Salta al contenuto</a>
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../index.html">HACK<em>/</em>PROJECT</a>
+    <span class="masthead__tagline">Threat Intelligence Quotidiana</span>
+    <nav class="masthead__nav" aria-label="Principale">
+      <a href="../index.html">Archivio</a>
+      <a href="../about.html">Chi sono</a>
+      <a class="lang" href="../../en/a/fortisandbox-oscmd-en.html" rel="alternate">English</a>
+    </nav>
+  </div>
+</header>
+<div class="shell">
+  <div class="ticker">
+    <span class="live">Threat feed attivo</span>
+    <span>Aggiornato &mdash; 19.07.2026 10:11 CET</span>
+    <span>15 dossier</span>
+    <span>Mappatura MITRE ATT&CK</span>
+  </div>
+</div>
+<div class="progress" aria-hidden="true"><i></i></div>
+<main id="main">
+
+<article class="article shell">
+  <nav class="crumb" aria-label="breadcrumb"><a href="../index.html">HACK/PROJECT</a><span>/</span><a href="../index.html">Archivio</a><span>/</span><em>La scatola che esegue malware, eseguita da chi b</em></nav>
+  <div class="article__hero">
+    <header class="article__head">
+      <p class="eyebrow" data-reveal style="--i:0"><span class="eyebrow__topic">Non attribuito (nessuna campagna pubblica; sfruttamento segnalato da CISA)</span><span class="sev sev--critical">critical</span></p>
+      <h1 class="article__title" data-reveal style="--i:1">La scatola che esegue malware, eseguita da chi bussa: due RCE su FortiSandbox</h1>
+      <p class="article__standfirst" data-reveal style="--i:2">FortiSandbox è la scatola dove i file sospetti vengono fatti esplodere in sicurezza. Due vulnerabilità di OS command injection senza autenticazione — una nella WEB UI, una in un endpoint API — permettono a chiunque di eseguire comandi sull&#x27;appliance stessa. Patchate in silenzio ad aprile e giugno con la dicitura «Known Exploited: No», sono state aggiunte entrambe al catalogo CISA KEV il 16 luglio: segnale che qualcuno ha iniziato a usarle, con la patch già vecchia di mesi.</p>
+      <div class="byline" data-reveal style="--i:2">
+        <img class="byline__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="40" height="40" loading="lazy">
+        <div class="byline__meta">
+          <span class="byline__name">di <a href="../about.html">Riccardo Civiero</a></span>
+          <span class="byline__handle">@SpiderCivi &nbsp;·&nbsp; 19.07.2026</span>
+        </div>
+      </div>
+    </header>
+    <div class="article__hero-media"><figure class="dossier-video" data-reveal style="--i:3"><div class="dossier-video__frame"><video controls preload="none" playsinline poster="../../video/poster/fortisandbox-oscmd-it.jpg" width="1080" height="1920"><source src="../../video/fortisandbox-oscmd-it.mp4" type="video/mp4"></video></div></figure></div>
+  </div>
+  <div class="article__meta" data-reveal style="--i:2">
+    <span><i class="ti"></i>19.07.2026</span><span>5 min di lettura</span><span>5 fonti primarie</span>
+  </div>
+  <div class="article__layout">
+    <div class="prose" data-reveal style="--i:4"><h2 id="il-paradosso-al-centro-del-dispositivo">Il paradosso al centro del dispositivo</h2>
+<p class="lede">Un sandbox di rete come FortiSandbox esiste per una ragione precisa: essere il posto dove le cose pericolose possono succedere senza fare danni. FortiGate, FortiMail e gli altri componenti del Security Fabric gli passano i file e gli URL sospetti; lui li fa detonare dentro macchine virtuali isolate, osserva cosa combinano e restituisce un verdetto. È, per progetto, la stanza blindata in cui si accende la miccia.</p>
+<p>Il 16 luglio 2026 CISA ha aggiunto al suo catalogo delle vulnerabilità note come sfruttate <strong>due</strong> falle di FortiSandbox. Nessuna delle due riguarda la stanza blindata. Riguardano la porta d'ingresso: entrambe permettono a un attaccante <strong>non autenticato</strong> di eseguire comandi di sistema sull'appliance stessa, con una semplice richiesta HTTP. La scatola costruita per eseguire in sicurezza il codice altrui può essere fatta eseguire da chiunque bussi.</p>
+<ol class="tl" data-reveal><li class="tl__item"><div class="tl__when">14 aprile 2026</div><div class="tl__body"><div class="tl__what"><code>FG-IR-26-100</code></div><p class="tl__txt">Fortinet pubblica CVE-2026-39808: OS command injection su un endpoint API.</p></div></li><li class="tl__item"><div class="tl__when">9 giugno 2026</div><div class="tl__body"><div class="tl__what"><code>FG-IR-26-141</code></div><p class="tl__txt">Fortinet pubblica CVE-2026-25089: injection nella WEB UI, funzione «start vnc».</p></div></li><li class="tl__item"><div class="tl__when">16 luglio 2026</div><div class="tl__body"><div class="tl__what"><code>exploitation</code></div><p class="tl__txt">CISA aggiunge <strong>entrambe</strong> le CVE al catalogo KEV.</p></div></li><li class="tl__item"><div class="tl__when">19 luglio 2026</div><div class="tl__body"><div class="tl__what">Scadenza</div><p class="tl__txt">Data limite per la remediation imposta da CISA alle agenzie federali.</p></div></li></ol>
+<h2 id="due-porte-stessa-stanza">Due porte, stessa stanza</h2>
+<p>Le due vulnerabilità sono varianti dello stesso difetto — <strong>CWE-78, improper neutralization of special elements used in an OS command</strong> — su due superfici diverse.</p>
+<p>CVE-2026-39808 (FG-IR-26-100), pubblicata il 14 aprile e segnalata da Samuel de Lucas Maroto di KPMG Spagna, vive in un <strong>endpoint API</strong>: una richiesta HTTP costruita ad arte porta all'esecuzione di comandi. Colpisce FortiSandbox 4.4.0–4.4.8; il ramo 5.0 non è affetto.</p>
+<p>CVE-2026-25089 (FG-IR-26-141), pubblicata il 9 giugno e trovata internamente da Fortinet, è più insidiosa: è una <strong>injection di secondo ordine</strong> che passa da un input JSON della funzione «start vnc» nella WEB UI. «Secondo ordine» significa che il valore ostile non viene eseguito nel momento in cui entra, ma più tardi, quando l'applicazione lo riusa in un contesto dove diventa comando. Copre più prodotti: FortiSandbox 5.0.0–5.0.5, 4.4.0–4.4.8, oltre a FortiSandbox Cloud e PaaS 5.0.4–5.0.5.</p>
+<p>In entrambi i casi l'attaccante non ha bisogno di credenziali. È il punto che rende queste falle da massima priorità: nessun login, nessun token, nessun utente — solo la capacità di raggiungere via rete l'interfaccia di gestione o l'API.</p>
+<ol class="flow" data-reveal><li class="flow__step"><span class="flow__n">01</span><div class="flow__b"><div class="flow__t">Richiesta HTTP</div><div class="flow__note">l&#x27;attaccante raggiunge WEB UI o endpoint API, senza autenticarsi</div></div></li><li class="flow__step"><span class="flow__n">02</span><div class="flow__b"><div class="flow__t">Input non neutralizzato</div><div class="flow__note">JSON di «start vnc» (25089) o parametro API (39808)</div></div></li><li class="flow__step"><span class="flow__n">03</span><div class="flow__b"><div class="flow__t">OS command injection</div><div class="flow__note">i caratteri speciali finiscono in un comando di sistema</div></div></li><li class="flow__step"><span class="flow__n">04</span><div class="flow__b"><div class="flow__t">Esecuzione sull&#x27;appliance</div><div class="flow__note">il codice gira sul sandbox, non nella VM isolata</div></div></li></ol>
+<h2 id="perche-un-sandbox-e-un-bersaglio-peggiore-di-un-firewall">Perché un sandbox è un bersaglio peggiore di un firewall</h2>
+<p>Un'appliance di detonazione non è un dispositivo qualsiasi da compromettere. Per fare il suo lavoro riceve, da tutto il resto del Security Fabric, i file e gli URL che nessun altro si fida di aprire: allegati di posta, campioni scaricati, payload segnalati. Sta in una posizione fidata e vede materiale che, per definizione, è già sospetto.</p>
+<p>Chi ottiene esecuzione di comandi su quel dispositivo eredita quella posizione. Può leggere i campioni in coda e i verdetti già emessi; può, in linea di principio, <strong>manipolare i verdetti</strong> — insegnare al sandbox a dire «pulito» su ciò che pulito non è, trasformando lo strumento di difesa in un lasciapassare; può usarlo come testa di ponte verso i componenti del Fabric che si fidano di lui. Non è un semplice RCE su un box perimetrale: è un RCE sul dispositivo a cui gli altri delegano il giudizio su cosa è pericoloso.</p>
+<div class="stat stat--n3" data-reveal><div class="stat__item"><div class="stat__val">9.8</div><div class="stat__lab">CVSS 3.1 (CNA Fortinet)</div><div class="stat__note">«Critical»; la metrica dell&#x27;advisory riporta 9.1</div></div><div class="stat__item"><div class="stat__val">2</div><div class="stat__lab">CVE distinte in KEV</div><div class="stat__note">aggiunte lo stesso giorno, 16 luglio 2026</div></div><div class="stat__item"><div class="stat__val">0</div><div class="stat__lab">credenziali necessarie</div><div class="stat__note">entrambe le falle sono pre-autenticazione</div></div></div>
+<h2 id="cosa-non-sappiamo-e-va-detto">Cosa non sappiamo — e va detto</h2>
+<p>Diverse cose, ed è giusto dichiararle.</p>
+<p>La più importante: <strong>al momento della pubblicazione, entrambi gli advisory Fortinet riportano «Known Exploited: No»</strong>. Fortinet le ha discusse come scoperte interne o disclosure responsabili, senza segnalare sfruttamento. È l'inserimento nel catalogo KEV del 16 luglio a dire il contrario: CISA aggiunge una CVE a KEV solo con evidenza di sfruttamento attivo. Le due fonti non sono in contraddizione — descrivono momenti diversi — ma <strong>non esiste, a oggi, un report pubblico di un vendor o di un ricercatore che descriva la campagna, l'attore o gli indicatori</strong>. Sappiamo che qualcuno le sta usando; non sappiamo chi, come, né contro chi.</p>
+<p>Seconda incertezza: <strong>il punteggio</strong>. NVD segna entrambe le CVE come <em>Awaiting Enrichment</em> e non ha ancora assegnato un proprio base score; l'unico presente è quello del CNA (Fortinet). E i due valori Fortinet non coincidono — 9.8 nel record CNA di NVD, 9.1 nella metrica in testa all'advisory. Abbiamo riportato entrambi.</p>
+<p>Terza: <strong>il meccanismo tecnico</strong>. Non esiste un exploit pubblico né un'analisi dettagliata; la descrizione qui sopra segue i titoli e le sintesi degli advisory (injection di secondo ordine via JSON in «start vnc»; injection su un endpoint API) e non entra in dettagli operativi che non serve conoscere per difendersi.</p>
+<p>Infine gli <strong>ID ATT&amp;CK</strong> in testa a questo dossier — T1190 e T1059 — non provengono dagli advisory, che non li riportano: sono una mappatura ragionata di ciò che le falle consentono (raggiungere un'applicazione esposta ed eseguire comandi), non un dato copiato da una fonte primaria.</p>
+<h2 id="cosa-si-fa-e-subito">Cosa si fa, e subito</h2>
+<p>La remediation è netta perché la patch esiste da mesi. Aggiornare FortiSandbox e FortiSandbox Cloud/PaaS a <strong>4.4.9 o 5.0.6 e superiori</strong> chiude entrambe le falle. Chi è ancora su 4.4.0–4.4.8 è esposto a tutt'e due; chi è su 5.0.0–5.0.5 alla injection della WEB UI.</p>
+<p>Nell'attesa della finestra di manutenzione, la mitigazione a impatto più alto è la più semplice: <strong>la WEB UI e l'API di gestione di un sandbox non dovrebbero essere raggiungibili da internet</strong>, né esposte oltre la rete di amministrazione. Un dispositivo che riceve input solo dagli altri componenti del Fabric non ha ragione di offrire la propria interfaccia al mondo.</p>
+<p>Per la caccia retrospettiva, in assenza di IOC pubblici, l'indicatore è il comportamento: richieste inattese verso l'interfaccia o l'API di FortiSandbox da sorgenti esterne, processi anomali sull'appliance, modifiche alla configurazione o account comparsi fuori dai flussi previsti. La data che conta è il 16 luglio, ma la falla aspettava dal 14 aprile: chi ha guardato solo il calendario delle patch, e non la propria esposizione, ha avuto tre mesi di finestra aperta senza saperlo.</p></div>
+    <div class="sidebar">
+      <aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Non attribuito (nessuna campagna pubblica; sfruttamento segnalato da CISA)</dd></div><div class="field"><dt>Alias</dt><dd>FG-IR-26-141, FG-IR-26-100, CVE-2026-25089, CVE-2026-39808</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>16 luglio 2026 (aggiunta al catalogo CISA KEV)</dd></div><div class="field"><dt>Bersagli</dt><dd>Appliance FortiSandbox esposte (WEB UI / API), Reti con Fortinet Security Fabric</dd></div><div class="field"><dt>Settori</dt><dd>Tutti i settori che usano detonazione malware Fortinet</dd></div></dl></aside>
+      <div class="sidebar__block"><div class="sidebar__label">Tecniche MITRE ATT&CK</div><div class="ttp-grid"><a class="ttp" href="https://attack.mitre.org/techniques/T1190/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1190</span> Exploit Public-Facing Application</a><a class="ttp" href="https://attack.mitre.org/techniques/T1059/" data-tactic="Execution" target="_blank" rel="noopener"><span class="ttp__id">T1059</span> Command and Scripting Interpreter</a></div></div>
+      <div class="sidebar__block"><div class="sidebar__label">Fonti primarie</div><ul class="sources"><li><a href="https://fortiguard.fortinet.com/psirt/FG-IR-26-141" target="_blank" rel="noopener">Fortinet PSIRT — FG-IR-26-141: Second-Order OS Command Injection via JSON Input on start vnc feature (CVE-2026-25089)</a></li><li><a href="https://fortiguard.fortinet.com/psirt/FG-IR-26-100" target="_blank" rel="noopener">Fortinet PSIRT — FG-IR-26-100: OS Command Injection through API endpoint (CVE-2026-39808)</a></li><li><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA — Known Exploited Vulnerabilities Catalog</a></li><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-25089" target="_blank" rel="noopener">NVD — CVE-2026-25089</a></li><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-39808" target="_blank" rel="noopener">NVD — CVE-2026-39808</a></li></ul></div>
+      <div class="sidebar__block"><div class="sidebar__label">Condividi</div><div class="share"><a href="https://x.com/intent/tweet?text=La%20scatola%20che%20esegue%20malware%2C%20eseguita%20da%20chi%20bussa%3A%20due%20RCE%20su%20FortiSandbox&url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/fortisandbox-oscmd.html" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/fortisandbox-oscmd.html" target="_blank" rel="noopener">LinkedIn</a><a href="https://news.ycombinator.com/submitlink?u=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/fortisandbox-oscmd.html&t=La%20scatola%20che%20esegue%20malware%2C%20eseguita%20da%20chi%20bussa%3A%20due%20RCE%20su%20FortiSandbox" target="_blank" rel="noopener">HN</a><button class="share__copy" data-url="https://spidercivi.github.io/HACK-PROJECT/it/a/fortisandbox-oscmd.html" type="button">Link</button></div></div>
+    </div>
+  </div>
+  <aside class="authorcard"><img class="authorcard__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="72" height="72" loading="lazy"><div><p class="authorcard__label">Scritto da</p><p class="authorcard__name"><a href="../about.html">Riccardo Civiero</a> <span class="authorcard__handle">@SpiderCivi</span></p><p class="authorcard__role">Cybersecurity & Software Developer</p><p class="authorcard__bio">Sviluppatore e specialista in cybersecurity. Formato all'ITIS E. Barsanti, con specializzazione in Cyber Security all'ITS Digital Academy di Treviso. Appassionato di sicurezza offensiva: CTF e Hack The Box. Qui applico lo stesso sguardo in senso difensivo — capire come funziona un attacco per spiegare come si ferma.</p><p class="authorcard__links"><a href="https://github.com/SpiderCivi" target="_blank" rel="noopener">GitHub</a><a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></p></div></aside>
+  <nav class="pager"><a class="pager__item pager__item--prev" href="sonicwall-sma1000-mfa.html"><span>&larr; Precedente</span><strong>SonicWall SMA1000: patchi, resetti le password, e sono ancora dentro</strong></a></nav>
+</article>
+<section class="rel shell"><div class="section-head"><h2>Altri dossier</h2></div><div class="rel__grid"><a class="rel__card" href="sonicwall-sma1000-mfa.html"><img src="../../assets/img/it/sonicwall-sma1000-mfa.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>SonicWall SMA1000: patchi, resetti le password, e sono ancora dentro</h3></div></a><a class="rel__card" href="apt28-router-dns.html"><img src="../../assets/img/it/apt28-router-dns.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Il router da trenta euro che intercettava i ministeri degli esteri</h3></div></a><a class="rel__card" href="axios-npm.html"><img src="../../assets/img/it/axios-npm.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Axios, il manifest e il token che nessuno aveva revocato</h3></div></a></div></section></main>
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="wordmark">HACK<em>/</em>PROJECT</p>
+        <p class="footer__tag">Threat Intelligence Quotidiana</p>
+        <p class="footer__disclaimer"><strong>HACK/PROJECT</strong> &mdash; analisi di attacchi informatici documentati pubblicamente, mappati su MITRE ATT&amp;CK&reg;. Contenuto a scopo difensivo ed educativo: descriviamo tattiche e tecniche cosi&#768; come riportate da agenzie e ricercatori, senza distribuire codice offensivo. Dove le fonti sono incerte, lo dichiariamo nel testo. ATT&amp;CK&reg; e&#768; un marchio registrato di The MITRE Corporation; progetto non affiliato a MITRE.</p>
+      </div>
+      <div class="footer__col"><p class="footer__label">Archivio</p><a href="../index.html">Ultimi dossier</a><a href="../about.html">Chi sono</a></div><div class="footer__col"><p class="footer__label">Chi sono</p><a href="../about.html">Chi sono</a><a href="../about.html#contatti">Contattami</a><a href="https://spidercivi.github.io/">Portfolio</a></div><div class="footer__col"><p class="footer__label">Segui</p><a href="https://www.tiktok.com/@h4ckprojct">TikTok</a><a href="https://github.com/SpiderCivi">GitHub</a><a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Riccardo Civiero</p>
+      <p class="footer__legal">Contenuto a scopo difensivo ed educativo. MITRE ATT&amp;CK&reg; &egrave; un marchio registrato di The MITRE Corporation; questo progetto non &egrave; affiliato n&eacute; sponsorizzato da MITRE, CISA o dai vendor citati.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/js/main.js?v=24ab82c1" defer></script>
+</body>
+</html>

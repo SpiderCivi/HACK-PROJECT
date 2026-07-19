@@ -1,5 +1,20 @@
 [
   {
+    "title": "La scatola che esegue malware, eseguita da chi bussa: due RCE su FortiSandbox",
+    "slug": "fortisandbox-oscmd",
+    "date": "2026-07-19",
+    "severity": "critical",
+    "actor": [
+      "Non attribuito (nessuna campagna pubblica; sfruttamento segnalato da CISA)"
+    ],
+    "summary": "FortiSandbox è la scatola dove i file sospetti vengono fatti esplodere in sicurezza. Due vulnerabilità di OS command injection senza autenticazione — una nella WEB UI, una in un endpoint API — permettono a chiunque di eseguire comandi sull'appliance stessa. Patchate in silenzio ad aprile e giugno con la dicitura «Known Exploited: No», sono state aggiunte entrambe al catalogo CISA KEV il 16 luglio: segnale che qualcuno ha iniziato a usarle, con la patch già vecchia di mesi.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/fortisandbox-oscmd.html",
+    "mitre": [
+      "T1190",
+      "T1059"
+    ]
+  },
+  {
     "title": "SonicWall SMA1000: patchi, resetti le password, e sono ancora dentro",
     "slug": "sonicwall-sma1000-mfa",
     "date": "2026-07-18",

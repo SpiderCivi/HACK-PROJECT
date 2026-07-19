@@ -1,5 +1,20 @@
 [
   {
+    "title": "The box built to run malware, run by whoever knocks: two RCEs in FortiSandbox",
+    "slug": "fortisandbox-oscmd-en",
+    "date": "2026-07-19",
+    "severity": "critical",
+    "actor": [
+      "Unattributed (no public campaign; exploitation flagged by CISA)"
+    ],
+    "summary": "FortiSandbox is the box where suspicious files are detonated safely. Two unauthenticated OS command injection flaws — one in the WEB UI, one in an API endpoint — let anyone execute commands on the appliance itself. Patched quietly in April and June under a \"Known Exploited: No\" label, both were added to the CISA KEV catalog on 16 July: a sign someone had started using them, with the patch already months old.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/fortisandbox-oscmd-en.html",
+    "mitre": [
+      "T1190",
+      "T1059"
+    ]
+  },
+  {
     "title": "SonicWall SMA1000: you patch, you reset the passwords, and they are still in",
     "slug": "sonicwall-sma1000-mfa-en",
     "date": "2026-07-18",
