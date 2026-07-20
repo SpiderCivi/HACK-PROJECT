@@ -1,5 +1,21 @@
 [
   {
+    "title": "Four Joomla extensions, one pattern: the unauthenticated-upload wave that plants ghost admins",
+    "slug": "joomla-upload-rce-wave-en",
+    "date": "2026-07-20",
+    "severity": "critical",
+    "actor": [
+      "Unattributed (no named actor or campaign; disclosure by Phil Taylor / mySites.guru)"
+    ],
+    "summary": "In a few weeks four widely installed Joomla extensions — SP Page Builder, iCagenda, PageBuilder CK and Balbooa Forms — landed in CISA's catalog of exploited vulnerabilities, all with the same flaw: an endpoint reachable with no login that accepts a file upload without checking its type. The result is a PHP web shell executed on the server. In at least one case the observed payload plants a hidden Super Administrator with an @secure.local email and scatters \"PHP File manager\" backdoors across several folders. No named actor: what stands out is the same mistake repeated in different products.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/joomla-upload-rce-wave-en.html",
+    "mitre": [
+      "T1190",
+      "T1505.003",
+      "T1136.001"
+    ]
+  },
+  {
     "title": "The module that moves the payments, taken without a login: CVE-2026-46817 in Oracle E-Business Suite",
     "slug": "oracle-ebs-payments-en",
     "date": "2026-07-20",
@@ -13,6 +29,70 @@
       "T1190",
       "T1552.001"
     ]
+  },
+  {
+    "title": "A token nobody signed: SimpleHelp accepted forged logins and opened every managed endpoint",
+    "slug": "simplehelp-oidc-bypass-en",
+    "date": "2026-07-20",
+    "severity": "critical",
+    "actor": [
+      "Access unattributed; post-exploitation with TaskWeaver loader and Djinn stealer (Blackpoint Cyber)"
+    ],
+    "summary": "SimpleHelp is remote-support software: whoever controls it controls the computers it manages. CVE-2026-48558 (CVSS 10.0) is an authentication bypass in the OIDC flow: when single sign-on is configured, identity tokens were accepted without verifying their cryptographic signature. A remote, unauthenticated attacker could therefore submit a forged token with arbitrary claims and obtain a full technician session — in some configurations bypassing MFA too. The flaw was exploited in the wild to deliver the TaskWeaver loader and the Djinn stealer, and was added to the CISA KEV catalog on 29 June.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/simplehelp-oidc-bypass-en.html",
+    "mitre": [
+      "T1190",
+      "T1606",
+      "T1219"
+    ]
+  },
+  {
+    "title": "How to break the ransomware-as-a-service model: what the official sources actually say",
+    "slug": "ransomware-raas-difesa-en",
+    "date": "2026-07-20",
+    "severity": "high",
+    "actor": [
+      "Editorial explainer · official sources"
+    ],
+    "summary": "Ransomware today is a service industry, not a lone wolf: operators who rent the malware, affiliates who strike, brokers who sell the initial access. This explainer is not the attack of the day: it lines up what official sources say — CISA with #StopRansomware, Europol with the No More Ransom project, ENISA with its Threat Landscape — on how that chain breaks. The takeaway is less spectacular than a ransom and more useful: you hit the model's economics, not the single group.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/ransomware-raas-difesa-en.html",
+    "mitre": []
+  },
+  {
+    "title": "The 72-hour rule, explained properly: what the GDPR actually requires after a breach",
+    "slug": "data-breach-72-ore-en",
+    "date": "2026-07-20",
+    "severity": "medium",
+    "actor": [
+      "Editorial explainer · official sources"
+    ],
+    "summary": "\"You have 72 hours to notify\" is the line everyone repeats and few explain. This explainer lines up what the GDPR actually says: when the clock starts, the difference between notifying the supervisory authority (Art. 33) and informing data subjects (Art. 34), why not every breach is notifiable, and the duty that applies regardless — documentation. Not the attack of the day, but the legal frame every personal-data incident eventually meets.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/data-breach-72-ore-en.html",
+    "mitre": []
+  },
+  {
+    "title": "The human factor is not the weak link: why blame doesn't stop phishing",
+    "slug": "fattore-umano-social-engineering-en",
+    "date": "2026-07-20",
+    "severity": "medium",
+    "actor": [
+      "Editorial explainer · official sources"
+    ],
+    "summary": "Social engineering is among the prime threats in the Union according to ENISA, yet the most common reaction stays the worst: blame whoever clicked. This explainer explains why the \"human factor\" is not a weak link to scold but a system to design — with verifiable procedures, blame-free reporting and tools that make the deception ineffective. Not the attack of the day, but the culture that decides whether the technical defenses hold.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/fattore-umano-social-engineering-en.html",
+    "mitre": []
+  },
+  {
+    "title": "NIS2 in Italy: who is really in scope, since when, and why it reaches suppliers too",
+    "slug": "nis2-italia-recepimento-en",
+    "date": "2026-07-20",
+    "severity": "medium",
+    "actor": [
+      "Editorial explainer · official sources"
+    ],
+    "summary": "Not an attack, but the perimeter within which attacks are managed. The NIS2 directive was transposed in Italy by Legislative Decree 138/2024, in force since 16 October 2024. It defines who the \"essential\" and \"important\" entities are, what they must do on risk management and incident notification, and how accountability rises to top management. The less obvious point is the cascade onto the supply chain: many companies not directly regulated find the obligations on them because they supply an entity that is.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/nis2-italia-recepimento-en.html",
+    "mitre": []
   },
   {
     "title": "The box built to run malware, run by whoever knocks: two RCEs in FortiSandbox",

@@ -1,5 +1,21 @@
 [
   {
+    "title": "Quattro estensioni Joomla, un solo schema: l'ondata di upload non autenticati che pianta admin fantasma",
+    "slug": "joomla-upload-rce-wave",
+    "date": "2026-07-20",
+    "severity": "critical",
+    "actor": [
+      "Non attribuito (nessun attore o campagna nominati; disclosure di Phil Taylor / mySites.guru)"
+    ],
+    "summary": "In poche settimane quattro estensioni Joomla molto diffuse — SP Page Builder, iCagenda, PageBuilder CK e Balbooa Forms — sono finite nel catalogo CISA delle vulnerabilità sfruttate, tutte con lo stesso difetto: un endpoint raggiungibile senza login che accetta il caricamento di un file senza controllarne il tipo. Il risultato è una web shell PHP eseguita sul server. In almeno un caso il payload osservato pianta un Super Administrator nascosto con email @secure.local e semina backdoor \"PHP File manager\" in più cartelle. Nessun attore nominato: quello che colpisce è la ripetizione dello stesso errore in prodotti diversi.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/joomla-upload-rce-wave.html",
+    "mitre": [
+      "T1190",
+      "T1505.003",
+      "T1136.001"
+    ]
+  },
+  {
     "title": "Il modulo che muove i pagamenti, preso senza un login: CVE-2026-46817 su Oracle E-Business Suite",
     "slug": "oracle-ebs-payments",
     "date": "2026-07-20",
@@ -13,6 +29,70 @@
       "T1190",
       "T1552.001"
     ]
+  },
+  {
+    "title": "Un token che nessuno ha firmato: SimpleHelp accettava login falsi e apriva ogni endpoint gestito",
+    "slug": "simplehelp-oidc-bypass",
+    "date": "2026-07-20",
+    "severity": "critical",
+    "actor": [
+      "Non attribuito per l'accesso; post-sfruttamento con loader TaskWeaver e stealer Djinn (Blackpoint Cyber)"
+    ],
+    "summary": "SimpleHelp è software di supporto remoto: chi lo controlla, controlla i computer che gestisce. CVE-2026-48558 (CVSS 10.0) è un bypass di autenticazione nel flusso OIDC: quando il single sign-on è configurato, i token di identità venivano accettati senza verificarne la firma crittografica. Un attaccante remoto e non autenticato poteva quindi presentare un token forgiato con claim arbitrari e ottenere una sessione di tecnico completa — in alcune configurazioni aggirando anche l'MFA. La falla è stata sfruttata in-the-wild per distribuire il loader TaskWeaver e lo stealer Djinn, e aggiunta al catalogo CISA KEV il 29 giugno.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/simplehelp-oidc-bypass.html",
+    "mitre": [
+      "T1190",
+      "T1606",
+      "T1219"
+    ]
+  },
+  {
+    "title": "Come si rompe il modello ransomware-as-a-service: cosa dicono davvero le fonti ufficiali",
+    "slug": "ransomware-raas-difesa",
+    "date": "2026-07-20",
+    "severity": "high",
+    "actor": [
+      "Approfondimento editoriale · fonti ufficiali"
+    ],
+    "summary": "Il ransomware oggi è un'industria di servizi, non un lupo solitario: operatori che affittano il malware, affiliati che colpiscono, broker che vendono l'accesso iniziale. Questo approfondimento non racconta un attacco del giorno: mette in fila cosa dicono le fonti ufficiali — CISA con #StopRansomware, Europol con il progetto No More Ransom, ENISA con il suo Threat Landscape — su come si spezza quella catena. La sintesi è meno spettacolare di un riscatto e più utile: si colpisce l'economia del modello, non il singolo gruppo.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/ransomware-raas-difesa.html",
+    "mitre": []
+  },
+  {
+    "title": "La regola delle 72 ore, spiegata bene: cosa obbliga davvero il GDPR dopo una violazione",
+    "slug": "data-breach-72-ore",
+    "date": "2026-07-20",
+    "severity": "medium",
+    "actor": [
+      "Approfondimento editoriale · fonti ufficiali"
+    ],
+    "summary": "\"Hai 72 ore per notificare\" è la frase che tutti ripetono e pochi spiegano. Questo approfondimento mette in fila cosa dice davvero il GDPR: quando scatta il conteggio, la differenza tra notificare al Garante (art. 33) e comunicare agli interessati (art. 34), perché non ogni violazione va notificata, e l'obbligo che vale comunque — documentare. Non un attacco del giorno, ma la cornice legale che ogni incidente sui dati personali finisce per incontrare.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/data-breach-72-ore.html",
+    "mitre": []
+  },
+  {
+    "title": "Il fattore umano non è l'anello debole: perché la colpa non ferma il phishing",
+    "slug": "fattore-umano-social-engineering",
+    "date": "2026-07-20",
+    "severity": "medium",
+    "actor": [
+      "Approfondimento editoriale · fonti ufficiali"
+    ],
+    "summary": "L'ingegneria sociale è tra le minacce prime nell'Unione secondo l'ENISA, eppure la reazione più comune resta la peggiore: dare la colpa a chi ha cliccato. Questo approfondimento spiega perché il \"fattore umano\" non è l'anello debole da sgridare, ma un sistema da progettare — con procedure verificabili, segnalazione senza punizione e strumenti che rendono l'inganno inefficace. Non un attacco del giorno, ma la cultura che decide se le difese tecniche reggono.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/fattore-umano-social-engineering.html",
+    "mitre": []
+  },
+  {
+    "title": "NIS2 in Italia: chi rientra davvero, da quando, e perché riguarda anche i fornitori",
+    "slug": "nis2-italia-recepimento",
+    "date": "2026-07-20",
+    "severity": "medium",
+    "actor": [
+      "Approfondimento editoriale · fonti ufficiali"
+    ],
+    "summary": "Non un attacco, ma il perimetro dentro cui gli attacchi si gestiscono. La direttiva NIS2 è stata recepita in Italia con il D.Lgs 138/2024, in vigore dal 16 ottobre 2024. Definisce chi sono i soggetti \"essenziali\" e \"importanti\", cosa devono fare in termini di gestione del rischio e notifica degli incidenti, e come la responsabilità risalga fino ai vertici aziendali. Il punto meno ovvio è la cascata sulla catena di fornitura: molte aziende non regolate direttamente si ritrovano gli obblighi addosso perché forniscono un soggetto che lo è.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/nis2-italia-recepimento.html",
+    "mitre": []
   },
   {
     "title": "La scatola che esegue malware, eseguita da chi bussa: due RCE su FortiSandbox",

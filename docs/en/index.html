@@ -10,9 +10,9 @@
 <link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
 <title>HACK/PROJECT — Daily Threat Intelligence</title>
-<meta name="description" content="Oracle Payments is the payment engine inside Oracle E-Business Suite: the point where the company&#x27;s finance applications talk to banks and card networks. CVE-2026-46817 (CVSS ">
+<meta name="description" content="In a few weeks four widely installed Joomla extensions — SP Page Builder, iCagenda, PageBuilder CK and Balbooa Forms — landed in CISA&#x27;s catalog of exploited vulnerabilities, a">
 <meta property="og:title" content="HACK/PROJECT — Daily Threat Intelligence">
-<meta property="og:description" content="Oracle Payments is the payment engine inside Oracle E-Business Suite: the point where the company&#x27;s finance applications talk to banks and card networks. CVE-2026-46817 (CVSS ">
+<meta property="og:description" content="In a few weeks four widely installed Joomla extensions — SP Page Builder, iCagenda, PageBuilder CK and Balbooa Forms — landed in CISA&#x27;s catalog of exploited vulnerabilities, a">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://spidercivi.github.io/HACK-PROJECT/en/">
 <meta property="og:url" content="https://spidercivi.github.io/HACK-PROJECT/en/">
@@ -22,10 +22,10 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="HACK/PROJECT">
 <meta property="og:locale" content="en_GB">
-<meta property="og:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/en/oracle-ebs-payments.png">
+<meta property="og:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/en/joomla-upload-rce-wave.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="675">
-<meta name="twitter:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/en/oracle-ebs-payments.png">
+<meta name="twitter:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/en/joomla-upload-rce-wave.png">
 <link rel="alternate" type="application/rss+xml" title="HACK/PROJECT" href="https://spidercivi.github.io/HACK-PROJECT/en/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,8 +50,8 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed live</span>
-    <span>Updated &mdash; 20.07.2026 11:32 CET</span>
-    <span>16 dossiers</span>
+    <span>Updated &mdash; 20.07.2026 12:02 CET</span>
+    <span>22 dossiers</span>
     <span>MITRE ATT&CK mapping</span>
   </div>
 </div>
@@ -61,14 +61,14 @@
 <section class="hero shell">
   <div class="hero__text">
     <p class="kicker" data-reveal style="--i:0">Today's dossier &nbsp;/&nbsp; 20.07.2026</p>
-    <h1 class="hero__title" data-reveal style="--i:1">The module that moves the payments, taken without a login: CVE-2026-46817 in Oracle E-Business Suite</h1>
-    <p class="hero__standfirst" data-reveal style="--i:2">Oracle Payments is the payment engine inside Oracle E-Business Suite: the point where the company&#x27;s finance applications talk to banks and card networks. CVE-2026-46817 (CVSS 9.8) lets an unauthenticated attacker with only HTTP access compromise and take over the module. The exploit hits the ibytransmit endpoint of the File Transmission component, which invokes an internal Java function directly: patched in late May, the flaw was exploited in the wild from 27 June — before any public PoC — and added to the CISA KEV catalog on 15 July.</p>
-    <p data-reveal style="--i:3"><a class="cta" href="a/oracle-ebs-payments-en.html">Read the dossier &rarr;</a></p>
+    <h1 class="hero__title" data-reveal style="--i:1">Four Joomla extensions, one pattern: the unauthenticated-upload wave that plants ghost admins</h1>
+    <p class="hero__standfirst" data-reveal style="--i:2">In a few weeks four widely installed Joomla extensions — SP Page Builder, iCagenda, PageBuilder CK and Balbooa Forms — landed in CISA&#x27;s catalog of exploited vulnerabilities, all with the same flaw: an endpoint reachable with no login that accepts a file upload without checking its type. The result is a PHP web shell executed on the server. In at least one case the observed payload plants a hidden Super Administrator with an @secure.local email and scatters &quot;PHP File manager&quot; backdoors across several folders. No named actor: what stands out is the same mistake repeated in different products.</p>
+    <p data-reveal style="--i:3"><a class="cta" href="a/joomla-upload-rce-wave-en.html">Read the dossier &rarr;</a></p>
   </div>
-  <a class="hero__art" href="a/oracle-ebs-payments-en.html" aria-hidden="true" tabindex="-1"><img src="../assets/img/en/oracle-ebs-payments.svg" alt="" width="1200" height="675"></a>
+  <a class="hero__art" href="a/joomla-upload-rce-wave-en.html" aria-hidden="true" tabindex="-1"><img src="../assets/img/en/joomla-upload-rce-wave.svg" alt="" width="1200" height="675"></a>
 </section>
 
-<section class="shell"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Actor profile</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Actor</dt><dd>Unattributed (first observed on Defused honeypots; no public campaign or actor)</dd></div><div class="field"><dt>Aliases</dt><dd>CVE-2026-46817, Oracle Payments — File Transmission, Oracle CPU May 2026</dd></div><div class="field"><dt>First seen</dt><dd>27 June 2026 (first in-the-wild execution observed by Defused)</dd></div><div class="field"><dt>Targets</dt><dd>Oracle E-Business Suite 12.2.3–12.2.15 instances exposed over HTTP, Oracle Payments module (File Transmission component)</dd></div><div class="field"><dt>Sectors</dt><dd>Large organizations running Oracle ERP for finance and payments</dd></div></dl></aside></section>
+<section class="shell"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Actor profile</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Actor</dt><dd>Unattributed (no named actor or campaign; disclosure by Phil Taylor / mySites.guru)</dd></div><div class="field"><dt>Aliases</dt><dd>CVE-2026-48908, CVE-2026-48939, CVE-2026-56290, CVE-2026-56291, SP Page Builder · iCagenda · PageBuilder CK · Balbooa Forms</dd></div><div class="field"><dt>First seen</dt><dd>June 2026 (exploitation seen in logs by mySites.guru); added to CISA KEV 7-10 July 2026</dd></div><div class="field"><dt>Targets</dt><dd>Joomla sites with third-party extensions installed and exposed to the internet, SP Page Builder ≤6.6.1, iCagenda, PageBuilder CK, Balbooa Forms</dd></div><div class="field"><dt>Sectors</dt><dd>SMBs, web agencies, public bodies, anyone managing third-party Joomla sites</dd></div></dl></aside></section>
 
 <section class="intro shell">
   <div class="intro__grid">
@@ -79,16 +79,76 @@
     </div>
     <div class="intro__side">
       <p class="sidebar__label">At a glance</p>
-      <div class="stats"><div class="stat"><span class="stat__n">16</span><span class="stat__l">dossiers</span></div><div class="stat"><span class="stat__n">2</span><span class="stat__l">languages</span></div><div class="stat"><span class="stat__n">65</span><span class="stat__l">primary sources</span></div><div class="stat"><span class="stat__n">61</span><span class="stat__l">ATT&CK techniques</span></div></div>
+      <div class="stats"><div class="stat"><span class="stat__n">22</span><span class="stat__l">dossiers</span></div><div class="stat"><span class="stat__n">2</span><span class="stat__l">languages</span></div><div class="stat"><span class="stat__n">92</span><span class="stat__l">primary sources</span></div><div class="stat"><span class="stat__n">64</span><span class="stat__l">ATT&CK techniques</span></div></div>
       <p class="sidebar__label" style="margin-top:1.6rem">By severity</p>
-      <div class="sevbars"><div class="sevbar"><span class="sev sev--critical">critical</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--critical" style="width:62%"></i></div><span class="sevbar__n">10</span></div><div class="sevbar"><span class="sev sev--high">high</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--high" style="width:38%"></i></div><span class="sevbar__n">6</span></div></div>
+      <div class="sevbars"><div class="sevbar"><span class="sev sev--critical">critical</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--critical" style="width:55%"></i></div><span class="sevbar__n">12</span></div><div class="sevbar"><span class="sev sev--high">high</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--high" style="width:32%"></i></div><span class="sevbar__n">7</span></div><div class="sevbar"><span class="sev sev--medium">medium</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--medium" style="width:14%"></i></div><span class="sevbar__n">3</span></div></div>
     </div>
   </div>
 </section>
 
 <section class="archive shell">
-  <div class="section-head"><h2>Archive</h2><span class="count">16 dossiers</span></div>
+  <div class="section-head"><h2>Archive</h2><span class="count">22 dossiers</span></div>
   <div class="entries">
+<a class="entry" href="a/oracle-ebs-payments-en.html">
+  <img class="entry__thumb" src="../assets/img/en/oracle-ebs-payments.svg" alt="" width="1200" height="675" loading="lazy">
+  <div class="entry__body">
+    <time class="entry__date" datetime="2026-07-20">20.07.2026</time>
+    <h3 class="entry__title">The module that moves the payments, taken without a login: CVE-2026-46817 in Oracle E-Business Suite</h3>
+    <p class="entry__summary">Oracle Payments is the payment engine inside Oracle E-Business Suite: the point where the company&#x27;s finance applications talk to banks and card n&hellip;</p>
+    <p class="entry__actor">Unattributed (first observed on Defused honeypots; no public campaign or actor) &nbsp;·&nbsp; <span class="sev sev--critical">critical</span></p>
+    <span class="entry__more">Continue reading &rarr;</span>
+  </div>
+</a>
+<a class="entry" href="a/simplehelp-oidc-bypass-en.html">
+  <img class="entry__thumb" src="../assets/img/en/simplehelp-oidc-bypass.svg" alt="" width="1200" height="675" loading="lazy">
+  <div class="entry__body">
+    <time class="entry__date" datetime="2026-07-20">20.07.2026</time>
+    <h3 class="entry__title">A token nobody signed: SimpleHelp accepted forged logins and opened every managed endpoint</h3>
+    <p class="entry__summary">SimpleHelp is remote-support software: whoever controls it controls the computers it manages. CVE-2026-48558 (CVSS 10.0) is an authentication bypass i&hellip;</p>
+    <p class="entry__actor">Access unattributed; post-exploitation with TaskWeaver loader and Djinn stealer (Blackpoint Cyber) &nbsp;·&nbsp; <span class="sev sev--critical">critical</span></p>
+    <span class="entry__more">Continue reading &rarr;</span>
+  </div>
+</a>
+<a class="entry" href="a/ransomware-raas-difesa-en.html">
+  <img class="entry__thumb" src="../assets/img/en/ransomware-raas-difesa.svg" alt="" width="1200" height="675" loading="lazy">
+  <div class="entry__body">
+    <time class="entry__date" datetime="2026-07-20">20.07.2026</time>
+    <h3 class="entry__title">How to break the ransomware-as-a-service model: what the official sources actually say</h3>
+    <p class="entry__summary">Ransomware today is a service industry, not a lone wolf: operators who rent the malware, affiliates who strike, brokers who sell the initial access. T&hellip;</p>
+    <p class="entry__actor">Editorial explainer · official sources &nbsp;·&nbsp; <span class="sev sev--high">high</span></p>
+    <span class="entry__more">Continue reading &rarr;</span>
+  </div>
+</a>
+<a class="entry" href="a/data-breach-72-ore-en.html">
+  <img class="entry__thumb" src="../assets/img/en/data-breach-72-ore.svg" alt="" width="1200" height="675" loading="lazy">
+  <div class="entry__body">
+    <time class="entry__date" datetime="2026-07-20">20.07.2026</time>
+    <h3 class="entry__title">The 72-hour rule, explained properly: what the GDPR actually requires after a breach</h3>
+    <p class="entry__summary">&quot;You have 72 hours to notify&quot; is the line everyone repeats and few explain. This explainer lines up what the GDPR actually says: when the cl&hellip;</p>
+    <p class="entry__actor">Editorial explainer · official sources &nbsp;·&nbsp; <span class="sev sev--medium">medium</span></p>
+    <span class="entry__more">Continue reading &rarr;</span>
+  </div>
+</a>
+<a class="entry" href="a/fattore-umano-social-engineering-en.html">
+  <img class="entry__thumb" src="../assets/img/en/fattore-umano-social-engineering.svg" alt="" width="1200" height="675" loading="lazy">
+  <div class="entry__body">
+    <time class="entry__date" datetime="2026-07-20">20.07.2026</time>
+    <h3 class="entry__title">The human factor is not the weak link: why blame doesn&#x27;t stop phishing</h3>
+    <p class="entry__summary">Social engineering is among the prime threats in the Union according to ENISA, yet the most common reaction stays the worst: blame whoever clicked. Th&hellip;</p>
+    <p class="entry__actor">Editorial explainer · official sources &nbsp;·&nbsp; <span class="sev sev--medium">medium</span></p>
+    <span class="entry__more">Continue reading &rarr;</span>
+  </div>
+</a>
+<a class="entry" href="a/nis2-italia-recepimento-en.html">
+  <img class="entry__thumb" src="../assets/img/en/nis2-italia-recepimento.svg" alt="" width="1200" height="675" loading="lazy">
+  <div class="entry__body">
+    <time class="entry__date" datetime="2026-07-20">20.07.2026</time>
+    <h3 class="entry__title">NIS2 in Italy: who is really in scope, since when, and why it reaches suppliers too</h3>
+    <p class="entry__summary">Not an attack, but the perimeter within which attacks are managed. The NIS2 directive was transposed in Italy by Legislative Decree 138/2024, in force&hellip;</p>
+    <p class="entry__actor">Editorial explainer · official sources &nbsp;·&nbsp; <span class="sev sev--medium">medium</span></p>
+    <span class="entry__more">Continue reading &rarr;</span>
+  </div>
+</a>
 <a class="entry" href="a/fortisandbox-oscmd-en.html">
   <img class="entry__thumb" src="../assets/img/en/fortisandbox-oscmd.svg" alt="" width="1200" height="675" loading="lazy">
   <div class="entry__body">
