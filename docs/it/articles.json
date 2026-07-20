@@ -59,6 +59,18 @@
     "mitre": []
   },
   {
+    "title": "Cyber Resilience Act: cosa scatta l'11 settembre 2026, e cosa aspetta il 2027",
+    "slug": "cra-prodotti-digitali",
+    "date": "2026-07-20",
+    "severity": "medium",
+    "actor": [
+      "Approfondimento editoriale · fonti ufficiali"
+    ],
+    "summary": "Non un attacco, ma una scadenza che si avvicina. Il Cyber Resilience Act — Regolamento (UE) 2024/2847 — è in vigore dal 10 dicembre 2024, ma i suoi obblighi entrano a scaglioni. Il primo blocco concreto arriva l'11 settembre 2026: da quel giorno i fabbricanti di prodotti con elementi digitali devono segnalare le vulnerabilità sfruttate attivamente e gli incidenti gravi, con un pre-allarme entro 24 ore e una notifica entro 72. Il grosso degli obblighi — requisiti essenziali di sicurezza, valutazione di conformità, marcatura CE — scatta invece l'11 dicembre 2027. Chi produce o vende software e hardware nell'UE ha una finestra che si sta chiudendo.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/cra-prodotti-digitali.html",
+    "mitre": []
+  },
+  {
     "title": "La regola delle 72 ore, spiegata bene: cosa obbliga davvero il GDPR dopo una violazione",
     "slug": "data-breach-72-ore",
     "date": "2026-07-20",
