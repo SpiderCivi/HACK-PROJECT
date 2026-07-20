@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/main.css?v=132293d9">
+<link rel="stylesheet" href="../assets/css/main.css?v=76a8ef59">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "AboutPage", "name": "How we verify — and why you can trust it", "inLanguage": "en", "url": "https://spidercivi.github.io/HACK-PROJECT/en/methodology.html", "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/"}}</script>
 </head>
 <body>
@@ -47,7 +47,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed live</span>
-    <span>Updated &mdash; 20.07.2026 12:02 CET</span>
+    <span>Updated &mdash; 20.07.2026 14:01 CET</span>
     <span>22 dossiers</span>
     <span>MITRE ATT&CK mapping</span>
   </div>
@@ -55,28 +55,30 @@
 <div class="progress" aria-hidden="true"><i></i></div>
 <main id="main">
 
-<article class="textpage shell">
-  <header class="textpage__head">
-    <p class="kicker" data-reveal style="--i:0">Methodology</p>
-    <h1 class="article__title" data-reveal style="--i:1">How we verify — and why you can trust it</h1>
-  </header>
-  <div class="prose textpage__body" data-reveal style="--i:2">
-    <p class="lede">A threat-intelligence site is worth only as much as its sources and its honesty about its own uncertainty. This page explains, plainly, where the data comes from, how we verify it, and what we do when we get something wrong.</p>
-    <h2>Primary sources, always</h2><p>Every dossier is built on verified primary sources: advisories from CISA, FBI, NCSC and ENISA; reports from the vendors who ran the incident response; official MITRE ATT&amp;CK pages; records from the official CVE registry. The non-negotiable rule is <strong>at least two independent sources per dossier</strong>. If solid material isn't there, the dossier doesn't ship.</p><h2>Every CVE is checked against the official registry</h2><p>We don't trust a headline or an aggregator. Every cited CVE-ID is checked against the official CVE Program registry (cveawg.mitre.org): if it isn't <em>PUBLISHED</em>, we don't treat it as confirmed. This check is automated by <strong>VulnFeed</strong>, our internal pipeline, which assigns each item a status — confirmed, pre-disclosure, pending-registry, or rejected — and records the reason in an auditable log.</p><h2>ATT&CK IDs are copied, not inferred</h2><p>MITRE ATT&amp;CK technique identifiers are <strong>copied from the advisories</strong> that list them. When a mapping is our own reasoned judgment, we say so explicitly in the text: we never pass a deduction off as an official fact.</p><h2>Uncertainty is stated in the body</h2><p>Disputed attribution, a single source, a CVSS not yet validated by NVD, diverging CNA scores: <strong>we write it inside the article</strong>. We prefer a dossier that admits what it doesn't know to one that fakes certainty.</p><h2>Defensive, not offensive</h2><p>We describe tactics and techniques at the same level of detail as a public advisory. We do not publish exploit code, payloads or step-by-step exploitation instructions.</p><h2>Transparency about AI</h2><p>Research and drafting are AI-assisted, and the video narration is synthetic — declared as such on TikTok too. Automation does not touch the rule above: every published fact is verified against the primary sources cited at the foot of the page. Editorial accountability stays human.</p>
-    <h2 id="fonti">Authorized sources</h2>
-    <p>Ingestion is allowed only from these sources.</p>
-    <div class="table-wrap">
-    <table class="datatable">
-      <thead><tr><th scope="col">Source</th><th scope="col">Role</th></tr></thead>
-      <tbody><tr><th scope="row"><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA KEV</a></th><td>Exploited in the wild</td></tr><tr><th scope="row"><a href="https://www.cisa.gov/news-events/cybersecurity-advisories" target="_blank" rel="noopener">CISA / FBI / NCSC / ENISA</a></th><td>Official agency advisories</td></tr><tr><th scope="row"><a href="https://www.cve.org/" target="_blank" rel="noopener">Registro CVE Program</a></th><td>Ground truth: official state of each CVE</td></tr><tr><th scope="row"><a href="https://nvd.nist.gov/" target="_blank" rel="noopener">NVD (NIST)</a></th><td>CVSS / CPE enrichment</td></tr><tr><th scope="row"><a href="https://euvd.enisa.europa.eu/" target="_blank" rel="noopener">EUVD (ENISA)</a></th><td>EU vulnerability database</td></tr><tr><th scope="row"><a href="https://github.com/advisories" target="_blank" rel="noopener">GitHub Advisory / ZDI</a></th><td>Authoritative CNAs</td></tr><tr><th scope="row"><a href="https://attack.mitre.org/" target="_blank" rel="noopener">Report dei vendor IR</a></th><td>Vendor incident-response reports</td></tr><tr><th scope="row"><a href="https://attack.mitre.org/" target="_blank" rel="noopener">MITRE ATT&amp;CK</a></th><td>Tactics &amp; techniques mapping</td></tr></tbody>
-    </table>
-    </div>
-    <h2 id="correzioni">Correction policy</h2>
+<section class="shell method-hero">
+  <p class="kicker" data-reveal style="--i:0">Methodology</p>
+  <h1 class="hero__title" data-reveal style="--i:1">How we verify — and why you can trust it</h1>
+  <p class="hero__standfirst" data-reveal style="--i:2">A threat-intelligence site is worth only as much as its sources and its honesty about its own uncertainty. This page explains, plainly, where the data comes from, how we verify it, and what we do when we get something wrong.</p>
+</section>
+<section class="shell method-steps" data-reveal>
+  <div class="section-head"><h2>How we verify, in four steps</h2></div>
+  <ol class="vsteps"><li><span class="vstep__n">1</span><div><strong>Authoritative sources</strong><p>Only agency advisories, reports from the vendors who ran the incident, MITRE pages and the CVE registry. At least two independent sources.</p></div></li><li><span class="vstep__n">2</span><div><strong>Checked against the official registry</strong><p>Every CVE is checked against the CVE Program registry: if it isn&#x27;t PUBLISHED, we don&#x27;t treat it as confirmed.</p></div></li><li><span class="vstep__n">3</span><div><strong>Confirmed or rejected</strong><p>The VulnFeed pipeline assigns each item a status and records the reason in an audit log. No valid status, no publication.</p></div></li><li><span class="vstep__n">4</span><div><strong>Published with the sources</strong><p>Primary sources are cited at the foot of every page and uncertainty is stated in the text. ATT&amp;CK IDs are copied, never inferred.</p></div></li></ol>
+</section>
+<section class="shell method-body" data-reveal>
+  <div class="prose"><h2>Primary sources, always</h2><p>Every dossier is built on verified primary sources: advisories from CISA, FBI, NCSC and ENISA; reports from the vendors who ran the incident response; official MITRE ATT&amp;CK pages; records from the official CVE registry. The non-negotiable rule is <strong>at least two independent sources per dossier</strong>. If solid material isn't there, the dossier doesn't ship.</p><h2>Every CVE is checked against the official registry</h2><p>We don't trust a headline or an aggregator. Every cited CVE-ID is checked against the official CVE Program registry (cveawg.mitre.org): if it isn't <em>PUBLISHED</em>, we don't treat it as confirmed. This check is automated by <strong>VulnFeed</strong>, our internal pipeline, which assigns each item a status — confirmed, pre-disclosure, pending-registry, or rejected — and records the reason in an auditable log.</p><h2>ATT&CK IDs are copied, not inferred</h2><p>MITRE ATT&amp;CK technique identifiers are <strong>copied from the advisories</strong> that list them. When a mapping is our own reasoned judgment, we say so explicitly in the text: we never pass a deduction off as an official fact.</p><h2>Uncertainty is stated in the body</h2><p>Disputed attribution, a single source, a CVSS not yet validated by NVD, diverging CNA scores: <strong>we write it inside the article</strong>. We prefer a dossier that admits what it doesn't know to one that fakes certainty.</p><h2>Defensive, not offensive</h2><p>We describe tactics and techniques at the same level of detail as a public advisory. We do not publish exploit code, payloads or step-by-step exploitation instructions.</p><h2>Transparency about AI</h2><p>Research and drafting are AI-assisted, and the video narration is synthetic — declared as such on TikTok too. Automation does not touch the rule above: every published fact is verified against the primary sources cited at the foot of the page. Editorial accountability stays human.</p></div>
+</section>
+<section class="shell method-sources" data-reveal>
+  <div class="section-head"><h2 id="fonti">Authorized sources</h2></div>
+  <p class="method-intro">Ingestion is allowed only from these sources.</p>
+  <div class="table-wrap"><table class="datatable"><thead><tr><th scope="col">Source</th><th scope="col">Role</th></tr></thead><tbody><tr><th scope="row"><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA KEV</a></th><td>Exploited in the wild</td></tr><tr><th scope="row"><a href="https://www.cisa.gov/news-events/cybersecurity-advisories" target="_blank" rel="noopener">CISA / FBI / NCSC / ENISA</a></th><td>Official agency advisories</td></tr><tr><th scope="row"><a href="https://www.cve.org/" target="_blank" rel="noopener">Registro CVE Program</a></th><td>Ground truth: official state of each CVE</td></tr><tr><th scope="row"><a href="https://nvd.nist.gov/" target="_blank" rel="noopener">NVD (NIST)</a></th><td>CVSS / CPE enrichment</td></tr><tr><th scope="row"><a href="https://euvd.enisa.europa.eu/" target="_blank" rel="noopener">EUVD (ENISA)</a></th><td>EU vulnerability database</td></tr><tr><th scope="row"><a href="https://github.com/advisories" target="_blank" rel="noopener">GitHub Advisory / ZDI</a></th><td>Authoritative CNAs</td></tr><tr><th scope="row"><a href="https://attack.mitre.org/" target="_blank" rel="noopener">Report dei vendor IR</a></th><td>Vendor incident-response reports</td></tr><tr><th scope="row"><a href="https://attack.mitre.org/" target="_blank" rel="noopener">MITRE ATT&amp;CK</a></th><td>Tactics &amp; techniques mapping</td></tr></tbody></table></div>
+</section>
+<section class="shell method-foot" data-reveal>
+  <div class="method-callout" id="correzioni">
+    <p class="method-callout__label">Correction policy</p>
     <p>If a dossier changes after publication — a source retracts, a CVSS is revised, an attribution collapses — the correction is <strong>written into the dossier with its date</strong>, and the page shows &ldquo;Updated on …&rdquo;. The <code>dateModified</code> field in the structured data follows that date. We don't rewrite history quietly. Error reports are welcome by email.</p>
-    <h2 id="segnala">Report an error</h2>
-    <p>Found an inaccuracy or a better source? Email me: <a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></p>
   </div>
-</article></main>
+  <p class="method-contact" id="segnala"><strong>Report an error.</strong> Found an inaccuracy or a better source? Email me: <a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></p>
+</section></main>
 <footer class="footer">
   <div class="shell">
     <div class="footer__top">

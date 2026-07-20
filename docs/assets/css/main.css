@@ -1589,3 +1589,30 @@ html, body { max-width: 100%; }
 .topic-layout .textpage__sources { margin-top: 0; border-top: 0; padding-top: 0; }
 .topic-layout > * { min-width: 0; }
 @media (max-width: 900px) { .topic-layout { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   Pagina Metodologia (restyle)
+   ============================================================ */
+.method-hero { padding-block: clamp(2.5rem,6vw,4.5rem) 1.5rem; }
+.method-hero .hero__title { margin-bottom: 1rem; }
+.method-hero .hero__standfirst { margin-bottom: 0; max-width: 62ch; }
+.method-steps { padding-block: .5rem 2rem; }
+.vsteps { list-style: none; padding: 0; margin: 1.6rem 0 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(215px,1fr)); gap: 1rem; }
+.vsteps li { border: 1px solid var(--rule); border-radius: 10px; padding: 1.1rem 1.2rem;
+  display: flex; gap: .85rem; background: var(--paper-2); align-items: flex-start; }
+.vstep__n { font-family: var(--mono); font-weight: 700; color: var(--oxide-lit); font-size: 1.15rem; line-height: 1; flex-shrink: 0; }
+.vsteps strong { display: block; margin-bottom: .35rem; color: var(--ink); font-family: var(--display); }
+.vsteps p { color: var(--ink-dim); font-size: .88rem; line-height: 1.5; margin: 0; }
+.method-body { padding-block: 1rem 1.5rem; }
+.method-body .prose { max-width: var(--measure); }
+.method-sources { padding-block: 1rem 2rem; }
+.method-sources .method-intro { color: var(--ink-dim); margin: 1rem 0; max-width: var(--measure); }
+.method-foot { padding-block: 1rem clamp(3rem,7vw,5rem); }
+.method-callout { border: 1px solid color-mix(in srgb, var(--signal) 45%, transparent);
+  background: color-mix(in srgb, var(--signal) 8%, transparent); border-radius: 12px;
+  padding: 1.5rem 1.8rem; max-width: var(--measure); }
+.method-callout__label { font-family: var(--mono); text-transform: uppercase; letter-spacing: .1em;
+  font-size: .68rem; color: var(--signal); margin-bottom: .6rem; font-weight: 700; }
+.method-callout p:last-child { margin: 0; color: var(--ink); }
+.method-contact { margin-top: 1.8rem; color: var(--ink-dim); max-width: var(--measure); }
