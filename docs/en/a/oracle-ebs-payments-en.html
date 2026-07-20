@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="rWfkr1OJmRI2zvjBJV9O9yrRoV8hskcmhZ-Kv8M3gio">
+<meta name="theme-color" content="#0b0b0f">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
+<title>The module that moves the payments, taken without a login: CVE-2026-46817 in Oracle E-Business Suite — HACK/PROJECT</title>
+<meta name="description" content="Oracle Payments is the payment engine inside Oracle E-Business Suite: the point where the company&#x27;s finance applications talk to banks and card networks. CVE-2026-46817 (CVSS ">
+<meta property="og:title" content="The module that moves the payments, taken without a login: CVE-2026-46817 in Oracle E-Business Suite — HACK/PROJECT">
+<meta property="og:description" content="Oracle Payments is the payment engine inside Oracle E-Business Suite: the point where the company&#x27;s finance applications talk to banks and card networks. CVE-2026-46817 (CVSS ">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://spidercivi.github.io/HACK-PROJECT/en/a/oracle-ebs-payments-en.html">
+<meta property="og:url" content="https://spidercivi.github.io/HACK-PROJECT/en/a/oracle-ebs-payments-en.html">
+<link rel="alternate" hreflang="en" href="https://spidercivi.github.io/HACK-PROJECT/en/a/oracle-ebs-payments-en.html">
+<link rel="alternate" hreflang="it" href="https://spidercivi.github.io/HACK-PROJECT/it/a/oracle-ebs-payments.html">
+<link rel="alternate" hreflang="x-default" href="https://spidercivi.github.io/HACK-PROJECT/it/a/oracle-ebs-payments.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="HACK/PROJECT">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/en/oracle-ebs-payments.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<meta name="twitter:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/en/oracle-ebs-payments.png">
+<link rel="alternate" type="application/rss+xml" title="HACK/PROJECT" href="https://spidercivi.github.io/HACK-PROJECT/en/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/main.css?v=019fe658">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "The module that moves the payments, taken without a login: CVE-2026-46817 in Oracle E-Business Suite", "description": "Oracle Payments is the payment engine inside Oracle E-Business Suite: the point where the company's finance applications talk to banks and card networks. CVE-2026-46817 (CVSS 9.8) lets an unauthenticated attacker with only HTTP access compromise and take over the module. The exploit hits the ibytransmit endpoint of the File Transmission component, which invokes an internal Java function directly: patched in late May, the flaw was exploited in the wild from 27 June — before any public PoC — and added to the CISA KEV catalog on 15 July.", "datePublished": "2026-07-20", "dateModified": "2026-07-20", "inLanguage": "en", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/en/a/oracle-ebs-payments-en.html", "author": {"@type": "Person", "name": "Riccardo Civiero", "url": "https://github.com/SpiderCivi"}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/"}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/en/oracle-ebs-payments.png"], "keywords": "Unattributed (first observed on Defused honeypots; no public campaign or actor), T1190, T1552.001", "citation": [{"@type": "CreativeWork", "name": "Oracle — Critical Patch Update Advisory, May 2026", "url": "https://www.oracle.com/security-alerts/cspumay2026.html"}, {"@type": "CreativeWork", "name": "NVD — CVE-2026-46817", "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46817"}, {"@type": "CreativeWork", "name": "CISA — Known Exploited Vulnerabilities Catalog", "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"}, {"@type": "CreativeWork", "name": "Defused — CVE-2026-46817 Oracle E-Business Suite (honeypot observation)", "url": "https://defusedcyber.com/exploited/cve-2026-46817-oracle-e-business-suite"}, {"@type": "CreativeWork", "name": "Help Net Security — Oracle E-Business Suite Payments flaw under attack (CVE-2026-46817)", "url": "https://www.helpnetsecurity.com/2026/06/30/oracle-payments-cve-2026-46817-exploitation/"}, {"@type": "CreativeWork", "name": "The Hacker News — Oracle E-Business Suite Flaw CVE-2026-46817 Actively Exploited in the Wild", "url": "https://thehackernews.com/2026/06/oracle-e-business-suite-flaw-cve-2026.html"}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../index.html">HACK<em>/</em>PROJECT</a>
+    <span class="masthead__tagline">Daily Threat Intelligence</span>
+    <nav class="masthead__nav" aria-label="Main">
+      <a href="../index.html">Archive</a>
+      <a href="../about.html">About</a>
+      <a class="lang" href="../../it/a/oracle-ebs-payments.html" rel="alternate">Italiano</a>
+    </nav>
+  </div>
+</header>
+<div class="shell">
+  <div class="ticker">
+    <span class="live">Threat feed live</span>
+    <span>Updated &mdash; 20.07.2026 10:14 CET</span>
+    <span>16 dossiers</span>
+    <span>MITRE ATT&CK mapping</span>
+  </div>
+</div>
+<div class="progress" aria-hidden="true"><i></i></div>
+<main id="main">
+
+<article class="article shell">
+  <nav class="crumb" aria-label="breadcrumb"><a href="../index.html">HACK/PROJECT</a><span>/</span><a href="../index.html">Archive</a><span>/</span><em>The module that moves the payments, taken withou</em></nav>
+  <div class="article__hero">
+    <header class="article__head">
+      <p class="eyebrow" data-reveal style="--i:0"><span class="eyebrow__topic">Unattributed (first observed on Defused honeypots; no public campaign or actor)</span><span class="sev sev--critical">critical</span></p>
+      <h1 class="article__title" data-reveal style="--i:1">The module that moves the payments, taken without a login: CVE-2026-46817 in Oracle E-Business Suite</h1>
+      <p class="article__standfirst" data-reveal style="--i:2">Oracle Payments is the payment engine inside Oracle E-Business Suite: the point where the company&#x27;s finance applications talk to banks and card networks. CVE-2026-46817 (CVSS 9.8) lets an unauthenticated attacker with only HTTP access compromise and take over the module. The exploit hits the ibytransmit endpoint of the File Transmission component, which invokes an internal Java function directly: patched in late May, the flaw was exploited in the wild from 27 June — before any public PoC — and added to the CISA KEV catalog on 15 July.</p>
+      <div class="byline" data-reveal style="--i:2">
+        <img class="byline__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="40" height="40" loading="lazy">
+        <div class="byline__meta">
+          <span class="byline__name">by <a href="../about.html">Riccardo Civiero</a></span>
+          <span class="byline__handle">@SpiderCivi &nbsp;·&nbsp; 20.07.2026</span>
+        </div>
+      </div>
+    </header>
+    <div class="article__hero-media"><figure class="hero-figure" data-reveal style="--i:3"><img src="../../assets/img/en/oracle-ebs-payments.svg" alt="" width="1200" height="675"></figure></div>
+  </div>
+  <div class="article__meta" data-reveal style="--i:2">
+    <span><i class="ti"></i>20.07.2026</span><span>5 min read</span><span>6 primary sources</span>
+  </div>
+  <div class="article__layout">
+    <div class="prose" data-reveal style="--i:4"><h2 id="the-place-where-the-money-leaves">The place where the money leaves</h2>
+<p class="lede">Inside Oracle E-Business Suite — the constellation of applications that runs the finance function of a great many large organizations — Oracle Payments is the module that does one thing: move payments in and out. It centralizes how the accounting applications talk to banks and card networks, and to do that it handles banking-system credentials, encryption keys, payment-processor APIs. It is not a peripheral service: it is the point where the company touches the money.</p>
+<p>On 15 July 2026 CISA added <strong>CVE-2026-46817</strong> to its catalog of known exploited vulnerabilities. It is a <strong>CVSS 9.8</strong> flaw in Oracle Payments that lets an <strong>unauthenticated</strong> attacker, with only HTTP access to the console, compromise and take over the module. No login, no token, no account: the request arrives and is served.</p>
+<ol class="tl" data-reveal><li class="tl__item"><div class="tl__when">Late May 2026</div><div class="tl__body"><div class="tl__what">Patch</div><p class="tl__txt">Oracle fixes the flaw in its May Critical Patch Update.</p></div></li><li class="tl__item"><div class="tl__when">27 June 2026</div><div class="tl__body"><div class="tl__what">First exploitation</div><p class="tl__txt">Defused honeypots record the first in-the-wild execution, before any public PoC.</p></div></li><li class="tl__item"><div class="tl__when">15 July 2026</div><div class="tl__body"><div class="tl__what"><code>exploitation</code></div><p class="tl__txt">CISA adds CVE-2026-46817 to the KEV catalog.</p></div></li><li class="tl__item"><div class="tl__when">18 July 2026</div><div class="tl__body"><div class="tl__what">Deadline</div><p class="tl__txt">CISA&#x27;s remediation due date for federal agencies.</p></div></li></ol>
+<h2 id="unauthenticated-is-not-a-picked-lock">"Unauthenticated" is not a picked lock</h2>
+<p>The detail that makes this flaw worse than average isn't the score — CVSS 9.8s come by the dozen — but <em>where</em> the check is missing. According to Defused's analysis of the observed activity, the exploit hits the <strong><code>ibytransmit</code></strong> endpoint of Oracle Payments' <strong>File Transmission</strong> component and <strong>calls an internal Oracle Java function directly</strong>, redirecting it to read a file from the server. In the recorded episode, the file was <code>/etc/passwd</code>: the classic arbitrary-read proof, harmless in itself, that shows the mechanism works.</p>
+<p>The point is that this internal function was never meant to be reachable from outside. The endpoint calls it without anyone, anywhere along the path, checking who is asking. Oracle's own description isn't of a single bug but of three weaknesses living together: improper privilege management, improper authentication, and <strong>missing authentication for a critical function</strong>. "Unauthenticated," here, doesn't describe a picked lock: it describes a lock that was never fitted to that door.</p>
+<ol class="flow" data-reveal><li class="flow__step"><span class="flow__n">01</span><div class="flow__b"><div class="flow__t">HTTP request</div><div class="flow__note">POST to /OA_HTML/ibytransmit, no credentials</div></div></li><li class="flow__step"><span class="flow__n">02</span><div class="flow__b"><div class="flow__t">Internal Java function</div><div class="flow__note">the endpoint invokes it directly, no access control</div></div></li><li class="flow__step"><span class="flow__n">03</span><div class="flow__b"><div class="flow__t">File read from the server</div><div class="flow__note"><code>/etc/passwd</code> in the proof; then config, keys, payment APIs</div></div></li><li class="flow__step"><span class="flow__n">04</span><div class="flow__b"><div class="flow__t">Module compromise</div><div class="flow__note">from arbitrary read to takeover of Oracle Payments</div></div></li></ol>
+<h2 id="from-reading-one-file-to-the-wallet">From reading one file to the wallet</h2>
+<p>In the observed episode the attacker read <code>/etc/passwd</code> — that is, almost nothing. But the same technique, Defused warns, reaches far more sensitive files: configuration files holding database credentials, encryption keys, payment-processor APIs. This is where the distance between "reading a trivial system file" and "controlling the module that moves the payments" shortens fast — and why Oracle describes the maximum impact as <em>takeover</em> of the module, with confidentiality, integrity and availability compromised together.</p>
+<p>It is worth stating precisely what was seen and what wasn't. What Defused recorded is a <strong>single source</strong> running an unauthenticated file read against the Payments component: a targeted proof-of-concept, not broad scanning. Full <em>takeover</em> is the maximum impact Oracle declares on the basis of the vulnerability, not an end-to-end chain observed and documented in real traffic. The difference matters: we know someone opened the door, we don't have a public report showing what was done inside.</p>
+<div class="stat stat--n3" data-reveal><div class="stat__item"><div class="stat__val">9.8</div><div class="stat__lab">CVSS 3.1 (Oracle CNA)</div><div class="stat__note">vector AV:N/AC:L/PR:N/UI:N — network, no privileges, no interaction</div></div><div class="stat__item"><div class="stat__val">0</div><div class="stat__lab">credentials required</div><div class="stat__note">the critical function is reachable without authentication</div></div><div class="stat__item"><div class="stat__val">~6</div><div class="stat__lab">weeks between patch and exploitation</div><div class="stat__note">patched late May, first execution 27 June</div></div></div>
+<h2 id="not-the-first-time-and-thats-the-point">Not the first time — and that's the point</h2>
+<p>If this story sounds familiar, it is. In autumn 2025 another critical flaw in the same product — CVE-2025-61882, also CVSS 9.8 — was exploited by actors tied to the Cl0p ransomware operation for theft and extortion, with attacks starting as early as August; CVE-2025-61884 followed shortly after. In early July 2026 Oracle patched a missing-authentication zero-day in PeopleSoft (CVE-2026-35273) exploited in data-theft attacks attributed to ShinyHunters. Oracle's internet-facing enterprise suites have become a recurring initial-access surface.</p>
+<p>That is the most useful lesson here, more than the single CVE: when a product collects critical unauthenticated flaws in under a year, the question stops being "did I apply the latest patch?" and becomes "does this component really need to be on the internet?" A payments module that talks to banks and card networks has no reason to offer its console to the world.</p>
+<h2 id="what-we-dont-know-and-should-say">What we don't know — and should say</h2>
+<p>Some things stay open, and it's right to write them down. <strong>There is no attribution</strong>: no named actor, no public campaign, and the KEV catalog lists ransomware-campaign use as "Unknown." The only evidence of exploitation is Defused's observation on its own decoy — a single source, however specific.</p>
+<p>The <strong>score</strong> is Oracle's CNA figure (9.8): NVD has received the record but hasn't yet published its own assessment or CWE enumeration. The <strong>technical mechanism</strong> beyond the file read — which Java function, what path leads from file-read to takeover — is not publicly detailed, and this dossier does not go into operational specifics you don't need in order to defend yourself. Finally, the <strong>ATT&amp;CK IDs</strong> at the top — T1190 and T1552.001 — do not come from an Oracle or CISA advisory: they are a reasoned mapping of what the flaw enables (reach an exposed application and read credentials from files), not a value copied from a primary source.</p>
+<h2 id="what-to-do-now">What to do, now</h2>
+<p>The fix has been out since late May: applying Oracle's <strong>May 2026 Critical Patch Update</strong> closes the flaw on versions 12.2.3–12.2.15. Until the maintenance window, the highest-impact mitigation is the simplest — <strong>EBS web interfaces should not be reachable from the internet</strong>, but restricted to the internal network.</p>
+<p>For retrospective hunting, the indicator is concrete: unexpected POST requests to <strong><code>/OA_HTML/ibytransmit</code></strong> in web-tier logs. Anyone finding evidence of compromise should treat the instance as breached, run a full forensic review, and <strong>rotate every credential and key</strong> stored on that host — because that is exactly what the file read was able to reach. The patch is nearly two months old: the window between "available" and "exploited" closed in six weeks, and whoever watched only the patch calendar, not their own exposure, kept that window open.</p></div>
+    <div class="sidebar">
+      <aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Actor profile</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Actor</dt><dd>Unattributed (first observed on Defused honeypots; no public campaign or actor)</dd></div><div class="field"><dt>Aliases</dt><dd>CVE-2026-46817, Oracle Payments — File Transmission, Oracle CPU May 2026</dd></div><div class="field"><dt>First seen</dt><dd>27 June 2026 (first in-the-wild execution observed by Defused)</dd></div><div class="field"><dt>Targets</dt><dd>Oracle E-Business Suite 12.2.3–12.2.15 instances exposed over HTTP, Oracle Payments module (File Transmission component)</dd></div><div class="field"><dt>Sectors</dt><dd>Large organizations running Oracle ERP for finance and payments</dd></div></dl></aside>
+      <div class="sidebar__block"><div class="sidebar__label">MITRE ATT&CK techniques</div><div class="ttp-grid"><a class="ttp" href="https://attack.mitre.org/techniques/T1190/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1190</span> Exploit Public-Facing Application</a><a class="ttp" href="https://attack.mitre.org/techniques/T1552/001/" data-tactic="Credential Access" target="_blank" rel="noopener"><span class="ttp__id">T1552.001</span> Unsecured Credentials: Credentials In Files</a></div></div>
+      <div class="sidebar__block"><div class="sidebar__label">Primary sources</div><ul class="sources"><li><a href="https://www.oracle.com/security-alerts/cspumay2026.html" target="_blank" rel="noopener">Oracle — Critical Patch Update Advisory, May 2026</a></li><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-46817" target="_blank" rel="noopener">NVD — CVE-2026-46817</a></li><li><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA — Known Exploited Vulnerabilities Catalog</a></li><li><a href="https://defusedcyber.com/exploited/cve-2026-46817-oracle-e-business-suite" target="_blank" rel="noopener">Defused — CVE-2026-46817 Oracle E-Business Suite (honeypot observation)</a></li><li><a href="https://www.helpnetsecurity.com/2026/06/30/oracle-payments-cve-2026-46817-exploitation/" target="_blank" rel="noopener">Help Net Security — Oracle E-Business Suite Payments flaw under attack (CVE-2026-46817)</a></li><li><a href="https://thehackernews.com/2026/06/oracle-e-business-suite-flaw-cve-2026.html" target="_blank" rel="noopener">The Hacker News — Oracle E-Business Suite Flaw CVE-2026-46817 Actively Exploited in the Wild</a></li></ul></div>
+      <div class="sidebar__block"><div class="sidebar__label">Share</div><div class="share"><a href="https://x.com/intent/tweet?text=The%20module%20that%20moves%20the%20payments%2C%20taken%20without%20a%20login%3A%20CVE-2026-46817%20in%20Oracle%20E-Business%20Suite&url=https%3A//spidercivi.github.io/HACK-PROJECT/en/a/oracle-ebs-payments-en.html" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//spidercivi.github.io/HACK-PROJECT/en/a/oracle-ebs-payments-en.html" target="_blank" rel="noopener">LinkedIn</a><a href="https://news.ycombinator.com/submitlink?u=https%3A//spidercivi.github.io/HACK-PROJECT/en/a/oracle-ebs-payments-en.html&t=The%20module%20that%20moves%20the%20payments%2C%20taken%20without%20a%20login%3A%20CVE-2026-46817%20in%20Oracle%20E-Business%20Suite" target="_blank" rel="noopener">HN</a><button class="share__copy" data-url="https://spidercivi.github.io/HACK-PROJECT/en/a/oracle-ebs-payments-en.html" type="button">Link</button></div></div>
+    </div>
+  </div>
+  <aside class="authorcard"><img class="authorcard__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="72" height="72" loading="lazy"><div><p class="authorcard__label">Written by</p><p class="authorcard__name"><a href="../about.html">Riccardo Civiero</a> <span class="authorcard__handle">@SpiderCivi</span></p><p class="authorcard__role">Cybersecurity & Software Developer</p><p class="authorcard__bio">Developer and cybersecurity specialist. Trained at ITIS E. Barsanti, with a Cyber Security specialisation at ITS Digital Academy in Treviso. Drawn to offensive security: CTFs and Hack The Box. Here I turn that same lens around — understanding how an attack works in order to explain how it's stopped.</p><p class="authorcard__links"><a href="https://github.com/SpiderCivi" target="_blank" rel="noopener">GitHub</a><a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></p></div></aside>
+  <nav class="pager"><a class="pager__item pager__item--prev" href="fortisandbox-oscmd-en.html"><span>&larr; Previous</span><strong>The box built to run malware, run by whoever knocks: two RCEs in FortiSandbox</strong></a></nav>
+</article>
+<section class="rel shell"><div class="section-head"><h2>More dossiers</h2></div><div class="rel__grid"><a class="rel__card" href="fortisandbox-oscmd-en.html"><img src="../../assets/img/en/fortisandbox-oscmd.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>The box built to run malware, run by whoever knocks: two RCEs in FortiSandbox</h3></div></a><a class="rel__card" href="sonicwall-sma1000-mfa-en.html"><img src="../../assets/img/en/sonicwall-sma1000-mfa.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>SonicWall SMA1000: you patch, you reset the passwords, and they are still in</h3></div></a><a class="rel__card" href="apt28-router-dns-en.html"><img src="../../assets/img/en/apt28-router-dns.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>The thirty-euro router that wiretapped foreign ministries</h3></div></a></div></section></main>
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="wordmark">HACK<em>/</em>PROJECT</p>
+        <p class="footer__tag">Daily Threat Intelligence</p>
+        <p class="footer__disclaimer"><strong>HACK/PROJECT</strong> &mdash; analysis of publicly documented cyber attacks, mapped to MITRE ATT&amp;CK&reg;. Content is defensive and educational: we describe tactics and techniques as reported by agencies and researchers, without distributing offensive code. Where sources are uncertain, we say so in the text. ATT&amp;CK&reg; is a registered trademark of The MITRE Corporation; not affiliated with MITRE.</p>
+      </div>
+      <div class="footer__col"><p class="footer__label">Archive</p><a href="../index.html">Latest dossiers</a><a href="../about.html">About</a></div><div class="footer__col"><p class="footer__label">About</p><a href="../about.html">About</a><a href="../about.html#contatti">Get in touch</a><a href="https://spidercivi.github.io/">Portfolio</a></div><div class="footer__col"><p class="footer__label">Follow</p><a href="https://www.tiktok.com/@h4ckprojct">TikTok</a><a href="https://github.com/SpiderCivi">GitHub</a><a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Riccardo Civiero</p>
+      <p class="footer__legal">Content published for defensive and educational purposes. MITRE ATT&amp;CK&reg; is a registered trademark of The MITRE Corporation; this project is not affiliated with or endorsed by MITRE, CISA or any vendor mentioned.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/js/main.js?v=24ab82c1" defer></script>
+</body>
+</html>

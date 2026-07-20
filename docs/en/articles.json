@@ -1,5 +1,20 @@
 [
   {
+    "title": "The module that moves the payments, taken without a login: CVE-2026-46817 in Oracle E-Business Suite",
+    "slug": "oracle-ebs-payments-en",
+    "date": "2026-07-20",
+    "severity": "critical",
+    "actor": [
+      "Unattributed (first observed on Defused honeypots; no public campaign or actor)"
+    ],
+    "summary": "Oracle Payments is the payment engine inside Oracle E-Business Suite: the point where the company's finance applications talk to banks and card networks. CVE-2026-46817 (CVSS 9.8) lets an unauthenticated attacker with only HTTP access compromise and take over the module. The exploit hits the ibytransmit endpoint of the File Transmission component, which invokes an internal Java function directly: patched in late May, the flaw was exploited in the wild from 27 June — before any public PoC — and added to the CISA KEV catalog on 15 July.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/oracle-ebs-payments-en.html",
+    "mitre": [
+      "T1190",
+      "T1552.001"
+    ]
+  },
+  {
     "title": "The box built to run malware, run by whoever knocks: two RCEs in FortiSandbox",
     "slug": "fortisandbox-oscmd-en",
     "date": "2026-07-19",

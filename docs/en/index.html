@@ -10,9 +10,9 @@
 <link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
 <title>HACK/PROJECT — Daily Threat Intelligence</title>
-<meta name="description" content="FortiSandbox is the box where suspicious files are detonated safely. Two unauthenticated OS command injection flaws — one in the WEB UI, one in an API endpoint — let anyone execute">
+<meta name="description" content="Oracle Payments is the payment engine inside Oracle E-Business Suite: the point where the company&#x27;s finance applications talk to banks and card networks. CVE-2026-46817 (CVSS ">
 <meta property="og:title" content="HACK/PROJECT — Daily Threat Intelligence">
-<meta property="og:description" content="FortiSandbox is the box where suspicious files are detonated safely. Two unauthenticated OS command injection flaws — one in the WEB UI, one in an API endpoint — let anyone execute">
+<meta property="og:description" content="Oracle Payments is the payment engine inside Oracle E-Business Suite: the point where the company&#x27;s finance applications talk to banks and card networks. CVE-2026-46817 (CVSS ">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://spidercivi.github.io/HACK-PROJECT/en/">
 <meta property="og:url" content="https://spidercivi.github.io/HACK-PROJECT/en/">
@@ -22,10 +22,10 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="HACK/PROJECT">
 <meta property="og:locale" content="en_GB">
-<meta property="og:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/en/fortisandbox-oscmd.png">
+<meta property="og:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/en/oracle-ebs-payments.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="675">
-<meta name="twitter:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/en/fortisandbox-oscmd.png">
+<meta name="twitter:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/en/oracle-ebs-payments.png">
 <link rel="alternate" type="application/rss+xml" title="HACK/PROJECT" href="https://spidercivi.github.io/HACK-PROJECT/en/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,8 +48,8 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed live</span>
-    <span>Updated &mdash; 19.07.2026 10:11 CET</span>
-    <span>15 dossiers</span>
+    <span>Updated &mdash; 20.07.2026 10:14 CET</span>
+    <span>16 dossiers</span>
     <span>MITRE ATT&CK mapping</span>
   </div>
 </div>
@@ -58,15 +58,15 @@
 
 <section class="hero shell">
   <div class="hero__text">
-    <p class="kicker" data-reveal style="--i:0">Today's dossier &nbsp;/&nbsp; 19.07.2026</p>
-    <h1 class="hero__title" data-reveal style="--i:1">The box built to run malware, run by whoever knocks: two RCEs in FortiSandbox</h1>
-    <p class="hero__standfirst" data-reveal style="--i:2">FortiSandbox is the box where suspicious files are detonated safely. Two unauthenticated OS command injection flaws — one in the WEB UI, one in an API endpoint — let anyone execute commands on the appliance itself. Patched quietly in April and June under a &quot;Known Exploited: No&quot; label, both were added to the CISA KEV catalog on 16 July: a sign someone had started using them, with the patch already months old.</p>
-    <p data-reveal style="--i:3"><a class="cta" href="a/fortisandbox-oscmd-en.html">Read the dossier &rarr;</a></p>
+    <p class="kicker" data-reveal style="--i:0">Today's dossier &nbsp;/&nbsp; 20.07.2026</p>
+    <h1 class="hero__title" data-reveal style="--i:1">The module that moves the payments, taken without a login: CVE-2026-46817 in Oracle E-Business Suite</h1>
+    <p class="hero__standfirst" data-reveal style="--i:2">Oracle Payments is the payment engine inside Oracle E-Business Suite: the point where the company&#x27;s finance applications talk to banks and card networks. CVE-2026-46817 (CVSS 9.8) lets an unauthenticated attacker with only HTTP access compromise and take over the module. The exploit hits the ibytransmit endpoint of the File Transmission component, which invokes an internal Java function directly: patched in late May, the flaw was exploited in the wild from 27 June — before any public PoC — and added to the CISA KEV catalog on 15 July.</p>
+    <p data-reveal style="--i:3"><a class="cta" href="a/oracle-ebs-payments-en.html">Read the dossier &rarr;</a></p>
   </div>
-  <a class="hero__art" href="a/fortisandbox-oscmd-en.html" aria-hidden="true" tabindex="-1"><img src="../assets/img/en/fortisandbox-oscmd.svg" alt="" width="1200" height="675"></a>
+  <a class="hero__art" href="a/oracle-ebs-payments-en.html" aria-hidden="true" tabindex="-1"><img src="../assets/img/en/oracle-ebs-payments.svg" alt="" width="1200" height="675"></a>
 </section>
 
-<section class="shell"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Actor profile</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Actor</dt><dd>Unattributed (no public campaign; exploitation flagged by CISA)</dd></div><div class="field"><dt>Aliases</dt><dd>FG-IR-26-141, FG-IR-26-100, CVE-2026-25089, CVE-2026-39808</dd></div><div class="field"><dt>First seen</dt><dd>16 July 2026 (added to the CISA KEV catalog)</dd></div><div class="field"><dt>Targets</dt><dd>Exposed FortiSandbox appliances (WEB UI / API), Networks running the Fortinet Security Fabric</dd></div><div class="field"><dt>Sectors</dt><dd>Any sector using Fortinet malware detonation</dd></div></dl></aside></section>
+<section class="shell"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Actor profile</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Actor</dt><dd>Unattributed (first observed on Defused honeypots; no public campaign or actor)</dd></div><div class="field"><dt>Aliases</dt><dd>CVE-2026-46817, Oracle Payments — File Transmission, Oracle CPU May 2026</dd></div><div class="field"><dt>First seen</dt><dd>27 June 2026 (first in-the-wild execution observed by Defused)</dd></div><div class="field"><dt>Targets</dt><dd>Oracle E-Business Suite 12.2.3–12.2.15 instances exposed over HTTP, Oracle Payments module (File Transmission component)</dd></div><div class="field"><dt>Sectors</dt><dd>Large organizations running Oracle ERP for finance and payments</dd></div></dl></aside></section>
 
 <section class="intro shell">
   <div class="intro__grid">
@@ -77,16 +77,26 @@
     </div>
     <div class="intro__side">
       <p class="sidebar__label">At a glance</p>
-      <div class="stats"><div class="stat"><span class="stat__n">15</span><span class="stat__l">dossiers</span></div><div class="stat"><span class="stat__n">2</span><span class="stat__l">languages</span></div><div class="stat"><span class="stat__n">59</span><span class="stat__l">primary sources</span></div><div class="stat"><span class="stat__n">61</span><span class="stat__l">ATT&CK techniques</span></div></div>
+      <div class="stats"><div class="stat"><span class="stat__n">16</span><span class="stat__l">dossiers</span></div><div class="stat"><span class="stat__n">2</span><span class="stat__l">languages</span></div><div class="stat"><span class="stat__n">65</span><span class="stat__l">primary sources</span></div><div class="stat"><span class="stat__n">61</span><span class="stat__l">ATT&CK techniques</span></div></div>
       <p class="sidebar__label" style="margin-top:1.6rem">By severity</p>
-      <div class="sevbars"><div class="sevbar"><span class="sev sev--critical">critical</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--critical" style="width:60%"></i></div><span class="sevbar__n">9</span></div><div class="sevbar"><span class="sev sev--high">high</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--high" style="width:40%"></i></div><span class="sevbar__n">6</span></div></div>
+      <div class="sevbars"><div class="sevbar"><span class="sev sev--critical">critical</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--critical" style="width:62%"></i></div><span class="sevbar__n">10</span></div><div class="sevbar"><span class="sev sev--high">high</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--high" style="width:38%"></i></div><span class="sevbar__n">6</span></div></div>
     </div>
   </div>
 </section>
 
 <section class="archive shell">
-  <div class="section-head"><h2>Archive</h2><span class="count">15 dossiers</span></div>
+  <div class="section-head"><h2>Archive</h2><span class="count">16 dossiers</span></div>
   <div class="entries">
+<a class="entry" href="a/fortisandbox-oscmd-en.html">
+  <img class="entry__thumb" src="../assets/img/en/fortisandbox-oscmd.svg" alt="" width="1200" height="675" loading="lazy">
+  <div class="entry__body">
+    <time class="entry__date" datetime="2026-07-19">19.07.2026</time>
+    <h3 class="entry__title">The box built to run malware, run by whoever knocks: two RCEs in FortiSandbox</h3>
+    <p class="entry__summary">FortiSandbox is the box where suspicious files are detonated safely. Two unauthenticated OS command injection flaws — one in the WEB UI, one in an API&hellip;</p>
+    <p class="entry__actor">Unattributed (no public campaign; exploitation flagged by CISA) &nbsp;·&nbsp; <span class="sev sev--critical">critical</span></p>
+    <span class="entry__more">Continue reading &rarr;</span>
+  </div>
+</a>
 <a class="entry" href="a/sonicwall-sma1000-mfa-en.html">
   <img class="entry__thumb" src="../assets/img/en/sonicwall-sma1000-mfa.svg" alt="" width="1200" height="675" loading="lazy">
   <div class="entry__body">
