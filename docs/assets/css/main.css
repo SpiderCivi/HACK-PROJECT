@@ -1536,8 +1536,7 @@ html, body { max-width: 100%; }
 .topicnav { border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft);
   background: var(--paper); font-family: var(--mono); font-size: .72rem; letter-spacing: .1em;
   text-transform: uppercase; }
-.topicnav__inner { display: flex; align-items: stretch; gap: 0; overflow-x: auto; scrollbar-width: none; }
-.topicnav__inner::-webkit-scrollbar { display: none; }
+.topicnav__inner { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; }
 .topicnav__inner > a, .topicnav__parent { color: var(--ink-dim); padding: .8rem 1rem; white-space: nowrap;
   border-bottom: 2px solid transparent; transition: color .2s, border-color .2s;
   display: inline-flex; align-items: center; gap: .35rem; flex-shrink: 0; }
@@ -1563,3 +1562,21 @@ html, body { max-width: 100%; }
 .faq { margin-top: .5em; }
 .faq dt { font-weight: 600; color: #fff; margin-top: 1.1em; }
 .faq dd { margin: .3em 0 0; color: var(--ink-dim); }
+
+/* Pagine-sezione (stile index) */
+.topic-head { padding-block: clamp(2.5rem,6vw,4.5rem) 1.5rem; }
+.topic-head .hero__title { margin-bottom: 1rem; }
+.topic-head .hero__standfirst { margin-bottom: 0; }
+.topic-chips { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1.6rem; }
+.topic-chip { font-family: var(--mono); font-size: .7rem; text-transform: uppercase; letter-spacing: .08em;
+  padding: .45rem .9rem; border: 1px solid var(--rule); border-radius: 100px; color: var(--ink-dim);
+  transition: color .2s, border-color .2s; }
+.topic-chip:hover { border-color: var(--oxide); color: var(--ink); }
+.topic-about { padding-block: clamp(3rem,7vw,5rem); }
+.topic-about .section-head { margin-bottom: 2rem; }
+.topic-prose { max-width: var(--measure); }
+.topic-empty { color: var(--ink-faint); font-family: var(--mono); font-size: .9rem; padding: 1.5rem 0; }
+@media (max-width: 900px) {
+  .topicnav__inner { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .topicnav__inner::-webkit-scrollbar { display: none; }
+}
