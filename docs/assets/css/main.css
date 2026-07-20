@@ -1580,3 +1580,12 @@ html, body { max-width: 100%; }
   .topicnav__inner { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
   .topicnav__inner::-webkit-scrollbar { display: none; }
 }
+
+/* Sezioni: hero + layout a tutta larghezza (upgrade) */
+.topic-hero .crumb { margin-bottom: 1.1rem; }
+.topic-hero .hero__text { min-width: 0; }
+.topic-layout { display: grid; grid-template-columns: minmax(0, var(--measure)) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.topic-layout .textpage__sources { margin-top: 0; border-top: 0; padding-top: 0; }
+.topic-layout > * { min-width: 0; }
+@media (max-width: 900px) { .topic-layout { grid-template-columns: 1fr; } }
