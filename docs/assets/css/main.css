@@ -1471,3 +1471,95 @@ html, body { max-width: 100%; }
 
 /* — "Aggiornato il": la policy di correzione dev'essere visibile, non dichiarata e basta — */
 .article__meta .upd { color: var(--signal); }
+
+/* ============================================================
+   Tabelle dati — CVE watch, Metodologia (aggiunte upgrade 2026-07)
+   ============================================================ */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0; }
+.datatable { width: 100%; border-collapse: collapse; font-family: var(--mono);
+  font-size: .82rem; line-height: 1.4; }
+.datatable th, .datatable td { text-align: left; padding: .55rem .7rem;
+  border-bottom: 1px solid var(--rule-soft); vertical-align: top; }
+.datatable thead th { color: var(--ink-faint); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .05em; border-bottom: 1px solid var(--rule);
+  position: sticky; top: 0; background: var(--paper); }
+.datatable tbody tr:hover { background: var(--paper-2); }
+.datatable a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px;
+  text-decoration-color: var(--rule); }
+.datatable a:hover { text-decoration-color: var(--oxide); }
+.datatable th[scope="row"] a { color: var(--oxide-lit); }
+.datatable .cw-desc { color: var(--ink-dim); font-family: var(--body); }
+.datatable .sev { font-size: .68rem; }
+.cw-st { display: inline-block; font-size: .66rem; font-weight: 700; padding: .12rem .45rem;
+  border-radius: 3px; border: 1px solid; white-space: nowrap; text-transform: uppercase;
+  letter-spacing: .03em; }
+.cw-st--ok { color: var(--cyan-lit); border-color: color-mix(in srgb, var(--cyan) 55%, transparent); }
+.cw-st--warn { color: var(--signal); border-color: color-mix(in srgb, var(--signal) 55%, transparent); }
+.cw-note { color: var(--ink-faint); font-size: .86rem; border-left: 2px solid var(--rule);
+  padding-left: 1rem; margin-top: 1.75rem; }
+
+/* Newsletter */
+.news-form { display: flex; gap: .6rem; flex-wrap: wrap; margin: 1.25rem 0; }
+.news-form input[type="email"] { flex: 1 1 16rem; background: var(--paper-2);
+  border: 1px solid var(--rule); color: var(--ink); padding: .7rem .9rem; border-radius: 6px;
+  font-family: var(--mono); font-size: .9rem; }
+.news-form button { background: var(--oxide); color: #fff; border: 0; padding: .7rem 1.3rem;
+  border-radius: 6px; font-weight: 700; cursor: pointer; font-family: var(--display); }
+.news-form button:hover { background: var(--oxide-lit); }
+.feed-list { list-style: none; padding: 0; display: grid; gap: .5rem; margin: 1.25rem 0; }
+.feed-list a { font-family: var(--mono); font-size: .88rem; }
+
+/* Language switcher (IT / EN / ES) — upgrade 2026-07 */
+.langswitch { display: inline-flex; gap: .4rem; align-items: center; flex-shrink: 0; }
+.masthead__nav .lang { line-height: 1; }
+.masthead__nav .lang--cur { color: var(--signal); cursor: default;
+  border-color: color-mix(in srgb, var(--signal) 60%, transparent);
+  background: color-mix(in srgb, var(--signal) 12%, transparent); }
+.masthead__nav .lang--cur:hover { color: var(--signal); }
+
+/* Pagine di testo (metodologia, newsletter) — impaginazione coerente col sito */
+.textpage { padding-block: clamp(2rem, 5vw, 4rem); }
+.textpage__head { max-width: var(--measure); margin-bottom: 2.6rem; }
+.textpage__head .article__title { margin-bottom: 0; }
+.textpage__body { max-width: var(--measure); }
+.textpage__body .lede { font-size: 1.2rem; line-height: 1.6; color: var(--ink-dim);
+  max-width: 56ch; margin-bottom: 1.8rem; }
+.textpage__body h2 { border-top: 1px solid var(--rule); padding-top: .85em; margin-top: 2.4em;
+  font-family: var(--display); font-weight: 400; }
+.textpage__body h2::before { display: none; }
+.feed-list li { display: flex; gap: .6rem; align-items: baseline; flex-wrap: wrap; }
+.feed-url { color: var(--ink-faint); font-family: var(--mono); font-size: .78rem; }
+
+/* ============================================================
+   Barra temi + menu a tendina (upgrade 2026-07)
+   ============================================================ */
+.topicnav { border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft);
+  background: var(--paper); font-family: var(--mono); font-size: .72rem; letter-spacing: .1em;
+  text-transform: uppercase; }
+.topicnav__inner { display: flex; align-items: stretch; gap: 0; overflow-x: auto; scrollbar-width: none; }
+.topicnav__inner::-webkit-scrollbar { display: none; }
+.topicnav__inner > a, .topicnav__parent { color: var(--ink-dim); padding: .8rem 1rem; white-space: nowrap;
+  border-bottom: 2px solid transparent; transition: color .2s, border-color .2s;
+  display: inline-flex; align-items: center; gap: .35rem; flex-shrink: 0; }
+.topicnav__inner > a:hover, .topicnav__parent:hover,
+.topicnav__inner > a:focus-visible, .topicnav__parent:focus-visible { color: var(--ink); border-bottom-color: var(--oxide); }
+.topicnav__item { position: relative; display: inline-flex; flex-shrink: 0; }
+.topicnav__menu { position: absolute; top: 100%; left: 0; min-width: 230px; background: var(--paper-2);
+  border: 1px solid var(--rule); display: none; flex-direction: column; z-index: 40;
+  box-shadow: 0 12px 30px rgba(0,0,0,.45); }
+.topicnav__item:hover .topicnav__menu, .topicnav__item:focus-within .topicnav__menu { display: flex; }
+.topicnav__menu a { color: var(--ink-dim); padding: .7rem 1rem; white-space: nowrap;
+  border-bottom: 1px solid var(--rule-soft); text-transform: none; letter-spacing: normal; font-size: .8rem; }
+.topicnav__menu a:first-child { color: var(--ink); font-weight: 700; }
+.topicnav__menu a:hover { color: var(--ink); background: var(--paper-3); }
+.caret { font-size: .8em; opacity: .7; }
+
+/* Blocco fonti + FAQ nelle pagine tema */
+.textpage__sources { margin-top: 2.6rem; padding-top: 1.4rem; border-top: 1px solid var(--rule);
+  max-width: var(--measure); }
+.src-list { list-style: none; padding: 0; display: grid; gap: .5rem; margin: .8rem 0 1.2rem; }
+.src-list a { font-family: var(--mono); font-size: .85rem; }
+.textpage__sources .upd { font-family: var(--mono); font-size: .72rem; color: var(--ink-faint); }
+.faq { margin-top: .5em; }
+.faq dt { font-weight: 600; color: #fff; margin-top: 1.1em; }
+.faq dd { margin: .3em 0 0; color: var(--ink-dim); }
