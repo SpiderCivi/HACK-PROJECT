@@ -30,7 +30,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/css/main.css?v=76a8ef59">
+<script>(function(){try{var d=document.documentElement;d.classList.add("js");var t=null;try{t=localStorage.getItem("hp-theme")}catch(e){}if(t!=='dark'&&t!=='light'&&t!=='terminal')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';d.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="stylesheet" href="../../assets/css/main.css?v=0c9f2625">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Il generatore di agenti AI che esegue il codice di chi passa: CVE-2026-0770 su Langflow", "description": "Langflow è uno strumento visuale per costruire flussi e agenti basati su modelli linguistici. La funzione che dovrebbe «validare» il codice inserito dall'utente, validate_code(), lo passa invece a exec() senza sandbox: CVE-2026-0770 consente a un attaccante non autenticato di eseguire comandi arbitrari sul server. CVSS 9.8. Inserita nel catalogo CISA KEV il 21 luglio 2026, con proof-of-concept pubblici già disponibili. La patch va applicata subito e le istanze non vanno esposte in rete.", "datePublished": "2026-07-22", "dateModified": "2026-07-22", "inLanguage": "it", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/it/a/langflow-validate-rce.html", "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/langflow-validate-rce.html", "articleSection": "Threat Intelligence", "author": {"@type": "Person", "name": "Riccardo Civiero", "url": "https://github.com/SpiderCivi", "sameAs": ["https://github.com/SpiderCivi", "https://spidercivi.github.io/"]}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/", "logo": {"@type": "ImageObject", "url": "https://spidercivi.github.io/HACK-PROJECT/assets/img/apple-touch-icon.png", "width": 180, "height": 180}}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/it/langflow-validate-rce.png"], "keywords": "Non attribuito · sfruttamento opportunistico (PoC pubblici su GitHub), CVE-2026-0770, T1190, T1059.006", "citation": [{"@type": "CreativeWork", "name": "GitHub Advisory Database — GHSA-g22f-v6f7-2hrh (Langflow RCE via validate_code() exec())", "url": "https://github.com/advisories/GHSA-g22f-v6f7-2hrh"}, {"@type": "CreativeWork", "name": "CISA — Adds Four Known Exploited Vulnerabilities to Catalog (21 July 2026)", "url": "https://www.cisa.gov/news-events/alerts/2026/07/21/cisa-adds-four-known-exploited-vulnerabilities-catalog"}, {"@type": "CreativeWork", "name": "CIRCL — Vulnerability-Lookup: CVE-2026-0770", "url": "https://vulnerability.circl.lu/vuln/CVE-2026-0770"}, {"@type": "CreativeWork", "name": "OSV — CVE-2026-0770", "url": "https://osv.dev/vulnerability/CVE-2026-0770"}], "about": [{"@type": "Thing", "name": "CVE-2026-0770", "identifier": "CVE-2026-0770", "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-0770", "sameAs": "https://www.cve.org/CVERecord?id=CVE-2026-0770"}, {"@type": "Thing", "name": "Istanze Langflow esposte su internet"}, {"@type": "Thing", "name": "Endpoint /validate senza protezione a monte"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Che cos'è CVE-2026-0770?", "acceptedAnswer": {"@type": "Answer", "text": "Langflow è uno strumento visuale per costruire flussi e agenti basati su modelli linguistici. La funzione che dovrebbe «validare» il codice inserito dall'utente, validate_code(), lo passa invece a exec() senza sandbox: CVE-2026-0770 consente a un attaccante non autenticato di eseguire comandi arbitrari sul server. CVSS 9.8. Inserita nel catalogo CISA KEV il 21 luglio 2026, con proof-of-concept pubblici già disponibili. La patch va applicata subito e le istanze non vanno esposte in rete."}}, {"@type": "Question", "name": "Quali prodotti o sistemi sono interessati?", "acceptedAnswer": {"@type": "Answer", "text": "Bersagli e sistemi interessati: Istanze Langflow esposte su internet, Endpoint /validate senza protezione a monte."}}, {"@type": "Question", "name": "Quanto è grave?", "acceptedAnswer": {"@type": "Answer", "text": "La gravità di questo caso è classificata come critica."}}]}</script>
 </head>
@@ -52,7 +53,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed attivo</span>
-    <span>Aggiornato &mdash; 22.07.2026 12:28 CET</span>
+    <span>Aggiornato &mdash; 22.07.2026 14:32 CET</span>
     <span>30 dossier</span>
     <span>Mappatura MITRE ATT&CK</span>
   </div>
@@ -122,6 +123,6 @@
     </div>
   </div>
 </footer>
-<script src="../../assets/js/main.js?v=24ab82c1" defer></script>
+<script src="../../assets/js/main.js?v=a93220b3" defer></script>
 </body>
 </html>

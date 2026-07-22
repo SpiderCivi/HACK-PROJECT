@@ -30,7 +30,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/css/main.css?v=76a8ef59">
+<script>(function(){try{var d=document.documentElement;d.classList.add("js");var t=null;try{t=localStorage.getItem("hp-theme")}catch(e){}if(t!=='dark'&&t!=='light'&&t!=='terminal')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';d.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="stylesheet" href="../../assets/css/main.css?v=0c9f2625">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "The box built to run malware, run by whoever knocks: two RCEs in FortiSandbox", "description": "FortiSandbox is the box where suspicious files are detonated safely. Two unauthenticated OS command injection flaws — one in the WEB UI, one in an API endpoint — let anyone execute commands on the appliance itself. Patched quietly in April and June under a \"Known Exploited: No\" label, both were added to the CISA KEV catalog on 16 July: a sign someone had started using them, with the patch already months old.", "datePublished": "2026-07-19", "dateModified": "2026-07-19", "inLanguage": "en", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/en/a/fortisandbox-oscmd-en.html", "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/fortisandbox-oscmd-en.html", "articleSection": "Threat Intelligence", "author": {"@type": "Person", "name": "Riccardo Civiero", "url": "https://github.com/SpiderCivi", "sameAs": ["https://github.com/SpiderCivi", "https://spidercivi.github.io/"]}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/", "logo": {"@type": "ImageObject", "url": "https://spidercivi.github.io/HACK-PROJECT/assets/img/apple-touch-icon.png", "width": 180, "height": 180}}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/en/fortisandbox-oscmd.png"], "keywords": "Unattributed (no public campaign; exploitation flagged by CISA), CVE-2026-25089, CVE-2026-39808, T1190, T1059", "citation": [{"@type": "CreativeWork", "name": "Fortinet PSIRT — FG-IR-26-141: Second-Order OS Command Injection via JSON Input on start vnc feature (CVE-2026-25089)", "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-141"}, {"@type": "CreativeWork", "name": "Fortinet PSIRT — FG-IR-26-100: OS Command Injection through API endpoint (CVE-2026-39808)", "url": "https://fortiguard.fortinet.com/psirt/FG-IR-26-100"}, {"@type": "CreativeWork", "name": "CISA — Known Exploited Vulnerabilities Catalog", "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"}, {"@type": "CreativeWork", "name": "NVD — CVE-2026-25089", "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25089"}, {"@type": "CreativeWork", "name": "NVD — CVE-2026-39808", "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-39808"}], "about": [{"@type": "Thing", "name": "CVE-2026-25089", "identifier": "CVE-2026-25089", "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25089", "sameAs": "https://www.cve.org/CVERecord?id=CVE-2026-25089"}, {"@type": "Thing", "name": "CVE-2026-39808", "identifier": "CVE-2026-39808", "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-39808", "sameAs": "https://www.cve.org/CVERecord?id=CVE-2026-39808"}, {"@type": "Thing", "name": "Exposed FortiSandbox appliances (WEB UI / API)"}, {"@type": "Thing", "name": "Networks running the Fortinet Security Fabric"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is CVE-2026-25089?", "acceptedAnswer": {"@type": "Answer", "text": "FortiSandbox is the box where suspicious files are detonated safely. Two unauthenticated OS command injection flaws — one in the WEB UI, one in an API endpoint — let anyone execute commands on the appliance itself. Patched quietly in April and June under a \"Known Exploited: No\" label, both were added to the CISA KEV catalog on 16 July: a sign someone had started using them, with the patch already months old."}}, {"@type": "Question", "name": "Which products or systems are affected?", "acceptedAnswer": {"@type": "Answer", "text": "Affected targets and systems: Exposed FortiSandbox appliances (WEB UI / API), Networks running the Fortinet Security Fabric."}}, {"@type": "Question", "name": "How severe is it?", "acceptedAnswer": {"@type": "Answer", "text": "The severity of this case is rated as critical."}}]}</script>
 </head>
@@ -52,7 +53,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed live</span>
-    <span>Updated &mdash; 22.07.2026 12:28 CET</span>
+    <span>Updated &mdash; 22.07.2026 14:32 CET</span>
     <span>30 dossiers</span>
     <span>MITRE ATT&CK mapping</span>
   </div>
@@ -132,6 +133,6 @@
     </div>
   </div>
 </footer>
-<script src="../../assets/js/main.js?v=24ab82c1" defer></script>
+<script src="../../assets/js/main.js?v=a93220b3" defer></script>
 </body>
 </html>

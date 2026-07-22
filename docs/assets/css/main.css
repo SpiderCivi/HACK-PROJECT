@@ -1616,3 +1616,114 @@ html, body { max-width: 100%; }
   font-size: .68rem; color: var(--signal); margin-bottom: .6rem; font-weight: 700; }
 .method-callout p:last-child { margin: 0; color: var(--ink); }
 .method-contact { margin-top: 1.8rem; color: var(--ink-dim); max-width: var(--measure); }
+
+/* ============================================================
+   THEMES — selezionabili dall'utente (data-theme su <html>)
+   Notte = default. Ogni colore è già una variabile: qui le rimappiamo.
+   ============================================================ */
+:root, html[data-theme="dark"] { --masthead-bg: rgba(10,10,11,.82); --fx-dot: 255,122,61; --fx-alpha: .55; color-scheme: dark; }
+
+html[data-theme="light"] {
+  --paper:#f6f3ec; --paper-2:#efeadf; --paper-3:#e5dfd0; --rule:#d6cfbe; --rule-soft:#e4ded0;
+  --ink:#1a1922; --ink-dim:#4c4842; --ink-faint:#7c766b;
+  --oxide:#c1421b; --oxide-lit:#d5491d; --oxide-deep:#8f2f0d;
+  --masthead-bg: rgba(246,243,236,.85); --fx-dot: 200,66,26; --fx-alpha: .5; color-scheme: light;
+}
+html[data-theme="terminal"] {
+  --paper:#05070a; --paper-2:#0a0e14; --paper-3:#0f151d; --rule:#153029; --rule-soft:#0f1f1b;
+  --ink:#d7ffe9; --ink-dim:#84e2b8; --ink-faint:#4f8f77;
+  --oxide:#2dd4bf; --oxide-lit:#5eead4; --oxide-deep:#0f766e;
+  --masthead-bg: rgba(5,7,10,.85); --fx-dot: 94,234,212; --fx-alpha: .6; color-scheme: dark;
+}
+.masthead { background: var(--masthead-bg); transition: transform .45s cubic-bezier(.16,1,.3,1), background-color .3s, border-color .3s; will-change: transform; }
+
+/* Selettore tema, iniettato nella masthead da main.js */
+.themectl { position: relative; display: inline-flex; }
+.themectl__btn {
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink-dim); background: none; border: 1px solid var(--rule); border-radius: 2px;
+  padding: .3em .6em; cursor: pointer; display: inline-flex; align-items: center; gap: .45em;
+  transition: color .25s, border-color .25s;
+}
+.themectl__btn:hover { color: var(--ink); border-color: var(--oxide); }
+.themectl__btn .dot { width: .62em; height: .62em; border-radius: 50%; background: var(--oxide-lit); box-shadow: 0 0 0 1px var(--rule); }
+.themectl__menu {
+  position: absolute; top: calc(100% + .5rem); right: 0; z-index: 200; min-width: 9.5rem;
+  background: var(--paper-2); border: 1px solid var(--rule); border-radius: 3px;
+  padding: .3rem; display: grid; gap: .1rem;
+  opacity: 0; transform: translateY(-.4rem) scale(.98); transform-origin: top right;
+  pointer-events: none; transition: opacity .2s, transform .2s cubic-bezier(.16,1,.3,1);
+  box-shadow: 0 18px 40px -20px rgba(0,0,0,.7);
+}
+.themectl.open .themectl__menu { opacity: 1; transform: none; pointer-events: auto; }
+.themectl__opt {
+  display: flex; align-items: center; gap: .6rem; width: 100%; text-align: left;
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink-dim); background: none; border: 0; border-radius: 2px; padding: .5em .6em; cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.themectl__opt:hover { background: var(--paper-3); color: var(--ink); }
+.themectl__opt[aria-checked="true"] { color: var(--ink); }
+.themectl__opt[aria-checked="true"]::after { content: "●"; margin-left: auto; color: var(--oxide-lit); font-size: .8em; }
+.themectl__sw { width: 1.1rem; height: 1.1rem; border-radius: 3px; border: 1px solid var(--rule); flex: none; }
+
+/* ============================================================
+   ANIMATION LAYER (sito-animato) — vanilla, zero-dip, solo transform/opacity
+   Gating: html.js + prefers-reduced-motion. Senza JS o con reduce → tutto visibile.
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-reveal], html.js .rv {
+    opacity: 0; transform: translateY(1.5rem);
+    transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+    transition-delay: calc(var(--i, 0) * .07s); will-change: opacity, transform;
+  }
+  html.js [data-reveal].is-in, html.js .rv.is-in { opacity: 1; transform: none; }
+  html.js .rv-l { transform: translateX(-1.6rem); }
+  html.js .rv-r { transform: translateX(1.6rem); }
+  html.js .rv-s { transform: translateY(0) scale(.96); }
+
+  /* card d'archivio: lift premium */
+  html.js .entry { transition: background .3s, transform .35s cubic-bezier(.16,1,.3,1); }
+  html.js .entry:hover { transform: translateY(-3px); }
+
+  /* underline animata nel nav */
+  html.js .masthead__nav a { position: relative; border-bottom-color: transparent !important; }
+  html.js .masthead__nav a::after {
+    content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%;
+    background: var(--oxide); transform: scaleX(0); transform-origin: right; transition: transform .3s cubic-bezier(.16,1,.3,1);
+  }
+  html.js .masthead__nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  .masthead.nav-hidden { transform: translateY(-100%); }
+}
+
+/* Campo animato dietro l'hero (home + sezioni) */
+.hero, .topic-hero, .method-hero { position: relative; isolation: isolate; }
+.hero__fx { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+  -webkit-mask-image: radial-gradient(130% 115% at 82% 22%, #000 26%, transparent 74%);
+          mask-image: radial-gradient(130% 115% at 82% 22%, #000 26%, transparent 74%); }
+.hero__fx canvas { display: block; width: 100%; height: 100%; }
+.hero > *:not(.hero__fx), .topic-hero > *:not(.hero__fx), .method-hero > *:not(.hero__fx) { position: relative; z-index: 1; }
+
+/* Cursore accento (solo desktop, iniettato da JS; il cursore nativo resta) */
+.cursor-ring {
+  position: fixed; top: 0; left: 0; width: 34px; height: 34px; margin: -17px 0 0 -17px;
+  border: 1px solid rgba(var(--fx-dot), .8); border-radius: 50%; z-index: 9999;
+  pointer-events: none; mix-blend-mode: screen; opacity: 0;
+  transition: width .25s cubic-bezier(.16,1,.3,1), height .25s cubic-bezier(.16,1,.3,1),
+              margin .25s, background-color .25s, border-color .25s, opacity .3s;
+}
+html.cursor-ready .cursor-ring { opacity: 1; }
+html.cursor-hot .cursor-ring { width: 58px; height: 58px; margin: -29px 0 0 -29px; background: rgba(var(--fx-dot), .12); }
+
+/* prefers-reduced-motion: niente cursore/canvas/reveal, solo contenuto */
+@media (prefers-reduced-motion: reduce) {
+  .cursor-ring { display: none; }
+  .hero__fx { display: none; }
+  html { scroll-behavior: auto; }
+}
+@media (hover: none), (pointer: coarse) { .cursor-ring { display: none; } }
+
+/* selettore tema: compatto su mobile (solo pallino), non si comprime */
+.themectl { flex-shrink: 0; margin-left: .9rem; align-self: center; }
+@media (max-width: 560px) { .themectl__lbl { display: none; } .themectl { margin-left: .5rem; } }
