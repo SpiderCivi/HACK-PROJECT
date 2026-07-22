@@ -1,5 +1,98 @@
 [
   {
+    "title": "Il generatore di agenti AI che esegue il codice di chi passa: CVE-2026-0770 su Langflow",
+    "slug": "langflow-validate-rce",
+    "date": "2026-07-22",
+    "severity": "critical",
+    "actor": [
+      "Non attribuito · sfruttamento opportunistico (PoC pubblici su GitHub)"
+    ],
+    "summary": "Langflow è uno strumento visuale per costruire flussi e agenti basati su modelli linguistici. La funzione che dovrebbe «validare» il codice inserito dall'utente, validate_code(), lo passa invece a exec() senza sandbox: CVE-2026-0770 consente a un attaccante non autenticato di eseguire comandi arbitrari sul server. CVSS 9.8. Inserita nel catalogo CISA KEV il 21 luglio 2026, con proof-of-concept pubblici già disponibili. La patch va applicata subito e le istanze non vanno esposte in rete.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/langflow-validate-rce.html",
+    "mitre": [
+      "T1190",
+      "T1059.006"
+    ]
+  },
+  {
+    "title": "Il cuore di WordPress, eseguito da chi non ha fatto login: la catena WP2Shell",
+    "slug": "wordpress-wp2shell",
+    "date": "2026-07-22",
+    "severity": "critical",
+    "actor": [
+      "Non attribuito · sfruttamento opportunistico di massa (PoC pubblici)"
+    ],
+    "summary": "WordPress muove una quota enorme del web pubblico, in Italia come altrove. Due falle nel suo nucleo — una SQL injection in WP_Query (CVE-2026-60137) e una confusione delle rotte batch nella REST API (CVE-2026-63030) — concatenate in un exploit battezzato «WP2Shell» permettono a un attaccante non autenticato di eseguire codice da remoto su un'installazione di default. Divulgate il 17 luglio, sfruttate in pochi giorni, inserite nel catalogo CISA KEV il 21 luglio. WordPress ha rilasciato le patch e le ha forzate via aggiornamento automatico.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/wordpress-wp2shell.html",
+    "mitre": [
+      "T1190",
+      "T1059"
+    ]
+  },
+  {
+    "title": "Qilin rivendica Danone: cosa dice la fonte, e cosa resta da verificare",
+    "slug": "qilin-danone",
+    "date": "2026-07-22",
+    "severity": "high",
+    "actor": [
+      "Qilin (Agenda) — rivendicazione su leak site, non confermata dalla vittima"
+    ],
+    "summary": "Il gruppo ransomware Qilin ha inserito Danone nel proprio sito di rivendicazioni, sostenendo di aver sottratto circa 221 GB di dati e pubblicando oltre 90.000 file. La rivendicazione, datata 17 luglio 2026, non è al momento confermata dall'azienda: come sempre con i leak site, l'affermazione va trattata come tale finché non è verificata. Il caso è però un'occasione per guardare al modello a doppia estorsione di Qilin, uno dei gruppi più attivi del 2026, con quello che le fonti dicono davvero e con le incertezze in chiaro.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/qilin-danone.html",
+    "mitre": [
+      "T1486",
+      "T1567"
+    ]
+  },
+  {
+    "title": "La voce del tuo capo può essere falsa: l'ingegneria sociale nell'era dell'AI",
+    "slug": "deepfake-voce-truffe",
+    "date": "2026-07-22",
+    "severity": "medium",
+    "actor": [
+      "Approfondimento editoriale · fonti ufficiali (ENISA)"
+    ],
+    "summary": "L'ingegneria sociale resta la porta d'ingresso più usata, e l'AI l'ha resa più economica e credibile: la clonazione vocale permette di imitare la voce di un dirigente con pochi secondi di audio, i testi di phishing generati sono privi degli errori che un tempo li tradivano. ENISA colloca il phishing e l'ingegneria sociale in cima alle minacce. Un approfondimento su cosa cambia davvero, e su perché la difesa è culturale e procedurale prima che tecnica.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/deepfake-voce-truffe.html",
+    "mitre": []
+  },
+  {
+    "title": "DORA, un anno dopo: cosa obbliga davvero il settore finanziario, e perché tocca anche i fornitori IT",
+    "slug": "dora-resilienza-operativa",
+    "date": "2026-07-22",
+    "severity": "medium",
+    "actor": [
+      "Approfondimento editoriale · fonti ufficiali"
+    ],
+    "summary": "Non un attacco, ma la cornice di resilienza dentro cui il settore finanziario europeo deve reggere agli incidenti informatici. Il Regolamento (UE) 2022/2554 — DORA, Digital Operational Resilience Act — è pienamente applicabile dal 17 gennaio 2025. Armonizza la gestione del rischio ICT per banche, assicurazioni, fornitori di crypto-asset e molti altri, impone la notifica degli incidenti, i test di resilienza e la gestione del rischio di terze parti — e con l'oversight sui fornitori critici tocca anche chi il finanziario lo serve.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/dora-resilienza-operativa.html",
+    "mitre": []
+  },
+  {
+    "title": "Wind Tre, 1,7 milioni dal Garante: quando la falla non è un exploit ma un operatore convinto al telefono",
+    "slug": "garante-windtre-sanzione",
+    "date": "2026-07-22",
+    "severity": "medium",
+    "actor": [
+      "Approfondimento editoriale · provvedimento del Garante Privacy"
+    ],
+    "summary": "Il Garante per la protezione dei dati personali ha sanzionato Wind Tre per 1.715.600 euro per gravi carenze nella sicurezza dei sistemi. Secondo l'Autorità, due accessi non autorizzati hanno portato all'esfiltrazione dei dati personali di oltre 365.000 clienti; per 41.359 di loro sono stati toccati anche dati sui metodi di pagamento. Il punto interessante: l'ingresso non è stato un exploit, ma un attaccante che si è finto assistenza tecnica e ha convinto gli operatori di due punti vendita a dargli accesso.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/garante-windtre-sanzione.html",
+    "mitre": []
+  },
+  {
+    "title": "MFA resistente al phishing: perché non tutti i secondi fattori si equivalgono",
+    "slug": "mfa-resistente-phishing",
+    "date": "2026-07-22",
+    "severity": "medium",
+    "actor": [
+      "Approfondimento editoriale · fonti ufficiali (NIST, CISA)"
+    ],
+    "summary": "L'autenticazione a più fattori è la difesa più citata contro il furto di credenziali, ma «MFA» non è una categoria omogenea. SMS e notifiche push restano vulnerabili al phishing e all'MFA fatigue; solo due implementazioni sono considerate resistenti al phishing dalle fonti ufficiali: FIDO2/WebAuthn (incluse le passkey) e la PKI basata su smart card. Un approfondimento su cosa dicono NIST SP 800-63B e la guida CISA, e su come sceglierne l'adozione.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/mfa-resistente-phishing.html",
+    "mitre": []
+  },
+  {
     "title": "Quattro estensioni Joomla, un solo schema: l'ondata di upload non autenticati che pianta admin fantasma",
     "slug": "joomla-upload-rce-wave",
     "date": "2026-07-20",

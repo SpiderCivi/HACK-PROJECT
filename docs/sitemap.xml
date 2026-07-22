@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/</loc><lastmod>2026-07-20</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/about.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/methodology.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/newsletter.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/</loc><lastmod>2026-07-22</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/about.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/methodology.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/newsletter.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/a/langflow-validate-rce.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/a/wordpress-wp2shell.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/a/qilin-danone.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/a/deepfake-voce-truffe.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/a/dora-resilienza-operativa.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/a/garante-windtre-sanzione.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/a/mfa-resistente-phishing.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/a/joomla-upload-rce-wave.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/a/oracle-ebs-payments.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/a/simplehelp-oidc-bypass.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -27,17 +34,24 @@
   <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/a/kimsuky-quishing.html</loc><lastmod>2026-07-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/a/miasma-redhat-npm.html</loc><lastmod>2026-07-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/a/sharepoint-cve-2026-45659.html</loc><lastmod>2026-07-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/t/cybersecurity-nazionale.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/t/malware-e-attacchi.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/t/ransomware.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/t/norme-e-adeguamenti.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/t/privacy-e-dati-personali.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/t/soluzioni-aziendali.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/t/cultura-cyber.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/</loc><lastmod>2026-07-20</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/about.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/methodology.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/newsletter.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/t/cybersecurity-nazionale.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/t/malware-e-attacchi.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/t/ransomware.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/t/norme-e-adeguamenti.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/t/privacy-e-dati-personali.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/t/soluzioni-aziendali.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/it/t/cultura-cyber.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/</loc><lastmod>2026-07-22</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/about.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/methodology.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/newsletter.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/a/langflow-validate-rce-en.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/a/wordpress-wp2shell-en.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/a/qilin-danone-en.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/a/deepfake-voce-truffe-en.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/a/dora-resilienza-operativa-en.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/a/garante-windtre-sanzione-en.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/a/mfa-resistente-phishing-en.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/a/joomla-upload-rce-wave-en.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/a/oracle-ebs-payments-en.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/a/simplehelp-oidc-bypass-en.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -61,11 +75,11 @@
   <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/a/kimsuky-quishing-en.html</loc><lastmod>2026-07-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/a/miasma-redhat-npm-en.html</loc><lastmod>2026-07-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/a/sharepoint-cve-2026-45659-en.html</loc><lastmod>2026-07-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/t/cybersecurity-nazionale-en.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/t/malware-e-attacchi-en.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/t/ransomware-en.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/t/norme-e-adeguamenti-en.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/t/privacy-e-dati-personali-en.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/t/soluzioni-aziendali-en.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/t/cultura-cyber-en.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/t/cybersecurity-nazionale-en.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/t/malware-e-attacchi-en.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/t/ransomware-en.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/t/norme-e-adeguamenti-en.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/t/privacy-e-dati-personali-en.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/t/soluzioni-aziendali-en.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://spidercivi.github.io/HACK-PROJECT/en/t/cultura-cyber-en.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

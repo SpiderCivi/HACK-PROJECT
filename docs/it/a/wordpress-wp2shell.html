@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="rWfkr1OJmRI2zvjBJV9O9yrRoV8hskcmhZ-Kv8M3gio">
+<meta name="theme-color" content="#0b0b0f">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
+<title>Il cuore di WordPress, eseguito da chi non ha fatto login: la catena WP2Shell — HACK/PROJECT</title>
+<meta name="description" content="WordPress muove una quota enorme del web pubblico, in Italia come altrove. Due falle nel suo nucleo — una SQL injection in WP_Query (CVE-2026-60137) e una confusione delle rotte ba">
+<meta property="og:title" content="Il cuore di WordPress, eseguito da chi non ha fatto login: la catena WP2Shell — HACK/PROJECT">
+<meta property="og:description" content="WordPress muove una quota enorme del web pubblico, in Italia come altrove. Due falle nel suo nucleo — una SQL injection in WP_Query (CVE-2026-60137) e una confusione delle rotte ba">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://spidercivi.github.io/HACK-PROJECT/it/a/wordpress-wp2shell.html">
+<meta property="og:url" content="https://spidercivi.github.io/HACK-PROJECT/it/a/wordpress-wp2shell.html">
+<link rel="alternate" hreflang="en" href="https://spidercivi.github.io/HACK-PROJECT/en/a/wordpress-wp2shell-en.html">
+<link rel="alternate" hreflang="it" href="https://spidercivi.github.io/HACK-PROJECT/it/a/wordpress-wp2shell.html">
+<link rel="alternate" hreflang="x-default" href="https://spidercivi.github.io/HACK-PROJECT/it/a/wordpress-wp2shell.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="HACK/PROJECT">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/wordpress-wp2shell.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<meta name="twitter:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/wordpress-wp2shell.png">
+<link rel="alternate" type="application/rss+xml" title="HACK/PROJECT" href="https://spidercivi.github.io/HACK-PROJECT/it/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/main.css?v=76a8ef59">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Il cuore di WordPress, eseguito da chi non ha fatto login: la catena WP2Shell", "description": "WordPress muove una quota enorme del web pubblico, in Italia come altrove. Due falle nel suo nucleo — una SQL injection in WP_Query (CVE-2026-60137) e una confusione delle rotte batch nella REST API (CVE-2026-63030) — concatenate in un exploit battezzato «WP2Shell» permettono a un attaccante non autenticato di eseguire codice da remoto su un'installazione di default. Divulgate il 17 luglio, sfruttate in pochi giorni, inserite nel catalogo CISA KEV il 21 luglio. WordPress ha rilasciato le patch e le ha forzate via aggiornamento automatico.", "datePublished": "2026-07-22", "dateModified": "2026-07-22", "inLanguage": "it", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/it/a/wordpress-wp2shell.html", "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/wordpress-wp2shell.html", "articleSection": "Threat Intelligence", "author": {"@type": "Person", "name": "Riccardo Civiero", "url": "https://github.com/SpiderCivi", "sameAs": ["https://github.com/SpiderCivi", "https://spidercivi.github.io/"]}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/", "logo": {"@type": "ImageObject", "url": "https://spidercivi.github.io/HACK-PROJECT/assets/img/apple-touch-icon.png", "width": 180, "height": 180}}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/it/wordpress-wp2shell.png"], "keywords": "Non attribuito · sfruttamento opportunistico di massa (PoC pubblici), CVE-2026-60137, CVE-2026-63030, T1190, T1059", "citation": [{"@type": "CreativeWork", "name": "CISA — Known Exploited Vulnerabilities Catalog (CVE-2026-60137)", "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"}, {"@type": "CreativeWork", "name": "Tenable — WP2Shell: WordPress Core Pre-Auth RCE FAQ (CVE-2026-63030, CVE-2026-60137)", "url": "https://www.tenable.com/blog/wp2shell-cve-2026-63030-cve-2026-60137-frequently-asked-questions-about-remote-code-execution"}, {"@type": "CreativeWork", "name": "The Hacker News — New wp2shell WordPress Core Flaw Lets Unauthenticated Attackers Run Code", "url": "https://thehackernews.com/2026/07/new-wp2shell-wordpress-core-flaw-lets.html"}, {"@type": "CreativeWork", "name": "NVD — CVE-2026-60137", "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-60137"}], "about": [{"@type": "Thing", "name": "CVE-2026-60137", "identifier": "CVE-2026-60137", "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-60137", "sameAs": "https://www.cve.org/CVERecord?id=CVE-2026-60137"}, {"@type": "Thing", "name": "CVE-2026-63030", "identifier": "CVE-2026-63030", "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63030", "sameAs": "https://www.cve.org/CVERecord?id=CVE-2026-63030"}, {"@type": "Thing", "name": "Installazioni WordPress Core esposte su internet"}, {"@type": "Thing", "name": "Siti su versioni 6.8.0–6.8.5 non aggiornate"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Che cos'è CVE-2026-60137?", "acceptedAnswer": {"@type": "Answer", "text": "WordPress muove una quota enorme del web pubblico, in Italia come altrove. Due falle nel suo nucleo — una SQL injection in WP_Query (CVE-2026-60137) e una confusione delle rotte batch nella REST API (CVE-2026-63030) — concatenate in un exploit battezzato «WP2Shell» permettono a un attaccante non autenticato di eseguire codice da remoto su un'installazione di default. Divulgate il 17 luglio, sfruttate in pochi giorni, inserite nel catalogo CISA KEV il 21 luglio. WordPress ha rilasciato le patch e le ha forzate via aggiornamento automatico."}}, {"@type": "Question", "name": "Quali prodotti o sistemi sono interessati?", "acceptedAnswer": {"@type": "Answer", "text": "Bersagli e sistemi interessati: Installazioni WordPress Core esposte su internet, Siti su versioni 6.8.0–6.8.5 non aggiornate."}}, {"@type": "Question", "name": "Quanto è grave?", "acceptedAnswer": {"@type": "Answer", "text": "La gravità di questo caso è classificata come critica."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Salta al contenuto</a>
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../index.html">HACK<em>/</em>PROJECT</a>
+    <span class="masthead__tagline">Threat Intelligence Quotidiana</span>
+    <nav class="masthead__nav" aria-label="Principale">
+      <a href="../index.html">Archivio</a>
+      <a href="../methodology.html">Metodologia</a>
+      <a href="../about.html">Chi sono</a>
+      <div class="langswitch" role="group" aria-label="Lingua"><span class="lang lang--cur" aria-current="page" lang="it">IT</span><a class="lang" href="../../en/a/wordpress-wp2shell-en.html" rel="alternate" hreflang="en" lang="en">EN</a></div>
+    </nav>
+  </div>
+</header>
+<nav class="topicnav" aria-label="Temi"><div class="shell topicnav__inner"><a href="../t/cybersecurity-nazionale.html">Cybersecurity nazionale</a><div class="topicnav__item"><a class="topicnav__parent" href="../t/malware-e-attacchi.html">Malware e attacchi <span class="caret" aria-hidden="true">&#9662;</span></a><div class="topicnav__menu" role="menu"><a href="../t/malware-e-attacchi.html">Malware e attacchi</a><a href="../t/ransomware.html">Ransomware</a></div></div><div class="topicnav__item"><a class="topicnav__parent" href="../t/norme-e-adeguamenti.html">Norme e adeguamenti <span class="caret" aria-hidden="true">&#9662;</span></a><div class="topicnav__menu" role="menu"><a href="../t/norme-e-adeguamenti.html">Norme e adeguamenti</a><a href="../t/privacy-e-dati-personali.html">Privacy e dati personali</a></div></div><a href="../t/soluzioni-aziendali.html">Soluzioni aziendali</a><a href="../t/cultura-cyber.html">Cultura cyber</a></div></nav>
+<div class="shell">
+  <div class="ticker">
+    <span class="live">Threat feed attivo</span>
+    <span>Aggiornato &mdash; 22.07.2026 10:34 CET</span>
+    <span>30 dossier</span>
+    <span>Mappatura MITRE ATT&CK</span>
+  </div>
+</div>
+<div class="progress" aria-hidden="true"><i></i></div>
+<main id="main">
+
+<article class="article shell">
+  <nav class="crumb" aria-label="breadcrumb"><a href="../index.html">HACK/PROJECT</a><span>/</span><a href="../index.html">Archivio</a><span>/</span><em>Il cuore di WordPress, eseguito da chi non ha fa</em></nav>
+  <div class="article__hero">
+    <header class="article__head">
+      <p class="eyebrow" data-reveal style="--i:0"><span class="eyebrow__topic">Non attribuito · sfruttamento opportunistico di massa (PoC pubblici)</span><span class="sev sev--critical">critical</span></p>
+      <h1 class="article__title" data-reveal style="--i:1">Il cuore di WordPress, eseguito da chi non ha fatto login: la catena WP2Shell</h1>
+      <p class="article__standfirst" data-reveal style="--i:2">WordPress muove una quota enorme del web pubblico, in Italia come altrove. Due falle nel suo nucleo — una SQL injection in WP_Query (CVE-2026-60137) e una confusione delle rotte batch nella REST API (CVE-2026-63030) — concatenate in un exploit battezzato «WP2Shell» permettono a un attaccante non autenticato di eseguire codice da remoto su un&#x27;installazione di default. Divulgate il 17 luglio, sfruttate in pochi giorni, inserite nel catalogo CISA KEV il 21 luglio. WordPress ha rilasciato le patch e le ha forzate via aggiornamento automatico.</p>
+      <div class="byline" data-reveal style="--i:2">
+        <img class="byline__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="40" height="40" loading="lazy">
+        <div class="byline__meta">
+          <span class="byline__name">di <a href="../about.html">Riccardo Civiero</a></span>
+          <span class="byline__handle">@SpiderCivi &nbsp;·&nbsp; 22.07.2026</span>
+        </div>
+      </div>
+    </header>
+    <div class="article__hero-media"><figure class="dossier-video" data-reveal style="--i:3"><div class="dossier-video__frame"><video controls preload="none" playsinline poster="../../video/poster/wordpress-wp2shell-it.jpg" width="1080" height="1920"><source src="../../video/wordpress-wp2shell-it.mp4" type="video/mp4"></video></div></figure></div>
+  </div>
+  <div class="article__meta" data-reveal style="--i:2">
+    <span><i class="ti"></i>22.07.2026</span><span>4 min di lettura</span><span>4 fonti primarie</span>
+  </div>
+  <div class="article__layout">
+    <div class="prose" data-reveal style="--i:4"><h2 id="perche-questa-riguarda-quasi-tutti">Perché questa riguarda quasi tutti</h2>
+<p class="lede">Non è l'attacco a un singolo prodotto di nicchia: è una falla nel <strong>nucleo</strong> della piattaforma su cui gira una quota enorme del web pubblico. In Italia significa una parte consistente dei siti di piccole e medie imprese, testate locali, studi professionali, e-commerce e portali di enti minori. Quando il difetto è nel core e non in un plugin di terze parti, la superficie esposta non è una lista di aziende: è "chiunque pubblichi su WordPress e non abbia ancora aggiornato".</p>
+<p>Il 17 luglio 2026 sono state divulgate <strong>due</strong> vulnerabilità di WordPress Core. Prese singolarmente sono serie; <strong>concatenate</strong> diventano un grimaldello che apre l'esecuzione di codice da remoto senza bisogno di alcun login. I ricercatori hanno chiamato la catena <strong>WP2Shell</strong>.</p>
+<ol class="tl" data-reveal><li class="tl__item"><div class="tl__when">17 luglio 2026</div><div class="tl__body"><div class="tl__what">Divulgazione</div><p class="tl__txt">Rese pubbliche CVE-2026-60137 e CVE-2026-63030, con le patch.</p></div></li><li class="tl__item"><div class="tl__when">Entro pochi giorni</div><div class="tl__body"><div class="tl__what"><code>exploitation: active</code></div><p class="tl__txt">Sfruttamento in-the-wild confermato da più vendor; PoC pubblici in circolazione.</p></div></li><li class="tl__item"><div class="tl__when">21 luglio 2026</div><div class="tl__body"><div class="tl__what">Catalogo KEV</div><p class="tl__txt">CISA aggiunge CVE-2026-60137 alle vulnerabilità note sfruttate.</p></div></li></ol>
+<h2 id="le-due-falle-e-perche-insieme-sono-peggio">Le due falle, e perché insieme sono peggio</h2>
+<p>La prima, <strong>CVE-2026-60137</strong>, è una <strong>SQL injection</strong> nel cuore delle query di WordPress, <code>WP_Query</code>: nasce dalla sanificazione errata del parametro <code>author__not_in</code>. Da sola, su WordPress dalla 6.8.0 alla 6.8.5, permette di manipolare le interrogazioni al database — leggere dati che non dovrebbero essere accessibili, in certe configurazioni alterarli.</p>
+<p>La seconda, <strong>CVE-2026-63030</strong>, è una <strong>confusione nelle rotte batch</strong> della REST API: una richiesta costruita ad arte viene interpretata in modo diverso da come chi ha scritto il controllo di accesso si aspettava. È il tipo di difetto che, preso da solo, sembra teorico; è quando lo si usa come leva su un altro che diventa il pezzo mancante.</p>
+<p>Messe in fila, le due trasformano una lettura non autorizzata del database in <strong>esecuzione di codice</strong> su un'installazione WordPress di default, e lo fanno <strong>senza autenticazione</strong>. È il punto che porta la catena alla massima priorità: nessun account, nessun token, solo la capacità di raggiungere il sito via rete.</p>
+<ol class="flow" data-reveal><li class="flow__step"><span class="flow__n">01</span><div class="flow__b"><div class="flow__t">Richiesta HTTP non autenticata</div><div class="flow__note">l&#x27;attaccante raggiunge il sito, senza credenziali</div></div></li><li class="flow__step"><span class="flow__n">02</span><div class="flow__b"><div class="flow__t">CVE-2026-60137</div><div class="flow__note">SQL injection in WP_Query via <code>author__not_in</code></div></div></li><li class="flow__step"><span class="flow__n">03</span><div class="flow__b"><div class="flow__t">CVE-2026-63030</div><div class="flow__note">confusione delle rotte batch nella REST API</div></div></li><li class="flow__step"><span class="flow__n">04</span><div class="flow__b"><div class="flow__t">WP2Shell</div><div class="flow__note">esecuzione di codice remoto su installazione di default</div></div></li></ol>
+<h2 id="cosa-e-confermato-e-cosa-no">Cosa è confermato, e cosa no</h2>
+<p>Confermato: le CVE, la loro presenza nel core, le versioni patch e l'ingresso di CVE-2026-60137 nel catalogo CISA KEV il 21 luglio. Confermato anche che più società di sicurezza hanno osservato <strong>sfruttamento attivo</strong> entro pochi giorni dalla divulgazione, con proof-of-concept pubblici già in giro — la finestra fra "patch disponibile" e "attacco di massa" è stata cortissima.</p>
+<p>Da dichiarare come <strong>incerto</strong>: non c'è un singolo gruppo attribuito. Lo scenario coerente con i dati è lo <strong>sfruttamento opportunistico di massa</strong> — scanner automatici che colpiscono tutto ciò che risponde, tipico quando un PoC per una piattaforma diffusissima diventa pubblico — non una campagnia mirata a un bersaglio. Le cifre esatte sui siti compromessi, in questa fase, non sono verificabili: vanno trattate come stime, non come conteggi.</p>
+<div class="stat stat--n3" data-reveal><div class="stat__item"><div class="stat__val">2</div><div class="stat__lab">CVE concatenate</div><div class="stat__note">60137 (SQLi) + 63030 (REST API) = WP2Shell</div></div><div class="stat__item"><div class="stat__val">0</div><div class="stat__lab">credenziali richieste</div><div class="stat__note">l&#x27;attacco è pre-autenticazione</div></div><div class="stat__item"><div class="stat__val">21 lug 2026</div><div class="stat__lab">ingresso in KEV</div><div class="stat__note">CISA, vulnerabilità nota sfruttata</div></div></div>
+<h2 id="cosa-fare-adesso">Cosa fare, adesso</h2>
+<p>Le patch esistono: <strong>WordPress 6.8.6, 6.9.5 e 7.0.2</strong>. Vista la gravità, WordPress ha fatto una cosa che fa di rado — <strong>forzare l'aggiornamento automatico</strong> su tutte le installazioni supportate. Questo copre la maggioranza dei siti in modo trasparente, ma non tutti: chi ha <strong>disattivato gli auto-update</strong>, chi gira su un fork o su una versione fuori supporto, chi ha un'installazione "congelata" da un hosting che non applica i core update, resta esposto.</p>
+<p>L'azione è una sola e non rinviabile: <strong>verificare la versione</strong> del proprio WordPress e, se non è tra quelle patchate, <strong>aggiornare subito</strong>. Poi controllare che l'auto-update sia davvero andato a buon fine — non darlo per scontato — e, sui siti che potrebbero essere stati raggiunti prima della patch, cercare segni di compromissione: utenti amministrativi non riconosciuti, file inattesi sotto la web root, attività anomala nei log della REST API. Con una catena pre-auth già sfruttata e con PoC pubblici, la domanda non è se qualcuno proverà, ma se ha già provato.</p></div>
+    <div class="sidebar">
+      <aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Non attribuito · sfruttamento opportunistico di massa (PoC pubblici)</dd></div><div class="field"><dt>Alias</dt><dd>WP2Shell, CVE-2026-60137, CVE-2026-63030</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>17 luglio 2026 (divulgazione); 21 luglio 2026 (catalogo CISA KEV)</dd></div><div class="field"><dt>Bersagli</dt><dd>Installazioni WordPress Core esposte su internet, Siti su versioni 6.8.0–6.8.5 non aggiornate</dd></div><div class="field"><dt>Settori</dt><dd>PMI, editoria, PA locale, e-commerce — chiunque pubblichi su WordPress</dd></div></dl></aside>
+      <div class="sidebar__block"><div class="sidebar__label">Tecniche MITRE ATT&CK</div><div class="ttp-grid"><a class="ttp" href="https://attack.mitre.org/techniques/T1190/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1190</span> Exploit Public-Facing Application</a><a class="ttp" href="https://attack.mitre.org/techniques/T1059/" data-tactic="Execution" target="_blank" rel="noopener"><span class="ttp__id">T1059</span> Command and Scripting Interpreter</a></div></div>
+      <div class="sidebar__block"><div class="sidebar__label">Fonti primarie</div><ul class="sources"><li><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA — Known Exploited Vulnerabilities Catalog (CVE-2026-60137)</a></li><li><a href="https://www.tenable.com/blog/wp2shell-cve-2026-63030-cve-2026-60137-frequently-asked-questions-about-remote-code-execution" target="_blank" rel="noopener">Tenable — WP2Shell: WordPress Core Pre-Auth RCE FAQ (CVE-2026-63030, CVE-2026-60137)</a></li><li><a href="https://thehackernews.com/2026/07/new-wp2shell-wordpress-core-flaw-lets.html" target="_blank" rel="noopener">The Hacker News — New wp2shell WordPress Core Flaw Lets Unauthenticated Attackers Run Code</a></li><li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-60137" target="_blank" rel="noopener">NVD — CVE-2026-60137</a></li></ul></div>
+      <div class="sidebar__block"><div class="sidebar__label">Condividi</div><div class="share"><a href="https://x.com/intent/tweet?text=Il%20cuore%20di%20WordPress%2C%20eseguito%20da%20chi%20non%20ha%20fatto%20login%3A%20la%20catena%20WP2Shell&url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/wordpress-wp2shell.html" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/wordpress-wp2shell.html" target="_blank" rel="noopener">LinkedIn</a><a href="https://news.ycombinator.com/submitlink?u=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/wordpress-wp2shell.html&t=Il%20cuore%20di%20WordPress%2C%20eseguito%20da%20chi%20non%20ha%20fatto%20login%3A%20la%20catena%20WP2Shell" target="_blank" rel="noopener">HN</a><button class="share__copy" data-url="https://spidercivi.github.io/HACK-PROJECT/it/a/wordpress-wp2shell.html" type="button">Link</button></div></div>
+    </div>
+  </div>
+  <aside class="authorcard"><img class="authorcard__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="72" height="72" loading="lazy"><div><p class="authorcard__label">Scritto da</p><p class="authorcard__name"><a href="../about.html">Riccardo Civiero</a> <span class="authorcard__handle">@SpiderCivi</span></p><p class="authorcard__role">Cybersecurity & Software Developer</p><p class="authorcard__bio">Sviluppatore e specialista in cybersecurity. Formato all'ITIS E. Barsanti, con specializzazione in Cyber Security all'ITS Digital Academy di Treviso. Appassionato di sicurezza offensiva: CTF e Hack The Box. Qui applico lo stesso sguardo in senso difensivo — capire come funziona un attacco per spiegare come si ferma.</p><p class="authorcard__links"><a href="https://github.com/SpiderCivi" target="_blank" rel="noopener">GitHub</a><a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></p></div></aside>
+  <nav class="pager"><a class="pager__item pager__item--prev" href="qilin-danone.html"><span>&larr; Precedente</span><strong>Qilin rivendica Danone: cosa dice la fonte, e cosa resta da verificare</strong></a><a class="pager__item pager__item--next" href="langflow-validate-rce.html"><span>Successivo &rarr;</span><strong>Il generatore di agenti AI che esegue il codice di chi passa: CVE-2026-0770 su Langflow</strong></a></nav>
+</article>
+<section class="rel shell"><div class="section-head"><h2>Altri dossier</h2></div><div class="rel__grid"><a class="rel__card" href="langflow-validate-rce.html"><img src="../../assets/img/it/langflow-validate-rce.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Il generatore di agenti AI che esegue il codice di chi passa: CVE-2026-0770 su Langflow</h3></div></a><a class="rel__card" href="joomla-upload-rce-wave.html"><img src="../../assets/img/it/joomla-upload-rce-wave.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Quattro estensioni Joomla, un solo schema: l&#x27;ondata di upload non autenticati che pianta admin fantasma</h3></div></a><a class="rel__card" href="oracle-ebs-payments.html"><img src="../../assets/img/it/oracle-ebs-payments.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Il modulo che muove i pagamenti, preso senza un login: CVE-2026-46817 su Oracle E-Business Suite</h3></div></a></div></section></main>
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="wordmark">HACK<em>/</em>PROJECT</p>
+        <p class="footer__tag">Threat Intelligence Quotidiana</p>
+        <p class="footer__disclaimer"><strong>HACK/PROJECT</strong> &mdash; analisi di attacchi informatici documentati pubblicamente, mappati su MITRE ATT&amp;CK&reg;. Contenuto a scopo difensivo ed educativo: descriviamo tattiche e tecniche cosi&#768; come riportate da agenzie e ricercatori, senza distribuire codice offensivo. Dove le fonti sono incerte, lo dichiariamo nel testo. ATT&amp;CK&reg; e&#768; un marchio registrato di The MITRE Corporation; progetto non affiliato a MITRE.</p>
+      </div>
+      <div class="footer__col"><p class="footer__label">Archivio</p><a href="../index.html">Ultimi dossier</a><a href="../about.html">Chi sono</a></div><div class="footer__col"><p class="footer__label">Chi sono</p><a href="../about.html">Chi sono</a><a href="../methodology.html">Metodologia</a><a href="../about.html#contatti">Contattami</a><a href="https://spidercivi.github.io/">Portfolio</a></div><div class="footer__col"><p class="footer__label">Segui</p><a href="../newsletter.html">Newsletter</a><a href="../feed.xml">RSS</a><a href="https://www.tiktok.com/@h4ckprojct">TikTok</a><a href="https://github.com/SpiderCivi">GitHub</a><a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Riccardo Civiero</p>
+      <p class="footer__legal">Contenuto a scopo difensivo ed educativo. MITRE ATT&amp;CK&reg; &egrave; un marchio registrato di The MITRE Corporation; questo progetto non &egrave; affiliato n&eacute; sponsorizzato da MITRE, CISA o dai vendor citati.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/js/main.js?v=24ab82c1" defer></script>
+</body>
+</html>

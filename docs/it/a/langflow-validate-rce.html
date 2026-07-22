@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="rWfkr1OJmRI2zvjBJV9O9yrRoV8hskcmhZ-Kv8M3gio">
+<meta name="theme-color" content="#0b0b0f">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
+<title>Il generatore di agenti AI che esegue il codice di chi passa: CVE-2026-0770 su Langflow — HACK/PROJECT</title>
+<meta name="description" content="Langflow è uno strumento visuale per costruire flussi e agenti basati su modelli linguistici. La funzione che dovrebbe «validare» il codice inserito dall&#x27;utente, validate_code">
+<meta property="og:title" content="Il generatore di agenti AI che esegue il codice di chi passa: CVE-2026-0770 su Langflow — HACK/PROJECT">
+<meta property="og:description" content="Langflow è uno strumento visuale per costruire flussi e agenti basati su modelli linguistici. La funzione che dovrebbe «validare» il codice inserito dall&#x27;utente, validate_code">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://spidercivi.github.io/HACK-PROJECT/it/a/langflow-validate-rce.html">
+<meta property="og:url" content="https://spidercivi.github.io/HACK-PROJECT/it/a/langflow-validate-rce.html">
+<link rel="alternate" hreflang="en" href="https://spidercivi.github.io/HACK-PROJECT/en/a/langflow-validate-rce-en.html">
+<link rel="alternate" hreflang="it" href="https://spidercivi.github.io/HACK-PROJECT/it/a/langflow-validate-rce.html">
+<link rel="alternate" hreflang="x-default" href="https://spidercivi.github.io/HACK-PROJECT/it/a/langflow-validate-rce.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="HACK/PROJECT">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/langflow-validate-rce.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<meta name="twitter:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/langflow-validate-rce.png">
+<link rel="alternate" type="application/rss+xml" title="HACK/PROJECT" href="https://spidercivi.github.io/HACK-PROJECT/it/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/main.css?v=76a8ef59">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "Il generatore di agenti AI che esegue il codice di chi passa: CVE-2026-0770 su Langflow", "description": "Langflow è uno strumento visuale per costruire flussi e agenti basati su modelli linguistici. La funzione che dovrebbe «validare» il codice inserito dall'utente, validate_code(), lo passa invece a exec() senza sandbox: CVE-2026-0770 consente a un attaccante non autenticato di eseguire comandi arbitrari sul server. CVSS 9.8. Inserita nel catalogo CISA KEV il 21 luglio 2026, con proof-of-concept pubblici già disponibili. La patch va applicata subito e le istanze non vanno esposte in rete.", "datePublished": "2026-07-22", "dateModified": "2026-07-22", "inLanguage": "it", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/it/a/langflow-validate-rce.html", "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/langflow-validate-rce.html", "articleSection": "Threat Intelligence", "author": {"@type": "Person", "name": "Riccardo Civiero", "url": "https://github.com/SpiderCivi", "sameAs": ["https://github.com/SpiderCivi", "https://spidercivi.github.io/"]}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/", "logo": {"@type": "ImageObject", "url": "https://spidercivi.github.io/HACK-PROJECT/assets/img/apple-touch-icon.png", "width": 180, "height": 180}}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/it/langflow-validate-rce.png"], "keywords": "Non attribuito · sfruttamento opportunistico (PoC pubblici su GitHub), CVE-2026-0770, T1190, T1059.006", "citation": [{"@type": "CreativeWork", "name": "GitHub Advisory Database — GHSA-g22f-v6f7-2hrh (Langflow RCE via validate_code() exec())", "url": "https://github.com/advisories/GHSA-g22f-v6f7-2hrh"}, {"@type": "CreativeWork", "name": "CISA — Adds Four Known Exploited Vulnerabilities to Catalog (21 July 2026)", "url": "https://www.cisa.gov/news-events/alerts/2026/07/21/cisa-adds-four-known-exploited-vulnerabilities-catalog"}, {"@type": "CreativeWork", "name": "CIRCL — Vulnerability-Lookup: CVE-2026-0770", "url": "https://vulnerability.circl.lu/vuln/CVE-2026-0770"}, {"@type": "CreativeWork", "name": "OSV — CVE-2026-0770", "url": "https://osv.dev/vulnerability/CVE-2026-0770"}], "about": [{"@type": "Thing", "name": "CVE-2026-0770", "identifier": "CVE-2026-0770", "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-0770", "sameAs": "https://www.cve.org/CVERecord?id=CVE-2026-0770"}, {"@type": "Thing", "name": "Istanze Langflow esposte su internet"}, {"@type": "Thing", "name": "Endpoint /validate senza protezione a monte"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Che cos'è CVE-2026-0770?", "acceptedAnswer": {"@type": "Answer", "text": "Langflow è uno strumento visuale per costruire flussi e agenti basati su modelli linguistici. La funzione che dovrebbe «validare» il codice inserito dall'utente, validate_code(), lo passa invece a exec() senza sandbox: CVE-2026-0770 consente a un attaccante non autenticato di eseguire comandi arbitrari sul server. CVSS 9.8. Inserita nel catalogo CISA KEV il 21 luglio 2026, con proof-of-concept pubblici già disponibili. La patch va applicata subito e le istanze non vanno esposte in rete."}}, {"@type": "Question", "name": "Quali prodotti o sistemi sono interessati?", "acceptedAnswer": {"@type": "Answer", "text": "Bersagli e sistemi interessati: Istanze Langflow esposte su internet, Endpoint /validate senza protezione a monte."}}, {"@type": "Question", "name": "Quanto è grave?", "acceptedAnswer": {"@type": "Answer", "text": "La gravità di questo caso è classificata come critica."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Salta al contenuto</a>
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../index.html">HACK<em>/</em>PROJECT</a>
+    <span class="masthead__tagline">Threat Intelligence Quotidiana</span>
+    <nav class="masthead__nav" aria-label="Principale">
+      <a href="../index.html">Archivio</a>
+      <a href="../methodology.html">Metodologia</a>
+      <a href="../about.html">Chi sono</a>
+      <div class="langswitch" role="group" aria-label="Lingua"><span class="lang lang--cur" aria-current="page" lang="it">IT</span><a class="lang" href="../../en/a/langflow-validate-rce-en.html" rel="alternate" hreflang="en" lang="en">EN</a></div>
+    </nav>
+  </div>
+</header>
+<nav class="topicnav" aria-label="Temi"><div class="shell topicnav__inner"><a href="../t/cybersecurity-nazionale.html">Cybersecurity nazionale</a><div class="topicnav__item"><a class="topicnav__parent" href="../t/malware-e-attacchi.html">Malware e attacchi <span class="caret" aria-hidden="true">&#9662;</span></a><div class="topicnav__menu" role="menu"><a href="../t/malware-e-attacchi.html">Malware e attacchi</a><a href="../t/ransomware.html">Ransomware</a></div></div><div class="topicnav__item"><a class="topicnav__parent" href="../t/norme-e-adeguamenti.html">Norme e adeguamenti <span class="caret" aria-hidden="true">&#9662;</span></a><div class="topicnav__menu" role="menu"><a href="../t/norme-e-adeguamenti.html">Norme e adeguamenti</a><a href="../t/privacy-e-dati-personali.html">Privacy e dati personali</a></div></div><a href="../t/soluzioni-aziendali.html">Soluzioni aziendali</a><a href="../t/cultura-cyber.html">Cultura cyber</a></div></nav>
+<div class="shell">
+  <div class="ticker">
+    <span class="live">Threat feed attivo</span>
+    <span>Aggiornato &mdash; 22.07.2026 10:34 CET</span>
+    <span>30 dossier</span>
+    <span>Mappatura MITRE ATT&CK</span>
+  </div>
+</div>
+<div class="progress" aria-hidden="true"><i></i></div>
+<main id="main">
+
+<article class="article shell">
+  <nav class="crumb" aria-label="breadcrumb"><a href="../index.html">HACK/PROJECT</a><span>/</span><a href="../index.html">Archivio</a><span>/</span><em>Il generatore di agenti AI che esegue il codice </em></nav>
+  <div class="article__hero">
+    <header class="article__head">
+      <p class="eyebrow" data-reveal style="--i:0"><span class="eyebrow__topic">Non attribuito · sfruttamento opportunistico (PoC pubblici su GitHub)</span><span class="sev sev--critical">critical</span></p>
+      <h1 class="article__title" data-reveal style="--i:1">Il generatore di agenti AI che esegue il codice di chi passa: CVE-2026-0770 su Langflow</h1>
+      <p class="article__standfirst" data-reveal style="--i:2">Langflow è uno strumento visuale per costruire flussi e agenti basati su modelli linguistici. La funzione che dovrebbe «validare» il codice inserito dall&#x27;utente, validate_code(), lo passa invece a exec() senza sandbox: CVE-2026-0770 consente a un attaccante non autenticato di eseguire comandi arbitrari sul server. CVSS 9.8. Inserita nel catalogo CISA KEV il 21 luglio 2026, con proof-of-concept pubblici già disponibili. La patch va applicata subito e le istanze non vanno esposte in rete.</p>
+      <div class="byline" data-reveal style="--i:2">
+        <img class="byline__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="40" height="40" loading="lazy">
+        <div class="byline__meta">
+          <span class="byline__name">di <a href="../about.html">Riccardo Civiero</a></span>
+          <span class="byline__handle">@SpiderCivi &nbsp;·&nbsp; 22.07.2026</span>
+        </div>
+      </div>
+    </header>
+    <div class="article__hero-media"><figure class="hero-figure" data-reveal style="--i:3"><img src="../../assets/img/it/langflow-validate-rce.svg" alt="" width="1200" height="675"></figure></div>
+  </div>
+  <div class="article__meta" data-reveal style="--i:2">
+    <span><i class="ti"></i>22.07.2026</span><span>3 min di lettura</span><span>4 fonti primarie</span>
+  </div>
+  <div class="article__layout">
+    <div class="prose" data-reveal style="--i:4"><h2 id="uno-strumento-che-esegue-codice-per-progetto">Uno strumento che esegue codice per progetto</h2>
+<p class="lede">Langflow serve a costruire, trascinando blocchi su una tela, i flussi e gli agenti che orchestrano modelli linguistici. Per farlo deve poter eseguire pezzi di logica scritti dall'utente: è parte del mestiere. Il problema nasce quando la porta d'ingresso a quell'esecuzione resta <strong>aperta a chiunque</strong>, senza il muro che dovrebbe separarla dal mondo.</p>
+<p>È esattamente ciò che descrive <strong>CVE-2026-0770</strong>. La funzione che il nome promette essere un controllo — <code>validate_code()</code>, nel file <code>src/lfx/src/lfx/custom/validate.py</code> — invece di limitarsi a <em>ispezionare</em> il codice fornito lo passa direttamente a <code>exec()</code>, l'esecutore Python, <strong>senza alcuna sandbox</strong>. Ciò che doveva essere una validazione è, di fatto, un'esecuzione.</p>
+<ol class="flow" data-reveal><li class="flow__step"><span class="flow__n">01</span><div class="flow__b"><div class="flow__t">Richiesta all&#x27;endpoint <code>/validate</code></div><div class="flow__note">attaccante non autenticato</div></div></li><li class="flow__step"><span class="flow__n">02</span><div class="flow__b"><div class="flow__t">parametro <code>exec_globals</code> / <code>validate_code()</code></div><div class="flow__note">codice Python fornito dall&#x27;utente</div></div></li><li class="flow__step"><span class="flow__n">03</span><div class="flow__b"><div class="flow__t"><code>exec()</code> senza sandbox</div><div class="flow__note">esecuzione arbitraria sul server</div></div></li></ol>
+<h2 id="perche-il-punteggio-e-quasi-il-massimo">Perché il punteggio è quasi il massimo</h2>
+<p>La CVE porta un <strong>CVSS 9.8 (critico)</strong>, e i due fattori che la spingono così in alto sono gli stessi che rendono una falla un incubo operativo: <strong>nessuna autenticazione</strong> richiesta e <strong>esecuzione di codice</strong> come risultato. Non serve un account, non serve un'interazione della vittima; basta raggiungere via rete un'istanza Langflow esposta e mandare una richiesta all'endpoint di validazione.</p>
+<p>Il difetto rientra nella categoria «inclusione di funzionalità da una sfera di controllo non fidata»: il server accoglie ed esegue logica che arriva da fuori come se fosse propria. In pratica, per l'attaccante, l'endpoint di validazione diventa una shell.</p>
+<div class="stat stat--n3" data-reveal><div class="stat__item"><div class="stat__val">9.8</div><div class="stat__lab">CVSS</div><div class="stat__note">critico — nessuna auth, esecuzione codice</div></div><div class="stat__item"><div class="stat__val">0</div><div class="stat__lab">interazione utente</div><div class="stat__note">attacco diretto sull&#x27;endpoint esposto</div></div><div class="stat__item"><div class="stat__val">21 lug 2026</div><div class="stat__lab">ingresso in KEV</div><div class="stat__note">tra le quattro CVE aggiunte da CISA quel giorno</div></div></div>
+<h2 id="sfruttata-davvero-non-solo-teorica">Sfruttata davvero, non solo teorica</h2>
+<p>Il 21 luglio 2026 CISA ha aggiunto CVE-2026-0770 al catalogo delle <strong>vulnerabilità note sfruttate</strong> (KEV), nello stesso batch di quattro che comprendeva anche le due falle di WordPress Core. L'ingresso in KEV è il segnale che conta: non è una CVE «potenzialmente pericolosa», è una CVE che qualcuno <strong>sta usando</strong>.</p>
+<p>A complicare il quadro, per questa falla sono già disponibili <strong>più proof-of-concept pubblici su GitHub</strong>. Quando l'exploit è a portata di clone e il bersaglio è uno strumento pensato per prototipare in fretta — quindi spesso installato al volo, magari lasciato raggiungibile senza un reverse proxy che autentichi a monte — la barriera pratica per un attaccante opportunistico crolla.</p>
+<p>Va detto con onestà ciò che <strong>non</strong> è confermato: non c'è un gruppo attribuito né una campagna nominata. Lo scenario coerente è quello dello sfruttamento <strong>opportunistico</strong> delle istanze esposte, non un'operazione mirata. Le versioni esatte affette e il numero di istanze colpite vanno letti sulle fonti primarie (l'advisory GitHub e i tracker CVE) man mano che si consolidano, non dati per definitivi qui.</p>
+<h2 id="cosa-fare">Cosa fare</h2>
+<p>Tre mosse, in ordine di urgenza. Primo: <strong>aggiornare Langflow</strong> alla versione che rimuove l'esecuzione non protetta, seguendo l'advisory ufficiale (GHSA-g22f-v6f7-2hrh) per la versione corretta. Secondo, e spesso più importante del primo nell'immediato: <strong>togliere l'istanza dall'esposizione diretta</strong> su internet. Uno strumento di sviluppo come questo non ha ragione di essere pubblicamente raggiungibile; metterlo dietro una VPN o un proxy che autentica riduce la superficie a prescindere dalla patch. Terzo: sulle istanze che potrebbero essere state raggiunte, cercare segni di esecuzione anomala — processi Python inattesi, connessioni in uscita, file lasciati sul sistema — perché con una RCE non autenticata già in KEV, l'ipotesi di lavoro prudente è che un'istanza esposta e non aggiornata sia da considerare compromessa fino a prova contraria.</p></div>
+    <div class="sidebar">
+      <aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Non attribuito · sfruttamento opportunistico (PoC pubblici su GitHub)</dd></div><div class="field"><dt>Alias</dt><dd>CVE-2026-0770, GHSA-g22f-v6f7-2hrh</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>21 luglio 2026 (catalogo CISA KEV)</dd></div><div class="field"><dt>Bersagli</dt><dd>Istanze Langflow esposte su internet, Endpoint /validate senza protezione a monte</dd></div><div class="field"><dt>Settori</dt><dd>Sviluppo AI, startup, laboratori dati, chiunque prototipi agenti LLM</dd></div></dl></aside>
+      <div class="sidebar__block"><div class="sidebar__label">Tecniche MITRE ATT&CK</div><div class="ttp-grid"><a class="ttp" href="https://attack.mitre.org/techniques/T1190/" data-tactic="Initial Access" target="_blank" rel="noopener"><span class="ttp__id">T1190</span> Exploit Public-Facing Application</a><a class="ttp" href="https://attack.mitre.org/techniques/T1059/006/" data-tactic="Execution" target="_blank" rel="noopener"><span class="ttp__id">T1059.006</span> Command and Scripting Interpreter: Python</a></div></div>
+      <div class="sidebar__block"><div class="sidebar__label">Fonti primarie</div><ul class="sources"><li><a href="https://github.com/advisories/GHSA-g22f-v6f7-2hrh" target="_blank" rel="noopener">GitHub Advisory Database — GHSA-g22f-v6f7-2hrh (Langflow RCE via validate_code() exec())</a></li><li><a href="https://www.cisa.gov/news-events/alerts/2026/07/21/cisa-adds-four-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA — Adds Four Known Exploited Vulnerabilities to Catalog (21 July 2026)</a></li><li><a href="https://vulnerability.circl.lu/vuln/CVE-2026-0770" target="_blank" rel="noopener">CIRCL — Vulnerability-Lookup: CVE-2026-0770</a></li><li><a href="https://osv.dev/vulnerability/CVE-2026-0770" target="_blank" rel="noopener">OSV — CVE-2026-0770</a></li></ul></div>
+      <div class="sidebar__block"><div class="sidebar__label">Condividi</div><div class="share"><a href="https://x.com/intent/tweet?text=Il%20generatore%20di%20agenti%20AI%20che%20esegue%20il%20codice%20di%20chi%20passa%3A%20CVE-2026-0770%20su%20Langflow&url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/langflow-validate-rce.html" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/langflow-validate-rce.html" target="_blank" rel="noopener">LinkedIn</a><a href="https://news.ycombinator.com/submitlink?u=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/langflow-validate-rce.html&t=Il%20generatore%20di%20agenti%20AI%20che%20esegue%20il%20codice%20di%20chi%20passa%3A%20CVE-2026-0770%20su%20Langflow" target="_blank" rel="noopener">HN</a><button class="share__copy" data-url="https://spidercivi.github.io/HACK-PROJECT/it/a/langflow-validate-rce.html" type="button">Link</button></div></div>
+    </div>
+  </div>
+  <aside class="authorcard"><img class="authorcard__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="72" height="72" loading="lazy"><div><p class="authorcard__label">Scritto da</p><p class="authorcard__name"><a href="../about.html">Riccardo Civiero</a> <span class="authorcard__handle">@SpiderCivi</span></p><p class="authorcard__role">Cybersecurity & Software Developer</p><p class="authorcard__bio">Sviluppatore e specialista in cybersecurity. Formato all'ITIS E. Barsanti, con specializzazione in Cyber Security all'ITS Digital Academy di Treviso. Appassionato di sicurezza offensiva: CTF e Hack The Box. Qui applico lo stesso sguardo in senso difensivo — capire come funziona un attacco per spiegare come si ferma.</p><p class="authorcard__links"><a href="https://github.com/SpiderCivi" target="_blank" rel="noopener">GitHub</a><a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></p></div></aside>
+  <nav class="pager"><a class="pager__item pager__item--prev" href="wordpress-wp2shell.html"><span>&larr; Precedente</span><strong>Il cuore di WordPress, eseguito da chi non ha fatto login: la catena WP2Shell</strong></a></nav>
+</article>
+<section class="rel shell"><div class="section-head"><h2>Altri dossier</h2></div><div class="rel__grid"><a class="rel__card" href="wordpress-wp2shell.html"><img src="../../assets/img/it/wordpress-wp2shell.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Il cuore di WordPress, eseguito da chi non ha fatto login: la catena WP2Shell</h3></div></a><a class="rel__card" href="joomla-upload-rce-wave.html"><img src="../../assets/img/it/joomla-upload-rce-wave.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Quattro estensioni Joomla, un solo schema: l&#x27;ondata di upload non autenticati che pianta admin fantasma</h3></div></a><a class="rel__card" href="oracle-ebs-payments.html"><img src="../../assets/img/it/oracle-ebs-payments.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--critical">critical</span><h3>Il modulo che muove i pagamenti, preso senza un login: CVE-2026-46817 su Oracle E-Business Suite</h3></div></a></div></section></main>
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="wordmark">HACK<em>/</em>PROJECT</p>
+        <p class="footer__tag">Threat Intelligence Quotidiana</p>
+        <p class="footer__disclaimer"><strong>HACK/PROJECT</strong> &mdash; analisi di attacchi informatici documentati pubblicamente, mappati su MITRE ATT&amp;CK&reg;. Contenuto a scopo difensivo ed educativo: descriviamo tattiche e tecniche cosi&#768; come riportate da agenzie e ricercatori, senza distribuire codice offensivo. Dove le fonti sono incerte, lo dichiariamo nel testo. ATT&amp;CK&reg; e&#768; un marchio registrato di The MITRE Corporation; progetto non affiliato a MITRE.</p>
+      </div>
+      <div class="footer__col"><p class="footer__label">Archivio</p><a href="../index.html">Ultimi dossier</a><a href="../about.html">Chi sono</a></div><div class="footer__col"><p class="footer__label">Chi sono</p><a href="../about.html">Chi sono</a><a href="../methodology.html">Metodologia</a><a href="../about.html#contatti">Contattami</a><a href="https://spidercivi.github.io/">Portfolio</a></div><div class="footer__col"><p class="footer__label">Segui</p><a href="../newsletter.html">Newsletter</a><a href="../feed.xml">RSS</a><a href="https://www.tiktok.com/@h4ckprojct">TikTok</a><a href="https://github.com/SpiderCivi">GitHub</a><a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Riccardo Civiero</p>
+      <p class="footer__legal">Contenuto a scopo difensivo ed educativo. MITRE ATT&amp;CK&reg; &egrave; un marchio registrato di The MITRE Corporation; questo progetto non &egrave; affiliato n&eacute; sponsorizzato da MITRE, CISA o dai vendor citati.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/js/main.js?v=24ab82c1" defer></script>
+</body>
+</html>

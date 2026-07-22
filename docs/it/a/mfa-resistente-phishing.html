@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="rWfkr1OJmRI2zvjBJV9O9yrRoV8hskcmhZ-Kv8M3gio">
+<meta name="theme-color" content="#0b0b0f">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
+<title>MFA resistente al phishing: perché non tutti i secondi fattori si equivalgono — HACK/PROJECT</title>
+<meta name="description" content="L&#x27;autenticazione a più fattori è la difesa più citata contro il furto di credenziali, ma «MFA» non è una categoria omogenea. SMS e notifiche push restano vulnerabili al phishi">
+<meta property="og:title" content="MFA resistente al phishing: perché non tutti i secondi fattori si equivalgono — HACK/PROJECT">
+<meta property="og:description" content="L&#x27;autenticazione a più fattori è la difesa più citata contro il furto di credenziali, ma «MFA» non è una categoria omogenea. SMS e notifiche push restano vulnerabili al phishi">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://spidercivi.github.io/HACK-PROJECT/it/a/mfa-resistente-phishing.html">
+<meta property="og:url" content="https://spidercivi.github.io/HACK-PROJECT/it/a/mfa-resistente-phishing.html">
+<link rel="alternate" hreflang="en" href="https://spidercivi.github.io/HACK-PROJECT/en/a/mfa-resistente-phishing-en.html">
+<link rel="alternate" hreflang="it" href="https://spidercivi.github.io/HACK-PROJECT/it/a/mfa-resistente-phishing.html">
+<link rel="alternate" hreflang="x-default" href="https://spidercivi.github.io/HACK-PROJECT/it/a/mfa-resistente-phishing.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="HACK/PROJECT">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/mfa-resistente-phishing.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<meta name="twitter:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/mfa-resistente-phishing.png">
+<link rel="alternate" type="application/rss+xml" title="HACK/PROJECT" href="https://spidercivi.github.io/HACK-PROJECT/it/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/main.css?v=76a8ef59">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "MFA resistente al phishing: perché non tutti i secondi fattori si equivalgono", "description": "L'autenticazione a più fattori è la difesa più citata contro il furto di credenziali, ma «MFA» non è una categoria omogenea. SMS e notifiche push restano vulnerabili al phishing e all'MFA fatigue; solo due implementazioni sono considerate resistenti al phishing dalle fonti ufficiali: FIDO2/WebAuthn (incluse le passkey) e la PKI basata su smart card. Un approfondimento su cosa dicono NIST SP 800-63B e la guida CISA, e su come sceglierne l'adozione.", "datePublished": "2026-07-22", "dateModified": "2026-07-22", "inLanguage": "it", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/it/a/mfa-resistente-phishing.html", "url": "https://spidercivi.github.io/HACK-PROJECT/it/a/mfa-resistente-phishing.html", "articleSection": "Threat Intelligence", "author": {"@type": "Person", "name": "Riccardo Civiero", "url": "https://github.com/SpiderCivi", "sameAs": ["https://github.com/SpiderCivi", "https://spidercivi.github.io/"]}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/", "logo": {"@type": "ImageObject", "url": "https://spidercivi.github.io/HACK-PROJECT/assets/img/apple-touch-icon.png", "width": 180, "height": 180}}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/it/mfa-resistente-phishing.png"], "keywords": "Approfondimento editoriale · fonti ufficiali (NIST, CISA)", "citation": [{"@type": "CreativeWork", "name": "NIST — SP 800-63B, Digital Identity Guidelines: Authentication", "url": "https://pages.nist.gov/800-63-3/sp800-63b.html"}, {"@type": "CreativeWork", "name": "CISA — Implementing Phishing-Resistant MFA (fact sheet)", "url": "https://www.cisa.gov/resources-tools/resources/implementing-phishing-resistant-mfa"}, {"@type": "CreativeWork", "name": "CISA — More than a Password / MFA guidance", "url": "https://www.cisa.gov/MFA"}], "about": [{"@type": "Thing", "name": "Aziende che vogliono ridurre il rischio di furto credenziali"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Che cos'è MFA resistente al phishing: perché non tutti i secondi fattori si equivalgono?", "acceptedAnswer": {"@type": "Answer", "text": "L'autenticazione a più fattori è la difesa più citata contro il furto di credenziali, ma «MFA» non è una categoria omogenea. SMS e notifiche push restano vulnerabili al phishing e all'MFA fatigue; solo due implementazioni sono considerate resistenti al phishing dalle fonti ufficiali: FIDO2/WebAuthn (incluse le passkey) e la PKI basata su smart card. Un approfondimento su cosa dicono NIST SP 800-63B e la guida CISA, e su come sceglierne l'adozione."}}, {"@type": "Question", "name": "Quali prodotti o sistemi sono interessati?", "acceptedAnswer": {"@type": "Answer", "text": "Bersagli e sistemi interessati: Aziende che vogliono ridurre il rischio di furto credenziali."}}, {"@type": "Question", "name": "Quanto è grave?", "acceptedAnswer": {"@type": "Answer", "text": "La gravità di questo caso è classificata come media."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Salta al contenuto</a>
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../index.html">HACK<em>/</em>PROJECT</a>
+    <span class="masthead__tagline">Threat Intelligence Quotidiana</span>
+    <nav class="masthead__nav" aria-label="Principale">
+      <a href="../index.html">Archivio</a>
+      <a href="../methodology.html">Metodologia</a>
+      <a href="../about.html">Chi sono</a>
+      <div class="langswitch" role="group" aria-label="Lingua"><span class="lang lang--cur" aria-current="page" lang="it">IT</span><a class="lang" href="../../en/a/mfa-resistente-phishing-en.html" rel="alternate" hreflang="en" lang="en">EN</a></div>
+    </nav>
+  </div>
+</header>
+<nav class="topicnav" aria-label="Temi"><div class="shell topicnav__inner"><a href="../t/cybersecurity-nazionale.html">Cybersecurity nazionale</a><div class="topicnav__item"><a class="topicnav__parent" href="../t/malware-e-attacchi.html">Malware e attacchi <span class="caret" aria-hidden="true">&#9662;</span></a><div class="topicnav__menu" role="menu"><a href="../t/malware-e-attacchi.html">Malware e attacchi</a><a href="../t/ransomware.html">Ransomware</a></div></div><div class="topicnav__item"><a class="topicnav__parent" href="../t/norme-e-adeguamenti.html">Norme e adeguamenti <span class="caret" aria-hidden="true">&#9662;</span></a><div class="topicnav__menu" role="menu"><a href="../t/norme-e-adeguamenti.html">Norme e adeguamenti</a><a href="../t/privacy-e-dati-personali.html">Privacy e dati personali</a></div></div><a href="../t/soluzioni-aziendali.html">Soluzioni aziendali</a><a href="../t/cultura-cyber.html">Cultura cyber</a></div></nav>
+<div class="shell">
+  <div class="ticker">
+    <span class="live">Threat feed attivo</span>
+    <span>Aggiornato &mdash; 22.07.2026 10:34 CET</span>
+    <span>30 dossier</span>
+    <span>Mappatura MITRE ATT&CK</span>
+  </div>
+</div>
+<div class="progress" aria-hidden="true"><i></i></div>
+<main id="main">
+
+<article class="article shell">
+  <nav class="crumb" aria-label="breadcrumb"><a href="../index.html">HACK/PROJECT</a><span>/</span><a href="../index.html">Archivio</a><span>/</span><em>MFA resistente al phishing: perché non tutti i s</em></nav>
+  <div class="article__hero">
+    <header class="article__head">
+      <p class="eyebrow" data-reveal style="--i:0"><span class="eyebrow__topic">Approfondimento editoriale · fonti ufficiali (NIST, CISA)</span><span class="sev sev--medium">medium</span></p>
+      <h1 class="article__title" data-reveal style="--i:1">MFA resistente al phishing: perché non tutti i secondi fattori si equivalgono</h1>
+      <p class="article__standfirst" data-reveal style="--i:2">L&#x27;autenticazione a più fattori è la difesa più citata contro il furto di credenziali, ma «MFA» non è una categoria omogenea. SMS e notifiche push restano vulnerabili al phishing e all&#x27;MFA fatigue; solo due implementazioni sono considerate resistenti al phishing dalle fonti ufficiali: FIDO2/WebAuthn (incluse le passkey) e la PKI basata su smart card. Un approfondimento su cosa dicono NIST SP 800-63B e la guida CISA, e su come sceglierne l&#x27;adozione.</p>
+      <div class="byline" data-reveal style="--i:2">
+        <img class="byline__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="40" height="40" loading="lazy">
+        <div class="byline__meta">
+          <span class="byline__name">di <a href="../about.html">Riccardo Civiero</a></span>
+          <span class="byline__handle">@SpiderCivi &nbsp;·&nbsp; 22.07.2026</span>
+        </div>
+      </div>
+    </header>
+    <div class="article__hero-media"><figure class="hero-figure" data-reveal style="--i:3"><img src="../../assets/img/it/mfa-resistente-phishing.svg" alt="" width="1200" height="675"></figure></div>
+  </div>
+  <div class="article__meta" data-reveal style="--i:2">
+    <span><i class="ti"></i>22.07.2026</span><span>3 min di lettura</span><span>3 fonti primarie</span>
+  </div>
+  <div class="article__layout">
+    <div class="prose" data-reveal style="--i:4"><h2 id="un-approfondimento-non-lattacco-del-giorno">Un approfondimento, non l'attacco del giorno</h2>
+<p class="lede">Questo pezzo non racconta una violazione: prova a rispondere alla domanda che quasi ogni dossier di attacco lascia aperta — <em>«e allora come ci si difende?»</em> — su un fronte specifico, quello dell'autenticazione. Perché il consiglio «attiva l'MFA» è giusto ma incompleto: c'è MFA e MFA, e la differenza è esattamente ciò che decide se il phishing funziona ancora.</p>
+<h2 id="il-problema-il-secondo-fattore-che-si-puo-rubare">Il problema: il secondo fattore che si può rubare</h2>
+<p>L'idea dell'autenticazione a più fattori è semplice: alla password si aggiunge qualcosa d'altro, così rubare la sola password non basta. Ma molti «qualcosa d'altro» sono a loro volta <strong>catturabili</strong>. Un codice via <strong>SMS</strong> o via <strong>app OTP</strong> è un numero che l'utente digita: se un sito di phishing lo chiede in tempo reale e lo inoltra al servizio vero, l'attaccante entra. Le <strong>notifiche push</strong> («approva questo accesso?») aggiungono il problema dell'<strong>MFA fatigue</strong>: bombardare la vittima di richieste finché, per stanchezza o distrazione, ne approva una.</p>
+<p>Il difetto comune è che questi fattori <strong>non sono legati al sito</strong> a cui l'utente crede di connettersi. Il codice giusto, inserito sulla pagina sbagliata, funziona lo stesso. È la crepa che l'ingegneria sociale continua a sfruttare.</p>
+<h2 id="cosa-rende-un-fattore-resistente-al-phishing">Cosa rende un fattore «resistente al phishing»</h2>
+<p>Le fonti ufficiali sono convergenti e precise. La <strong>CISA</strong> riconosce come phishing-resistant <strong>due sole</strong> implementazioni: <strong>FIDO2/WebAuthn</strong> e la <strong>PKI</strong> basata su smart card (PIV/CAC). Il <strong>NIST</strong>, nella SP 800-63B, colloca gli autenticatori crittografici hardware al livello di garanzia più alto (AAL3), che richiede prova crittografica del possesso.</p>
+<p>Cosa hanno in comune queste tecnologie? Il fattore è <strong>legato all'origine</strong> (origin binding): la chiave crittografica risponde solo al dominio legittimo per cui è stata registrata. Se l'utente finisce su un dominio sosia, il browser semplicemente non presenta la credenziale giusta — non perché l'utente sia stato attento, ma perché la crittografia rende impossibile l'inoltro. Il segreto non transita, non si digita, non si può intercettare in volo.</p>
+<h2 id="passkey-in-pratica">Passkey, in pratica</h2>
+<p>Le <strong>passkey</strong> sono l'incarnazione più accessibile di FIDO2: chiavi crittografiche gestite dal dispositivo o da un authenticator hardware, senza password da ricordare né codici da copiare. Per la maggior parte delle aziende sono oggi la via più realistica per portare l'autenticazione resistente al phishing agli utenti comuni, non solo agli amministratori. Una nota tecnica dalle linee guida: le passkey <strong>sincronizzabili</strong> (copiate fra dispositivi via cloud) offrono grande usabilità ma <strong>non sono ammesse ad AAL3</strong>, che pretende una chiave hardware non esportabile. È una distinzione da tenere presente quando il contesto richiede il livello di garanzia massimo.</p>
+<h2 id="come-adottarla-senza-fermare-tutto">Come adottarla senza fermare tutto</h2>
+<p>Con gradualità e con un ordine di priorità. Prima gli <strong>account ad alto privilegio</strong> — amministratori, accessi ai sistemi critici, chi può muovere denaro o dati in blocco: è lì che una compromissione fa più danno, ed è lì che il ritorno dell'MFA resistente al phishing è più alto. Poi l'estensione al resto, con le passkey come default per l'utenza generale. In parallelo, <strong>ridurre o eliminare</strong> i fattori deboli — SMS e OTP — almeno sugli accessi sensibili, e disattivare i fallback che li reintroducono da una porta di servizio (spesso l'anello che vanifica tutto il resto). Il riferimento operativo restano le fonti ufficiali: NIST SP 800-63B per i livelli di garanzia, la scheda CISA «Implementing Phishing-Resistant MFA» per l'adozione. Il principio, sotto, è uno solo: un secondo fattore che si può inoltrare non è una barriera, è un rallentamento.</p></div>
+    <div class="sidebar">
+      <aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--medium">medium</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Approfondimento editoriale · fonti ufficiali (NIST, CISA)</dd></div><div class="field"><dt>Alias</dt><dd>NIST SP 800-63B, FIDO2 / WebAuthn, OMB M-22-09</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>Quadro di riferimento consolidato (NIST SP 800-63, guida CISA)</dd></div><div class="field"><dt>Bersagli</dt><dd>Aziende che vogliono ridurre il rischio di furto credenziali</dd></div><div class="field"><dt>Settori</dt><dd>Soluzioni aziendali · identità e accessi</dd></div></dl></aside>
+      <div class="sidebar__block"><div class="sidebar__label">Tecniche MITRE ATT&CK</div></div>
+      <div class="sidebar__block"><div class="sidebar__label">Fonti primarie</div><ul class="sources"><li><a href="https://pages.nist.gov/800-63-3/sp800-63b.html" target="_blank" rel="noopener">NIST — SP 800-63B, Digital Identity Guidelines: Authentication</a></li><li><a href="https://www.cisa.gov/resources-tools/resources/implementing-phishing-resistant-mfa" target="_blank" rel="noopener">CISA — Implementing Phishing-Resistant MFA (fact sheet)</a></li><li><a href="https://www.cisa.gov/MFA" target="_blank" rel="noopener">CISA — More than a Password / MFA guidance</a></li></ul></div>
+      <div class="sidebar__block"><div class="sidebar__label">Condividi</div><div class="share"><a href="https://x.com/intent/tweet?text=MFA%20resistente%20al%20phishing%3A%20perch%C3%A9%20non%20tutti%20i%20secondi%20fattori%20si%20equivalgono&url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/mfa-resistente-phishing.html" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/mfa-resistente-phishing.html" target="_blank" rel="noopener">LinkedIn</a><a href="https://news.ycombinator.com/submitlink?u=https%3A//spidercivi.github.io/HACK-PROJECT/it/a/mfa-resistente-phishing.html&t=MFA%20resistente%20al%20phishing%3A%20perch%C3%A9%20non%20tutti%20i%20secondi%20fattori%20si%20equivalgono" target="_blank" rel="noopener">HN</a><button class="share__copy" data-url="https://spidercivi.github.io/HACK-PROJECT/it/a/mfa-resistente-phishing.html" type="button">Link</button></div></div>
+    </div>
+  </div>
+  <aside class="authorcard"><img class="authorcard__avatar" src="https://avatars.githubusercontent.com/u/275543401?v=4" alt="" width="72" height="72" loading="lazy"><div><p class="authorcard__label">Scritto da</p><p class="authorcard__name"><a href="../about.html">Riccardo Civiero</a> <span class="authorcard__handle">@SpiderCivi</span></p><p class="authorcard__role">Cybersecurity & Software Developer</p><p class="authorcard__bio">Sviluppatore e specialista in cybersecurity. Formato all'ITIS E. Barsanti, con specializzazione in Cyber Security all'ITS Digital Academy di Treviso. Appassionato di sicurezza offensiva: CTF e Hack The Box. Qui applico lo stesso sguardo in senso difensivo — capire come funziona un attacco per spiegare come si ferma.</p><p class="authorcard__links"><a href="https://github.com/SpiderCivi" target="_blank" rel="noopener">GitHub</a><a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></p></div></aside>
+  <nav class="pager"><a class="pager__item pager__item--prev" href="joomla-upload-rce-wave.html"><span>&larr; Precedente</span><strong>Quattro estensioni Joomla, un solo schema: l&#x27;ondata di upload non autenticati che pianta admin fantasma</strong></a><a class="pager__item pager__item--next" href="garante-windtre-sanzione.html"><span>Successivo &rarr;</span><strong>Wind Tre, 1,7 milioni dal Garante: quando la falla non è un exploit ma un operatore convinto al telefono</strong></a></nav>
+</article>
+<section class="rel shell"><div class="section-head"><h2>Altri dossier</h2></div><div class="rel__grid"><a class="rel__card" href="deepfake-voce-truffe.html"><img src="../../assets/img/it/deepfake-voce-truffe.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--medium">medium</span><h3>La voce del tuo capo può essere falsa: l&#x27;ingegneria sociale nell&#x27;era dell&#x27;AI</h3></div></a><a class="rel__card" href="dora-resilienza-operativa.html"><img src="../../assets/img/it/dora-resilienza-operativa.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--medium">medium</span><h3>DORA, un anno dopo: cosa obbliga davvero il settore finanziario, e perché tocca anche i fornitori IT</h3></div></a><a class="rel__card" href="garante-windtre-sanzione.html"><img src="../../assets/img/it/garante-windtre-sanzione.svg" alt="" width="1200" height="675" loading="lazy"><div class="rel__body"><span class="sev sev--medium">medium</span><h3>Wind Tre, 1,7 milioni dal Garante: quando la falla non è un exploit ma un operatore convinto al telefono</h3></div></a></div></section></main>
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="wordmark">HACK<em>/</em>PROJECT</p>
+        <p class="footer__tag">Threat Intelligence Quotidiana</p>
+        <p class="footer__disclaimer"><strong>HACK/PROJECT</strong> &mdash; analisi di attacchi informatici documentati pubblicamente, mappati su MITRE ATT&amp;CK&reg;. Contenuto a scopo difensivo ed educativo: descriviamo tattiche e tecniche cosi&#768; come riportate da agenzie e ricercatori, senza distribuire codice offensivo. Dove le fonti sono incerte, lo dichiariamo nel testo. ATT&amp;CK&reg; e&#768; un marchio registrato di The MITRE Corporation; progetto non affiliato a MITRE.</p>
+      </div>
+      <div class="footer__col"><p class="footer__label">Archivio</p><a href="../index.html">Ultimi dossier</a><a href="../about.html">Chi sono</a></div><div class="footer__col"><p class="footer__label">Chi sono</p><a href="../about.html">Chi sono</a><a href="../methodology.html">Metodologia</a><a href="../about.html#contatti">Contattami</a><a href="https://spidercivi.github.io/">Portfolio</a></div><div class="footer__col"><p class="footer__label">Segui</p><a href="../newsletter.html">Newsletter</a><a href="../feed.xml">RSS</a><a href="https://www.tiktok.com/@h4ckprojct">TikTok</a><a href="https://github.com/SpiderCivi">GitHub</a><a href="mailto:civiero.riccardo03@gmail.com">civiero.riccardo03@gmail.com</a></div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 Riccardo Civiero</p>
+      <p class="footer__legal">Contenuto a scopo difensivo ed educativo. MITRE ATT&amp;CK&reg; &egrave; un marchio registrato di The MITRE Corporation; questo progetto non &egrave; affiliato n&eacute; sponsorizzato da MITRE, CISA o dai vendor citati.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/js/main.js?v=24ab82c1" defer></script>
+</body>
+</html>

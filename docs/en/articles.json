@@ -1,5 +1,98 @@
 [
   {
+    "title": "The AI-agent builder that runs a stranger's code: CVE-2026-0770 in Langflow",
+    "slug": "langflow-validate-rce-en",
+    "date": "2026-07-22",
+    "severity": "critical",
+    "actor": [
+      "Unattributed · opportunistic exploitation (public PoCs on GitHub)"
+    ],
+    "summary": "Langflow is a visual tool for building flows and agents on top of language models. The function meant to «validate» user-supplied code, validate_code(), instead passes it to exec() with no sandbox: CVE-2026-0770 lets an unauthenticated attacker run arbitrary commands on the server. CVSS 9.8. Added to the CISA KEV catalog on 21 July 2026, with public proof-of-concept code already available. Patch now and keep instances off the public internet.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/langflow-validate-rce-en.html",
+    "mitre": [
+      "T1190",
+      "T1059.006"
+    ]
+  },
+  {
+    "title": "The heart of WordPress, run by someone who never logged in: the WP2Shell chain",
+    "slug": "wordpress-wp2shell-en",
+    "date": "2026-07-22",
+    "severity": "critical",
+    "actor": [
+      "Unattributed · opportunistic mass exploitation (public PoCs)"
+    ],
+    "summary": "WordPress runs a huge share of the public web. Two flaws in its core — a SQL injection in WP_Query (CVE-2026-60137) and a REST API batch-route confusion (CVE-2026-63030) — chained into an exploit dubbed \"WP2Shell\" let an unauthenticated attacker run code remotely on a default install. Disclosed on 17 July, exploited within days, added to the CISA KEV catalog on 21 July. WordPress shipped patches and force-pushed them via auto-update.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/wordpress-wp2shell-en.html",
+    "mitre": [
+      "T1190",
+      "T1059"
+    ]
+  },
+  {
+    "title": "Qilin claims Danone: what the source says, and what remains to be verified",
+    "slug": "qilin-danone-en",
+    "date": "2026-07-22",
+    "severity": "high",
+    "actor": [
+      "Qilin (Agenda) — leak-site claim, not confirmed by the victim"
+    ],
+    "summary": "The Qilin ransomware group listed Danone on its leak site, claiming it stole roughly 221 GB of data and publishing more than 90,000 files. The claim, dated 17 July 2026, is not currently confirmed by the company: as always with leak sites, the assertion should be treated as a claim until verified. The case is still a chance to look at Qilin's double-extortion model — one of 2026's most active groups — with what the sources actually say and the uncertainties in plain view.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/qilin-danone-en.html",
+    "mitre": [
+      "T1486",
+      "T1567"
+    ]
+  },
+  {
+    "title": "Your boss's voice can be fake: social engineering in the age of AI",
+    "slug": "deepfake-voce-truffe-en",
+    "date": "2026-07-22",
+    "severity": "medium",
+    "actor": [
+      "Editorial explainer · official sources (ENISA)"
+    ],
+    "summary": "Social engineering remains the most-used way in, and AI has made it cheaper and more convincing: voice cloning can mimic an executive's voice from a few seconds of audio, and generated phishing text lacks the errors that once gave it away. ENISA places phishing and social engineering at the top of the threats. An explainer on what really changes, and why the defense is cultural and procedural before it is technical.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/deepfake-voce-truffe-en.html",
+    "mitre": []
+  },
+  {
+    "title": "DORA, one year on: what it really requires of finance, and why it reaches IT suppliers too",
+    "slug": "dora-resilienza-operativa-en",
+    "date": "2026-07-22",
+    "severity": "medium",
+    "actor": [
+      "Editorial explainer · official sources"
+    ],
+    "summary": "Not an attack, but the resilience framework the European financial sector must hold up under when incidents hit. Regulation (EU) 2022/2554 — DORA, the Digital Operational Resilience Act — has been fully applicable since 17 January 2025. It harmonizes ICT risk management for banks, insurers, crypto-asset providers and many others, mandates incident reporting, resilience testing and third-party risk management — and, through oversight of critical providers, reaches those who serve finance too.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/dora-resilienza-operativa-en.html",
+    "mitre": []
+  },
+  {
+    "title": "Wind Tre, €1.7M from the Italian DPA: when the flaw isn't an exploit but a clerk talked into it",
+    "slug": "garante-windtre-sanzione-en",
+    "date": "2026-07-22",
+    "severity": "medium",
+    "actor": [
+      "Editorial explainer · Italian DPA (Garante) decision"
+    ],
+    "summary": "Italy's data protection authority (the Garante) fined Wind Tre €1,715,600 for serious shortcomings in system security. According to the authority, two unauthorized accesses led to the exfiltration of personal data of over 365,000 customers; for 41,359 of them, payment-method data was also touched. The interesting part: the way in was not an exploit but an attacker posing as technical support who talked staff at two retail stores into granting access.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/garante-windtre-sanzione-en.html",
+    "mitre": []
+  },
+  {
+    "title": "Phishing-resistant MFA: why not all second factors are equal",
+    "slug": "mfa-resistente-phishing-en",
+    "date": "2026-07-22",
+    "severity": "medium",
+    "actor": [
+      "Editorial explainer · official sources (NIST, CISA)"
+    ],
+    "summary": "Multi-factor authentication is the most-cited defense against credential theft, but \"MFA\" is not a uniform category. SMS and push notifications remain vulnerable to phishing and MFA fatigue; only two implementations are considered phishing-resistant by official sources: FIDO2/WebAuthn (passkeys included) and smart-card-based PKI. An explainer on what NIST SP 800-63B and CISA guidance say, and how to adopt it.",
+    "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/mfa-resistente-phishing-en.html",
+    "mitre": []
+  },
+  {
     "title": "Four Joomla extensions, one pattern: the unauthenticated-upload wave that plants ghost admins",
     "slug": "joomla-upload-rce-wave-en",
     "date": "2026-07-20",

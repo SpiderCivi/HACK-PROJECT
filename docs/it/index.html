@@ -10,9 +10,9 @@
 <link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
 <title>HACK/PROJECT — Threat Intelligence Quotidiana</title>
-<meta name="description" content="In poche settimane quattro estensioni Joomla molto diffuse — SP Page Builder, iCagenda, PageBuilder CK e Balbooa Forms — sono finite nel catalogo CISA delle vulnerabilità sfruttate">
+<meta name="description" content="Langflow è uno strumento visuale per costruire flussi e agenti basati su modelli linguistici. La funzione che dovrebbe «validare» il codice inserito dall&#x27;utente, validate_code">
 <meta property="og:title" content="HACK/PROJECT — Threat Intelligence Quotidiana">
-<meta property="og:description" content="In poche settimane quattro estensioni Joomla molto diffuse — SP Page Builder, iCagenda, PageBuilder CK e Balbooa Forms — sono finite nel catalogo CISA delle vulnerabilità sfruttate">
+<meta property="og:description" content="Langflow è uno strumento visuale per costruire flussi e agenti basati su modelli linguistici. La funzione che dovrebbe «validare» il codice inserito dall&#x27;utente, validate_code">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://spidercivi.github.io/HACK-PROJECT/it/">
 <meta property="og:url" content="https://spidercivi.github.io/HACK-PROJECT/it/">
@@ -22,10 +22,10 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="HACK/PROJECT">
 <meta property="og:locale" content="it_IT">
-<meta property="og:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/joomla-upload-rce-wave.png">
+<meta property="og:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/langflow-validate-rce.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="675">
-<meta name="twitter:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/joomla-upload-rce-wave.png">
+<meta name="twitter:image" content="https://spidercivi.github.io/HACK-PROJECT/assets/img/it/langflow-validate-rce.png">
 <link rel="alternate" type="application/rss+xml" title="HACK/PROJECT" href="https://spidercivi.github.io/HACK-PROJECT/it/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,8 +50,8 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed attivo</span>
-    <span>Aggiornato &mdash; 20.07.2026 14:23 CET</span>
-    <span>23 dossier</span>
+    <span>Aggiornato &mdash; 22.07.2026 10:34 CET</span>
+    <span>30 dossier</span>
     <span>Mappatura MITRE ATT&CK</span>
   </div>
 </div>
@@ -60,15 +60,15 @@
 
 <section class="hero shell">
   <div class="hero__text">
-    <p class="kicker" data-reveal style="--i:0">Dossier del giorno &nbsp;/&nbsp; 20.07.2026</p>
-    <h1 class="hero__title" data-reveal style="--i:1">Quattro estensioni Joomla, un solo schema: l&#x27;ondata di upload non autenticati che pianta admin fantasma</h1>
-    <p class="hero__standfirst" data-reveal style="--i:2">In poche settimane quattro estensioni Joomla molto diffuse — SP Page Builder, iCagenda, PageBuilder CK e Balbooa Forms — sono finite nel catalogo CISA delle vulnerabilità sfruttate, tutte con lo stesso difetto: un endpoint raggiungibile senza login che accetta il caricamento di un file senza controllarne il tipo. Il risultato è una web shell PHP eseguita sul server. In almeno un caso il payload osservato pianta un Super Administrator nascosto con email @secure.local e semina backdoor &quot;PHP File manager&quot; in più cartelle. Nessun attore nominato: quello che colpisce è la ripetizione dello stesso errore in prodotti diversi.</p>
-    <p data-reveal style="--i:3"><a class="cta" href="a/joomla-upload-rce-wave.html">Leggi il dossier &rarr;</a></p>
+    <p class="kicker" data-reveal style="--i:0">Dossier del giorno &nbsp;/&nbsp; 22.07.2026</p>
+    <h1 class="hero__title" data-reveal style="--i:1">Il generatore di agenti AI che esegue il codice di chi passa: CVE-2026-0770 su Langflow</h1>
+    <p class="hero__standfirst" data-reveal style="--i:2">Langflow è uno strumento visuale per costruire flussi e agenti basati su modelli linguistici. La funzione che dovrebbe «validare» il codice inserito dall&#x27;utente, validate_code(), lo passa invece a exec() senza sandbox: CVE-2026-0770 consente a un attaccante non autenticato di eseguire comandi arbitrari sul server. CVSS 9.8. Inserita nel catalogo CISA KEV il 21 luglio 2026, con proof-of-concept pubblici già disponibili. La patch va applicata subito e le istanze non vanno esposte in rete.</p>
+    <p data-reveal style="--i:3"><a class="cta" href="a/langflow-validate-rce.html">Leggi il dossier &rarr;</a></p>
   </div>
-  <a class="hero__art" href="a/joomla-upload-rce-wave.html" aria-hidden="true" tabindex="-1"><img src="../assets/img/it/joomla-upload-rce-wave.svg" alt="" width="1200" height="675"></a>
+  <a class="hero__art" href="a/langflow-validate-rce.html" aria-hidden="true" tabindex="-1"><img src="../assets/img/it/langflow-validate-rce.svg" alt="" width="1200" height="675"></a>
 </section>
 
-<section class="shell"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Non attribuito (nessun attore o campagna nominati; disclosure di Phil Taylor / mySites.guru)</dd></div><div class="field"><dt>Alias</dt><dd>CVE-2026-48908, CVE-2026-48939, CVE-2026-56290, CVE-2026-56291, SP Page Builder · iCagenda · PageBuilder CK · Balbooa Forms</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>Giugno 2026 (sfruttamento osservato nei log da mySites.guru); ingresso in CISA KEV 7-10 luglio 2026</dd></div><div class="field"><dt>Bersagli</dt><dd>Siti Joomla con estensioni di terze parti installate ed esposte su internet, SP Page Builder ≤6.6.1, iCagenda, PageBuilder CK, Balbooa Forms</dd></div><div class="field"><dt>Settori</dt><dd>PMI, agenzie web, PA e chiunque gestisca siti Joomla di terzi</dd></div></dl></aside></section>
+<section class="shell"><aside class="dossier" data-reveal style="--i:3"><div class="dossier__head"><span>Scheda attore</span><span class="sev sev--critical">critical</span></div><dl class="dossier__body"><div class="field"><dt>Attore</dt><dd>Non attribuito · sfruttamento opportunistico (PoC pubblici su GitHub)</dd></div><div class="field"><dt>Alias</dt><dd>CVE-2026-0770, GHSA-g22f-v6f7-2hrh</dd></div><div class="field"><dt>Primo avvistamento</dt><dd>21 luglio 2026 (catalogo CISA KEV)</dd></div><div class="field"><dt>Bersagli</dt><dd>Istanze Langflow esposte su internet, Endpoint /validate senza protezione a monte</dd></div><div class="field"><dt>Settori</dt><dd>Sviluppo AI, startup, laboratori dati, chiunque prototipi agenti LLM</dd></div></dl></aside></section>
 
 <section class="intro shell">
   <div class="intro__grid">
@@ -79,16 +79,86 @@
     </div>
     <div class="intro__side">
       <p class="sidebar__label">A colpo d'occhio</p>
-      <div class="stats"><div class="stat"><span class="stat__n">23</span><span class="stat__l">dossier</span></div><div class="stat"><span class="stat__n">2</span><span class="stat__l">lingue</span></div><div class="stat"><span class="stat__n">96</span><span class="stat__l">fonti primarie</span></div><div class="stat"><span class="stat__n">64</span><span class="stat__l">tecniche ATT&CK</span></div></div>
+      <div class="stats"><div class="stat"><span class="stat__n">30</span><span class="stat__l">dossier</span></div><div class="stat"><span class="stat__n">2</span><span class="stat__l">lingue</span></div><div class="stat"><span class="stat__n">120</span><span class="stat__l">fonti primarie</span></div><div class="stat"><span class="stat__n">65</span><span class="stat__l">tecniche ATT&CK</span></div></div>
       <p class="sidebar__label" style="margin-top:1.6rem">Per gravità</p>
-      <div class="sevbars"><div class="sevbar"><span class="sev sev--critical">critical</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--critical" style="width:52%"></i></div><span class="sevbar__n">12</span></div><div class="sevbar"><span class="sev sev--high">high</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--high" style="width:30%"></i></div><span class="sevbar__n">7</span></div><div class="sevbar"><span class="sev sev--medium">medium</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--medium" style="width:17%"></i></div><span class="sevbar__n">4</span></div></div>
+      <div class="sevbars"><div class="sevbar"><span class="sev sev--critical">critical</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--critical" style="width:47%"></i></div><span class="sevbar__n">14</span></div><div class="sevbar"><span class="sev sev--high">high</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--high" style="width:27%"></i></div><span class="sevbar__n">8</span></div><div class="sevbar"><span class="sev sev--medium">medium</span><div class="sevbar__track"><i class="sevbar__fill sevbar__fill--medium" style="width:27%"></i></div><span class="sevbar__n">8</span></div></div>
     </div>
   </div>
 </section>
 
 <section class="archive shell">
-  <div class="section-head"><h2>Archivio</h2><span class="count">23 dossier</span></div>
+  <div class="section-head"><h2>Archivio</h2><span class="count">30 dossier</span></div>
   <div class="entries">
+<a class="entry" href="a/wordpress-wp2shell.html">
+  <img class="entry__thumb" src="../assets/img/it/wordpress-wp2shell.svg" alt="" width="1200" height="675" loading="lazy">
+  <div class="entry__body">
+    <time class="entry__date" datetime="2026-07-22">22.07.2026</time>
+    <h3 class="entry__title">Il cuore di WordPress, eseguito da chi non ha fatto login: la catena WP2Shell</h3>
+    <p class="entry__summary">WordPress muove una quota enorme del web pubblico, in Italia come altrove. Due falle nel suo nucleo — una SQL injection in WP_Query (CVE-2026-60137) e&hellip;</p>
+    <p class="entry__actor">Non attribuito · sfruttamento opportunistico di massa (PoC pubblici) &nbsp;·&nbsp; <span class="sev sev--critical">critical</span></p>
+    <span class="entry__more">Continua a leggere &rarr;</span>
+  </div>
+</a>
+<a class="entry" href="a/qilin-danone.html">
+  <img class="entry__thumb" src="../assets/img/it/qilin-danone.svg" alt="" width="1200" height="675" loading="lazy">
+  <div class="entry__body">
+    <time class="entry__date" datetime="2026-07-22">22.07.2026</time>
+    <h3 class="entry__title">Qilin rivendica Danone: cosa dice la fonte, e cosa resta da verificare</h3>
+    <p class="entry__summary">Il gruppo ransomware Qilin ha inserito Danone nel proprio sito di rivendicazioni, sostenendo di aver sottratto circa 221 GB di dati e pubblicando oltr&hellip;</p>
+    <p class="entry__actor">Qilin (Agenda) — rivendicazione su leak site, non confermata dalla vittima &nbsp;·&nbsp; <span class="sev sev--high">high</span></p>
+    <span class="entry__more">Continua a leggere &rarr;</span>
+  </div>
+</a>
+<a class="entry" href="a/deepfake-voce-truffe.html">
+  <img class="entry__thumb" src="../assets/img/it/deepfake-voce-truffe.svg" alt="" width="1200" height="675" loading="lazy">
+  <div class="entry__body">
+    <time class="entry__date" datetime="2026-07-22">22.07.2026</time>
+    <h3 class="entry__title">La voce del tuo capo può essere falsa: l&#x27;ingegneria sociale nell&#x27;era dell&#x27;AI</h3>
+    <p class="entry__summary">L&#x27;ingegneria sociale resta la porta d&#x27;ingresso più usata, e l&#x27;AI l&#x27;ha resa più economica e credibile: la clonazione vocale permett&hellip;</p>
+    <p class="entry__actor">Approfondimento editoriale · fonti ufficiali (ENISA) &nbsp;·&nbsp; <span class="sev sev--medium">medium</span></p>
+    <span class="entry__more">Continua a leggere &rarr;</span>
+  </div>
+</a>
+<a class="entry" href="a/dora-resilienza-operativa.html">
+  <img class="entry__thumb" src="../assets/img/it/dora-resilienza-operativa.svg" alt="" width="1200" height="675" loading="lazy">
+  <div class="entry__body">
+    <time class="entry__date" datetime="2026-07-22">22.07.2026</time>
+    <h3 class="entry__title">DORA, un anno dopo: cosa obbliga davvero il settore finanziario, e perché tocca anche i fornitori IT</h3>
+    <p class="entry__summary">Non un attacco, ma la cornice di resilienza dentro cui il settore finanziario europeo deve reggere agli incidenti informatici. Il Regolamento (UE) 202&hellip;</p>
+    <p class="entry__actor">Approfondimento editoriale · fonti ufficiali &nbsp;·&nbsp; <span class="sev sev--medium">medium</span></p>
+    <span class="entry__more">Continua a leggere &rarr;</span>
+  </div>
+</a>
+<a class="entry" href="a/garante-windtre-sanzione.html">
+  <img class="entry__thumb" src="../assets/img/it/garante-windtre-sanzione.svg" alt="" width="1200" height="675" loading="lazy">
+  <div class="entry__body">
+    <time class="entry__date" datetime="2026-07-22">22.07.2026</time>
+    <h3 class="entry__title">Wind Tre, 1,7 milioni dal Garante: quando la falla non è un exploit ma un operatore convinto al telefono</h3>
+    <p class="entry__summary">Il Garante per la protezione dei dati personali ha sanzionato Wind Tre per 1.715.600 euro per gravi carenze nella sicurezza dei sistemi. Secondo l&#x2&hellip;</p>
+    <p class="entry__actor">Approfondimento editoriale · provvedimento del Garante Privacy &nbsp;·&nbsp; <span class="sev sev--medium">medium</span></p>
+    <span class="entry__more">Continua a leggere &rarr;</span>
+  </div>
+</a>
+<a class="entry" href="a/mfa-resistente-phishing.html">
+  <img class="entry__thumb" src="../assets/img/it/mfa-resistente-phishing.svg" alt="" width="1200" height="675" loading="lazy">
+  <div class="entry__body">
+    <time class="entry__date" datetime="2026-07-22">22.07.2026</time>
+    <h3 class="entry__title">MFA resistente al phishing: perché non tutti i secondi fattori si equivalgono</h3>
+    <p class="entry__summary">L&#x27;autenticazione a più fattori è la difesa più citata contro il furto di credenziali, ma «MFA» non è una categoria omogenea. SMS e notifiche push&hellip;</p>
+    <p class="entry__actor">Approfondimento editoriale · fonti ufficiali (NIST, CISA) &nbsp;·&nbsp; <span class="sev sev--medium">medium</span></p>
+    <span class="entry__more">Continua a leggere &rarr;</span>
+  </div>
+</a>
+<a class="entry" href="a/joomla-upload-rce-wave.html">
+  <img class="entry__thumb" src="../assets/img/it/joomla-upload-rce-wave.svg" alt="" width="1200" height="675" loading="lazy">
+  <div class="entry__body">
+    <time class="entry__date" datetime="2026-07-20">20.07.2026</time>
+    <h3 class="entry__title">Quattro estensioni Joomla, un solo schema: l&#x27;ondata di upload non autenticati che pianta admin fantasma</h3>
+    <p class="entry__summary">In poche settimane quattro estensioni Joomla molto diffuse — SP Page Builder, iCagenda, PageBuilder CK e Balbooa Forms — sono finite nel catalogo CISA&hellip;</p>
+    <p class="entry__actor">Non attribuito (nessun attore o campagna nominati; disclosure di Phil Taylor / mySites.guru) &nbsp;·&nbsp; <span class="sev sev--critical">critical</span></p>
+    <span class="entry__more">Continua a leggere &rarr;</span>
+  </div>
+</a>
 <a class="entry" href="a/oracle-ebs-payments.html">
   <img class="entry__thumb" src="../assets/img/it/oracle-ebs-payments.svg" alt="" width="1200" height="675" loading="lazy">
   <div class="entry__body">
