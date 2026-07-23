@@ -310,3 +310,52 @@
     }
   } catch (e) {}
 })();
+
+/* Redesign magazine: titolo cinetico, tilt 3D sulle card, parallax hero (vanilla, perf-first) */
+(() => {
+  "use strict";
+  const root = document.documentElement;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  /* Titolo hero cinetico: parole in reveal sfalsato */
+  try {
+    document.querySelectorAll(".hero__title").forEach((h) => {
+      if (h.querySelector(".w")) return;
+      const words = (h.textContent || "").trim().split(/\s+/);
+      if (words.length < 2 || words.length > 24) return;
+      h.innerHTML = words.map((w, i) => '<span class="w" style="--w:' + i + '">' + esc(w) + "</span>").join(" ");
+      h.removeAttribute("data-reveal");
+      requestAnimationFrame(() => requestAnimationFrame(() => h.classList.add("is-in")));
+    });
+  } catch (e) {}
+
+  if (reduce) return;
+
+  /* Tilt 3D sulle card (solo desktop) */
+  try {
+    if (fine) document.querySelectorAll(".entry").forEach((card) => {
+      const media = card.querySelector(".entry__glow");
+      card.addEventListener("mousemove", (e) => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+        card.style.transition = "transform .2s cubic-bezier(.16,1,.3,1)";
+        card.style.transform = "perspective(1000px) rotateX(" + (-py * 3.5).toFixed(2) + "deg) rotateY(" + (px * 4.5).toFixed(2) + "deg) translateY(-6px)";
+        if (media) media.style.background = "radial-gradient(120% 90% at " + ((px + .5) * 100).toFixed(0) + "% 0%, rgba(var(--fx-dot),.2), transparent 60%)";
+      });
+      card.addEventListener("mouseleave", () => { card.style.transition = ""; card.style.transform = ""; if (media) media.style.background = ""; });
+    });
+  } catch (e) {}
+
+  /* Parallax leggero sull'immagine hero */
+  try {
+    const artc = document.querySelector(".hero__art");
+    if (artc) {
+      let tick = false;
+      addEventListener("scroll", () => { if (tick) return; tick = true;
+        requestAnimationFrame(() => { const y = Math.min(scrollY, 800); artc.style.transform = "translateY(" + (y * 0.06).toFixed(1) + "px)"; tick = false; });
+      }, { passive: true });
+    }
+  } catch (e) {}
+})();
