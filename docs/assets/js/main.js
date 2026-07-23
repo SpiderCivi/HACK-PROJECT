@@ -143,7 +143,7 @@
     // server-side [data-reveal] (hero): li nasconde già il CSS, li osserviamo tutti
     document.querySelectorAll("[data-reveal]").forEach(watch);
     // auto-tag: blocchi di rilievo, solo se sotto la piega (niente flash sopra)
-    const SEL = ".entry, .follow__inner, .field, .sources, .sevbar, .dossier-video, .hero-figure," +
+    const SEL = ".entry, .stats, .follow__inner, .field, .sources, .sevbar, .dossier-video, .hero-figure," +
                 " .prose h2, .prose h3, .prose figure, .prose .flow, .prose .stat, .prose .timeline," +
                 " .about__head, .textpage__head, .section-head, .toc";
     const vh = innerHeight;
@@ -264,6 +264,49 @@
         if (en.isIntersecting) { scramble(en.target); ob.unobserve(en.target); }
       }), { threshold: 0.5 });
       ks.forEach((k) => kio.observe(k));
+    }
+  } catch (e) {}
+})();
+
+/* Numeri che si contano + barre che crescono (visibile dove prima era tutto fermo) */
+(() => {
+  "use strict";
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hasIO = "IntersectionObserver" in window;
+  try {
+    const nums = [...document.querySelectorAll(".stats .stat__n")];
+    const run = (el) => {
+      const target = parseInt((el.textContent || "").replace(/\D/g, ""), 10);
+      if (!isFinite(target)) return;
+      if (reduce) { el.textContent = String(target); return; }
+      const dur = 1100, t0 = performance.now(), ease = (x) => 1 - Math.pow(1 - x, 3);
+      const step = (t) => { const p = Math.min(1, (t - t0) / dur);
+        el.textContent = Math.round(ease(p) * target).toString();
+        if (p < 1) requestAnimationFrame(step); else el.textContent = String(target); };
+      requestAnimationFrame(step);
+    };
+    if (nums.length) {
+      if (hasIO && !reduce) {
+        nums.forEach((n) => { n.dataset.v = n.textContent; n.textContent = "0"; });
+        const ob = new IntersectionObserver((es, o) => es.forEach((e) => {
+          if (e.isIntersecting) { run(e.target); o.unobserve(e.target); } }), { threshold: .6 });
+        nums.forEach((n) => ob.observe(n));
+        setTimeout(() => nums.forEach((n) => { if (n.textContent === "0") n.textContent = n.dataset.v || "0"; }), 4000);
+      } else nums.forEach(run);
+    }
+  } catch (e) {}
+  try {
+    const fills = [...document.querySelectorAll(".sevbar__fill")];
+    if (fills.length) {
+      fills.forEach((f) => { f.dataset.w = f.style.width || ""; });
+      const grow = (f) => { if (f.dataset.w) f.style.width = f.dataset.w; };
+      if (hasIO && !reduce) {
+        fills.forEach((f) => { if (f.dataset.w) f.style.width = "0"; });
+        const ob = new IntersectionObserver((es, o) => es.forEach((e) => {
+          if (e.isIntersecting) { grow(e.target); o.unobserve(e.target); } }), { threshold: .4 });
+        fills.forEach((f) => ob.observe(f));
+        setTimeout(() => fills.forEach((f) => { if (f.style.width === "0px" || f.style.width === "0") grow(f); }), 4000);
+      }
     }
   } catch (e) {}
 })();

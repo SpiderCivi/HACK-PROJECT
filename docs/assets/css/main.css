@@ -1727,3 +1727,28 @@ html.cursor-hot .cursor-ring { width: 58px; height: 58px; margin: -29px 0 0 -29p
 /* selettore tema: compatto su mobile (solo pallino), non si comprime */
 .themectl { flex-shrink: 0; margin-left: .9rem; align-self: center; }
 @media (max-width: 560px) { .themectl__lbl { display: none; } .themectl { margin-left: .5rem; } }
+
+/* ============================================================
+   Ritocchi post-feedback (22/07): hero canvas visibile, stat vivi
+   ============================================================ */
+/* hero: il campo di punti prima era mascherato dietro la cover → invisibile. Ora copre l'area aperta. */
+.hero__fx {
+  -webkit-mask-image: radial-gradient(155% 135% at 66% 32%, #000 60%, transparent 100%);
+          mask-image: radial-gradient(155% 135% at 66% 32%, #000 60%, transparent 100%);
+  opacity: .95;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-reveal], html.js .rv { transform: translateY(2.1rem); }
+}
+
+/* "A colpo d'occhio": griglia ridisegnata (scoped a .stats, non tocca i blocchi ::: stat degli articoli) */
+.stats { grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 5px; overflow: hidden; }
+.stats .stat { background: var(--paper-2); padding: 1.15rem 1.25rem 1.25rem; position: relative; transition: background .35s cubic-bezier(.16,1,.3,1); }
+.stats .stat::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--oxide); transform: scaleY(0); transform-origin: bottom; transition: transform .5s cubic-bezier(.16,1,.3,1); }
+.stats .stat:hover { background: var(--paper-3); }
+.stats .stat:hover::before { transform: scaleY(1); }
+.stats .stat__n { font-size: clamp(2.1rem, 4.4vw, 2.9rem); letter-spacing: -.02em; font-variant-numeric: tabular-nums; color: var(--ink); }
+.stats .stat__l { color: var(--ink-dim); }
+
+/* barre severità: crescono entrando in vista */
+html.js .sevbar__fill { transition: width 1.15s cubic-bezier(.16,1,.3,1); }
