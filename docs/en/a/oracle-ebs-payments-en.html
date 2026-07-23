@@ -31,11 +31,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&display=swap" rel="stylesheet">
 <script>(function(){try{var d=document.documentElement;d.classList.add("js");var t=null;try{t=localStorage.getItem("hp-theme")}catch(e){}if(t!=='dark'&&t!=='light'&&t!=='terminal')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';d.setAttribute("data-theme",t);}catch(e){}})();</script>
-<link rel="stylesheet" href="../../assets/css/main.css?v=e24df2f0">
+<link rel="stylesheet" href="../../assets/css/main.css?v=21b1a7dd">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "NewsArticle", "headline": "The module that moves the payments, taken without a login: CVE-2026-46817 in Oracle E-Business Suite", "description": "Oracle Payments is the payment engine inside Oracle E-Business Suite: the point where the company's finance applications talk to banks and card networks. CVE-2026-46817 (CVSS 9.8) lets an unauthenticated attacker with only HTTP access compromise and take over the module. The exploit hits the ibytransmit endpoint of the File Transmission component, which invokes an internal Java function directly: patched in late May, the flaw was exploited in the wild from 27 June — before any public PoC — and added to the CISA KEV catalog on 15 July.", "datePublished": "2026-07-20", "dateModified": "2026-07-20", "inLanguage": "en", "mainEntityOfPage": "https://spidercivi.github.io/HACK-PROJECT/en/a/oracle-ebs-payments-en.html", "url": "https://spidercivi.github.io/HACK-PROJECT/en/a/oracle-ebs-payments-en.html", "articleSection": "Threat Intelligence", "author": {"@type": "Person", "name": "Riccardo Civiero", "url": "https://github.com/SpiderCivi", "sameAs": ["https://github.com/SpiderCivi", "https://spidercivi.github.io/"]}, "publisher": {"@type": "Organization", "name": "HACK/PROJECT", "url": "https://spidercivi.github.io/HACK-PROJECT/", "logo": {"@type": "ImageObject", "url": "https://spidercivi.github.io/HACK-PROJECT/assets/img/apple-touch-icon.png", "width": 180, "height": 180}}, "image": ["https://spidercivi.github.io/HACK-PROJECT/assets/img/en/oracle-ebs-payments.png"], "keywords": "Unattributed (first observed on Defused honeypots; no public campaign or actor), CVE-2026-46817, T1190, T1552.001", "citation": [{"@type": "CreativeWork", "name": "Oracle — Critical Patch Update Advisory, May 2026", "url": "https://www.oracle.com/security-alerts/cspumay2026.html"}, {"@type": "CreativeWork", "name": "NVD — CVE-2026-46817", "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46817"}, {"@type": "CreativeWork", "name": "CISA — Known Exploited Vulnerabilities Catalog", "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"}, {"@type": "CreativeWork", "name": "Defused — CVE-2026-46817 Oracle E-Business Suite (honeypot observation)", "url": "https://defusedcyber.com/exploited/cve-2026-46817-oracle-e-business-suite"}, {"@type": "CreativeWork", "name": "Help Net Security — Oracle E-Business Suite Payments flaw under attack (CVE-2026-46817)", "url": "https://www.helpnetsecurity.com/2026/06/30/oracle-payments-cve-2026-46817-exploitation/"}, {"@type": "CreativeWork", "name": "The Hacker News — Oracle E-Business Suite Flaw CVE-2026-46817 Actively Exploited in the Wild", "url": "https://thehackernews.com/2026/06/oracle-e-business-suite-flaw-cve-2026.html"}], "about": [{"@type": "Thing", "name": "CVE-2026-46817", "identifier": "CVE-2026-46817", "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46817", "sameAs": "https://www.cve.org/CVERecord?id=CVE-2026-46817"}, {"@type": "Thing", "name": "Oracle E-Business Suite 12.2.3–12.2.15 instances exposed over HTTP"}, {"@type": "Thing", "name": "Oracle Payments module (File Transmission component)"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is CVE-2026-46817?", "acceptedAnswer": {"@type": "Answer", "text": "Oracle Payments is the payment engine inside Oracle E-Business Suite: the point where the company's finance applications talk to banks and card networks. CVE-2026-46817 (CVSS 9.8) lets an unauthenticated attacker with only HTTP access compromise and take over the module. The exploit hits the ibytransmit endpoint of the File Transmission component, which invokes an internal Java function directly: patched in late May, the flaw was exploited in the wild from 27 June — before any public PoC — and added to the CISA KEV catalog on 15 July."}}, {"@type": "Question", "name": "Which products or systems are affected?", "acceptedAnswer": {"@type": "Answer", "text": "Affected targets and systems: Oracle E-Business Suite 12.2.3–12.2.15 instances exposed over HTTP, Oracle Payments module (File Transmission component)."}}, {"@type": "Question", "name": "How severe is it?", "acceptedAnswer": {"@type": "Answer", "text": "The severity of this case is rated as critical."}}]}</script>
 </head>
 <body>
+<div class="cover" aria-hidden="true"><span class="cover__mark">HACK<em>/</em>PROJECT</span></div>
 <a class="skip" href="#main">Skip to content</a>
 <header class="masthead">
   <div class="shell masthead__inner">
@@ -53,7 +54,7 @@
 <div class="shell">
   <div class="ticker">
     <span class="live">Threat feed live</span>
-    <span>Updated &mdash; 23.07.2026 09:16 CET</span>
+    <span>Updated &mdash; 23.07.2026 14:52 CET</span>
     <span>30 dossiers</span>
     <span>MITRE ATT&CK mapping</span>
   </div>
@@ -130,6 +131,6 @@
     </div>
   </div>
 </footer>
-<script src="../../assets/js/main.js?v=0b18a11d" defer></script>
+<script src="../../assets/js/main.js?v=45373cde" defer></script>
 </body>
 </html>

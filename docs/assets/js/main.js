@@ -359,3 +359,25 @@
     }
   } catch (e) {}
 })();
+
+/* Copertina di transizione tra le pagine (breve, sicura) */
+(() => {
+  "use strict";
+  const root = document.documentElement;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  addEventListener("pageshow", () => root.classList.remove("leaving"));
+  document.addEventListener("click", (e) => {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const a = e.target.closest("a"); if (!a) return;
+    const href = a.getAttribute("href"); if (!href) return;
+    if (a.target === "_blank" || a.hasAttribute("download")) return;
+    if (href[0] === "#" || href.startsWith("mailto:") || href.startsWith("tel:")) return;
+    let u; try { u = new URL(a.href, location.href); } catch (_) { return; }
+    if (u.origin !== location.origin) return;             // esterni: no transizione
+    if (u.pathname === location.pathname) return;          // stessa pagina/ancora
+    e.preventDefault();
+    root.classList.add("leaving");
+    setTimeout(() => { location.href = a.href; }, 430);
+    setTimeout(() => { root.classList.remove("leaving"); }, 2500); // safety
+  }, true);
+})();
