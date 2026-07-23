@@ -65,6 +65,20 @@ img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 
 /* ============================================================
+   CANVAS DI SFONDO FISSO
+   ============================================================ */
+#hx-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+}
+
+/* ============================================================
    ATMOSFERA — grana + scanline + vignetta
    ============================================================ */
 body::before {
