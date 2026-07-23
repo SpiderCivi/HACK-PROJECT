@@ -381,3 +381,168 @@
     setTimeout(() => { root.classList.remove("leaving"); }, 2500); // safety
   }, true);
 })();
+
+/* ============================================================
+   WEBGL — Canvas di sfondo fisso con nuvola di nodi 3D
+   ============================================================ */
+async function webgl() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const canvas = document.getElementById("hx-canvas");
+  if (!canvas) return;
+  let T;
+  try {
+    T = await import("three");
+  } catch (e) {
+    return;
+  }
+  try {
+    const small = window.innerWidth < 820;
+    const renderer = new T.WebGLRenderer({
+      canvas,
+      antialias: true,
+      alpha: false,
+      powerPreference: "high-performance",
+    });
+    renderer.setPixelRatio(Math.min(small ? 1.5 : 2, devicePixelRatio || 1));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    const scene = new T.Scene();
+    const camera = new T.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 140);
+
+    const N = small ? 70 : 140,
+      R = 6,
+      ZL = 36;
+    const nodes = [];
+    const np = new Float32Array(N * 3);
+    for (let i = 0; i < N; i++) {
+      nodes.push({
+        p: new T.Vector3(
+          T.MathUtils.randFloatSpread(2 * R),
+          T.MathUtils.randFloatSpread(2 * R),
+          4 - Math.random() * ZL
+        ),
+        v: new T.Vector3(
+          T.MathUtils.randFloatSpread(0.008),
+          T.MathUtils.randFloatSpread(0.008),
+          T.MathUtils.randFloatSpread(0.006)
+        ),
+      });
+    }
+    const ng = new T.BufferGeometry();
+    ng.setAttribute("position", new T.BufferAttribute(np, 3));
+    scene.add(
+      new T.Points(
+        ng,
+        new T.PointsMaterial({
+          color: 0xff7a3d,
+          size: small ? 0.09 : 0.075,
+          transparent: true,
+          opacity: 0.95,
+          blending: T.AdditiveBlending,
+          depthWrite: false,
+        })
+      )
+    );
+
+    const MAX = N * 9;
+    const ep = new Float32Array(MAX * 6);
+    const eg = new T.BufferGeometry();
+    eg.setAttribute("position", new T.BufferAttribute(ep, 3));
+    scene.add(
+      new T.LineSegments(
+        eg,
+        new T.LineBasicMaterial({
+          color: 0xe2521c,
+          transparent: true,
+          opacity: 0.2,
+          blending: T.AdditiveBlending,
+          depthWrite: false,
+        })
+      )
+    );
+
+    const D = small ? 2.3 : 1.95,
+      D2 = D * D;
+    const mx = { x: 0, y: 0 };
+    addEventListener(
+      "mousemove",
+      (e) => {
+        mx.x = e.clientX / window.innerWidth - 0.5;
+        mx.y = e.clientY / window.innerHeight - 0.5;
+      },
+      { passive: true }
+    );
+
+    addEventListener(
+      "resize",
+      () => {
+        const s = window.innerWidth < 820;
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setPixelRatio(Math.min(s ? 1.5 : 2, devicePixelRatio || 1));
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      },
+      { passive: true }
+    );
+
+    camera.position.set(0, 0, 8);
+    camera.lookAt(0, 0, -7);
+
+    const t0 = performance.now();
+
+    (function loop() {
+      requestAnimationFrame(loop);
+      const t = (performance.now() - t0) / 1000;
+
+      for (let i = 0; i < N; i++) {
+        const nd = nodes[i];
+        nd.p.add(nd.v);
+        if (Math.abs(nd.p.x) > R) nd.v.x *= -1;
+        if (Math.abs(nd.p.y) > R) nd.v.y *= -1;
+        if (nd.p.z > 6 || nd.p.z < -ZL) nd.v.z *= -1;
+        np[i * 3] = nd.p.x;
+        np[i * 3 + 1] = nd.p.y;
+        np[i * 3 + 2] = nd.p.z;
+      }
+      ng.attributes.position.needsUpdate = true;
+
+      let c = 0;
+      for (let i = 0; i < N; i++) {
+        for (let j = i + 1; j < N; j++) {
+          const a = nodes[i].p,
+            b = nodes[j].p;
+          const dx = a.x - b.x,
+            dy = a.y - b.y,
+            dz = a.z - b.z;
+          const dd = dx * dx + dy * dy + dz * dz;
+          if (dd < D2 && c < MAX) {
+            ep[c * 6] = a.x;
+            ep[c * 6 + 1] = a.y;
+            ep[c * 6 + 2] = a.z;
+            ep[c * 6 + 3] = b.x;
+            ep[c * 6 + 4] = b.y;
+            ep[c * 6 + 5] = b.z;
+            c++;
+          }
+        }
+      }
+      eg.setDrawRange(0, c * 2);
+      eg.attributes.position.needsUpdate = true;
+
+      camera.position.x = mx.x * 1.3;
+      camera.position.y = -mx.y * 1.0;
+      camera.lookAt(0, 0, -7);
+
+      renderer.render(scene, camera);
+    })();
+  } catch (e) {
+    canvas.style.display = "none";
+  }
+}
+
+// Avvia il WebGL quando la pagina è pronta
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", webgl);
+} else {
+  webgl();
+}
